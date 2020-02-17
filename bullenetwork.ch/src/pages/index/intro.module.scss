@@ -1,0 +1,18 @@
+.intro {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.container {
+  max-width: 1200px;
+  text-align: center;
+
+  h1 {
+    font-size: 2em;
+    max-width: 800px;
+    padding: 70px 0;
+    font-weight: 100;
+  }
+
+}

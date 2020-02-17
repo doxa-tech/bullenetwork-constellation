@@ -1,0 +1,94 @@
+.header {
+  //background-image: url("../../images/header-bg.jpg");
+  //background-size: cover;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.section-container {
+  background-color: red;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0px;
+  margin: 50px 0;
+  flex: 1;
+  display: flex;
+
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#54f0ff+0,00b485+37,d9ff1c+71,ff6721+100 */
+  background: #54f0ff; /* Old browsers */
+  background: -moz-linear-gradient(
+    left,
+    #54f0ff 0%,
+    #00b485 37%,
+    #d9ff1c 71%,
+    #ff6721 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    left,
+    #54f0ff 0%,
+    #00b485 37%,
+    #d9ff1c 71%,
+    #ff6721 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to right,
+    #54f0ff 0%,
+    #00b485 37%,
+    #d9ff1c 71%,
+    #ff6721 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#54f0ff', endColorstr='#ff6721',GradientType=1 ); /* IE6-9 */
+}
+
+.sub-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  flex: 1;
+}
+
+.left {
+  flex: 1;
+  padding: 30px;
+}
+
+.right {
+  font-size: 2.5em;
+  font-family: "Lato";
+  font-weight: 300;
+  color: white;
+  flex: 1;
+  padding: 30px;
+
+  p {
+    position: relative;
+
+    span:nth-child(1) {
+      font-size: 3em;
+      position: absolute;
+      top: -60px;
+      left: -40px;
+    }
+    span:nth-child(3) {
+      font-size: 3em;
+      position: absolute;
+      bottom: -120px;
+    }
+  }
+}
+
+@media only screen and (max-width: 765px) {
+  section#header {
+  }
+  .sub-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  .left img {
+    max-width: 100%;
+  }
+}

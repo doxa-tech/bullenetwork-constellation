@@ -1,0 +1,13 @@
+// @format
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+
+body {
+  font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+
+  section {
+    & > .section-container {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+}
