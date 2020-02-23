@@ -17,13 +17,7 @@
 
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#54f0ff+0,00b485+37,d9ff1c+71,ff6721+100 */
   background: #54f0ff; /* Old browsers */
-  background: -moz-linear-gradient(
-    left,
-    #54f0ff 0%,
-    #00b485 37%,
-    #d9ff1c 71%,
-    #ff6721 100%
-  ); /* FF3.6-15 */
+  background: -moz-linear-gradient(left, #54f0ff 0%, #00b485 37%, #d9ff1c 71%, #ff6721 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(
     left,
     #54f0ff 0%,
@@ -53,6 +47,7 @@
 .left {
   flex: 1;
   padding: 30px;
+  width: 350px;
 }
 
 .right {
