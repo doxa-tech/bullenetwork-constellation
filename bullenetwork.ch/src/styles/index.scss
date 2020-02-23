@@ -131,16 +131,15 @@ div.index-container {
         padding: 40px 0 40px 0;
         font-size: 1.9em;
         position: relative;
-          &:after {
-    content: "";
-    position: absolute;
-    width: 50px;
-    height: 7px;
-    background-color: orange;
-    left: -5px;
-    bottom: 25px;
-  }
-
+        &:after {
+          content: "";
+          position: absolute;
+          width: 50px;
+          height: 7px;
+          background-color: orange;
+          left: -5px;
+          bottom: 25px;
+        }
       }
     }
   }
@@ -177,49 +176,4 @@ div.index-container {
     padding-left: 40px;
   }
 
-  section#footer {
-    padding-top: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  section#footer div.ribbon {
-    height: 20px;
-    width: 100%;
-
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#54f0ff+0,00b485+37,d9ff1c+71,ff6721+100 */
-    background: #54f0ff; /* Old browsers */
-    background: -moz-linear-gradient(
-      left,
-      #54f0ff 0%,
-      #00b485 37%,
-      #d9ff1c 71%,
-      #ff6721 100%
-    ); /* FF3.6-15 */
-    background: -webkit-linear-gradient(
-      left,
-      #54f0ff 0%,
-      #00b485 37%,
-      #d9ff1c 71%,
-      #ff6721 100%
-    ); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(
-      to right,
-      #54f0ff 0%,
-      #00b485 37%,
-      #d9ff1c 71%,
-      #ff6721 100%
-    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#54f0ff', endColorstr='#ff6721',GradientType=1 ); /* IE6-9 */
-  }
-  section#footer .section-container {
-    max-width: 1200px;
-    width: 100%;
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-  section#footer .section-container p {
-    padding: 5px 0;
-  }
 }
