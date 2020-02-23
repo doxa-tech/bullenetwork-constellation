@@ -1,12 +1,14 @@
 import React from "react"
 import Img from "gatsby-image"
-import Intro from "./index/intro"
+import Intro from "../components/intro"
 import Layout from "../components/layout"
 import Church from "./index/church"
 
 export default () => (
   <Layout layoutClass="index-container">
-    <Intro />
+    <Intro>
+      Le Bulle Network est le réseau d'églises né de l'église évangélique de Bulle
+    </Intro>
 
     <section id="churches">
       <div className="section-container">

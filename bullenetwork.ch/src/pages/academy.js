@@ -1,11 +1,26 @@
-import React from "react"
-import Img from "gatsby-image"
-import Intro from "./index/intro"
+import React, { useState, useEffect } from "react"
 import Layout from "../components/layout"
-import Church from "./index/church"
+import Intro from "../components/intro"
 
-export default () => (
-  <Layout layoutClass="index-container">
-    Academy
-  </Layout>
-)
+export default () => {
+  const [title, setTitle] = useState(0)
+  const [content, setContent] = useState(1)
+  useEffect(() => {
+    fetch(`https://panda.bullenetwork.ch/directus/items/bullenetwork_pages/1`)
+      .then(response => response.json())
+      .then(resultData => {
+        setTitle(resultData.data.title)
+        setContent(resultData.data.content)
+      })
+  }, [])
+  return (
+    <Layout layoutClass="index-container">
+      <Intro>
+        {title}
+      </Intro>
+      <section id="text-info">
+        <div dangerouslySetInnerHTML={{ __html: content }} className="section-container" />
+      </section>
+    </Layout>
+  )
+}
