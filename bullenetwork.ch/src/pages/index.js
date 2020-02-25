@@ -1,5 +1,4 @@
 import React from "react"
-import Img from "gatsby-image"
 import Intro from "../components/intro"
 import Layout from "../components/layout"
 import Church from "./index/church"

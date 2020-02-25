@@ -24,7 +24,7 @@ export default () => (
             <div className={styles.sectionContainer}>
               <div className={styles.subContainer}>
                 <div className={styles.left}>
-                  <Img style={{maxWidth: "350px"}} fluid={data.file.childImageSharp.fluid} />
+                  <a href="/"><Img style={{ maxWidth: "350px" }} fluid={data.file.childImageSharp.fluid} /></a>
                 </div>
                 <div className={styles.right}>
                   <p>
