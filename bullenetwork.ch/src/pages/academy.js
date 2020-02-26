@@ -6,6 +6,12 @@ export default () => {
   const [title, setTitle] = useState(0)
   const [content, setContent] = useState(1)
   useEffect(() => {
+    setTitle(
+      <div className="loadrr"><div><div></div><div></div><div></div><div></div></div></div>
+    )
+    setContent(
+      '<div class="loadrr"><div><div></div><div></div><div></div><div></div></div></div>'
+    )
     fetch(`https://panda.bullenetwork.ch/directus/items/bullenetwork_pages/1`)
       .then(response => response.json())
       .then(resultData => {

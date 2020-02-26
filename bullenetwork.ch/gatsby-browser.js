@@ -1,3 +1,4 @@
+import "./src/styles/components/loader.scss"
 import "./src/styles/components/text-info.scss"
 import "./src/styles/layout/layout.scss"
 import "./src/styles/layout/reset.scss"
