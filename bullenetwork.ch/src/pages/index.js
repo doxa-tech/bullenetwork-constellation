@@ -9,6 +9,47 @@ export default () => (
       Le Bulle Network est le réseau d'églises né de l'église évangélique de Bulle
     </Intro>
 
+    <section id="text-info">
+
+      <div className="section-container" style={{ border: "2px solid red", padding: "30px" }}>
+
+        <h2>⚠️ INFO CORONAVIRUS 🦠</h2>
+
+        <p>
+          Notre principe reste celui de suivre les recommandations communiquées via le Réseau Evangélique Suisse. En
+          effet, le RES suit très bien les affaires jour après jour et transmets ses recommandations sur son site web:
+          https://evangelique.ch/coronavirus/ Selon les limites à ce jour, nous pouvons maintenir nos célébrations sans
+          démarches particulières avec les autorités cantonales, car à Bulle, nous n'excédons pas 150 personnes au culte.
+        </p>
+
+        <h3>Participation</h3>
+        <p>
+          Nous conseillons aux personnes particulièrement vulnérables, c’est-à-dire les personnes
+          de plus de 65 ans et celles souffrant de l’hypertension artérielle, du diabète, de maladies cardiovasculaires,
+          de maladies respiratoires chroniques, de maladies et de thérapies qui affaiblissent le système immunitaire ou du
+          cancer, de rester à la maison. De plus, les personnes présentant des symptômes de grippe (fièvre, toux) doivent
+          être priées de ne pas assister à l’événement ou renvoyées chez elles.
+        </p>
+
+        <h3>Contacts interpersonnels</h3>
+        <p>
+          Nous recommandons de garder une certaine distance par rapport aux autres
+          personnes, en
+          particulier celles qui sont
+          particulièrement exposées. En ce sens, il convient d’utiliser une pièce plus grande si possible. Tout rituel de
+          bienvenue (par exemple, serrer la main) doit être évité.
+        </p>
+
+        <h3>Mesures générales de protection</h3>
+        <p>
+          Les mains doivent être lavées fréquemment et soigneusement. En outre,
+          il est recommandé de tousser ou d’éternuer dans le creux du coude ou dans un mouchoir ; ce dernier doit ensuite
+          être jeté dans une poubelle fermée.
+        </p>
+      </div>
+
+    </section>
+
     <section id="churches">
       <div className="section-container">
         <ul className="ch-grid">
@@ -49,47 +90,6 @@ export default () => (
           />
         </ul>
       </div>
-    </section>
-
-    <section id="text-info">
-
-      <div className="section-container" style={{ border: "2px solid red", padding: "30px" }}>
-
-        <h2>⚠️ INFO CORONAVIRUS 🦠</h2>
-
-        <p>
-          Notre principe reste celui de suivre les recommandations communiquées via le Réseau Evangélique Suisse. En
-          effet, le RES suit très bien les affaires jour après jour et transmets ses recommandations sur son site web:
-          https://evangelique.ch/coronavirus/ Selon les limites à ce jour, nous pouvons maintenir nos célébrations sans
-          démarches particulières avec les autorités cantonales, car à Bulle, nous n'excédons pas 150 personnes au culte.
-        </p>
-
-        <h3>Participation</h3>
-        <p>
-          Nous conseillons aux personnes particulièrement vulnérables, c’est-à-dire les personnes
-          de plus de 65 ans et celles souffrant de l’hypertension artérielle, du diabète, de maladies cardiovasculaires,
-          de maladies respiratoires chroniques, de maladies et de thérapies qui affaiblissent le système immunitaire ou du
-          cancer, de rester à la maison. De plus, les personnes présentant des symptômes de grippe (fièvre, toux) doivent
-          être priées de ne pas assister à l’événement ou renvoyées chez elles.
-        </p>
-
-        <h3>Contacts interpersonnels</h3>
-        <p>
-          Nous recommandons de garder une certaine distance par rapport aux autres
-          personnes, en
-          particulier celles qui sont
-          particulièrement exposées. En ce sens, il convient d’utiliser une pièce plus grande si possible. Tout rituel de
-          bienvenue (par exemple, serrer la main) doit être évité.
-        </p>
-
-        <h3>Mesures générales de protection</h3>
-        <p>
-          Les mains doivent être lavées fréquemment et soigneusement. En outre,
-          il est recommandé de tousser ou d’éternuer dans le creux du coude ou dans un mouchoir ; ce dernier doit ensuite
-          être jeté dans une poubelle fermée.
-        </p>
-      </div>
-
     </section>
 
     <section id="text-info">
