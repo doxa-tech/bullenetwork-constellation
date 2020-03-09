@@ -1,20 +1,30 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 
 export default ({
   website,
   churchName,
   churchAddress,
   churchColor,
-  imageName,
+  imageID,
   children,
 }) => {
+  const [logoPath, setLogoPath] = useState(0)
+  console.log(`imageID: '${imageID}'`)
+  useEffect(() => {
+    fetch(`https://panda.bullenetwork.ch/directus/files/${imageID}`)
+      .then(response => response.json())
+      .then(resultData => {
+        setLogoPath(resultData.data.data.full_url)
+      })
+  })
+
   return (
     <li>
       <div
         className="ch-item"
         style={{
           backgroundColor: churchColor,
-          backgroundImage: `url(churches/${imageName})`,
+          backgroundImage: `url(${logoPath}`,
         }}
       >
         <div className="ch-info" style={{ backgroundColor: churchColor }}>
