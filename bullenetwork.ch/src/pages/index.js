@@ -52,7 +52,7 @@ export default () => {
 
       <section id="text-info">
 
-        <div dangerouslySetInnerHTML={{ __html: specialContent }} className="section-container" style={{ border: "2px solid red", padding: "30px" }}>
+        <div dangerouslySetInnerHTML={{ __html: specialContent }} className="section-container" style={{ border: "2px solid orange", background: "rgb(255, 243, 220)", margin: "30px 0 0 0", padding: "30px" }}>
         </div>
 
       </section>
