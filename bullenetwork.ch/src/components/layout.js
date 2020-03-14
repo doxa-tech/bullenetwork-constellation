@@ -1,11 +1,16 @@
 import React from "react"
 import Header from "./layout/header"
+import { Helmet } from "react-helmet"
 
 export default ({ layoutClass, children }) => {
   console.log(layoutClass, children)
   return (
     <div>
-      <Header/>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Le Bulle Network - Réseau d'églises de l'EEBulle</title>
+      </Helmet>
+      <Header />
       <div className={layoutClass}>
         {children}
       </div>
