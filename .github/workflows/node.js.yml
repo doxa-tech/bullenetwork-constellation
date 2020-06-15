@@ -1,0 +1,36 @@
+name: bullenetwork.ch deploy
+
+on:
+  push:
+    branches: [ production-bullenetwok-ch ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - uses: actions/setup-node@v1
+      with:
+        version: 12.x
+    
+    - name: Install dependencies
+      run: |
+        cd bullenetwork.ch
+        npm install
+        
+    - name: Build
+      run: |
+        cd bullenetwork.ch
+        gatsby build
+        
+    - name: Sync
+      env:
+        dest: 'eebulle@{{secrets.DEPLOY_ADDR}}:/var/www/bullenetwork.ch/public_html/'
+      run: |
+        echo "${{secrets.DEPLOY_KEY}}" > deploy_key
+        chmod 600 ./deploy_key
+        rsync -chav --delete \
+          -e 'ssh -p ${{secrets.DEPLOY_PORT}} -i ./deploy_key -o StrictHostKeyChecking=no' \
+          ./bullenetwork.ch/public/ ${{env.dest}}
