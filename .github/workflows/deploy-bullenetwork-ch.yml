@@ -28,7 +28,7 @@ jobs:
         
     - name: Sync
       env:
-        dest: 'eebulle@{{secrets.DEPLOY_ADDR}}:/var/www/bullenetwork.ch/public_html/'
+        dest: 'eebulle@${{secrets.DEPLOY_ADDR}}:/var/www/bullenetwork.ch/public_html/'
       run: |
         echo "${{secrets.DEPLOY_BULLENETWORK_CH_KEY}}" > deploy_key
         chmod 600 ./deploy_key
