@@ -2,7 +2,7 @@ name: bullenetwork.ch deploy
 
 on:
   push:
-    branches: [ production-bullenetwok-ch ]
+    branches: [ production-bullenetwork-ch ]
 
 jobs:
   deploy:
