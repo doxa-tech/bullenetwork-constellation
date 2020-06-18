@@ -1,6 +1,6 @@
 import React from "react"
 import Img from "gatsby-image"
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql, Link } from "gatsby"
 import styles from "./header.module.scss"
 import HeaderBG from './header-bg'
 
@@ -34,6 +34,11 @@ export default () => (
                   </p>
                 </div>
               </div>
+            </div>
+            <div className={styles.menuContainer}>
+              <Link to="/" activeClassName={styles.activeLink}>Home</Link>
+              <Link to="/academy" activeClassName={styles.activeLink}>Academy</Link>
+              <Link to="/contact" activeClassName={styles.activeLink}>Contact</Link>
             </div>
           </div>
         </HeaderBG>
