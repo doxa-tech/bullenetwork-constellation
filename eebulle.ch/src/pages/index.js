@@ -10,7 +10,7 @@ import Activities from "./index/activities"
 
 import "./index.scss"
 
-const IndexPage = () => (
+const Index = () => (
   <Layout layoutClass="index">
     <SEO title="Accueil" />
     <Intro />
@@ -19,4 +19,4 @@ const IndexPage = () => (
   </Layout>
 )
 
-export default IndexPage
+export default Index
