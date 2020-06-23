@@ -5,7 +5,7 @@ import Img from "gatsby-image"
 
 import "./header.scss"
 
-const Header = ({ siteTitle }) => {
+const Header = () => {
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "EEBulle-logo.png" }) {
@@ -46,14 +46,6 @@ const Header = ({ siteTitle }) => {
       </div>
     </header >
   )
-}
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
 }
 
 export default Header

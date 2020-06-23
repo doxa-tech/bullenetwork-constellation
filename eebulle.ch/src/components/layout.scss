@@ -21,8 +21,10 @@ html {
 }
 
 footer {
-  max-width: var(--container-width);
-  margin: 0 auto !important;
+  .container {
+    max-width: var(--container-width);
+    margin: 0 auto !important;
+  } 
 }
 
 :root {
