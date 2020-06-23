@@ -1,0 +1,48 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap"); */
+
+html {
+  font-family: "Open Sans", sans-serif;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 400;
+  src: url("../../static/fonts/OpenSans-Light.ttf");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 500;
+  src: url("../../static/fonts/OpenSans-Regular.ttf");
+}
+@font-face {
+  font-family: "Bebas Neue";
+  font-weight: 500;
+  src: url("../../static/fonts/BebasNeue-Regular.ttf");
+}
+
+footer {
+  max-width: var(--container-width);
+  margin: 0 auto !important;
+}
+
+:root {
+  --container-width: 980px;
+}
+
+// Reset
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

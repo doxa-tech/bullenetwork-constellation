@@ -1,0 +1,23 @@
+.index {
+  .banner {
+    .container {
+      padding: 40px 10px;
+      color: white;
+      max-width: var(--container-width);
+      margin: 0 auto;
+
+      h2 {
+        font-size: 3.3em;
+        font-family: "Bebas neue";
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      p {
+        text-align: left;
+        font-weight: bold;
+        padding-left: 15%;
+      }
+    }
+  }
+}

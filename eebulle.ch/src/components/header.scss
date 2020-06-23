@@ -1,0 +1,30 @@
+header {
+  background: #3c2537;
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 10px;
+
+    div.logo-wrapper {
+      width: 200px;
+      display: block;
+    }
+
+    div.links {
+      padding: 0 0 0 20px;
+      flex: 1;
+      display: flex;
+      justify-content: space-around;
+
+      a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+      }
+    }
+  }
+}
