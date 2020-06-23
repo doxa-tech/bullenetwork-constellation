@@ -2,7 +2,6 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import Img from "gatsby-image"
-import headerStyle from "./header.scss"
 
 import "./header.scss"
 
@@ -20,7 +19,7 @@ const Header = ({ siteTitle }) => {
   `)
 
   return (
-    < header>
+    <header>
       <div>
         <div className="logo-wrapper">
           <Link to="/">
