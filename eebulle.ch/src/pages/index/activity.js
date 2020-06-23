@@ -5,25 +5,15 @@ import Img from "gatsby-image"
 const Activity = ({ path, title, description }) => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: allFile( filter: { internal: { mediaType: { regex: "activities/" } } } ) {
-        edges {
-          node {
-            relativePath
-            childImageSharp {
-              fluid(maxWidth: 300) {
-                ...GatsbyImageSharpFluid
-              }
-            }
+      placeholderImage: file(relativePath: { eq: "activities/1.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 300) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
     }
   `)
-
-  console.log(data)
-  const match = useMemo(() => (
-    data.allFile.edges.find(({ node }) => src === path)
-  ), [data, src])
 
   return (
     <div className="activity">
