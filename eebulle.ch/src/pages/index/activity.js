@@ -6,9 +6,11 @@ import "./activity.scss"
 const Activity = ({ fluidImg, title, description }) => {
   return (
     <div className="activity">
-      <Img fluid={fluidImg} style={{ width: `300px` }} />
-      <h3>{title}</h3>
-      <p>{description}</p>
+      <Img fluid={fluidImg} style={{ width: `150px`, flexShrink: `0` }} />
+      <div className="text">
+        <p>{description}</p>
+        <h3>{title}</h3>
+      </div>
     </div >
   )
 }

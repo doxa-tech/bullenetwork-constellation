@@ -7,7 +7,7 @@ import "./activities.scss"
 export const activityImage = graphql`
   fragment activityImage on File {
     childImageSharp {
-      fluid(maxWidth: 300) {
+      fluid(maxWidth: 200) {
         ...GatsbyImageSharpFluid
       }
     }
@@ -37,13 +37,13 @@ const Activities = () => {
     <div className="activities">
       <div className="container">
         <div className="left">
-          <Activity fluidImg={images.first.childImageSharp.fluid} title="Enfants" description="description" />
-          <Activity fluidImg={images.third.childImageSharp.fluid} title="Ados" description="description" />
+          <Activity fluidImg={images.first.childImageSharp.fluid} title="Enfants" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus, lacus et rhoncus molestie, turpis orci fermentum sapien, sed vulputate est turpis et neque. Aenean quis libero in ipsum fringilla elementum vitae a lorem." />
+          <Activity fluidImg={images.third.childImageSharp.fluid} title="Ados" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus, lacus et rhoncus molestie, turpis orci fermentum sapien, sed vulputate est turpis et neque. Aenean quis libero in ipsum fringilla elementum vitae a lorem." />
         </div>
         <div className="right">
-          <h2>Activités</h2>
-          <Activity fluidImg={images.second.childImageSharp.fluid} title="Adultes" description="description" />
-          <Activity fluidImg={images.fourth.childImageSharp.fluid} title="Seniors" description="description" />
+          <h2>Nos activités</h2>
+          <Activity fluidImg={images.second.childImageSharp.fluid} title="Adultes" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus, lacus et rhoncus molestie, turpis orci fermentum sapien, sed vulputate est turpis et neque. Aenean quis libero in ipsum fringilla elementum vitae a lorem." />
+          <Activity fluidImg={images.fourth.childImageSharp.fluid} title="Seniors" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus, lacus et rhoncus molestie, turpis orci fermentum sapien, sed vulputate est turpis et neque. Aenean quis libero in ipsum fringilla elementum vitae a lorem." />
         </div>
       </div>
     </div>
