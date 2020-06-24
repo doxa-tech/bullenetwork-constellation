@@ -1,11 +1,19 @@
 import React from "react"
 
-import "./intro.scss"
+import style from "./intro.module.scss"
 
-const Intro = ({ children }) => (
-  <div className="intro">
+const IntroLeft = ({ children }) => (
+  <div className={style.left}>
     {children}
   </div>
 )
 
-export default Intro
+const IntroRight = ({ children }) => (
+  <div className={style.rightWrapper}>
+    <div className={style.right}>
+      {children}
+    </div>
+  </div>
+)
+
+export { IntroLeft, IntroRight }

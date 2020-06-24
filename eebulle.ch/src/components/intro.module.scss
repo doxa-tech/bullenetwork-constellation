@@ -1,0 +1,45 @@
+.left {
+  padding: 20px;
+  margin: 30px 0;
+  background: #ffb16f;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+
+  &::after {
+    content: "";
+    background: #ffb16f;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: -99999px;
+    z-index: -1;
+  }
+}
+
+.right-wrapper {
+  text-align: right;
+}
+
+.right {
+  padding: 20px;
+  margin: 30px 0;
+  background: #ffb16f;
+  width: 100%;
+  max-width: 330px;
+  position: relative;
+  display: inline-block;
+  text-align: inherit;
+
+  &::after {
+    content: "";
+    background: #ffb16f;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: -99999px;
+    z-index: -1;
+  }
+}
