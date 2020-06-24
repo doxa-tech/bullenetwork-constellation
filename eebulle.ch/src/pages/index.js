@@ -1,10 +1,9 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-import Intro from "./index/intro"
+import Welcome from "./index/welcome"
 import Banner from "./index/banner"
 import Activities from "./index/activities"
 import Event from "./index/event"
@@ -14,7 +13,7 @@ import "./index.scss"
 const Index = () => (
   <Layout layoutClass="index">
     <SEO title="Accueil" />
-    <Intro />
+    <Welcome />
     <Banner />
     <Activities />
     <Event />

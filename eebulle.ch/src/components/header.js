@@ -1,5 +1,4 @@
 import { Link, useStaticQuery, graphql } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
 import Img from "gatsby-image"
 
@@ -30,16 +29,16 @@ const Header = () => {
           <Link to="/">
             Home
           </Link>
-          <Link to="/">
+          <Link to="/church">
             Eglise
           </Link>
-          <Link to="/">
+          <Link to="/groups">
             Groupe de Maison
           </Link>
-          <Link to="/">
+          <Link to="/activities">
             Activités
           </Link>
-          <Link to="/">
+          <Link to="/contact">
             Contact
           </Link>
         </div>

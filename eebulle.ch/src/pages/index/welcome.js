@@ -1,9 +1,11 @@
 import React from "react"
 
-import "./intro.scss"
+import Intro from "../../components/intro"
 
-const Intro = () => (
-  <div className="intro">
+import "./welcome.scss"
+
+const Welcome = () => (
+  <Intro>
     <div className="left">
       <h1>Bienvenue à l'EEBulle</h1>
       <p>Célébration tous les dimanche à 10h<br />Accueil dès 9h30</p>
@@ -24,11 +26,11 @@ const Intro = () => (
         </div>
       </div>
       <p>
-        Parking disponible devant l'église, Route du Verdel 8 à Bulle. <br />
-            Célébrations adaptées pour les enfants avec Kids Bulle College.
-        </p>
+        Parking disponible devant l'église, Route du Verdel 8 à Bulle.<br/>
+        Célébrations adaptées pour les enfants avec Kids Bulle College.
+      </p>
     </div>
-  </div>
+  </Intro>
 )
 
-export default Intro
+export default Welcome
