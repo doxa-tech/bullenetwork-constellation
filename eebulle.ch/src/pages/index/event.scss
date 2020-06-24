@@ -1,0 +1,21 @@
+.index {
+  .event {
+    max-width: var(--container-width);
+    margin: 0 auto;
+
+    h2 {
+      color: #ffb16f;
+      padding: 20px 0 10px 0;
+    }
+
+    .content {
+      display: flex;
+      padding: 0 0 40px 0;
+
+      p {
+        padding: 0 20px 0 0;
+        text-align: justify;
+      }
+    }
+  }
+}

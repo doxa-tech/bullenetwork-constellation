@@ -7,6 +7,7 @@ import SEO from "../components/seo"
 import Intro from "./index/intro"
 import Banner from "./index/banner"
 import Activities from "./index/activities"
+import Event from "./index/event"
 
 import "./index.scss"
 
@@ -16,6 +17,7 @@ const Index = () => (
     <Intro />
     <Banner />
     <Activities />
+    <Event />
   </Layout>
 )
 

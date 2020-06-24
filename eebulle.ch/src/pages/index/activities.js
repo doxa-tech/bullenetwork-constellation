@@ -18,16 +18,16 @@ const Activities = () => {
   
   const images = useStaticQuery(graphql`
     query {
-      first: file(relativePath: { eq: "activities/1.jpg" }) {
+      first: file(relativePath: { eq: "directus.jpg" }) {
         ...activityImage
       }
-      second: file(relativePath: { eq: "activities/2.jpg" }) {
+      second: file(relativePath: { eq: "directus.jpg" }) {
         ...activityImage
       }
-      third: file(relativePath: { eq: "activities/3.jpg" }) {
+      third: file(relativePath: { eq: "directus.jpg" }) {
         ...activityImage
       }
-      fourth: file(relativePath: { eq: "activities/4.jpg" }) {
+      fourth: file(relativePath: { eq: "directus.jpg" }) {
         ...activityImage
       }
     }
