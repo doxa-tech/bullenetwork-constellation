@@ -1,0 +1,18 @@
+.church {
+  .history {
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto !important;
+
+      h2 {
+        color: #ffb16f;
+        padding: 30px 0 10px 0;
+      }
+
+      p {
+        text-align: justify;
+        padding: 0 0 30px 0;
+      }
+    }
+  }
+}

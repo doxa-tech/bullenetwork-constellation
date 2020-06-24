@@ -4,4 +4,9 @@ footer {
   color: white;
   height: 150px;
 
+  .container {
+    max-width: var(--container-width);
+    margin: 0 auto !important;
+  } 
+
 }

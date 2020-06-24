@@ -8,8 +8,6 @@ import Banner from "./index/banner"
 import Activities from "./index/activities"
 import Event from "./index/event"
 
-import "./index.scss"
-
 const Index = () => (
   <Layout layoutClass="index">
     <SEO title="Accueil" />
