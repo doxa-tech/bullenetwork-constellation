@@ -1,7 +1,6 @@
 import React from "react"
 import Img from "gatsby-image"
 import { useStaticQuery } from "gatsby"
-import { IntroLeft, IntroRight } from "../../components/intro"
 
 import "./event.scss"
 
