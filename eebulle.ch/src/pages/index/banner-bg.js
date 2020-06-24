@@ -20,9 +20,7 @@ export default ({ children }) => {
       Tag="section"
       fluid={img.desktop.childImageSharp.fluid}
       backgroundColor={`grey`}
-      style={{
-        width: "100%",
-      }}
+      style={{ width: "100%",}}
     >
       {children}
     </BackgroundImage>

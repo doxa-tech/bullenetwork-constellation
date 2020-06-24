@@ -1,0 +1,17 @@
+.church {
+  .mission {
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto !important;
+      color: #ffffff;
+
+      h2 {
+        padding: 0px 0 20px 0;
+      }
+
+      p, ul {
+        font-size: 1.1em;
+      }
+    }
+  }
+}

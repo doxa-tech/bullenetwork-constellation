@@ -20,13 +20,6 @@ html {
   src: url("../../static/fonts/BebasNeue-Regular.ttf");
 }
 
-footer {
-  .container {
-    max-width: var(--container-width);
-    margin: 0 auto !important;
-  } 
-}
-
 :root {
   --container-width: 980px;
 }
