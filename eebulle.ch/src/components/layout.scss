@@ -24,7 +24,12 @@ footer {
   .container {
     max-width: var(--container-width);
     margin: 0 auto !important;
-  } 
+  }
+}
+
+// Because of IntroRight module
+main {
+  overflow: hidden;
 }
 
 :root {
