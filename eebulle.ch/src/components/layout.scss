@@ -20,6 +20,11 @@ html {
   src: url("../../static/fonts/BebasNeue-Regular.ttf");
 }
 
+// Because of IntroRight module
+main {
+  overflow: hidden;
+}
+
 :root {
   --container-width: 980px;
 }
