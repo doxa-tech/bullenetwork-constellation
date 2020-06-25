@@ -1,6 +1,7 @@
 import React from "react"
 import { useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
+import Tile from "../../components/tile"
 
 import "./leadership.scss"
 
@@ -25,30 +26,18 @@ const Leadership = () => {
         <p className="highlight">
           "Pas une question de valeur, mais de sphère d'influence selon l'appel de Dieu"
         </p>
-        <div className="team right">
-          <Img fluid={data.image.childImageSharp.fluid} style={{ width: `300px` }} />
-          <div className="text">
-            <h3>Ministères</h3>
-            <p>L'équipe de ministères est composée des responsables régionaux et des ministères.</p> 
-            <p>Découvre l'équipe sur <a href="https://bullenetwork.ch" target="_blank">le site du Bullenetwork</a></p>
-          </div>
-        </div>
-        <div className="team">
-          <div className="text">
-            <h3>Conseil pastoral</h3>
-            <p>Le conseil pastoral est composé des responsables locaux. Ce sont les anciens de l'église.</p>
-            <p>Ce conseil est constitué de: André & Isabelle Künzler, Sévin & Hélène Kocher, Roland & Maude Friedli, Stéphane et Anita Blanchard, Fannie Blakaj</p>
-          </div>
-          <Img fluid={data.image.childImageSharp.fluid} style={{ width: `300px` }} />
-        </div>
-        <div className="team right">
-          <Img fluid={data.image.childImageSharp.fluid} style={{ width: `300px` }} />
-          <div className="text">
-            <h3>Conseil d'église</h3>
-            <p>Le conseil d'église est composé des responsables de secteurs opérationnels. Ce sont les diacres de l'église.</p>
-            <p>Ce conseil est constitué de: Keran Kocher (président), Sévin Kocher(finances), Noémien Kocher (communication), Elisabeth Savary (cafétéria), Mathieu Meyer (responsable logistique), Elie Hausmann (responsable Waykup)</p>
-          </div>
-        </div>
+        <Tile fluidImg={data.image.childImageSharp.fluid} title="Ministère">
+          L'équipe de ministères est composée des responsables régionaux et des ministères.<br/>
+          Découvre l'équipe sur <a href="https://bullenetwork.ch" target="_blank">le site du Bullenetwork</a>
+        </Tile>
+        <Tile fluidImg={data.image.childImageSharp.fluid} title="Conseil pastoral">
+          Le conseil pastoral est composé des responsables locaux. Ce sont les anciens de l'église.<br/>
+          Ce conseil est constitué de: André & Isabelle Künzler, Sévin & Hélène Kocher, Roland & Maude Friedli, Stéphane et Anita Blanchard, Fannie Blakaj
+        </Tile>
+        <Tile fluidImg={data.image.childImageSharp.fluid} title="Conseil d'église">
+          Le conseil d'église est composé des responsables de secteurs opérationnels. Ce sont les diacres de l'église.<br/>
+          Ce conseil est constitué de: Keran Kocher (président), Sévin Kocher(finances), Noémien Kocher (communication), Elisabeth Savary (cafétéria), Mathieu Meyer (responsable logistique), Elie Hausmann (responsable Waykup)
+        </Tile>
       </div>
     </div>
   )

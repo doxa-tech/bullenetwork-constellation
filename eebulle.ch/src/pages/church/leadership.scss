@@ -21,26 +21,6 @@
         font-size: 1.3em;
       }
 
-      .team {
-        background-color: #EF9175;
-        color: #ffffff;
-        display: flex;
-        justify-content: space-between;
-        margin: 20px 0 20px 0;
-
-        h3 {
-          font-family: "Bebas neue", sans-serif;
-          font-size: 2em;
-        }
-        
-        &.right h3 {
-          text-align: right;
-        }
-
-        .text {
-          padding: 10px;
-        }
-      }
     }
   }
 }

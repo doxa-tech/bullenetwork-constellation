@@ -7,7 +7,7 @@ import "./network.scss"
 export const logoImage = graphql`
   fragment logoImage on File {
     childImageSharp {
-      fluid(maxWidth: 200) {
+      fluid(maxWidth: 300) {
         ...GatsbyImageSharpFluid
       }
     }
