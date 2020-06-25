@@ -23,7 +23,7 @@ const Leadership = () => {
         <h2>Leadership</h2>
         <p>Dans l'ADN des églises évangéliques apostoliques (www.eear.ch) se trouve une forte notion de travail d'équipe, d'interdépendance ministérielle, un leadership collégial, la pluralité des dons et charismes au service du Corps de Christ. C'est pourquoi, nous avons une base de 3 équipes dirigeantes qui forment ensemble le leadership de l'église évangélique de Bulle.</p>
         <p className="highlight">
-          Pas une question de valeur, mais de sphère d'influence selon l'appel de Dieu
+          "Pas une question de valeur, mais de sphère d'influence selon l'appel de Dieu"
         </p>
         <div className="team right">
           <Img fluid={data.image.childImageSharp.fluid} style={{ width: `300px` }} />
