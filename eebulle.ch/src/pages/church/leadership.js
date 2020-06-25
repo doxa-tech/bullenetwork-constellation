@@ -1,6 +1,5 @@
 import React from "react"
-import { useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
+import { useStaticQuery, graphql } from "gatsby"
 import Tile from "../../components/tile"
 
 import "./leadership.scss"
@@ -28,7 +27,7 @@ const Leadership = () => {
         </p>
         <Tile fluidImg={data.image.childImageSharp.fluid} title="Ministère">
           L'équipe de ministères est composée des responsables régionaux et des ministères.<br/>
-          Découvre l'équipe sur <a href="https://bullenetwork.ch" target="_blank">le site du Bullenetwork</a>
+          Découvre l'équipe sur <a href="https://bullenetwork.ch" target="_blank" rel="noreferrer">le site du Bullenetwork</a>
         </Tile>
         <Tile fluidImg={data.image.childImageSharp.fluid} title="Conseil pastoral">
           Le conseil pastoral est composé des responsables locaux. Ce sont les anciens de l'église.<br/>

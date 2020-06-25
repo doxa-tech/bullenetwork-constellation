@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 
 import { IntroLeft, IntroRight } from "../../components/intro"
 import BannerCMP from "../../components/banner"

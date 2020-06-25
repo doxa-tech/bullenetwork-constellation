@@ -1,0 +1,67 @@
+.contact {
+  .channels {
+		height: 100px;
+		background-color: rgb(196, 0, 0);
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		color: #fff;
+		align-items: center;
+		margin: 20px 0 0 0;
+
+		div.title {
+			padding: 20px;
+			background-color: rgba(0, 0, 0, 0.2);
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			flex-basis: 40%;
+			font-size: 12px;
+
+		}
+
+			div.channel-wrap {
+				flex: 1;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+				height: 100%;
+				flex-wrap: wrap;
+
+			div.youtube, div.facebook, div.newsletter, div.my-eebulle {
+				flex: 1;
+				height: 100%;
+				min-width: 100px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				font-size: 12px;
+				padding: 12px 20px;
+				position: relative;
+        cursor: pointer;
+        
+        p {
+          padding: 5px 0 0 0;
+        }
+
+				a {
+					position: absolute;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+					z-index: 1;
+
+					&:hover {
+						background-color: rgba(255, 255, 255, 0.2);
+					}
+				}
+			}
+		}
+	}
+}

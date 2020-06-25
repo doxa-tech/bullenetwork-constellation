@@ -1,0 +1,44 @@
+.contact {
+  .info {
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto !important;
+
+      h3 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.6em;
+      }
+
+      .intro {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        
+        .left {
+          color: #ffffff;
+        }
+
+        .right {
+          text-align: center;
+          p {
+            font-size: 1.2em;
+            padding: 0 0 10px 0;
+          }
+        }
+      }
+
+      .help {
+        padding: 40px 0 40px 0;
+
+        h3 {
+          color: #ffb16f;
+          padding: 0 0 10px 0;
+        }
+
+        p {
+          font-size: 1.1em;
+        }
+      }
+    }
+  }
+}

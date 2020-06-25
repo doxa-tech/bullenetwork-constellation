@@ -34,11 +34,11 @@ const Network = () => {
       <div className="container">
         <h2>Notre appartenance</h2>
         <div className="networks">
-          <p>L'église évangélique de Bulle est membre fondatrice du <a href="https://bullenetwork.ch" target="_blank">Bulle Network</a></p>
+          <p>L'église évangélique de Bulle est membre fondatrice du <a href="https://bullenetwork.ch" target="_blank" rel="noreferrer">Bulle Network</a></p>
           <Img fluid={images.bullenetwork.childImageSharp.fluid} style={{ width: "230px" }} />
-          <p>Le Bulle Network est un hub des <a href="http://www.eear.ch" target="_blank">églises évangélique apostolique</a></p>
+          <p>Le Bulle Network est un hub des <a href="http://www.eear.ch" target="_blank" rel="noreferrer">églises évangélique apostolique</a></p>
           <Img fluid={images.eear.childImageSharp.fluid} style={{ width: "255px" }} />
-          <p>L'EEBulle appartient également au <a href="https://evangelique.ch" target="_blank">Réseau évangélique</a></p>
+          <p>L'EEBulle appartient également au <a href="https://evangelique.ch" target="_blank" rel="noreferrer">Réseau évangélique</a></p>
           <Img fluid={images.res.childImageSharp.fluid} style={{ width: "200px" }} />
         </div>
       </div>
