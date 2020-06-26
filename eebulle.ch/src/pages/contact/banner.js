@@ -19,8 +19,8 @@ const Banner = () => {
 
   return (
     <BannerCMP fluidImg={img.desktop.childImageSharp.fluid}>
-      <div className="banner-activities">
-        <h2>L'église au delà des célébrations</h2>
+      <div className="banner-contact">
+        <h2>Contact</h2>
       </div>
     </BannerCMP>
   )
