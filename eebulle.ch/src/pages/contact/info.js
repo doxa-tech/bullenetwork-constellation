@@ -11,11 +11,11 @@ const Info = () => (
         <div className="left">
         <IntroLeft>
           <h3>Email</h3>
-          <p>secretariat@bullenetwork.ch</p>
+          <p><a href="mailto:secretariat@bullenetwork.ch">secretariat@bullenetwork.ch</a></p>
         </IntroLeft>
         <IntroLeft>
           <h3>Demande de prière</h3>
-          <p>Un formulaire est disponible pour les demandes de prière</p>
+          <p>Un formulaire est disponible à <a href="https://bullenetwork.ch/contact" target="_blank" rel="noreferrer">cette adresse</a> pour les demandes de prière</p>
         </IntroLeft>
         </div>
         <div className="right">

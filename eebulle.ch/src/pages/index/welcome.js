@@ -8,7 +8,7 @@ const Welcome = () => (
   <div className="intro">
     <div className="left">
       <h1>Bienvenue à l'EEBulle</h1>
-      <p>Célébration tous les dimanche à 10h<br />Accueil dès 9h30</p>
+      <p>Une église <span className="highlight">accessible</span> et <span className="highlight">inter-générationnelle</span> !</p>
       <IntroLeft>
         <h2>Vidéo du mois</h2>
         <div className="video-container">
@@ -26,9 +26,10 @@ const Welcome = () => (
         </div>
       </IntroRight>
       <p>
-        Parking disponible devant l'église, Route du Verdel 8 à Bulle.<br />
-        Célébrations adaptées pour les enfants avec Kids Bulle College.
+        Célébration tous les dimanche à <span className="highlight">10h00</span><br />
+        Accueil dès <span className="highlight">09h30</span>
       </p>
+      <p><i>Parking disponible devant l'église, Route du Verdel 8 à Bulle.</i></p>
     </div>
   </div>
 )
