@@ -5,18 +5,38 @@
     display: flex;
     flex-direction: row;
 
+    p {
+      color: #525252;
+      line-height: 1.2em;
+    }
+
     .left {
       flex: 1;
       text-align: center;
 
-      h1 {
-        font-family: "Bebas neue", sans-serif;
-        letter-spacing: 0.03em;
-        font-size: 2.7em;
+      .left-text {
+        padding: 0 0 20px 0;
+
+        h1 {
+          font-family: "Bebas neue", sans-serif;
+          letter-spacing: 0.03em;
+          font-size: 3em;
+          color: #3c2537;
+        }
+
+        p {
+          font-size: 1.3em;
+        }
       }
+
       h2 {
         color: white;
         padding: 10px 0;
+        font-size: 2.5em;
+      }
+
+      .intro-module--left {
+        margin: 40px;
       }
 
       .video-container {
@@ -44,7 +64,7 @@
         font-family: "Bebas neue", sans-serif;
         letter-spacing: 0.02em;
         padding: 10px 0;
-        font-size: 2.2em;
+        font-size: 2.5em;
         text-align: center;
       }
 

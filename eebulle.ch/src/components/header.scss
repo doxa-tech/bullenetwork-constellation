@@ -24,6 +24,15 @@ header {
         color: white;
         text-decoration: none;
         font-weight: 500;
+        border-bottom: 3px solid transparent;
+
+        &.active {
+          border-color: #ffb16f;
+        }
+
+        &:hover:not(.active) {
+          border-color: #ffb06f2c;
+        }
       }
     }
   }

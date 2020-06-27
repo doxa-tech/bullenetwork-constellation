@@ -1,43 +1,44 @@
 .index {
-  .activities
-    .activity {
-      display: flex;
-      background-color: #ffffff;
+  .activities .activity {
+    display: flex;
+    background-color: #ffffff;
 
-      .text {
-        padding: 10px;
-      }
-      
+    .text {
+      padding: 10px;
+    }
+
+    h3 {
+      font-family: "Bebas neue", sans-serif;
+      font-size: 2.3em;
+      color: #ffb16f;
+      padding: 20px 0 0 0;
+    }
+
+    p {
+      color: #525252;
+      line-height: 1.1em;
+      font-size: 1.1em;
+    }
+  }
+
+  .left {
+    .activity {
+      margin: 10px 10px 40px 0;
+
       h3 {
-        font-family: "Bebas neue", sans-serif;
-        font-size: 2em;
-        color: #ffb16f;
-        padding: 20px 0 0 0;
+        text-align: right;
       }
+    }
+  }
+
+  .right {
+    .activity {
+      margin: 30px 0 30px 10px;
+      flex-direction: row-reverse;
 
       p {
-        color: #000000;
+        text-align: right;
       }
     }
-
-    .left {
-      .activity {
-        margin: 10px 10px 40px 0;
-
-        h3 {
-          text-align: right;
-        }
-      }
-    }
-
-    .right {
-      .activity {
-        margin: 30px 0 30px 10px;
-        flex-direction: row-reverse;
-      
-        p {
-          text-align: right;
-        }
-      }
-    }
+  }
 }

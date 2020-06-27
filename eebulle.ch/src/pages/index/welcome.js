@@ -7,8 +7,10 @@ import "./welcome.scss"
 const Welcome = () => (
   <div className="intro">
     <div className="left">
-      <h1>Bienvenue à l'EEBulle</h1>
-      <p>Célébration tous les dimanche à 10h<br />Accueil dès 9h30</p>
+      <div className="left-text">
+        <h1>Bienvenue à l'EEBulle</h1>
+        <p>Célébration tous les dimanche à 10h<br />Accueil dès 9h30</p>
+      </div>
       <IntroLeft>
         <h2>Vidéo du mois</h2>
         <div className="video-container">
@@ -26,7 +28,7 @@ const Welcome = () => (
         </div>
       </IntroRight>
       <p>
-        Parking disponible devant l'église, Route du Verdel 8 à Bulle.<br />
+        Parking disponible devant l'église, Route du Verdel 8 à Bulle.
         Célébrations adaptées pour les enfants avec Kids Bulle College.
       </p>
     </div>

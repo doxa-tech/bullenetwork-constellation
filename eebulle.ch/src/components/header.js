@@ -26,19 +26,19 @@ const Header = () => {
           </Link>
         </div>
         <div className="links">
-          <Link to="/">
+          <Link to="/" activeClassName="active">
             Home
           </Link>
-          <Link to="/church">
+          <Link to="/church" activeClassName="active">
             Eglise
           </Link>
-          <Link to="/groups">
+          <Link to="/groups" activeClassName="active">
             Groupe de Maison
           </Link>
-          <Link to="/activities">
+          <Link to="/activities" activeClassName="active">
             Activités
           </Link>
-          <Link to="/contact">
+          <Link to="/contact" activeClassName="active">
             Contact
           </Link>
         </div>

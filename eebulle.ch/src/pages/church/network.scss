@@ -1,12 +1,12 @@
 .church {
   .network {
-    background-color: #CB2321;
+    background-color: #cb2321;
     color: #ffffff;
 
     .container {
       max-width: var(--container-width);
       margin: 0 auto !important;
-      padding: 0 0 30px 0;
+      padding: 20px 0 60px 0;
 
       h2 {
         text-align: right;
@@ -20,6 +20,8 @@
 
         p {
           padding: 50px 0 20px 0;
+          font-size: 1.2em;
+          line-height: 1.1em;
         }
 
         a {
