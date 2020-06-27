@@ -7,8 +7,8 @@ import "./network.scss"
 export const logoImage = graphql`
   fragment logoImage on File {
     childImageSharp {
-      fluid(maxWidth: 300) {
-        ...GatsbyImageSharpFluid
+      fixed(height: 70) {
+        ...GatsbyImageSharpFixed
       }
     }
   }
@@ -35,11 +35,11 @@ const Network = () => {
         <h2>Notre appartenance</h2>
         <div className="networks">
           <p>L'église évangélique de Bulle est membre fondatrice du <a href="https://bullenetwork.ch" target="_blank" rel="noreferrer">Bulle Network</a></p>
-          <Img fluid={images.bullenetwork.childImageSharp.fluid} style={{ width: "230px" }} />
+          <Img fixed={images.bullenetwork.childImageSharp.fixed} />
           <p>Le Bulle Network est un hub des <a href="http://www.eear.ch" target="_blank" rel="noreferrer">églises évangélique apostolique</a></p>
-          <Img fluid={images.eear.childImageSharp.fluid} style={{ width: "255px" }} />
+          <Img fixed={images.eear.childImageSharp.fixed} />
           <p>L'EEBulle appartient également au <a href="https://evangelique.ch" target="_blank" rel="noreferrer">Réseau évangélique</a></p>
-          <Img fluid={images.res.childImageSharp.fluid} style={{ width: "200px" }} />
+          <Img fixed={images.res.childImageSharp.fixed} />
         </div>
       </div>
     </div>
