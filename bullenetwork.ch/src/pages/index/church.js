@@ -9,7 +9,6 @@ export default ({
   children,
 }) => {
   const [logoPath, setLogoPath] = useState(0)
-  console.log(`imageID: '${imageID}'`)
   useEffect(() => {
     fetch(`https://panda.bullenetwork.ch/directus/files/${imageID}`)
       .then(response => response.json())

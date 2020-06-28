@@ -1,49 +1,41 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Activity from "./activity"
 
 import "./activities.scss"
 
-export const activityImage = graphql`
-  fragment activityImage on File {
-    childImageSharp {
-      fluid(maxWidth: 200) {
-        ...GatsbyImageSharpFluid
-      }
-    }
-  }
-`
-
 const Activities = () => {
-  
-  const images = useStaticQuery(graphql`
-    query {
-      first: file(relativePath: { eq: "directus.jpg" }) {
-        ...activityImage
-      }
-      second: file(relativePath: { eq: "directus.jpg" }) {
-        ...activityImage
-      }
-      third: file(relativePath: { eq: "directus.jpg" }) {
-        ...activityImage
-      }
-      fourth: file(relativePath: { eq: "directus.jpg" }) {
-        ...activityImage
-      }
-    }
-  `)
+
+  const [content, setContent] = useState(0)
+  useEffect(() => {
+    setContent(
+      <div className="loadrr"><div><div></div><div></div><div></div><div></div></div></div>
+    )
+    fetch(`https://panda.bullenetwork.ch/directus/items/eebulle_home_activities`)
+      .then(response => response.json())
+      .then(resultData => {
+        var activities = resultData.data
+        activities.sort(function (a, b) {
+          return a.order - b.order;
+        });
+        const result = activities.map((activity) =>
+          <Activity imageID={activity.image} title={activity.title} description={activity.content} />
+        );
+        setContent(result)
+      })
+  }, [])
 
   return (
     <div className="activities">
       <div className="container">
         <div className="left">
-          <Activity fluidImg={images.first.childImageSharp.fluid} title="Enfants" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus, lacus et rhoncus molestie, turpis orci fermentum sapien, sed vulputate est turpis et neque. Aenean quis libero in ipsum fringilla elementum vitae a lorem." />
-          <Activity fluidImg={images.third.childImageSharp.fluid} title="Ados" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus, lacus et rhoncus molestie, turpis orci fermentum sapien, sed vulputate est turpis et neque. Aenean quis libero in ipsum fringilla elementum vitae a lorem." />
+          {content[0]}
+          {content[2]}
         </div>
         <div className="right">
           <h2>Nos activités</h2>
-          <Activity fluidImg={images.second.childImageSharp.fluid} title="Adultes" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus, lacus et rhoncus molestie, turpis orci fermentum sapien, sed vulputate est turpis et neque. Aenean quis libero in ipsum fringilla elementum vitae a lorem." />
-          <Activity fluidImg={images.fourth.childImageSharp.fluid} title="Seniors" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut finibus, lacus et rhoncus molestie, turpis orci fermentum sapien, sed vulputate est turpis et neque. Aenean quis libero in ipsum fringilla elementum vitae a lorem." />
+          {content[1]}
+          {content[3]}
         </div>
       </div>
     </div>

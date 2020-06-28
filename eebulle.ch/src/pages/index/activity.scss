@@ -7,6 +7,13 @@
       padding: 10px;
     }
 
+    .image {
+      flex-shrink: 0;
+      width: 150px;
+      background-size: cover;
+      background-position: 50% 50%;
+    }
+
     h3 {
       font-family: "Bebas neue", sans-serif;
       font-size: 2.3em;

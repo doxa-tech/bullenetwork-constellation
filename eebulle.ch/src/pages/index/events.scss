@@ -1,5 +1,5 @@
 .index {
-  .event {
+  .event-container {
     max-width: var(--container-width);
     margin: 0 auto;
 
@@ -8,14 +8,26 @@
       padding: 20px 0 10px 0;
     }
 
-    .content {
+    .event {
       display: flex;
+      flex-direction: row;
+      align-items: center;
       padding: 0 0 40px 0;
 
-      p {
+      .content {
         padding: 0 20px 0 0;
         text-align: justify;
         color: #525252;
+
+        p {
+          padding: 3px 0;
+        }
+      }
+
+      .image {
+        img {
+          max-width: 250px;
+        }
       }
     }
   }

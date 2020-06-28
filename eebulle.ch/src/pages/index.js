@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 import Welcome from "./index/welcome"
 import Banner from "./index/banner"
 import Activities from "./index/activities"
-import Event from "./index/event"
+import Events from "./index/events"
 
 const Index = () => (
   <Layout layoutClass="index">
@@ -14,7 +14,7 @@ const Index = () => (
     <Welcome />
     <Banner />
     <Activities />
-    <Event />
+    <Events />
   </Layout>
 )
 

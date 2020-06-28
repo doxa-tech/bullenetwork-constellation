@@ -24,7 +24,7 @@ const Groups = () => {
   const [content, setContent] = useState(1)
   useEffect(() => {
     setContent(
-      '<div class="loadrr"><div><div></div><div></div><div></div><div></div></div></div>'
+      <div className="loadrr"><div><div></div><div></div><div></div><div></div></div></div>
     )
     fetch(`https://panda.bullenetwork.ch/directus/items/eebulle_gdms`)
       .then(response => response.json())
