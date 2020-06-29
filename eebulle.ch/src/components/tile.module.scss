@@ -1,15 +1,14 @@
 .tile {
-  background-color: #EF9175;
+  background-color: #ef9175;
   color: #ffffff;
   display: flex;
-  justify-content: stretch;
   margin: 20px 0 20px 0;
 
   h3 {
     font-family: "Bebas neue", sans-serif;
     font-size: 2em;
   }
-  
+
   .text {
     padding: 10px;
   }
@@ -17,5 +16,11 @@
   &:hover {
     background-color: #ffb16f;
   }
-}
 
+  .image {
+    flex-shrink: 0;
+    width: 150px;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+}

@@ -3,7 +3,7 @@ import Img from "gatsby-image"
 
 import style from "./tile.module.scss"
 
-const Tile = ({ fluidImg, title, children }) => (
+export const Tile = ({ fluidImg, title, children }) => (
   <div className={style.tile}>
     <Img fluid={fluidImg} style={{ width: `300px`, flexShrink: 0 }} />
     <div className={style.text}>
@@ -13,4 +13,16 @@ const Tile = ({ fluidImg, title, children }) => (
   </div>
 )
 
-export default Tile
+export const TilePure = ({ imageURL, title, children }) => (
+  <div className={style.tile}>
+    <div className={style.image} style={{
+      backgroundImage: `url(${imageURL}`,
+    }}>
+
+    </div>
+    <div className={style.text}>
+      <h3>{title}</h3>
+      <p>{children}</p>
+    </div>
+  </div>
+)
