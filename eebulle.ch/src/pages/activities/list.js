@@ -10,8 +10,12 @@ const List = () => {
 
   const [content, setContent] = useState(0)
   useEffect(() => {
-    setContent(
-      <div className="loadrr"><div><div></div><div></div><div></div><div></div></div></div>
+    setContent([
+      [<div className="loadrr"><div><div></div><div></div><div></div><div></div></div></div>],
+      [<div className="loadrr"><div><div></div><div></div><div></div><div></div></div></div>],
+      [<div className="loadrr"><div><div></div><div></div><div></div><div></div></div></div>],
+      [<div className="loadrr"><div><div></div><div></div><div></div><div></div></div></div>]
+    ]
     )
     fetch(`https://panda.bullenetwork.ch/directus/items/eebulle_activities`)
       .then(response => response.json())
