@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react"
+import { useStaticQuery, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import "./groups/swisstopo.loader.js"
-import "./groups/groups.scss"
-import { Helmet } from "react-helmet"
 import BannerCMP from "../components/banner"
-import { useStaticQuery, graphql } from "gatsby"
+
+import "./groups/groups.scss"
+import Map from "./groups/map.js"
+
 
 const Groups = () => {
   const img = useStaticQuery(graphql`
@@ -40,10 +41,6 @@ const Groups = () => {
 
   return (
     <Layout layoutClass="groups">
-      <Helmet>
-        <script src={'/map.js'} />
-      </Helmet>
-
       <SEO title="Groupe de maison" />
 
       <BannerCMP fluidImg={img.desktop.childImageSharp.fluid}>
@@ -60,14 +57,8 @@ const Groups = () => {
         {content}
       </div>
 
-      <div className="map-wrapper">
-        <div id="map" className="map">
-        </div>
-        <div id="popup" className="ol-popup">
-          <a href="#" id="popup-closer" className="ol-popup-closer"></a>
-          <div id="popup-content"></div>
-        </div>
-      </div>
+      <Map />
+
     </Layout>
   )
 }
