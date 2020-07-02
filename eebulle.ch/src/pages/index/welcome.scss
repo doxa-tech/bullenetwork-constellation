@@ -87,4 +87,18 @@
       }
     }
   }
+
+  @media only screen and (max-width: 767px) {
+    .intro {
+      flex-direction: column;
+
+      .right {
+        .subinfo {
+          font-size: 0.8em;
+          padding: 10px 10px 20px 10px;
+          text-align: center;
+        }
+      }
+    }
+  }
 }

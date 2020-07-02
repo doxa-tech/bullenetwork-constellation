@@ -16,6 +16,11 @@
     left: -99999px;
     z-index: -1;
   }
+
+  @media only screen and (max-width: 767px) {
+    max-width: 100%;
+    margin: 0;
+  }
 }
 
 .right-wrapper {
@@ -41,5 +46,10 @@
     left: 0;
     right: -99999px;
     z-index: -1;
+  }
+
+  @media only screen and (max-width: 767px) {
+    max-width: 100%;
+    margin: 0 0 20px 0;
   }
 }
