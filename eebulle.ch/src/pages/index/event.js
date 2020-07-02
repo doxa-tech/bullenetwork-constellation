@@ -16,7 +16,7 @@ const Event = ({ imageID, content }) => {
       <div className="content" dangerouslySetInnerHTML={{ __html: content }} />
 
       <div className="image">
-        <img src={imageURL} />
+        <img src={imageURL} alt="L'événement"/>
       </div>
     </div>
   )

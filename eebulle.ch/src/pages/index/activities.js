@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import Activity from "./activity"
 
 import "./activities.scss"
