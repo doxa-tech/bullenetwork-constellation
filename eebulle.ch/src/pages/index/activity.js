@@ -15,12 +15,11 @@ const Activity = ({ imageID, title, description }) => {
 
   return (
     <div className="activity">
-      <img src="" />
       <div className="text">
         <p>{description}</p>
         <h3>{title}</h3>
       </div>
-      <div class="image" style={{
+      <div className="image" style={{
         backgroundImage: `url(${imageURL}`,
       }}>
       </div>
