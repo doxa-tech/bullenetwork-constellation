@@ -32,20 +32,17 @@ const List = () => {
         // 3 = adult
         // 4 = senior
         activities.forEach((activity) => {
-          console.log(activity.category)
           var el = <Activity imageID={activity.image} title={activity.title} description={activity.content} />
-          if (activity.category == 1) {
+          if (activity.category === 1) {
             result[0].push(el)
-          } else if (activity.category == 2) {
+          } else if (activity.category === 2) {
             result[1].push(el)
-          } else if (activity.category == 3) {
+          } else if (activity.category === 3) {
             result[2].push(el)
-          } else if (activity.category == 4) {
+          } else if (activity.category === 4) {
             result[3].push(el)
           }
         });
-
-        console.log(result)
 
         setContent(result)
       })
