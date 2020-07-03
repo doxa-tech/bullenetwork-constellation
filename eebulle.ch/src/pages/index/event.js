@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
 
 const Event = ({ imageID, content }) => {
-
   const [imageURL, setImageURL] = useState(0)
+
   useEffect(() => {
     fetch(`https://panda.bullenetwork.ch/directus/files/${imageID}`)
       .then(response => response.json())

@@ -3,7 +3,6 @@ import Header from "./layout/header"
 import { Helmet } from "react-helmet"
 
 export default ({ layoutClass, children }) => {
-  console.log(layoutClass, children)
   return (
     <div>
       <Helmet>

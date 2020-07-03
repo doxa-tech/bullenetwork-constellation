@@ -18,7 +18,7 @@ const Activities = () => {
           return a.order - b.order;
         });
         const result = activities.map((activity) =>
-          <Activity imageID={activity.image} title={activity.title} description={activity.content} />
+          <Activity imageID={activity.image} title={activity.title} description={activity.content} key={activity.id} />
         );
         setContent(result)
       })

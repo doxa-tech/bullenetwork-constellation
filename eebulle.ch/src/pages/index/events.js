@@ -14,7 +14,7 @@ const Events = () => {
       .then(response => response.json())
       .then(resultData => {
         const result = resultData.data.map((event) =>
-          <Event imageID={event.image} content={event.content} />
+          <Event imageID={event.image} content={event.content} key={event.id} />
         );
         setContent(result)
       })

@@ -4,8 +4,6 @@ import Activity from "./activity"
 
 import "./list.scss"
 
-
-
 const List = () => {
 
   const [content, setContent] = useState(0)
@@ -23,7 +21,7 @@ const List = () => {
         var activities = resultData.data
         activities.sort(function (a, b) {
           return a.order - b.order;
-        });
+        })
 
         var result = [[], [], [], []]
 
@@ -32,15 +30,15 @@ const List = () => {
         // 3 = adult
         // 4 = senior
         activities.forEach((activity) => {
-          var el = <Activity imageID={activity.image} title={activity.title} description={activity.content} />
+          var element = <Activity imageID={activity.image} title={activity.title} description={activity.content} key={activity.id} />
           if (activity.category === 1) {
-            result[0].push(el)
+            result[0].push(element)
           } else if (activity.category === 2) {
-            result[1].push(el)
+            result[1].push(element)
           } else if (activity.category === 3) {
-            result[2].push(el)
+            result[2].push(element)
           } else if (activity.category === 4) {
-            result[3].push(el)
+            result[3].push(element)
           }
         });
 

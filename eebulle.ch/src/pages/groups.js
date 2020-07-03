@@ -31,7 +31,7 @@ const Groups = () => {
       .then(response => response.json())
       .then(resultData => {
         const result = resultData.data.map((gdm) =>
-          <div className="gdm">
+          <div className="gdm" key={gdm.id}>
             <span className="loc">À {gdm.location}</span><br />avec {gdm.leader}<br /><span className="contact-wrap">Contact: <div className="contact" dangerouslySetInnerHTML={{ __html: gdm.contact }} /></span>
           </div>
         );
