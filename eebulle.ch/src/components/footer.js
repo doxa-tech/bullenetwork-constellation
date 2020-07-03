@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
 import "./footer.scss"
 import Img from "gatsby-image"
@@ -40,7 +40,7 @@ const Footer = () => {
             <p>Bâtiment Riedo, 1er étage</p>
             <br />
             <p>CCP 17-559407-8 </p>
-            <a>En savoir plus sur nos finances</a>
+            <Link to="/finance">En savoir plus sur nos finances</Link>
           </div>
 
           <div className="column networks">
