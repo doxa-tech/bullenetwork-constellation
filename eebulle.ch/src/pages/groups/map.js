@@ -13,14 +13,24 @@ React Hooks were used to create the map. We have to wait that the scripts are lo
 see if (window.ga !== undefined)
 The global variables (ol, ga) are availables in the window object.
 
+The ga-debug.js was built using the GeoAdmin project: https://github.com/geoadmin/ol3
+
 */
 
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { Helmet } from "react-helmet"
 
-const createMap = () => {
+import "./map.scss"
+
+const createMap = (parent) => {
   var ga = window.ga;
   var ol = window.ol;
+ 
+  // create the map element
+  var container = document.createElement("div");
+  container.id = "map";
+  container.class = "map";
+  parent.appendChild(container);
 
   // proj4 definition
   window.proj4.defs("EPSG:2056","+proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs");
@@ -108,14 +118,19 @@ const createMap = () => {
   //
   // Create the Popup
   //
-
-  var container = document.getElementById('popup');
-  var content = document.getElementById('popup-content');
-  var closer = document.getElementById('popup-closer');
+  
+  // create the DOM elements of the popup
+  var popup = document.createElement("div");
+  popup.className = "ol-popup"
+  var closer = document.createElement("span");
+  closer.className = "ol-popup-closer";
+  var content = document.createElement("div");
+  popup.appendChild(closer);
+  popup.appendChild(content);
 
   // Add the popup to the map
   var overlay = new ol.Overlay({
-    element: container,
+    element: popup,
     autoPan: true,
     autoPanAnimation: {
       duration: 250
@@ -147,31 +162,27 @@ const createMap = () => {
 
 const Map = () => {
   
-  const [active, setActive] = useState(false);
-
   useEffect(() => {
-    if (window.ga !== undefined && !active) {
-      createMap();
-      setActive(true);
+    var wrapper = document.getElementById("mapWrapper");
+    if (window.ga !== undefined) {
+      createMap(wrapper);
+    }
+    // clean up
+    return () => {
+      wrapper.innerHTML = "";
     }
   });
 
   return (
-    <div className="map-wrapper">
-
+    <>
       <Helmet>
-        <link rel="stylesheet" type="text/css" href="https://public.geo.admin.ch/resources/api/4.4.2/ga.css" />
-        <script src="swisstopo.loader.js" />
-        <script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/2.2.1/proj4.js" />
-        <script src="ga.js" />
+          <link rel="stylesheet" type="text/css" href="https://public.geo.admin.ch/resources/api/4.4.2/ga.css" />
+          <script src="/swisstopo.loader.js" />
+          <script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/2.2.1/proj4.js" />
+          <script src="/ga-debug.js" />
       </Helmet>
-
-      <div id="map" className="map"></div>
-      <div id="popup" className="ol-popup">
-        <a href="#" id="popup-closer" className="ol-popup-closer"></a>
-        <div id="popup-content"></div>
-      </div>
-    </div>
+      <div id="mapWrapper" className="map-wrapper"></div>
+    </>
   )
 }
 

@@ -44,7 +44,7 @@ const Footer = () => {
           </div>
 
           <div className="column networks">
-            <div class="wrapper">
+            <div className="wrapper">
               <h4>Nos réseaux</h4>
               <a href="https://www.youtube.com/channel/UCL_B5hW5uxe-0P8kPLma9gg" target="_blank" rel="noreferrer">
                 <Img fixed={data.youtube.childImageSharp.fixed} />
@@ -59,7 +59,7 @@ const Footer = () => {
           </div>
 
           <div className="column bn-network">
-            <div class="wrapper">
+            <div className="wrapper">
               <h4><a href="https://bullenetwork.ch" target="_blank" rel="noreferrer">Le Bulle Network</a></h4>
               <p><a href="https://eebullee.ch" target="_blank" rel="noreferrer">Bulle</a></p>
               <p><a href="https://eglisesurleroc.ch" target="_blank" rel="noreferrer">Fribourg</a></p>
