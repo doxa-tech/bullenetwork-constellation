@@ -31,13 +31,13 @@ const List = () => {
         // 4 = senior
         activities.forEach((activity) => {
           var element = <Activity imageID={activity.image} title={activity.title} description={activity.content} key={activity.id} />
-          if (activity.category === 1) {
+          if (activity.category === "1") {
             result[0].push(element)
-          } else if (activity.category === 2) {
+          } else if (activity.category === "2") {
             result[1].push(element)
-          } else if (activity.category === 3) {
+          } else if (activity.category === "3") {
             result[2].push(element)
-          } else if (activity.category === 4) {
+          } else if (activity.category === "4") {
             result[3].push(element)
           }
         });
