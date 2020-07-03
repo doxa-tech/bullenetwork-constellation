@@ -9,7 +9,7 @@ import "./mission.scss"
 const Mission = () => {
   const img = useStaticQuery(graphql`
     query {
-      desktop: file(relativePath: { eq: "banner.jpg" }) {
+      desktop: file(relativePath: { eq: "church/banner.jpg" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid_withWebp_noBase64

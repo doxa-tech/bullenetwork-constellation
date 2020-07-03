@@ -12,7 +12,7 @@ import Map from "./groups/map.js"
 const Groups = () => {
   const img = useStaticQuery(graphql`
     query {
-      desktop: file(relativePath: { eq: "banner.jpg" }) {
+      desktop: file(relativePath: { eq: "groups/banner.jpg" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid_withWebp_noBase64
