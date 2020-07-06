@@ -3,14 +3,22 @@
     .container {
       max-width: var(--container-width);
       margin: 0 auto !important;
+      padding: 0 0 50px 0;
 
       h2 {
         color: #ffb16f;
         padding: 30px 0 10px 0;
       }
 
-      h3 {
+      & > h3 {
         font-family: "Bebas Neue", sans-serif;
+        font-size: 1.6em;
+        padding: 30px 0 10px 0;
+      }
+
+      p {
+        font-size: 1.2em;
+        line-height: 1.5em;
       }
     }
   }

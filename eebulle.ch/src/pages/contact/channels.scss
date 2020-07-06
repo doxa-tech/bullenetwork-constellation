@@ -1,5 +1,5 @@
 .contact {
-  .channels {
+	.channels {
 		height: 100px;
 		background-color: rgb(196, 0, 0);
 		display: flex;
@@ -19,44 +19,45 @@
 			align-items: center;
 			text-align: center;
 			flex-basis: 40%;
-			font-size: 12px;
-
+			font-size: 1em;
 		}
 
-			div.channel-wrap {
+		div.channel-wrap {
+			flex: 1;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			height: 100%;
+			flex-wrap: wrap;
+
+			div.youtube,
+			div.facebook,
+			div.newsletter,
+			div.my-eebulle {
 				flex: 1;
-				display: flex;
-				flex-direction: row;
-				justify-content: space-around;
-				height: 100%;
-				flex-wrap: wrap;
+				min-width: 100px;
 
-				div.youtube, div.facebook, div.newsletter, div.my-eebulle {
-					
-					flex: 1;
-					min-width: 100px;
+				p {
+					padding: 5px 0 0 0;
+				}
 
-					p {
-						padding: 5px 0 0 0;
-					}
+				a {
+					height: 100%;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-around;
+					align-items: center;
+					text-align: center;
+					font-size: 0.85em;
+					padding: 12px 20px;
+					position: relative;
+					cursor: pointer;
 
-					a {
-						height: 100%;
-						display: flex;
-						flex-direction: column;
-						justify-content: center;
-						align-items: center;
-						text-align: center;
-						font-size: 12px;
-						padding: 12px 20px;
-						position: relative;
-						cursor: pointer;
-
-						&:hover {
-							background-color: rgba(255, 255, 255, 0.2);
-						}
+					&:hover {
+						background-color: rgba(255, 255, 255, 0.2);
 					}
 				}
+			}
 		}
 	}
 }
