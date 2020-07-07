@@ -1,4 +1,6 @@
-![logo](docs/BN-constellation.png)
+<div align="center">
+  <img src="docs/assets/BN-constellation.png"/>
+</div>
 
 # bullenetwork-constellation
 Collection of websites for the BulleNetwork

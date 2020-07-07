@@ -14,7 +14,7 @@ const Activity = ({ imageID, title, description }) => {
 
   return (
     <TilePure imageURL={imageURL} title={title}>
-      {description}
+      <div dangerouslySetInnerHTML={{ __html: description }} />
     </TilePure>
   )
 }
