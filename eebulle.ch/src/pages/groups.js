@@ -50,7 +50,7 @@ const Groups = () => {
       <div className="intro">
         Pour grandir ensemble, rejoingnez un groupe de maison! Les groupes de maison
         sont l'occasion d'approfondir nos relations et la parole de Dieu. Un groupe
-        de maison se réunis généralement une semaine sur deux.
+        de maison se réunit généralement une semaine sur deux.
       </div>
 
       <div className="gdms">

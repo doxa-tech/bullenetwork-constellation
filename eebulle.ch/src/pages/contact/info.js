@@ -15,7 +15,7 @@ const Info = () => (
         </IntroLeft>
         <IntroLeft>
           <h3>Demande de prière</h3>
-          <p>Un formulaire est disponible à <a href="https://bullenetwork.ch/contact" target="_blank" rel="noreferrer">cette adresse</a> pour les demandes de prière</p>
+          <p>Un formulaire est disponible à <a href="https://bullenetwork.ch/contact" target="_blank" rel="noreferrer">cette adresse</a></p>
         </IntroLeft>
         </div>
         <div className="right">
