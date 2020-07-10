@@ -56,3 +56,45 @@ export default ({ data }) => {
   )
 }
 ```
+
+# Create a new site
+
+```bash
+$ sudo mkdir -p /var/www/example.com/public_html
+$ sudo chown -R $USER:$USER /var/www/example.com/public_html/
+```
+
+# Continuous Deployement
+
+## Generate a keypair
+
+Generate a keypair
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "eebulle-ch-github-rsync"
+```
+
+Add the private key as a secret from the repository setting with the DEPLOY_KEY
+name (*Repository* > Settings > Secrets > New secret).
+
+## Write the action
+
+Write the action that triggers an `rsync` upon changes on the production branch.
+See `.github/workflows/deploy.yml`.
+
+## Configure the server
+
+Authorize the key on the server side to only execute rsync. Add in the
+`~/.ssh/authorized_keys`:
+
+```bash
+command="rsync --server -vlogDtprc --delete . /var/www/wookiee.ch/public_html/columbus" ssh-rsa PUBLIC_SSH_KEY
+```
+
+## Deploy
+
+To make a deployment on the production server, update the production branch from
+master with `git push origin master:production`.
+
+This process is semi-automatic, as we know it's hard to maintain a 100% safe
+master branch and it gives us more control on the deployment.
