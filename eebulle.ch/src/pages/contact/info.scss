@@ -1,4 +1,10 @@
 .contact {
+  .banner {
+    h2 {
+      padding: 20px;
+    }
+  }
+
   .info {
     .container {
       max-width: var(--container-width);
@@ -57,6 +63,24 @@
 
         p {
           font-size: 1.1em;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .info {
+      .container {
+        .intro {
+          flex-direction: column-reverse;
+
+          .right {
+            padding: 30px 0;
+          }
+        }
+
+        .help {
+          padding: 20px;
         }
       }
     }

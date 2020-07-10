@@ -2,6 +2,7 @@
   background-color: #ef9175;
   color: #ffffff;
   display: flex;
+  flex-direction: row;
   margin: 20px 0 20px 0;
 
   h3 {
@@ -22,5 +23,18 @@
     width: 150px;
     background-size: cover;
     background-position: 50% 50%;
+  }
+
+  .image-std {
+    width: 300px;
+    flex-shrink: 0;
+  }
+
+  @media only screen and (max-width: 767px) {
+    flex-direction: column;
+
+    .image-std {
+      width: 100%;
+    }
   }
 }
