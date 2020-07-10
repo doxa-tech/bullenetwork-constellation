@@ -7,7 +7,7 @@ import "./banner.scss"
 const Banner = () => {
   const img = useStaticQuery(graphql`
     query {
-      desktop: file(relativePath: { eq: "contact/banner.jpg" }) {
+      desktop: file(relativePath: { eq: "finance/banner.jpg" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid_withWebp_noBase64
