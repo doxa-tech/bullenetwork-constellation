@@ -1,11 +1,12 @@
 import React from "react"
 import Img from "gatsby-image"
+import BackgroundImage from "gatsby-background-image"
 
 import style from "./tile.module.scss"
 
 export const Tile = ({ fluidImg, title, children }) => (
   <div className={style.tile}>
-    <Img fluid={fluidImg} style={{ width: `300px`, flexShrink: 0 }} />
+    <Img fluid={fluidImg} className={style.imageStd} />
     <div className={style.text}>
       <h3>{title}</h3>
       <p>{children}</p>

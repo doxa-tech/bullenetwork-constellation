@@ -38,6 +38,14 @@
     .event-container {
       .event {
         flex-direction: column;
+
+        .content {
+          padding: 20px 0;
+        }
+
+        .image {
+          padding: 20px 0 0 0;
+        }
       }
     }
   }

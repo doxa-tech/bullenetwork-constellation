@@ -35,8 +35,10 @@ const Mission = () => {
               <li>L'encouragement mutuel et collectif</li>
             </ul>
           </IntroRight>
-          <p className="slogan">Notre slogan</p>
-          <h2>"La force de Jésus en toi !" (Ps. 92:11)</h2>
+          <div className="slogan">
+            <p>Notre slogan</p>
+            <h2>"La force de Jésus en toi !" (Ps. 92:11)</h2>
+          </div>
         </div>
       </div>
     </BannerCMP>

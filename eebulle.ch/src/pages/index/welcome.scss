@@ -9,6 +9,7 @@
       color: #fff;
       line-height: 1.2em;
       font-weight: 500;
+      padding: 0 20px;
     }
 
     .highlight {
@@ -105,8 +106,14 @@
   }
 
   @media only screen and (max-width: 767px) {
-    .intro {
+    .welcome {
       flex-direction: column;
+
+      .left {
+        .left-text {
+          padding: 20px 20px 40px 20px;
+        }
+      }
 
       .right {
         .subinfo {
@@ -115,6 +122,10 @@
           text-align: center;
         }
       }
+    }
+
+    .slogan {
+      padding: 20px 0;
     }
   }
 }
