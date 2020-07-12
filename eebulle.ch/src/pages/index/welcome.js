@@ -20,23 +20,38 @@ const Welcome = () => {
   `)
 
   const [youtube, setYoutube] = useState(0)
+  const [notice, setNotice] = useState(1)
 
   useEffect(() => {
     setYoutube(
       `<div class="loadrr"><div><div></div><div></div><div></div><div></div></div></div>`
     )
 
+    setNotice("")
+
     fetch(`https://panda.bullenetwork.ch/directus/items/eebulle_home_welcome/2`)
       .then(response => response.json())
       .then(resultData => {
         setYoutube(resultData.data.content)
       })
+    fetch(`https://panda.bullenetwork.ch/directus/items/eebulle_home_welcome/4`)
+      .then(response => response.json())
+      .then(resultData => {
+        if (resultData.data.status === "published") {
+          setNotice(
+            <div className="notice" dangerouslySetInnerHTML={{ __html: resultData.data.content }} />
+          )
+        }
+      })
   }, [])
 
   return (
     <BannerCMP fluidImg={img.desktop.childImageSharp.fluid}>
+
+      {notice}
+
       <div className="welcome">
-        
+
         <div className="left">
           <div className="left-text">
             <h1>Bienvenue à l'EEBulle</h1>

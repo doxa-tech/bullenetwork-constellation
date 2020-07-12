@@ -34,12 +34,13 @@ const Activities = () => {
         </div>
         <div className="right">
           <h2>Nos activités</h2>
+          <p className="sub">Une église pour toutes les générations</p>
           {content[1]}
           {content[3]}
         </div>
       </div>
       <div className="links">
-        <Link className="button" to="/activities">Toutes nos activités</Link>
+        <Link className="button" to="/activities">Voir toutes nos activités</Link>
       </div>
     </div>
   )

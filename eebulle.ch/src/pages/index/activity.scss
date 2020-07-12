@@ -32,6 +32,8 @@
   }
 
   .left {
+    flex: 1;
+
     .activity {
       margin: 10px 10px 40px 0;
 
@@ -42,6 +44,8 @@
   }
 
   .right {
+    flex: 1;
+
     .activity {
       margin: 30px 0 30px 10px;
       flex-direction: row-reverse;

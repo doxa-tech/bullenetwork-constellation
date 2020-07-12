@@ -2,7 +2,6 @@
   .activities {
     background-color: #cb2321;
 
-
     .links {
       text-align: center;
       padding: 0 0 60px 0;
@@ -20,7 +19,6 @@
       }
     }
 
-
     .container {
       padding: 40px 10px 40px 10px;
       color: white;
@@ -33,19 +31,29 @@
       h2 {
         text-align: right;
       }
+
+      p.sub {
+        text-align: right;
+        font-style: italic;
+        color: #ffe4e4;
+      }
     }
   }
 
   @media only screen and (max-width: 767px) {
     .activities {
-
       .container {
         flex-direction: column-reverse !important;
         padding: 0 20px;
 
         h2 {
           text-align: center;
-          padding: 20px 0;
+          padding: 20px 0 5px 0;
+        }
+
+        p.sub {
+          text-align: center;
+          padding: 0 0 20px 0;
         }
 
         .left {
@@ -77,6 +85,10 @@
             margin: 10px 0;
           }
         }
+      }
+
+      .links {
+        padding: 70px 0 0px 0;
       }
     }
   }

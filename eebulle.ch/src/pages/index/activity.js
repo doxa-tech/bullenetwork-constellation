@@ -16,7 +16,7 @@ const Activity = ({ imageID, title, description }) => {
   return (
     <div className="activity">
       <div className="text">
-        <p>{description}</p>
+        <p dangerouslySetInnerHTML={{ __html: description }} />
         <h3>{title}</h3>
       </div>
       <div className="image" style={{

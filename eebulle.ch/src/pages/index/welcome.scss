@@ -1,4 +1,10 @@
 .index {
+  .notice {
+    background-color: rgba(255, 0, 0, 0.22);
+    padding: 20px;
+    border: 2px dashed white;
+  }
+
   .welcome {
     max-width: var(--container-width);
     margin: 0 auto;

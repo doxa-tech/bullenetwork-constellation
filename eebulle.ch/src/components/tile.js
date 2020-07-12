@@ -1,6 +1,5 @@
 import React from "react"
 import Img from "gatsby-image"
-import BackgroundImage from "gatsby-background-image"
 
 import style from "./tile.module.scss"
 
