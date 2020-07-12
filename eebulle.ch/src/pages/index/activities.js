@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Link } from "gatsby"
 import Activity from "./activity"
 
 import "./activities.scss"
@@ -36,6 +37,9 @@ const Activities = () => {
           {content[1]}
           {content[3]}
         </div>
+      </div>
+      <div className="links">
+        <Link className="button" to="/activities">Toutes nos activités</Link>
       </div>
     </div>
   )

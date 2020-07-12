@@ -19,35 +19,17 @@ const Welcome = () => {
     }
   `)
 
-  const [intro, setIntro] = useState(0)
-  const [youtube, setYoutube] = useState(1)
-  const [subinfo, setSubinfo] = useState(2)
+  const [youtube, setYoutube] = useState(0)
 
   useEffect(() => {
     setYoutube(
       `<div class="loadrr"><div><div></div><div></div><div></div><div></div></div></div>`
     )
-    setIntro(
-      `<div class="loadrr"><div><div></div><div></div><div></div><div></div></div></div>`
-    )
-    setSubinfo(
-      `<div class="loadrr"><div><div></div><div></div><div></div><div></div></div></div>`
-    )
 
-    fetch(`https://panda.bullenetwork.ch/directus/items/eebulle_home_welcome/1`)
-      .then(response => response.json())
-      .then(resultData => {
-        setIntro(resultData.data.content)
-      })
     fetch(`https://panda.bullenetwork.ch/directus/items/eebulle_home_welcome/2`)
       .then(response => response.json())
       .then(resultData => {
         setYoutube(resultData.data.content)
-      })
-    fetch(`https://panda.bullenetwork.ch/directus/items/eebulle_home_welcome/3`)
-      .then(response => response.json())
-      .then(resultData => {
-        setSubinfo(resultData.data.content)
       })
   }, [])
 
@@ -56,9 +38,12 @@ const Welcome = () => {
       <div className="welcome">
         
         <div className="left">
-          <div className="left-text" dangerouslySetInnerHTML={{ __html: intro }} />
+          <div className="left-text">
+            <h1>Bienvenue à l'EEBulle</h1>
+            <p>Une église accessible et inter-générationelle. Célébration tous les dimanches à 10h<br />Accueil dès 9h30</p>
+          </div>
           <IntroLeft>
-            <div dangerouslySetInnerHTML={{ __html: youtube }} />
+            <div className="video" dangerouslySetInnerHTML={{ __html: youtube }} />
           </IntroLeft>
         </div>
 
@@ -70,7 +55,12 @@ const Welcome = () => {
               <iframe title="Carte géographique" src='https://map.geo.admin.ch/embed.html?lang=fr&topic=ech&bgLayer=ch.swisstopo.swissimage&layers=ch.swisstopo.zeitreihen,ch.bfs.gebaeude_wohnungs_register,ch.bav.haltestellen-oev,ch.swisstopo.swisstlm3d-wanderwege,KML%7C%7Chttps:%2F%2Fpublic.geo.admin.ch%2Fuml5abeiSjCx8GYa_70nWQ&layers_opacity=1,1,1,0.8,1&layers_visibility=false,false,false,false,true&layers_timestamp=18641231,,,,&E=2571532.54&N=1163693.31&zoom=11' width='100%' height='100%' frameBorder='0'></iframe>
             </div>
           </IntroRight>
-          <div className="subinfo" dangerouslySetInnerHTML={{ __html: subinfo }} />
+          <div className="subinfo">
+            <p>
+              Parking disponible devant l'église, Route du Verdel 8 à Bulle.
+              Célébrations adaptées pour les enfants avec Kids Bulle College.
+            </p>
+          </div>
         </div>
       </div>
       <div className="slogan">

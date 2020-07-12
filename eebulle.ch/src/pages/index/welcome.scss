@@ -41,20 +41,20 @@
         font-size: 2.5em;
       }
 
-      .intro-module--left {
-        margin: 40px;
-      }
+      .video {
+        height: 270px;
 
-      .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9, for an aspect ratio of 1:1 change to this value to 100% */
+        .video-container {
+          position: relative;
+          padding-bottom: 56.25%; /* 16:9, for an aspect ratio of 1:1 change to this value to 100% */
 
-        iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
+          iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
         }
       }
     }
