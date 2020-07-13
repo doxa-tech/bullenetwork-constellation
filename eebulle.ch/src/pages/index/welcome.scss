@@ -66,6 +66,15 @@
       }
     }
 
+    .left {
+      .video {
+        height: 100%;
+        .video-container {
+          height: 100%;
+        }
+      }
+    }
+
     .right {
       flex: 1;
       flex-direction: row;
