@@ -23,22 +23,26 @@ const Mission = () => {
     <BannerCMP fluidImg={img.desktop.childImageSharp.fluid}>
       <div className="mission">
         <div className="container">
-          <IntroLeft>
-            <div className="intro-wrapper">
-              <h2>Notre mission</h2>
-              <p>Manifester la puissance libératrice de Jésus-Christ et faire croître Son Royaume au-delà du canton de Fribourg!</p>
-            </div>
-          </IntroLeft>
-          <IntroRight>
-            <div className="intro-wrapper">
-              <h2>Nos valeurs clés</h2>
-              <ul>
-                <li>La connexion à Dieu</li>
-                <li>La connexion aux autres</li>
-                <li>L'encouragement mutuel et collectif</li>
-              </ul>
-            </div>
-          </IntroRight>
+          <div className="intro-left-wrapper">
+            <IntroLeft>
+              <div className="intro-wrapper">
+                <h2>Notre mission</h2>
+                <p>Manifester la puissance libératrice de Jésus-Christ et faire croître Son Royaume au-delà du canton de Fribourg!</p>
+              </div>
+            </IntroLeft>
+          </div>
+          <div className="intro-right-wrapper">
+            <IntroRight>
+              <div className="intro-wrapper">
+                <h2>Nos valeurs clés</h2>
+                <ul>
+                  <li>La connexion à Dieu</li>
+                  <li>La connexion aux autres</li>
+                  <li>L'encouragement mutuel et collectif</li>
+                </ul>
+              </div>
+            </IntroRight>
+          </div>
           <div className="slogan">
             <p>Notre slogan</p>
             <h2>"La force de Jésus en toi !" (Ps. 92:11)</h2>
