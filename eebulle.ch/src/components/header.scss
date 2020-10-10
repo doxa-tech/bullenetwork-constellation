@@ -1,0 +1,55 @@
+header {
+  background: #3c2537;
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 10px;
+
+    div.logo-wrapper {
+      width: 200px;
+      display: block;
+    }
+
+    div.links {
+      padding: 0 0 0 20px;
+      flex: 1;
+      display: flex;
+      justify-content: space-around;
+
+      a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        border-bottom: 3px solid transparent;
+
+        &.active {
+          border-color: #ffb16f;
+        }
+
+        &:hover:not(.active) {
+          border-color: #ffb06f2c;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    & > div {
+      flex-direction: column;
+
+      div.links {
+        flex-wrap: wrap;
+        padding: 0;
+        justify-content: center;
+
+        a {
+          padding: 10px;
+        }
+      }
+    }
+  }
+}

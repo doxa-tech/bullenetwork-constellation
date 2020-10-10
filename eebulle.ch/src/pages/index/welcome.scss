@@ -1,0 +1,146 @@
+.index {
+  .notice {
+    background-color: rgba(255, 0, 0, 0.22);
+    padding: 20px;
+    border: 2px dashed white;
+  }
+
+  .welcome {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+
+    p {
+      color: #fff;
+      line-height: 1.2em;
+      font-weight: 500;
+      padding: 0 20px;
+    }
+
+    .highlight {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.3em;
+    }
+
+    .left {
+      flex: 1;
+      text-align: center;
+
+      .left-text {
+        padding: 0 0 20px 0;
+
+        h1 {
+          font-family: "Bebas neue", sans-serif;
+          letter-spacing: 0.03em;
+          font-size: 3em;
+          color: #fff;
+        }
+
+        p {
+          font-size: 1.3em;
+        }
+      }
+
+      h2 {
+        color: white;
+        padding: 10px 0;
+        font-size: 2.5em;
+      }
+
+      .video {
+        height: 270px;
+
+        .video-container {
+          position: relative;
+          padding-bottom: 56.25%; /* 16:9, for an aspect ratio of 1:1 change to this value to 100% */
+
+          iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    .left {
+      .video {
+        height: 100%;
+        .video-container {
+          height: 100%;
+        }
+      }
+    }
+
+    .right {
+      flex: 1;
+      flex-direction: row;
+      justify-content: flex-end;
+      text-align: right;
+
+      h2 {
+        color: white;
+        font-family: "Bebas neue", sans-serif;
+        letter-spacing: 0.02em;
+        padding: 10px 0;
+        font-size: 2.5em;
+        text-align: center;
+      }
+
+      .map-container {
+        position: relative;
+        padding-bottom: 80%; /* 16:9, for an aspect ratio of 1:1 change to this value to 100% */
+
+        iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .slogan {
+    h2 {
+      font-size: 3.3em;
+      font-family: "Bebas neue";
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    p {
+      text-align: left;
+      font-weight: bold;
+      padding-left: 15%;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .welcome {
+      flex-direction: column;
+
+      .left {
+        .left-text {
+          padding: 20px 20px 40px 20px;
+        }
+      }
+
+      .right {
+        .subinfo {
+          font-size: 0.8em;
+          padding: 10px 10px 20px 10px;
+          text-align: center;
+        }
+      }
+    }
+
+    .slogan {
+      padding: 20px 0;
+    }
+  }
+}

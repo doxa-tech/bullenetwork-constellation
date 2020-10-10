@@ -1,0 +1,88 @@
+.contact {
+  .banner {
+    h2 {
+      padding: 20px;
+    }
+  }
+
+  .info {
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto !important;
+      line-height: 1.6em;
+
+      h3 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.6em;
+      }
+
+      .intro {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        font-size: 1.15em;
+
+        a {
+          border-bottom: 1px dashed white;
+        }
+
+        .left {
+          color: #ffffff;
+
+          h3 {
+            padding: 0 0 10px 0;
+          }
+
+          p {
+            padding: 0 0 20px 0;
+          }
+        }
+
+        .right {
+          text-align: center;
+
+          p {
+            font-size: 1.2em;
+            padding: 0 0 10px 0;
+          }
+
+          h3 {
+            padding: 0 0 20px 0;
+          }
+        }
+      }
+
+      .help {
+        padding: 40px 0 40px 0;
+
+        h3 {
+          color: #ffb16f;
+          padding: 0 0 10px 0;
+        }
+
+        p {
+          font-size: 1.1em;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .info {
+      .container {
+        .intro {
+          flex-direction: column-reverse;
+
+          .right {
+            padding: 30px 0;
+          }
+        }
+
+        .help {
+          padding: 20px;
+        }
+      }
+    }
+  }
+}

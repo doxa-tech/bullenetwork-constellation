@@ -1,0 +1,64 @@
+.index {
+  .activities {
+    .activity {
+      display: flex;
+      flex-direction: row;
+      background-color: #ffffff;
+
+      .text {
+        padding: 20px;
+      }
+
+      .image {
+        flex-shrink: 0;
+        width: 150px;
+        background-size: cover;
+        background-position: 50% 50%;
+      }
+
+      h3 {
+        font-family: "Bebas neue", sans-serif;
+        font-size: 2.3em;
+        color: #ffb16f;
+        padding: 20px 0 0 0;
+      }
+
+      p {
+        color: #525252;
+        line-height: 1.3em;
+        font-size: 1.1em;
+      }
+    }
+  }
+
+  .left {
+    flex: 1;
+
+    .activity {
+      margin: 10px 10px 40px 0;
+
+      h3 {
+        text-align: right;
+      }
+    }
+  }
+
+  .right {
+    flex: 1;
+
+    .activity {
+      margin: 30px 0 30px 10px;
+      flex-direction: row-reverse;
+
+      p {
+        text-align: right;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .activities {
+      padding: 40px 10px 60px 10px;
+    }
+  }
+}

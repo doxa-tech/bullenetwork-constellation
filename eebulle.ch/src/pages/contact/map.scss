@@ -1,0 +1,13 @@
+.contact {
+  .map {
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto !important;
+
+      .frame {
+        padding: 40px 0 40px 0;
+        height: 500px;
+      }
+    }
+  }
+}

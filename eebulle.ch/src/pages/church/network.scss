@@ -1,0 +1,37 @@
+.church {
+  .network {
+    background-color: #cb2321;
+    color: #ffe4e4;
+
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto !important;
+      padding: 20px 20px 60px 20px;
+
+      h2 {
+        text-align: right;
+        padding: 40px 0 10px 0;
+      }
+
+      .networks {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        p {
+          padding: 50px 0 20px 0;
+          font-size: 1.2em;
+          line-height: 1.1em;
+        }
+
+        a {
+          font-weight: bold;
+
+          &:hover {
+            color: #ffb16f;
+          }
+        }
+      }
+    }
+  }
+}

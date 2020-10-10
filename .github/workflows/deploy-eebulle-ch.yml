@@ -1,0 +1,37 @@
+name: eebulle.ch deploy
+
+on:
+  push:
+    branches: [ production-eebulle-ch ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 13.8
+    
+    - name: Install dependencies
+      run: |
+        cd eebulle.ch
+        npm install
+        npm install -g gatsby-cli
+        
+    - name: Build
+      run: |
+        cd eebulle.ch
+        gatsby build
+        
+    - name: Sync
+      env:
+        dest: 'eebulle@${{secrets.DEPLOY_ADDR}}:/var/www/eebulle.ch/public_html/'
+      run: |
+        echo "${{secrets.DEPLOY_EEBULLE_CH_KEY}}" > deploy_key
+        chmod 600 ./deploy_key
+        rsync -chav --delete \
+          -e 'ssh -p ${{secrets.DEPLOY_PORT}} -i ./deploy_key -o StrictHostKeyChecking=no' \
+          ./eebulle.ch/public/ ${{env.dest}}

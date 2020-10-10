@@ -1,0 +1,31 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: "directus"
+      MYSQL_USER: "directus"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    env_file:
+      - ./mysql.env
+
+  directus:
+    image: directus/directus:v8-apache
+    ports:
+      - "127.0.0.1:8095:80"
+    environment:
+      DIRECTUS_APP_ENV: "production"
+      DIRECTUS_DATABASE_HOST: "mysql"
+      DIRECTUS_DATABASE_PORT: "3306"
+      DIRECTUS_DATABASE_NAME: "directus"
+      DIRECTUS_DATABASE_USERNAME: "directus"
+    volumes:
+      - ./data/config:/var/directus/config
+      - ./data/uploads:/var/directus/public/uploads
+    links:
+      - mysql:mysql
+    env_file:
+      - ./directus.env
