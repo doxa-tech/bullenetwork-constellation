@@ -56,7 +56,7 @@ const List = () => {
         {content[1]}
         <h3>Pour adultes</h3>
         {content[2]}
-        <h3>Pour les séniores</h3>
+        <h3>Pour les séniors</h3>
         {content[3]}
       </div>
     </div>
