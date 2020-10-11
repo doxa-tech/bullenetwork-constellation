@@ -43,11 +43,11 @@ const Leadership = () => {
         </Tile>
         <Tile fluidImg={data.pastoral.childImageSharp.fluid} title="Conseil pastoral">
           Le conseil pastoral est composé des responsables locaux. Ce sont les anciens de l'église.<br />
-          Ce conseil est constitué de: André & Isabelle Künzler, Sévin & Hélène Kocher, Roland & Maude Friedli, Stéphane et Anita Blanchard, Fannie Blakaj
+          Ce conseil est constitué de: André & Isabelle Künzler, Sévin & Hélène Kocher, Roland & Maude Friedli, Stéphane et Anita Blanchard
         </Tile>
         <Tile fluidImg={data.sectors.childImageSharp.fluid} title="Conseil d'église">
           Le conseil d'église est composé des responsables de secteurs opérationnels. Ce sont les diacres de l'église.<br />
-          Ce conseil est constitué de: Keran Kocher (président), Noémien Kocher (communication), Elisabeth Savary (cafétéria), Mathieu Meyer (logistique), Elie Hausmann (Waykup)
+          Ce conseil est constitué de: Keran Kocher (président), Noémien Kocher (communication), Mathieu Meyer (logistique), Elie Hausmann (Waykup), Jocelyne Mercier (intercession)
         </Tile>
       </div>
     </div>
