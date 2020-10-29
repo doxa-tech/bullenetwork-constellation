@@ -1,0 +1,20 @@
+a.top-link:hover .top-info {
+  background: rgb(80, 4, 0);
+}
+
+.top-info {
+  text-align: center;
+  background: rgb(140, 6, 0);
+  background: linear-gradient(180deg, rgba(140, 6, 0, 1) 0%, rgba(162, 30, 30, 1) 100%);
+  color: #fff;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .txt {
+    margin: 10px;
+  }
+}
