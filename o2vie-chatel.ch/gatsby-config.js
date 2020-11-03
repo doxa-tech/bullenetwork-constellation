@@ -3,12 +3,6 @@
  *
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
-const netlifyCmsPaths = {
-  resolve: `gatsby-plugin-netlify-cms-paths`,
-  options: {
-    cmsConfig: `/static/admin/config.yml`,
-  },
-}
 
 const settings = require("./src/util/site.json")
 
@@ -36,7 +30,6 @@ module.exports = {
       options: {
         gfm: true,
         plugins: [
-          netlifyCmsPaths,
           `gatsby-remark-reading-time`,
           {
             resolve: `gatsby-remark-images`,
@@ -68,7 +61,6 @@ module.exports = {
     },
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-netlify-cms`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

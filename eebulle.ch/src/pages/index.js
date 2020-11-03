@@ -7,13 +7,40 @@ import Welcome from "./index/welcome"
 import Activities from "./index/activities"
 import Events from "./index/events"
 
-const Index = () => (
-  <Layout layoutClass="index">
-    <SEO title="Accueil" />
-    <Welcome />
-    <Activities />
-    <Events />
-  </Layout>
-)
+import Img from "gatsby-image"
+
+import { useStaticQuery, graphql } from "gatsby"
+
+import "./index.scss"
+
+const Index = () => {
+  const img = useStaticQuery(graphql`
+    query {
+      desktop: file(relativePath: { eq: "live.png" }) {
+        childImageSharp {
+          fixed(width: 30) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `)
+
+  return (
+    <Layout layoutClass="index">
+      <SEO title="Accueil" />
+
+      <a className="top-link" href="https://live.eebulle.ch" target="_blank">
+        <div className="top-info">
+          <Img fixed={img.desktop.childImageSharp.fixed} /> <span class="txt">Clique ici et retrouve tous les dimanches dès 10h la célébration en live</span>
+        </div>
+      </a>
+
+      <Welcome />
+      <Activities />
+      <Events />
+    </Layout>
+  )
+}
 
 export default Index
