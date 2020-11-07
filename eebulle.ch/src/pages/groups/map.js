@@ -13,7 +13,7 @@ const Markers = () => {
       var groups = json.data
 
       setMarkers(groups.map(g =>
-        <Marker position={[g.location_map.lat, g.location_map.lng]}>
+        <Marker key={g.id} position={[g.location_map.lat, g.location_map.lng]}>
           <Popup>À {g.location} avec {g.leader}</Popup>
         </Marker>
       ))
