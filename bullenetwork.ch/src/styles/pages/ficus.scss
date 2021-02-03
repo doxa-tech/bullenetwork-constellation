@@ -11,8 +11,12 @@
   }
 
   p {
-    padding-bottom: 1em;
+    // padding-bottom: 1em;
     font-weight: 100;
+  }
+
+  .intro p {
+    padding-bottom: 1em;
   }
 
   section.fixed {
@@ -115,6 +119,19 @@
   }
   .web:hover {
     text-decoration: underline;
+  }
+  .intro-web {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px;
+    margin-bottom: 20px;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .s1 b {

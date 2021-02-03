@@ -8,123 +8,124 @@ import { StaticQuery, graphql, Link } from "gatsby"
 export default () => {
 
   return (
-    <Layout layoutClass="index-container">
+    <Layout layoutClass="index-container ficus-page">
       <Menu />
       <Intro>
         Ficus
       </Intro>
-      <div className="ficus-page">
-        <section dataTitle="Ficus" class="fixed f1" id="go">
-          <div class="intro">
-            <p><span>Parce que nous sommes tous ramifiés à la même source</span></p>
-            <p><span>Parce que la croissance passe par des racines solidement ancrées</span></p>
-            <p><span>Parce que la vie est une perpétuelle circulation d'éléments vitaux</span></p>
-            <p><span class="ficus">Ficus</span> <span>nous connecte les uns aux autres</span></p>
-          </div>
+      <div class="intro-web">
+        <a href="http://eebulle.minsh.com/">Version Web</a>
+      </div>
+      <section dataTitle="Ficus" class="fixed f1" id="go">
+        <div class="intro">
+          <p><span>Parce que nous sommes tous ramifiés à la même source</span></p>
+          <p><span>Parce que la croissance passe par des racines solidement ancrées</span></p>
+          <p><span>Parce que la vie est une perpétuelle circulation d'éléments vitaux</span></p>
+          <p><span class="ficus">Ficus</span> <span>nous connecte les uns aux autres</span></p>
+        </div>
 
-          <FicusLogo />
+        <FicusLogo />
 
-          <a class="badge google"
-            href="https://play.google.com/store/apps/details?id=com.minsh.eebulle&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1"><img
-              alt="Get it on Google Play"
-              src="https://play.google.com/intl/en_us/badges/images/apps/fr-play-badge-border.png" /></a>
-          <a class="badge apple" href="https://itunes.apple.com/us/app/my-eebulle/id1087685429?mt=8">
-            <Appstore />
-          </a>
-          <a class="web" href="http://eebulle.minsh.com/">Version Web</a>
-        </section>
+        <a class="badge google"
+          href="https://play.google.com/store/apps/details?id=com.minsh.eebulle&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1"><img
+            alt="Get it on Google Play"
+            src="https://play.google.com/intl/en_us/badges/images/apps/fr-play-badge-border.png" /></a>
+        <a class="badge apple" href="https://itunes.apple.com/us/app/my-eebulle/id1087685429?mt=8">
+          <Appstore />
+        </a>
+        <a class="web" href="http://eebulle.minsh.com/">Version Web</a>
+      </section>
 
-        <section data-title="Présentation" class="scrolling s1" id="presentation">
-          <div class="container">
-            <h2>C'est quoi "Ficus"?</h2>
+      <section data-title="Présentation" class="scrolling s1" id="presentation">
+        <div class="container">
+          <h2>C'est quoi "Ficus"?</h2>
 
-            <p>
-              Ficus, anciennement appellée My EEBulles, est une application communautaire pour mobile (et également disponible
-              via un navigateur web)
+          <p>
+            Ficus, anciennement appellée My EEBulles, est une application communautaire pour mobile (et également disponible
+            via un navigateur web)
 				destinée aux membres du <a href="https://bullenetwork.ch">Bulle Network</a>. L'application
 				permet de suivre toute l'actualité des l'églises du Bulle Network et d'avoir accès à la liste exhaustive de tous
 				les événements
 				organisés. Elle permet également d'evoyer des messages groupés ou personnels aux membres.
 			</p>
 
-            <h2>Pourquoi utiliser Ficus?</h2>
+          <h2>Pourquoi utiliser Ficus?</h2>
 
-            <p class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 400 400">
+          <p class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 400 400">
+              <g>
                 <g>
                   <g>
-                    <g>
-                      <path d="M261.543,166.668h-0.524v-27.582c0-29.719-24.179-53.898-53.896-53.898h-14.239c-29.721,0-53.899,24.18-53.899,53.898     v27.582h-0.524c-8.687,0-15.73,7.047-15.73,15.734v100.313c0,8.689,7.044,15.734,15.73,15.734h123.086     c8.688,0,15.73-7.045,15.73-15.734V182.402C277.273,173.715,270.229,166.668,261.543,166.668z M215.73,246.475     c0,8.688-7.043,15.73-15.73,15.73c-8.688,0-15.73-7.043-15.73-15.73v-19.664c0-8.688,7.042-15.729,15.73-15.729     c8.688,0,15.73,7.043,15.73,15.729V246.475z M230.219,166.668h-60.438v-27.582c0-12.737,10.362-23.098,23.1-23.098h14.239     c12.735,0,23.099,10.36,23.099,23.098V166.668L230.219,166.668z" fill="#C90025" />
-                      <path d="M352.987,328.874l1.75-2.132C384.348,290.73,400,246.902,400,200c0-47.661-16.123-92.051-46.63-128.368l-1.699-2.021     l0.917-2.479c1.655-4.473,2.494-9.182,2.494-13.986c0-22.245-18.097-40.342-40.34-40.342c-8.121,0-15.95,2.406-22.644,6.951     l-2.179,1.481l-2.369-1.153C260.23,6.756,230.773,0,200,0c-31.787,0-62.099,7.176-90.095,21.331l-2.526,1.276l-2.26-1.702     c-7.035-5.3-15.419-8.104-24.247-8.104c-22.243,0-40.338,18.097-40.338,40.342c0,5.989,1.288,11.762,3.829,17.157l1.209,2.569     l-1.777,2.215C15.145,110.766,0,153.964,0,200c0,46.902,15.652,90.73,45.262,126.742l1.75,2.132l-1.081,2.537     c-2.128,4.999-3.208,10.311-3.208,15.787c0,22.241,18.097,40.338,40.34,40.338c8.577,0,16.771-2.665,23.7-7.705l2.224-1.616     l2.466,1.219C139.045,393.08,168.837,400,200,400s60.955-6.92,88.546-20.566l2.466-1.219l2.226,1.616     c6.928,5.04,15.123,7.705,23.698,7.705c22.243,0,40.342-18.097,40.342-40.338c0-5.479-1.08-10.788-3.208-15.787L352.987,328.874z      M335.038,307.572l-1.998,2.502l-3.028-1.035c-4.221-1.446-8.621-2.184-13.077-2.184c-22.241,0-40.34,18.098-40.34,40.343     c0,1.385,0.073,2.788,0.214,4.171l0.328,3.184l-2.89,1.383c-23.311,11.145-48.29,16.791-74.248,16.791     s-50.939-5.646-74.248-16.791l-2.89-1.383l0.329-3.184c0.141-1.383,0.214-2.786,0.214-4.171c0-22.245-18.097-40.343-40.34-40.343     c-4.456,0-8.855,0.735-13.077,2.184l-3.028,1.035l-1.998-2.502C40.305,276.685,27.273,239.484,27.273,200     c0-39.093,12.793-75.996,36.996-106.714l1.92-2.438l2.969,0.899c3.796,1.151,7.737,1.734,11.714,1.734     c22.243,0,40.34-18.097,40.34-40.338c0-1.104-0.053-2.265-0.166-3.541l-0.267-3.089l2.778-1.378     c23.921-11.853,49.64-17.863,76.442-17.863c25.153,0,49.433,5.323,72.166,15.818l3.04,1.402l-0.438,3.318     c-0.239,1.821-0.361,3.614-0.361,5.332c0,22.241,18.097,40.338,40.339,40.338c5.085,0,10.059-0.945,14.785-2.808l3.115-1.23     l2.097,2.611c24.497,30.519,37.985,68.854,37.985,107.944C372.727,239.484,359.695,276.686,335.038,307.572z" fill="#C90025" />
-                    </g>
+                    <path d="M261.543,166.668h-0.524v-27.582c0-29.719-24.179-53.898-53.896-53.898h-14.239c-29.721,0-53.899,24.18-53.899,53.898     v27.582h-0.524c-8.687,0-15.73,7.047-15.73,15.734v100.313c0,8.689,7.044,15.734,15.73,15.734h123.086     c8.688,0,15.73-7.045,15.73-15.734V182.402C277.273,173.715,270.229,166.668,261.543,166.668z M215.73,246.475     c0,8.688-7.043,15.73-15.73,15.73c-8.688,0-15.73-7.043-15.73-15.73v-19.664c0-8.688,7.042-15.729,15.73-15.729     c8.688,0,15.73,7.043,15.73,15.729V246.475z M230.219,166.668h-60.438v-27.582c0-12.737,10.362-23.098,23.1-23.098h14.239     c12.735,0,23.099,10.36,23.099,23.098V166.668L230.219,166.668z" fill="#C90025" />
+                    <path d="M352.987,328.874l1.75-2.132C384.348,290.73,400,246.902,400,200c0-47.661-16.123-92.051-46.63-128.368l-1.699-2.021     l0.917-2.479c1.655-4.473,2.494-9.182,2.494-13.986c0-22.245-18.097-40.342-40.34-40.342c-8.121,0-15.95,2.406-22.644,6.951     l-2.179,1.481l-2.369-1.153C260.23,6.756,230.773,0,200,0c-31.787,0-62.099,7.176-90.095,21.331l-2.526,1.276l-2.26-1.702     c-7.035-5.3-15.419-8.104-24.247-8.104c-22.243,0-40.338,18.097-40.338,40.342c0,5.989,1.288,11.762,3.829,17.157l1.209,2.569     l-1.777,2.215C15.145,110.766,0,153.964,0,200c0,46.902,15.652,90.73,45.262,126.742l1.75,2.132l-1.081,2.537     c-2.128,4.999-3.208,10.311-3.208,15.787c0,22.241,18.097,40.338,40.34,40.338c8.577,0,16.771-2.665,23.7-7.705l2.224-1.616     l2.466,1.219C139.045,393.08,168.837,400,200,400s60.955-6.92,88.546-20.566l2.466-1.219l2.226,1.616     c6.928,5.04,15.123,7.705,23.698,7.705c22.243,0,40.342-18.097,40.342-40.338c0-5.479-1.08-10.788-3.208-15.787L352.987,328.874z      M335.038,307.572l-1.998,2.502l-3.028-1.035c-4.221-1.446-8.621-2.184-13.077-2.184c-22.241,0-40.34,18.098-40.34,40.343     c0,1.385,0.073,2.788,0.214,4.171l0.328,3.184l-2.89,1.383c-23.311,11.145-48.29,16.791-74.248,16.791     s-50.939-5.646-74.248-16.791l-2.89-1.383l0.329-3.184c0.141-1.383,0.214-2.786,0.214-4.171c0-22.245-18.097-40.343-40.34-40.343     c-4.456,0-8.855,0.735-13.077,2.184l-3.028,1.035l-1.998-2.502C40.305,276.685,27.273,239.484,27.273,200     c0-39.093,12.793-75.996,36.996-106.714l1.92-2.438l2.969,0.899c3.796,1.151,7.737,1.734,11.714,1.734     c22.243,0,40.34-18.097,40.34-40.338c0-1.104-0.053-2.265-0.166-3.541l-0.267-3.089l2.778-1.378     c23.921-11.853,49.64-17.863,76.442-17.863c25.153,0,49.433,5.323,72.166,15.818l3.04,1.402l-0.438,3.318     c-0.239,1.821-0.361,3.614-0.361,5.332c0,22.241,18.097,40.338,40.339,40.338c5.085,0,10.059-0.945,14.785-2.808l3.115-1.23     l2.097,2.611c24.497,30.519,37.985,68.854,37.985,107.944C372.727,239.484,359.695,276.686,335.038,307.572z" fill="#C90025" />
                   </g>
                 </g>
-              </svg>
-            </p>
-            <p>
-              <b>C'est chez nous</b> Ficus est plus qu'une application communautaire. C'est NOTRE application.
+              </g>
+            </svg>
+          </p>
+          <p>
+            <b>C'est chez nous</b> Ficus est plus qu'une application communautaire. C'est NOTRE application.
 				Ainsi, tout ce qui ce passe sur Ficus reste privé et dans le cadre de notre communauté. Chaque membre de
 				Ficus doit être validé pas un administrateur qui s'assure que tous les participants soit membre de
 				l'église.
 			</p>
 
-            <p class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 576 576">
-                <g>
-                  <path d="M240,32L240,32c132.549,0,240,86.957,240,194.224S372.549,420.448,240,420.448c-12.729,0-25.223-0.81-37.417-2.355   C151.03,469.44,91.497,478.647,32,480v-12.567c32.126-15.677,58-44.231,58-76.866c0-4.553-0.356-9.023-1.015-13.396   C34.706,341.562,0,287.175,0,226.224C0,118.957,107.452,32,240,32z M498,467.343c0,27.973,18.156,52.449,46,65.886V544   c-51.562-1.159-98.893-9.051-143.57-53.062c-10.57,1.324-21.396,2.021-32.43,2.021c-47.734,0-91.704-12.879-126.807-34.521   c72.336-0.254,140.629-23.428,192.417-65.336c26.105-21.127,46.697-45.914,61.207-73.675C510.199,289.994,518,258.636,518,226.224   c0-5.224-0.225-10.418-0.629-15.584C553.656,240.607,576,281.451,576,326.479c0,52.244-30.078,98.86-77.119,129.383   C498.309,459.608,498,463.44,498,467.343z" fill="#C90025" />
-                </g>
-              </svg>
-            </p>
-            <p>
-              <b>Participer</b> Avec Ficus, tu peux participer au discussions de la communauté, laisser des messages et
+          <p class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 576 576">
+              <g>
+                <path d="M240,32L240,32c132.549,0,240,86.957,240,194.224S372.549,420.448,240,420.448c-12.729,0-25.223-0.81-37.417-2.355   C151.03,469.44,91.497,478.647,32,480v-12.567c32.126-15.677,58-44.231,58-76.866c0-4.553-0.356-9.023-1.015-13.396   C34.706,341.562,0,287.175,0,226.224C0,118.957,107.452,32,240,32z M498,467.343c0,27.973,18.156,52.449,46,65.886V544   c-51.562-1.159-98.893-9.051-143.57-53.062c-10.57,1.324-21.396,2.021-32.43,2.021c-47.734,0-91.704-12.879-126.807-34.521   c72.336-0.254,140.629-23.428,192.417-65.336c26.105-21.127,46.697-45.914,61.207-73.675C510.199,289.994,518,258.636,518,226.224   c0-5.224-0.225-10.418-0.629-15.584C553.656,240.607,576,281.451,576,326.479c0,52.244-30.078,98.86-77.119,129.383   C498.309,459.608,498,463.44,498,467.343z" fill="#C90025" />
+              </g>
+            </svg>
+          </p>
+          <p>
+            <b>Participer</b> Avec Ficus, tu peux participer au discussions de la communauté, laisser des messages et
 				contacter
 				personnelement des membres. Idéal pour faire connaissance et partager ses idées.
 			</p>
 
-            <p class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 60.449 60.449" width="512px" height="512px">
+          <p class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 60.449 60.449" width="512px" height="512px">
+              <g>
                 <g>
                   <g>
-                    <g>
-                      <path d="M22.506,23.467c0.016,0.064,0.009,0.068-0.008,0.041c-0.019,0.079-0.035,0.163-0.05,0.264     c0.027-0.175,0.056-0.244,0.081-0.26c-0.006-0.015-0.013-0.039-0.02-0.055C22.508,23.46,22.506,23.464,22.506,23.467z" fill="#C90025" />
-                      <path d="M50.031,25.398C45.79,19.087,39.99,14.794,33.018,12.174c-3.389-0.881-7.825,1.329-7.917,1.437     c-0.227,0.076-0.455,0.174-0.686,0.316c-0.72,0.446-1.173,1.003-1.44,1.609c-1.076,0.637-2.197,1.192-3.397,1.582     c-1.291,0.419-2.589,0.47-3.284,0.062c0.041,0.023-0.155-0.132-0.276-0.486c-0.221-0.651-0.16-1.235-0.11-1.949     c0.149-2.176,1.365-4.385,2.393-6.244c1.856-3.357-3.279-6.355-5.134-3c-2.507,4.537-5.383,11.617-0.962,15.974     c3.415,3.363,8.506,1.978,12.572-0.159c0.199,0.313,0.413,0.619,0.659,0.909c0.27,0.316,0.518,0.643,0.77,0.968     c1.339,2.29,1.389,8.149,1.389,8.149s-4.666,15.936-4.28,24.537c0.235,5.25,8.412,5.273,8.174,0     c-0.295-6.594,0.544-12.914,2.685-19.059c0.386,0.174,0.785,0.311,1.195,0.408c0.373,6.896,1.438,13.709,3.449,20.354     c1.52,5.033,9.41,2.888,7.881-2.172c-2.293-7.597-3.271-15.269-3.321-23.188c-0.002-0.604-0.378-2.367-0.462-2.75     c-0.422-1.92-1.018-3.753-1.762-5.514c1.377,1.313,2.634,2.784,3.742,4.437C47.026,31.563,52.178,28.589,50.031,25.398z" fill="#C90025" />
-                      <circle cx="24.8" cy="6.091" r="6.091" fill="#C90025" />
-                    </g>
+                    <path d="M22.506,23.467c0.016,0.064,0.009,0.068-0.008,0.041c-0.019,0.079-0.035,0.163-0.05,0.264     c0.027-0.175,0.056-0.244,0.081-0.26c-0.006-0.015-0.013-0.039-0.02-0.055C22.508,23.46,22.506,23.464,22.506,23.467z" fill="#C90025" />
+                    <path d="M50.031,25.398C45.79,19.087,39.99,14.794,33.018,12.174c-3.389-0.881-7.825,1.329-7.917,1.437     c-0.227,0.076-0.455,0.174-0.686,0.316c-0.72,0.446-1.173,1.003-1.44,1.609c-1.076,0.637-2.197,1.192-3.397,1.582     c-1.291,0.419-2.589,0.47-3.284,0.062c0.041,0.023-0.155-0.132-0.276-0.486c-0.221-0.651-0.16-1.235-0.11-1.949     c0.149-2.176,1.365-4.385,2.393-6.244c1.856-3.357-3.279-6.355-5.134-3c-2.507,4.537-5.383,11.617-0.962,15.974     c3.415,3.363,8.506,1.978,12.572-0.159c0.199,0.313,0.413,0.619,0.659,0.909c0.27,0.316,0.518,0.643,0.77,0.968     c1.339,2.29,1.389,8.149,1.389,8.149s-4.666,15.936-4.28,24.537c0.235,5.25,8.412,5.273,8.174,0     c-0.295-6.594,0.544-12.914,2.685-19.059c0.386,0.174,0.785,0.311,1.195,0.408c0.373,6.896,1.438,13.709,3.449,20.354     c1.52,5.033,9.41,2.888,7.881-2.172c-2.293-7.597-3.271-15.269-3.321-23.188c-0.002-0.604-0.378-2.367-0.462-2.75     c-0.422-1.92-1.018-3.753-1.762-5.514c1.377,1.313,2.634,2.784,3.742,4.437C47.026,31.563,52.178,28.589,50.031,25.398z" fill="#C90025" />
+                    <circle cx="24.8" cy="6.091" r="6.091" fill="#C90025" />
                   </g>
                 </g>
-              </svg>
-            </p>
-            <p>
-              <b>S'informer</b> Nous utilisons l'application pour communiquer des informations importantes et nouvelles. Un
+              </g>
+            </svg>
+          </p>
+          <p>
+            <b>S'informer</b> Nous utilisons l'application pour communiquer des informations importantes et nouvelles. Un
 				moyen de plus pour être sûr de ne rien manquer!
 			</p>
 
-            <p class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 510 510">
-                <g>
-                  <g id="favorite">
-                    <path d="M255,489.6l-35.7-35.7C86.7,336.6,0,257.55,0,160.65C0,81.6,61.2,20.4,140.25,20.4c43.35,0,86.7,20.4,114.75,53.55    C283.05,40.8,326.4,20.4,369.75,20.4C448.8,20.4,510,81.6,510,160.65c0,96.9-86.7,175.95-219.3,293.25L255,489.6z" fill="#C90025" />
-                  </g>
+          <p class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 510 510">
+              <g>
+                <g id="favorite">
+                  <path d="M255,489.6l-35.7-35.7C86.7,336.6,0,257.55,0,160.65C0,81.6,61.2,20.4,140.25,20.4c43.35,0,86.7,20.4,114.75,53.55    C283.05,40.8,326.4,20.4,369.75,20.4C448.8,20.4,510,81.6,510,160.65c0,96.9-86.7,175.95-219.3,293.25L255,489.6z" fill="#C90025" />
                 </g>
-              </svg>
-            </p>
-            <p>
-              <b>Relationner</b> Le Bulle Network est une grande famille qui ne se voit pas que le dimanche matin. Utiliser
+              </g>
+            </svg>
+          </p>
+          <p>
+            <b>Relationner</b> Le Bulle Network est une grande famille qui ne se voit pas que le dimanche matin. Utiliser
 				l'application
 				c'est aussi développer nos liens et faire grandir l'amour fraternel qui nous unis. Il est facile d'envoyer un
 				message d'encouragement, laisser un commentaire amical ou simplement parcourir le fil d'actualité.
 			</p>
 
-            <h2>Liens de téléchargement</h2>
-            <p>Pour les Iphones: <a
-              href="https://play.google.com/store/apps/details?id=com.minsh.eebulle&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1">télécharger</a>
-            </p>
-            <p>Pour les Androïdes: <a href="https://itunes.apple.com/us/app/my-eebulle/id1087685429?mt=8">télécharger</a>
-            </p>
-            <p></p>
-          </div>
-        </section>
-      </div>
+          <h2>Liens de téléchargement</h2>
+          <p>Pour les Iphones: <a
+            href="https://play.google.com/store/apps/details?id=com.minsh.eebulle&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1">télécharger</a>
+          </p>
+          <p>Pour les Androïdes: <a href="https://itunes.apple.com/us/app/my-eebulle/id1087685429?mt=8">télécharger</a>
+          </p>
+          <p></p>
+        </div>
+      </section>
     </Layout >
   )
 }
