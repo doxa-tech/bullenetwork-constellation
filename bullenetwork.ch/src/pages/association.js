@@ -13,7 +13,7 @@ export default () => {
     setContent(
       '<div class="loadrr"><div><div></div><div></div><div></div><div></div></div></div>'
     )
-    fetch(`https://panda.bullenetwork.ch/directus/items/bullenetwork_pages/1`)
+    fetch(`https://panda.bullenetwork.ch/directus/items/bullenetwork_pages/6`)
       .then(response => response.json())
       .then(resultData => {
         setTitle(resultData.data.title)

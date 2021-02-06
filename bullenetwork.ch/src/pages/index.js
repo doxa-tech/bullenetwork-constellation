@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import Intro from "../components/intro"
 import Layout from "../components/layout"
 import Church from "./index/church"
+import Tiles from "../components/tiles"
 
 export default () => {
   const [title, setTitle] = useState(0)
@@ -46,9 +47,13 @@ export default () => {
 
   return (
     <Layout layoutClass="index-container">
+
       <Intro>
-        {title}
+        {/* {title} */}
+        Le Bulle Network est un réseau de communautés au service de son prochain.
       </Intro>
+
+      <Tiles />
 
       {/* <section id="text-info">
 
@@ -56,6 +61,10 @@ export default () => {
         </div>
 
       </section> */}
+
+      <div className="separation"></div>
+
+      <h2 id="commmunity-title">La communauté</h2>
 
       <section id="churches">
         <div className="section-container">

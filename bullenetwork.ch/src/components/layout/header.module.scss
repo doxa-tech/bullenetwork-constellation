@@ -123,12 +123,13 @@
 @media only screen and (max-width: 765px) {
   section#header {
   }
-  .sub-container {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
-  }
-  .left img {
-    max-width: 100%;
+  .section-container {
+    .sub-container {
+      flex-direction: column;
+      text-align: center;
+    }
+    .left img {
+      max-width: 100%;
+    }
   }
 }

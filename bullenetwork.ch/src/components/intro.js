@@ -20,7 +20,7 @@ export default ({ children }) => (
       <section className={styles.intro}>
         <div className={styles.container}>
           <h1>{children}</h1>
-          <Img style={{ width: "300px", margin: "0 auto" }} fluid={data.file.childImageSharp.fluid} />
+          {/* <Img style={{ width: "300px", margin: "0 auto" }} fluid={data.file.childImageSharp.fluid} /> */}
         </div>
       </section>
     )}
