@@ -1,0 +1,184 @@
+.partitions-page {
+  .main-section {
+    background: url("../../images/partitions/background.png") repeat,
+      linear-gradient(143deg, rgba(26, 30, 31, 1) 57%, rgba(181, 134, 87, 1) 100%);
+
+    min-height: 100vh;
+    color: white;
+
+    .section-container {
+      max-width: 1200px;
+      margin: auto;
+
+      h1 {
+        padding: 40px 0 30px 0;
+      }
+
+      .partition {
+        padding: 5px 15px;
+        margin: 1px 0;
+        font-weight: 100;
+
+        &:nth-child(even) {
+          background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        &:nth-child(odd) {
+          background-color: rgba(255, 255, 255, 0.025);
+        }
+
+        display: flex;
+        flex-direction: column;
+
+        .row {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          animation: 80ms closeRow linear;
+
+          cursor: pointer;
+
+          .bni {
+            width: 20px;
+          }
+
+          .title {
+            padding: 0 0 0 20px;
+            flex: 1;
+          }
+
+          svg.arrow {
+            width: 15px;
+            margin: 0 5px;
+            animation: rotateUp 300ms ease-out;
+            animation-fill-mode: forwards;
+            fill: #fff;
+          }
+
+          @keyframes rotateUp {
+            from {
+              transform: rotate(180deg);
+            }
+
+            to {
+              transform: rotate(0deg);
+            }
+          }
+
+          @keyframes closeRow {
+            from {
+              padding: 10px 0px;
+            }
+
+            to {
+              padding: 0;
+            }
+          }
+        }
+
+        .extra {
+          display: none;
+          padding: 20px;
+
+          .notes {
+            font-size: 0.8em;
+
+            & > p:nth-child(1) {
+              font-weight: bold;
+              padding: 0 0 5px 0;
+            }
+          }
+
+          .files {
+            padding: 0 0 20px 0;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+
+            .file {
+              margin: 4px;
+
+              a {
+                color: rgb(116, 113, 255);
+                font-size: 0.9em;
+                padding: 4px 10px;
+                display: inline-block;
+
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+
+              button {
+                background: rgb(179, 179, 179);
+                background: linear-gradient(0deg, rgba(179, 179, 179, 1) 0%, rgba(255, 255, 255, 1) 100%);
+                color: #000;
+                border: none;
+                padding: 4px 10px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                cursor: pointer;
+                border-radius: 2px;
+                font-size: 0.9em;
+
+                &:hover {
+                  background: rgb(144, 144, 144);
+                  background: linear-gradient(0deg, rgba(144, 144, 144, 1) 0%, rgba(213, 213, 213, 1) 100%);
+                }
+              }
+            }
+          }
+        }
+
+        &.active {
+          .row {
+            animation: openRow 80ms linear;
+            animation-fill-mode: forwards;
+
+            padding: 10px;
+
+            .title {
+              font-weight: bold;
+            }
+          }
+
+          .extra {
+            display: block;
+          }
+
+          svg.arrow {
+            animation: rotateDown 300ms ease-out;
+            animation-fill-mode: forwards;
+          }
+
+          @keyframes rotateDown {
+            from {
+              transform: rotate(0deg);
+            }
+
+            to {
+              transform: rotate(180deg);
+            }
+          }
+
+          @keyframes openRow {
+            from {
+              padding: 0;
+            }
+
+            to {
+              padding: 10px 0px;
+            }
+          }
+        }
+
+        &:hover .row .title {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

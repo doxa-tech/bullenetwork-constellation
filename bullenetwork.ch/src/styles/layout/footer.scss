@@ -1,5 +1,4 @@
 section#footer {
-  padding-top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,13 +10,7 @@ section#footer {
 
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#54f0ff+0,00b485+37,d9ff1c+71,ff6721+100 */
     background: #54f0ff; /* Old browsers */
-    background: -moz-linear-gradient(
-      left,
-      #54f0ff 0%,
-      #00b485 37%,
-      #d9ff1c 71%,
-      #ff6721 100%
-    ); /* FF3.6-15 */
+    background: -moz-linear-gradient(left, #54f0ff 0%, #00b485 37%, #d9ff1c 71%, #ff6721 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(
       left,
       #54f0ff 0%,
@@ -43,6 +36,25 @@ section#footer {
 
     p {
       padding: 5px 0;
+    }
+
+    .sub-apps {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 15px 0 0 0;
+
+      & > * {
+        padding: 10px 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          background-color: rgb(211, 211, 211);
+        }
+      }
     }
   }
 }
