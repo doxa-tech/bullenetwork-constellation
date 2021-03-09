@@ -49,8 +49,7 @@ export default () => {
     <Layout layoutClass="index-container">
 
       <Intro>
-        {/* {title} */}
-        Le Bulle Network est un réseau de communautés au service de son prochain.
+        {title}
       </Intro>
 
       <Tiles />

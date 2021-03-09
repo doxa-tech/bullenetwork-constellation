@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import Layout from "../components/layout-small"
-import Intro from "../components/intro"
-import Menu from "../components/menu"
 import Img from "gatsby-image"
-import { StaticQuery, graphql, Link } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 
 export default () => {
 

@@ -49,7 +49,7 @@ const Tiles = () => {
 
 const CommunitySVG = () => {
   return (
-    <svg width="100%" height="100%" viewBox="0 0 4725 4725" version="1.1" xmlns="http://www.w3.org/2000/svg" className={styles.community, styles.svgEl}>
+    <svg width="100%" height="100%" viewBox="0 0 4725 4725" version="1.1" xmlns="http://www.w3.org/2000/svg" className={[styles.community, styles.svgEl]}>
       <g transform="matrix(0.846306,0,0,0.846306,974.356,1358.26)">
         <g transform="matrix(0.799252,0,0,0.799252,733.114,565.983)">
           <path d="M2933.35,3447.85L2933.35,3080.76C2933.35,2684.18 3255.33,2362.2 3651.91,2362.2C4048.49,2362.2 4370.47,2684.18 4370.47,3080.76L4370.47,3447.85" style={{ fill: "none", stroke: "black", strokeWidth: "147.84px" }} />
@@ -102,7 +102,7 @@ const CommunitySVG = () => {
 
 const SocialSVG = () => {
   return (
-    <svg width="100%" height="100%" viewBox="0 0 4725 4725" version="1.1" xmlns="http://www.w3.org/2000/svg" className={styles.social, styles.svgEl}>
+    <svg width="100%" height="100%" viewBox="0 0 4725 4725" version="1.1" xmlns="http://www.w3.org/2000/svg" className={[styles.social, styles.svgEl]}>
       <g transform="matrix(1.08435,0,0,1.12961,-429.27,-606.072)">
         <path d="M2574.33,2028.34C2971.17,818.22 3764.86,818.22 4161.7,1180.12C4558.56,1542.01 4558.56,2265.8 4161.7,2989.59C3883.91,3532.43 3169.6,4075.28 2574.33,4437.17C1979.06,4075.28 1264.75,3532.43 986.957,2989.59C590.114,2265.8 590.114,1542.01 986.957,1180.12C1383.8,818.22 2177.49,818.22 2574.33,2028.34Z" style={{ fill: "none", stroke: "black", strokeWidth: "150px" }} />
       </g>
@@ -112,7 +112,7 @@ const SocialSVG = () => {
 
 const AssociationSVG = () => {
   return (
-    <svg width="100%" height="100%" viewBox="0 0 4725 4725" version="1.1" xmlns="http://www.w3.org/2000/svg" className={styles.association, styles.svgEl}>
+    <svg width="100%" height="100%" viewBox="0 0 4725 4725" version="1.1" xmlns="http://www.w3.org/2000/svg" className={[styles.association, styles.svgEl]}>
       <g transform="matrix(1.07944,0,0,1,-363.153,365.608)">
         <g transform="matrix(0.71046,0,0,0.869713,616.351,206.309)">
           <rect x="579.948" y="1900.78" width="514.095" height="2077.65" />
@@ -167,7 +167,7 @@ const AssociationSVG = () => {
 
 const StudySVG = () => {
   return (
-    <svg width="100%" height="100%" viewBox="0 0 4725 4725" version="1.1" xmlns="http://www.w3.org/2000/svg" className={styles.study, styles.svgEl}>
+    <svg width="100%" height="100%" viewBox="0 0 4725 4725" version="1.1" xmlns="http://www.w3.org/2000/svg" className={[styles.study, styles.svgEl]}>
       <g transform="matrix(0.48986,-0.48986,0.48986,0.48986,47.9036,1732.18)">
         <path d="M3229.45,1494.96L0,0L1387.89,3336.51L4724.41,4724.41L3229.45,1494.96Z" />
       </g>

@@ -14,144 +14,216 @@
         padding: 40px 0 30px 0;
       }
 
+      input.download {
+        margin: 15px 0;
+        border: none;
+        color: white;
+        padding: 10px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        background-color: #008cba;
+        transition-duration: 0.4s;
+        cursor: pointer;
+
+        &:hover:not(:disabled) {
+          background-color: #005572;
+        }
+
+        &:disabled {
+          cursor: auto;
+          background-color: #949494;
+        }
+      }
+
+      .select-all {
+        padding: 15px 0;
+      }
+
       .partition {
-        padding: 5px 15px;
-        margin: 1px 0;
-        font-weight: 100;
-
-        &:nth-child(even) {
-          background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        &:nth-child(odd) {
-          background-color: rgba(255, 255, 255, 0.025);
-        }
-
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        position: relative;
 
-        .row {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-
+        .main-checkbox {
+          padding: 5px 15px;
+          margin: 1px 0;
           animation: 80ms closeRow linear;
-
-          cursor: pointer;
-
-          .bni {
-            width: 20px;
-          }
-
-          .title {
-            padding: 0 0 0 20px;
-            flex: 1;
-          }
-
-          svg.arrow {
-            width: 15px;
-            margin: 0 5px;
-            animation: rotateUp 300ms ease-out;
-            animation-fill-mode: forwards;
-            fill: #fff;
-          }
-
-          @keyframes rotateUp {
-            from {
-              transform: rotate(180deg);
-            }
-
-            to {
-              transform: rotate(0deg);
-            }
-          }
-
-          @keyframes closeRow {
-            from {
-              padding: 10px 0px;
-            }
-
-            to {
-              padding: 0;
-            }
-          }
+          animation-fill-mode: forwards;
         }
 
-        .extra {
-          display: none;
-          padding: 20px;
+        .main {
+          margin: 1px 0;
+          font-weight: 100;
+          flex: 1;
+          animation: 80ms closeRow linear;
+          animation-fill-mode: forwards;
 
-          .notes {
-            font-size: 0.8em;
+          padding-left: 20px;
+          padding-right: 10px;
 
-            & > p:nth-child(1) {
-              font-weight: bold;
-              padding: 0 0 5px 0;
-            }
+          &:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
           }
 
-          .files {
-            padding: 0 0 20px 0;
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-
-            .file {
-              margin: 4px;
-
-              a {
-                color: rgb(116, 113, 255);
-                font-size: 0.9em;
-                padding: 4px 10px;
-                display: inline-block;
-
-                &:hover {
-                  text-decoration: underline;
-                }
-              }
-
-              button {
-                background: rgb(179, 179, 179);
-                background: linear-gradient(0deg, rgba(179, 179, 179, 1) 0%, rgba(255, 255, 255, 1) 100%);
-                color: #000;
-                border: none;
-                padding: 4px 10px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                cursor: pointer;
-                border-radius: 2px;
-                font-size: 0.9em;
-
-                &:hover {
-                  background: rgb(144, 144, 144);
-                  background: linear-gradient(0deg, rgba(144, 144, 144, 1) 0%, rgba(213, 213, 213, 1) 100%);
-                }
-              }
-            }
+          &:nth-child(odd) {
+            background-color: rgba(255, 255, 255, 0.025);
           }
-        }
 
-        &.active {
+          display: flex;
+          flex-direction: column;
+
           .row {
-            animation: openRow 80ms linear;
-            animation-fill-mode: forwards;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
 
-            padding: 10px;
+            cursor: pointer;
+
+            .bni {
+              width: 20px;
+            }
 
             .title {
-              font-weight: bold;
+              padding: 0 0 0 20px;
+              flex: 1;
+            }
+
+            svg.arrow {
+              width: 15px;
+              margin: 0 5px;
+              animation: rotateUp 300ms ease-out;
+              animation-fill-mode: forwards;
+              fill: #fff;
+            }
+
+            @keyframes rotateUp {
+              from {
+                transform: rotate(180deg);
+              }
+
+              to {
+                transform: rotate(0deg);
+              }
+            }
+
+            @keyframes closeRow {
+              from {
+                padding-top: 20px;
+                padding-bottom: 20px;
+              }
+
+              to {
+                padding-top: 10px;
+                padding-bottom: 10px;
+              }
+            }
+
+            @keyframes closeCheckbox {
+              from {
+                margin-top: 16px;
+              }
+
+              to {
+                margin-top: 6px;
+              }
             }
           }
 
           .extra {
-            display: block;
+            display: none;
+            padding: 20px 20px 0 20px;
+
+            .notes {
+              font-size: 0.8em;
+              padding: 20px 0 0 0;
+
+              & > p:nth-child(1) {
+                font-weight: bold;
+                padding: 0 0 5px 0;
+              }
+            }
+
+            .files {
+              display: flex;
+              flex-direction: column;
+              flex-wrap: wrap;
+              justify-content: flex-start;
+
+              .file {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+
+                margin: 4px;
+
+                a {
+                  color: rgb(116, 113, 255);
+                  font-size: 0.9em;
+                  padding: 4px 10px;
+                  display: inline-block;
+
+                  &:hover {
+                    text-decoration: underline;
+                  }
+                }
+
+                button {
+                  background: rgb(179, 179, 179);
+                  background: linear-gradient(0deg, rgba(179, 179, 179, 1) 0%, rgba(255, 255, 255, 1) 100%);
+                  color: #000;
+                  border: none;
+                  margin: 0 0 0 10px;
+                  padding: 4px 10px;
+                  text-align: center;
+                  text-decoration: none;
+                  display: inline-block;
+                  cursor: pointer;
+                  border-radius: 2px;
+                  font-size: 0.9em;
+
+                  &:hover {
+                    background: rgb(144, 144, 144);
+                    background: linear-gradient(0deg, rgba(144, 144, 144, 1) 0%, rgba(213, 213, 213, 1) 100%);
+                  }
+                }
+              }
+            }
           }
 
-          svg.arrow {
-            animation: rotateDown 300ms ease-out;
+          &:hover .row .title {
+            font-weight: bold;
+          }
+        }
+
+        &.active {
+          .main-checkbox {
+            animation: openCheckbox 80ms linear;
             animation-fill-mode: forwards;
+          }
+
+          .main {
+            animation: openRow 80ms linear;
+            animation-fill-mode: forwards;
+
+            .row {
+              .title {
+                font-weight: bold;
+              }
+            }
+
+            .extra {
+              display: block;
+            }
+
+            svg.arrow {
+              animation: rotateDown 300ms ease-out;
+              animation-fill-mode: forwards;
+            }
           }
 
           @keyframes rotateDown {
@@ -166,17 +238,24 @@
 
           @keyframes openRow {
             from {
-              padding: 0;
+              padding-top: 10px;
+              padding-bottom: 10px;
             }
 
             to {
-              padding: 10px 0px;
+              padding-top: 20px;
+              padding-bottom: 20px;
             }
           }
-        }
 
-        &:hover .row .title {
-          font-weight: bold;
+          @keyframes openCheckbox {
+            from {
+              margin-top: 6px;
+            }
+            to {
+              margin-top: 16px;
+            }
+          }
         }
       }
     }

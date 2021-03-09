@@ -1,6 +1,6 @@
 import React from "react"
 import Img from "gatsby-image"
-import { StaticQuery, graphql, Link } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 import styles from "./header.module.scss"
 import HeaderBG from './header-bg'
 
