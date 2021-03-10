@@ -83,7 +83,7 @@ export default class extends Component {
                   query {
                     truite {
                       items {
-                        partitions(sort:["bni"]){
+                        partitions(sort:["-bni"]){
                           bni
                           title
                           comments
