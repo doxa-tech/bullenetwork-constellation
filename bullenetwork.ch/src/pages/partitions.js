@@ -9,7 +9,8 @@ export default class extends Component {
 
   state = {
     selectedFiles: 0,
-    submitDisabled: true
+    submitDisabled: true,
+    filteredPartitions: this.props.data.truite.items.partitions
   };
 
   // fileSelected will be called each time a check box is checked, providing the
@@ -63,23 +64,53 @@ export default class extends Component {
     this.downloadSubmit = element
   }
 
+  searchUpdate = (event) => {
+    const query = event.target.value
+    this.setState(state => ({
+      filteredPartitions: this.props.data.truite.items.partitions.filter(partition =>
+        partition.title.toLowerCase().includes(query.toLowerCase()) || partition.bni.toString().includes(query))
+    }))
+  }
+
   render() {
     return (
       <Layout layoutClass="secondary-layout partitions-page" title="Partition" >
         <section className="main-section">
           <div className="section-container">
             <h1>Partitions du Bulle Network</h1>
+
             <form method="post" action={process.env.GCS_PROXY_ARCHIVE}>
               <input type="hidden" name="bucket" value="bullenetwork-directus-truite" />
 
-              <DownloadSubmit totalFiles={this.state.selectedFiles} setRef={this.setDownloadSubmit} />
+              <div class="top-els">
+                <DownloadSubmit totalFiles={this.state.selectedFiles} setRef={this.setDownloadSubmit} />
+                <div class="search-container">
+                  <input type="text" onChange={this.searchUpdate} placeholder="Recherche.." />
+                  <div class="icon"><SearchIcon /></div>
+                </div>
+              </div>
 
               <div className="select-all">
                 <Checkbox setRef={this.setSelectAllCheckbox} label="Tout sélectionner" onclick={this.selectAllClick} />
               </div>
+              <div id="partitions-container">
+                {this.state.filteredPartitions.map((partition) => <Partition key={`${partition.bni}`} partition={partition} fileSelected={this.fileSelected} />)}
+              </div>
+            </form>
+          </div>
+        </section>
+      </Layout>
+    )
+  }
+}
 
-              <StaticQuery query={
-                graphql`
+const DownloadSubmit = ({ totalFiles, setRef, disabled }) => {
+  return (
+    <input disabled={true} className="download" type="submit" ref={setRef} value={`Télécharger ${totalFiles}`} />
+  )
+}
+
+export const partitionsQuery = graphql`
                   query {
                     truite {
                       items {
@@ -98,22 +129,17 @@ export default class extends Component {
                       }
                     }
                   }
-                `} render={data => (
-                  <div id="partitions-container">
-                    {data.truite.items.partitions.map((partition) => <Partition key={`${partition.bni}`} partition={partition} fileSelected={this.fileSelected} />)}
-                  </div>
-                )}
-              />
-            </form>
-          </div>
-        </section>
-      </Layout>
-    )
-  }
-}
+                `
 
-const DownloadSubmit = ({ totalFiles, setRef, disabled }) => {
+const SearchIcon = () => {
   return (
-    <input disabled={true} className="download" type="submit" ref={setRef} value={`Télécharger ${totalFiles}`} />
+    <svg viewBox="0 0 1414 1519" version="1.1" xmlns="http://www.w3.org/2000/svg" style={{ fillRule: "evenodd", clipRule: "evenodd", strokeLinecap: "round", strokeLinejoin: "round", strokeMiterlimit: "1.5" }}>
+      <g transform="matrix(1,0,0,1,-1206.57,-1347.06)">
+        <circle cx="1813.17" cy="1953.66" r="523.269" style={{ fill: "none", stroke: "rgb(35,31,32)", strokeWidth: "166.67px" }} />
+      </g>
+      <g transform="matrix(1,0,0,1,-1419.84,-939.259)">
+        <path d="M2373.49,1943.19L2749.74,2373.95" style={{ fill: "none", stroke: "rgb(35,31,32)", strokeWidth: "166.67px" }} />
+      </g>
+    </svg>
   )
 }

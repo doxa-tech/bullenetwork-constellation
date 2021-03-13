@@ -43,7 +43,9 @@ export class Partition extends Component {
     this.props.fileSelected(delta)
 
     const totlaChecked = this.extraRef.querySelectorAll('input[type="checkbox"]:checked').length
-    if (totlaChecked === this.totalCheckboxes) {
+    const totalCheckboxes = this.extraRef.querySelectorAll('input[type="checkbox"]').length
+
+    if (totlaChecked === totalCheckboxes) {
       this.maincheckbox.checked = true
       this.maincheckbox.indeterminate = false;
     } else if (totlaChecked === 0) {
@@ -60,7 +62,6 @@ export class Partition extends Component {
 
   setExtraRef = (extra) => {
     this.extraRef = extra;
-    this.totalCheckboxes = extra.querySelectorAll('input[type="checkbox"]').length
   }
 
   setMainCheckboxRef = (checkbox) => {
