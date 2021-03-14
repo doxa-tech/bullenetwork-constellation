@@ -1,8 +1,6 @@
 import React, { Component } from "react"
 import Checkbox from "./checkbox";
 
-export let TotalFiles = 0;
-
 export class Partition extends Component {
 
   state = {
@@ -125,10 +123,6 @@ const Files = ({ files, notify }) => {
 }
 
 class File extends Component {
-
-  componentDidMount = () => {
-    TotalFiles += 1;
-  }
 
   filename = this.props.file.directus_files_id.filename_download
 
