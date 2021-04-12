@@ -5,8 +5,9 @@
 # bullenetwork-constellation
 Collection of websites for the BulleNetwork
 
-![bullenetwork.ch deploy](https://github.com/doxa-tech/bullenetwork-constellation/workflows/bullenetwork.ch%20deploy/badge.svg)
-![eebulle.ch deploy](https://github.com/doxa-tech/bullenetwork-constellation/workflows/eebulle.ch%20deploy/badge.svg?branch=production-eebulle-ch)
+[![bullenetwork.ch deploy](https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-bullenetwork-ch.yml/badge.svg)](https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-bullenetwork-ch.yml)
+[![eebulle.ch deploy](https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-eebulle-ch.yml/badge.svg)](https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-eebulle-ch.yml)
+[![o2vie-chatel.ch deploy](https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-o2vie-chatel-ch.yml/badge.svg)](https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-o2vie-chatel-ch.yml)
 
 ## Deploy
 
