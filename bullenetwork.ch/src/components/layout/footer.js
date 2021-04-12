@@ -1,18 +1,28 @@
 import React from "react"
+import Img from "gatsby-image"
+import { StaticQuery, graphql } from "gatsby"
 
 export default () => {
   return (
     <section id="footer">
       <div className="ribbon"></div>
       <div className="section-container">
-        <p>© Association Eglise évangélique de Bulle</p>
-        <p>Route du Verdel 8, 1630 Bulle</p>
-        <p>Contact: david.hausmann@bullenetwork.ch</p>
+        <div class="first-part">
+          <div class="left">
+            <p>© Association Eglise évangélique de Bulle</p>
+            <p>Route du Verdel 8, 1630 Bulle</p>
+            <p>Contact: david.hausmann@bullenetwork.ch</p>
+          </div>
+          <div class="right">
+            <a href="https://github.com/doxa-tech/bullenetwork-constellation" target="_blank">
+              <ConstellationLogo />
+            </a>
+          </div>
+        </div>
         <div className="sub-apps">
           {app}
           {partitions}
         </div>
-
       </div>
     </section>
   )
@@ -64,4 +74,23 @@ const partitions = (
     </svg>
     Partitions
   </a >
+)
+
+const ConstellationLogo = () => (
+  <StaticQuery
+    query={graphql`
+      query constellationquery {
+        file(relativePath: { eq: "footer/constellation.png" }) {
+          childImageSharp {
+            fluid(maxWidth: 120) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    `}
+    render={data => (
+      <Img className="constellation" fluid={data.file.childImageSharp.fluid} />
+    )}
+  />
 )

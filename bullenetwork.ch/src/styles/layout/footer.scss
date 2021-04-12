@@ -34,8 +34,44 @@ section#footer {
     padding-top: 40px;
     padding-bottom: 40px;
 
-    p {
-      padding: 5px 0;
+    div.first-part {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      p {
+        padding: 5px 0;
+      }
+
+      div.right {
+        a {
+          transition: 0.3s;
+          opacity: 0.5;
+          position: relative;
+
+          div.constellation {
+            width: 120px;
+          }
+
+          &:hover,
+          &:hover:after {
+            opacity: 1;
+          }
+
+          &:after {
+            content: "we love code";
+            font-family: monospace;
+            position: absolute;
+            width: 120px;
+            text-align: center;
+            opacity: 0;
+            font-size: 8px;
+            transition-delay: 200ms;
+            transition-duration: 200ms;
+          }
+        }
+      }
     }
 
     .sub-apps {
@@ -53,6 +89,22 @@ section#footer {
 
         &:hover {
           background-color: rgb(211, 211, 211);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 765px) {
+  section#footer {
+    .section-container {
+      div.first-part {
+        flex-direction: column;
+        align-items: center;
+
+        div.right {
+          margin-top: 30px;
+          margin-bottom: 15px;
         }
       }
     }
