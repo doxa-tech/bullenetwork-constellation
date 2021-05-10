@@ -235,7 +235,7 @@ export const partitionsQuery = graphql`
                   query {
                     truite {
                       items {
-                        partitions(sort:["-bni"]){
+                        partitions(sort:["-bni"],limit:-1){
                           bni
                           title
                           comments
