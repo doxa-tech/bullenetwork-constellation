@@ -42,6 +42,14 @@ const Menu = () => {
           <SvgEl />
           <StudySVG />
         </Link>
+        <div className={styles.twoTiles}>
+          <a href="https://waykup.ch" target="_blank" className={styles.tile}>
+            <p className={styles.outArrow}>Groupe de jeunes (13-18)</p>
+          </a>
+          <Link to="/be-live" className={styles.tile}>
+            <p className={styles.rightArrow}>Groupe jeunes adultes (18+)</p>
+          </Link>
+        </div>
       </div>
     </section >
   )

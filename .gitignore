@@ -2,3 +2,5 @@
 docs/directus/directus.env
 docs/directus/mysql.env
 gcs-authenticator/gcs-auth.linux-amd64
+
+etherpad/data

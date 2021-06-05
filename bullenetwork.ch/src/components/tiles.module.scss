@@ -21,9 +21,6 @@
   justify-content: center;
   align-items: center;
 
-  font-size: 1.8em;
-  font-weight: 300;
-
   position: relative;
   overflow: hidden;
 
@@ -45,6 +42,11 @@
   & > p {
     position: relative;
     z-index: 12;
+
+    font-size: 1.8em;
+    font-weight: 300;
+
+    padding: 0 10px;
   }
 
   &:hover {
@@ -100,8 +102,32 @@
   }
 
   &:nth-of-type(4) {
-    background: rgb(255, 103, 33);
-    background: linear-gradient(37deg, rgba(255, 103, 33, 1) 0%, rgba(255, 146, 96, 1) 100%);
+    background: #c4c4c4;
+    background: linear-gradient(37deg, #c4c4c4 0%, #e3e3e3 100%);
+  }
+}
+
+.two-tiles {
+  height: 300px;
+  flex: 1 1 450px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  overflow: hidden;
+
+  a {
+    &:nth-of-type(1) {
+      background: rgb(255, 103, 33);
+      background: linear-gradient(37deg, rgba(255, 103, 33, 1) 0%, rgba(255, 146, 96, 1) 100%);
+    }
+
+    &:nth-of-type(2) {
+      background: #9bcbd3;
+      background: linear-gradient(37deg, #9bcbd3 0%, #b4f4ff 100%);
+    }
   }
 }
 
@@ -153,6 +179,14 @@
   stroke-miterlimit: 2;
 }
 
+.waykup {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  stroke-linejoin: round;
+  stroke-miterlimit: 2;
+  padding: 40px;
+}
+
 .downArrow {
   position: relative;
 
@@ -171,6 +205,19 @@
 
   &:after {
     content: "→";
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.2;
+  }
+}
+
+.outArrow {
+  position: relative;
+
+  &:after {
+    content: "↗︎";
     position: absolute;
     bottom: -40px;
     left: 50%;
