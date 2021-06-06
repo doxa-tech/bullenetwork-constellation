@@ -1,3 +1,12 @@
+$community-color: rgb(43, 212, 228);
+$social-color: rgb(46, 223, 177);
+$association-color: rgb(255, 214, 31);
+$formation-color: #c4c4c4;
+$waykup-color: rgb(255, 103, 33);
+$belive-color: #9bcbd3;
+
+$darkness-factor: 20%;
+
 .main {
   display: flex;
   flex-direction: row;
@@ -24,20 +33,7 @@
   position: relative;
   overflow: hidden;
 
-  svg.svgPlus {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
-    z-index: 2;
-    opacity: 0;
-
-    transition-property: top, right, opacity;
-    transition-duration: 0.3s;
-    transition-delay: 0.1s;
-  }
+  transition: all 100ms linear;
 
   & > p {
     position: relative;
@@ -45,62 +41,68 @@
 
     font-size: 0.9em;
     font-weight: 300;
+
+    padding: 0 10px;
+
+    &:after {
+      transition: all 200ms linear;
+    }
   }
 
-  &:hover,
-  &.activeLink {
+  &:hover {
     color: white;
     font-weight: 300;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.096);
-  }
+    background-image: none;
 
-  &:hover svg {
-    opacity: 0.05;
-  }
+    & > p:after {
+      font-size: 1.3em;
+      opacity: 0.8;
+    }
 
-  &:hover .svgEl {
-    opacity: 0;
-  }
-
-  &:hover:before,
-  &.activeLink:before {
-    opacity: 1;
-    top: 0%;
-    right: 0%;
-  }
-
-  &:before {
-    content: "";
-    background: linear-gradient(37deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.1) 100%);
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    position: absolute;
-    top: 100%;
-    right: 100%;
-    z-index: 0;
-    transition-property: top, right, opacity;
-    transition-duration: 0.3s;
+    & > p.downArrow:after {
+      bottom: -50px;
+    }
   }
 
   &:nth-of-type(1) {
-    background: rgb(84, 240, 255);
-    background: linear-gradient(37deg, rgba(84, 240, 255, 1) 0%, rgba(164, 247, 255, 1) 100%);
+    background-color: $community-color;
+    background-image: linear-gradient(37deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 100%);
+
+    &:hover {
+      background-image: none;
+      background-color: scale-color($community-color, $lightness: -$darkness-factor);
+    }
   }
 
   &:nth-of-type(2) {
-    background: rgb(46, 223, 177);
-    background: linear-gradient(37deg, rgba(46, 223, 177, 1) 0%, rgba(140, 232, 208, 1) 100%);
+    background-color: $social-color;
+    background-image: linear-gradient(37deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 100%);
+
+    &:hover {
+      background-image: none;
+      background-color: scale-color($social-color, $lightness: -$darkness-factor);
+    }
   }
 
   &:nth-of-type(3) {
-    background: rgb(217, 255, 28);
-    background: linear-gradient(37deg, rgba(217, 255, 28, 1) 0%, rgba(233, 255, 124, 1) 100%);
+    background-color: $association-color;
+    background-image: linear-gradient(37deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 100%);
+
+    &:hover {
+      background-image: none;
+      background-color: scale-color($association-color, $lightness: -$darkness-factor);
+    }
   }
 
   &:nth-of-type(4) {
-    background: #c4c4c4;
-    background: linear-gradient(37deg, #c4c4c4 0%, #e3e3e3 100%);
+    background-color: $formation-color;
+    background-image: linear-gradient(37deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 100%);
+
+    &:hover {
+      background-image: none;
+      background-color: scale-color($formation-color, $lightness: -$darkness-factor);
+    }
   }
 }
 
@@ -117,30 +119,25 @@
 
   a {
     &:nth-of-type(1) {
-      background: rgb(255, 103, 33);
-      background: linear-gradient(37deg, rgba(255, 103, 33, 1) 0%, rgba(255, 146, 96, 1) 100%);
+      background-color: $waykup-color;
+      background-image: linear-gradient(37deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 100%);
+
+      &:hover {
+        background-image: none;
+        background-color: scale-color($waykup-color, $lightness: -$darkness-factor);
+      }
     }
 
     &:nth-of-type(2) {
-      background: #9bcbd3;
-      background: linear-gradient(37deg, #9bcbd3 0%, #b4f4ff 100%);
+      background-color: $belive-color;
+      background-image: linear-gradient(37deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 100%);
+
+      &:hover {
+        background-image: none;
+        background-color: scale-color($belive-color, $lightness: -$darkness-factor);
+      }
     }
   }
-}
-
-.svgPlus {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  stroke-linejoin: round;
-  stroke-miterlimit: 2;
-}
-
-.community {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-miterlimit: 1.5;
 }
 
 .svgEl {
@@ -151,29 +148,6 @@
   transform: translate(-50%, -50%);
   width: 80%;
   height: 80%;
-}
-
-.social {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-miterlimit: 1.5;
-}
-
-.association {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-miterlimit: 1.5;
-}
-
-.study {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  stroke-linejoin: round;
-  stroke-miterlimit: 2;
 }
 
 .downArrow {
@@ -194,6 +168,19 @@
 
   &:after {
     content: "→";
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.2;
+  }
+}
+
+.outArrow {
+  position: relative;
+
+  &:after {
+    content: "↗︎";
     position: absolute;
     bottom: -40px;
     left: 50%;

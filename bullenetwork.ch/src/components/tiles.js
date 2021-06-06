@@ -2,55 +2,35 @@ import React from "react"
 import styles from "./tiles.module.scss"
 import { Link } from "gatsby"
 
-const SvgEl = () => {
-  return (
-    <svg viewBox="0 0 4725 4725" version="1.1" className={styles.svgPlus}>
-      <g transform="matrix(1.06953,0,0,1.06953,-217.062,-328.51)">
-        <path d="M2411.58,307.152C3630.55,307.152 4620.21,1296.81 4620.21,2515.78C4620.21,3734.76 3630.55,4724.41 2411.58,4724.41C1192.6,4724.41 202.95,3734.76 202.95,2515.78C202.95,1296.81 1192.6,307.152 2411.58,307.152ZM2411.58,696.73C3415.54,696.73 4230.63,1511.82 4230.63,2515.78C4230.63,3519.74 3415.54,4334.83 2411.58,4334.83C1407.62,4334.83 592.527,3519.74 592.527,2515.78C592.527,1511.82 1407.62,696.73 2411.58,696.73Z" />
-      </g>
-      <g transform="matrix(1,0,0,0.58178,-74.5395,991.345)">
-        <path d="M3692.73,2200.1C3692.73,2113.88 3652.01,2043.87 3601.85,2043.87L1271.64,2043.87C1221.48,2043.87 1180.75,2113.88 1180.75,2200.1L1180.75,2512.55C1180.75,2598.77 1221.48,2668.77 1271.64,2668.77L3601.85,2668.77C3652.01,2668.77 3692.73,2598.77 3692.73,2512.55L3692.73,2200.1Z" />
-      </g>
-      <g transform="matrix(6.12323e-17,1,-0.58178,3.56237e-17,3733.06,-74.5395)">
-        <path d="M3692.73,2200.1C3692.73,2113.88 3652.01,2043.87 3601.85,2043.87L1271.64,2043.87C1221.48,2043.87 1180.75,2113.88 1180.75,2200.1L1180.75,2512.55C1180.75,2598.77 1221.48,2668.77 1271.64,2668.77L3601.85,2668.77C3652.01,2668.77 3692.73,2598.77 3692.73,2512.55L3692.73,2200.1Z" />
-      </g>
-    </svg>
-  )
-}
-
 const Tiles = () => {
   return (
     <section className={styles.main}>
       <div className={styles.container}>
         <a href="#commmunity-title" className={styles.tile}>
           <p className={styles.downArrow}>La communauté</p>
-          <SvgEl />
           <CommunitySVG />
         </a>
         <Link to="/social" className={styles.tile}>
           <p className={styles.rightArrow}>Engagement social</p>
-          <SvgEl />
           <SocialSVG />
         </Link>
         <Link to="/association" className={styles.tile}>
           <p className={styles.rightArrow}>l'Association</p>
-          <SvgEl />
           <AssociationSVG />
         </Link>
         <Link to="/academy" className={styles.tile}>
           <p className={styles.rightArrow}>Formations</p>
-          <SvgEl />
           <StudySVG />
         </Link>
         <div className={styles.twoTiles}>
           <a href="https://waykup.ch" target="_blank" className={styles.tile}>
             <p className={styles.outArrow}>Groupe de jeunes<br />13-18</p>
-            <SvgEl />
+
             <WaykupSVG />
           </a>
           <Link to="/be-live" className={styles.tile}>
             <p className={styles.rightArrow}>Groupe jeunes adultes<br />18+</p>
-            <SvgEl />
+
             <BeliveSVG />
           </Link>
         </div>
