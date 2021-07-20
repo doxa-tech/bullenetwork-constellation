@@ -1,5 +1,4 @@
 section#footer {
-  padding-top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,13 +10,7 @@ section#footer {
 
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#54f0ff+0,00b485+37,d9ff1c+71,ff6721+100 */
     background: #54f0ff; /* Old browsers */
-    background: -moz-linear-gradient(
-      left,
-      #54f0ff 0%,
-      #00b485 37%,
-      #d9ff1c 71%,
-      #ff6721 100%
-    ); /* FF3.6-15 */
+    background: -moz-linear-gradient(left, #54f0ff 0%, #00b485 37%, #d9ff1c 71%, #ff6721 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(
       left,
       #54f0ff 0%,
@@ -41,8 +34,79 @@ section#footer {
     padding-top: 40px;
     padding-bottom: 40px;
 
-    p {
-      padding: 5px 0;
+    div.first-part {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      p {
+        padding: 5px 0;
+      }
+
+      div.right {
+        a {
+          transition: 0.3s;
+          opacity: 0.5;
+          position: relative;
+
+          div.constellation {
+            width: 120px;
+          }
+
+          &:hover,
+          &:hover:after {
+            opacity: 1;
+          }
+
+          &:after {
+            content: "feel nerdy ?";
+            font-family: monospace;
+            position: absolute;
+            width: 120px;
+            text-align: center;
+            opacity: 0;
+            font-size: 8px;
+            transition-delay: 200ms;
+            transition-duration: 200ms;
+          }
+        }
+      }
+    }
+
+    .sub-apps {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 15px 0 0 0;
+
+      & > * {
+        padding: 10px 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          background-color: rgb(211, 211, 211);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 765px) {
+  section#footer {
+    .section-container {
+      div.first-part {
+        flex-direction: column;
+        align-items: center;
+
+        div.right {
+          margin-top: 30px;
+          margin-bottom: 15px;
+        }
+      }
     }
   }
 }

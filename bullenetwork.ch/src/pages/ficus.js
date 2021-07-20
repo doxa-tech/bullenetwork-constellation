@@ -1,27 +1,21 @@
-import React, { useState, useEffect } from "react"
-import Layout from "../components/layout"
-import Intro from "../components/intro"
-import Menu from "../components/menu"
+import React from "react"
+import Layout from "../components/layout-small"
 import Img from "gatsby-image"
-import { StaticQuery, graphql, Link } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 
 export default () => {
 
   return (
-    <Layout layoutClass="index-container ficus-page">
-      <Menu />
-      <Intro>
-        Ficus
-      </Intro>
-      <div class="intro-web">
-        <a href="http://eebulle.minsh.com/">Version Web</a>
-      </div>
+    <Layout layoutClass="index-container ficus-page" title={"Application Ficus"}>
+
       <section dataTitle="Ficus" class="fixed f1" id="go">
         <div class="intro">
+          <h1>Application Ficus</h1>
           <p><span>Parce que nous sommes tous ramifiés à la même source</span></p>
           <p><span>Parce que la croissance passe par des racines solidement ancrées</span></p>
           <p><span>Parce que la vie est une perpétuelle circulation d'éléments vitaux</span></p>
           <p><span class="ficus">Ficus</span> <span>nous connecte les uns aux autres</span></p>
+          <p class="web-link"><a href="http://eebulle.minsh.com/">version web</a></p>
         </div>
 
         <FicusLogo />

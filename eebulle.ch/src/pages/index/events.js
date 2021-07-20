@@ -10,7 +10,7 @@ const Events = () => {
     setContent(
       <div className="loadrr"><div><div></div><div></div><div></div><div></div></div></div>
     )
-    fetch(`https://panda.bullenetwork.ch/directus/items/eebulle_events`)
+    fetch(`https://panda.bullenetwork.ch/directus/items/eebulle_events?filter[status][eq]=published`)
       .then(response => response.json())
       .then(resultData => {
         const result = resultData.data.map((event) =>
@@ -23,7 +23,7 @@ const Events = () => {
   return (
     <div className="event-container">
 
-      <h2>Prochainement</h2>
+      <h2 id="events">Prochainement</h2>
       {content}
 
     </div>

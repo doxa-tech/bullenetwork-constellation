@@ -8,7 +8,7 @@ export default () => {
   const [title, setTitle] = useState(0)
   const [content, setContent] = useState(1)
   const [churches, setChurches] = useState(2)
-  // const [specialContent, setSpecialContent] = useState(3)
+  const [specialContent, setSpecialContent] = useState(3)
   useEffect(() => {
     setTitle(
       <div className="loadrr"><div><div></div><div></div><div></div><div></div></div></div>
@@ -16,20 +16,20 @@ export default () => {
     setContent(
       '<div class="loadrr"><div><div></div><div></div><div></div><div></div></div></div>'
     )
-    // setSpecialContent(
-    //   '<div class="loadrr"><div><div></div><div></div><div></div><div></div></div></div>'
-    // )
+    setSpecialContent('')
     fetch(`https://panda.bullenetwork.ch/directus/items/bullenetwork_pages/2`)
       .then(response => response.json())
       .then(resultData => {
         setTitle(resultData.data.title)
         setContent(resultData.data.content)
       })
-    // fetch(`https://panda.bullenetwork.ch/directus/items/bullenetwork_pages/3`)
-    //   .then(response => response.json())
-    //   .then(resultData => {
-    //     setSpecialContent(resultData.data.content)
-    //   })
+    fetch(`https://panda.bullenetwork.ch/directus/items/bullenetwork_pages/7`)
+      .then(response => response.json())
+      .then(resultData => {
+        if (resultData.data.status === "published") {
+          setSpecialContent(resultData.data.content)
+        }
+      })
     fetch(`https://panda.bullenetwork.ch/directus/items/bullenetwork_churches`)
       .then(response => response.json())
       .then(resultData => {
@@ -48,19 +48,18 @@ export default () => {
   return (
     <Layout layoutClass="index-container">
 
+      <section id="text-info">
+
+        <div dangerouslySetInnerHTML={{ __html: specialContent }}>
+        </div>
+
+      </section>
+
       <Intro>
-        {/* {title} */}
-        Le Bulle Network est un réseau de communautés au service de son prochain.
+        {title}
       </Intro>
 
       <Tiles />
-
-      {/* <section id="text-info">
-
-        <div dangerouslySetInnerHTML={{ __html: specialContent }} className="section-container" style={{ border: "2px solid orange", background: "rgb(255, 243, 220)", margin: "30px 0 0 0", padding: "30px" }}>
-        </div>
-
-      </section> */}
 
       <div className="separation"></div>
 
