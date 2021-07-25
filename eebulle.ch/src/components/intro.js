@@ -1,16 +1,16 @@
 import React from "react"
 
-import style from "./intro.module.scss"
+import { left, right, rightWrapper } from "./intro.module.scss"
 
 const IntroLeft = ({ children }) => (
-  <div className={style.left}>
+  <div className={left}>
     {children}
   </div>
 )
 
 const IntroRight = ({ children }) => (
-  <div className={style.rightWrapper}>
-    <div className={style.right}>
+  <div className={rightWrapper}>
+    <div className={right}>
       {children}
     </div>
   </div>
