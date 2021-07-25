@@ -1,7 +1,7 @@
 import React from "react"
 import BackgroundImage from "gatsby-background-image"
 
-import style from "./banner.module.scss"
+import { banner } from "./banner.module.scss"
 
 export default ({ fluidImg, children }) => {
   return (
@@ -14,7 +14,7 @@ export default ({ fluidImg, children }) => {
           width: "100%",
         }}
       >
-        <div className={style.banner}>
+        <div className={banner}>
           {children}
         </div>
       </BackgroundImage>

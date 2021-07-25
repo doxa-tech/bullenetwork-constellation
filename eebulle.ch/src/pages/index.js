@@ -1,7 +1,7 @@
 import React from "react"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 import Welcome from "./index/welcome"
 import Activities from "./index/activities"
@@ -28,7 +28,7 @@ const Index = () => {
 
   return (
     <Layout layoutClass="index">
-      <SEO title="Accueil" />
+      <Seo title="Accueil" />
 
       <a className="top-link" href="https://www.youtube.com/channel/UCL_B5hW5uxe-0P8kPLma9gg" target="_blank" rel="noreferrer">
         <div className="top-info">
