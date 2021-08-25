@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import Intro from "../components/intro"
 import Layout from "../components/layout"
 import Church from "./index/church"
+import Tiles from "../components/tiles"
 
 export default () => {
   const [title, setTitle] = useState(0)
@@ -15,19 +16,19 @@ export default () => {
     setContent(
       '<div class="loadrr"><div><div></div><div></div><div></div><div></div></div></div>'
     )
-    setSpecialContent(
-      '<div class="loadrr"><div><div></div><div></div><div></div><div></div></div></div>'
-    )
+    setSpecialContent('')
     fetch(`https://panda.bullenetwork.ch/directus/items/bullenetwork_pages/2`)
       .then(response => response.json())
       .then(resultData => {
         setTitle(resultData.data.title)
         setContent(resultData.data.content)
       })
-    fetch(`https://panda.bullenetwork.ch/directus/items/bullenetwork_pages/3`)
+    fetch(`https://panda.bullenetwork.ch/directus/items/bullenetwork_pages/7`)
       .then(response => response.json())
       .then(resultData => {
-        setSpecialContent(resultData.data.content)
+        if (resultData.data.status === "published") {
+          setSpecialContent(resultData.data.content)
+        }
       })
     fetch(`https://panda.bullenetwork.ch/directus/items/bullenetwork_churches`)
       .then(response => response.json())
@@ -46,16 +47,23 @@ export default () => {
 
   return (
     <Layout layoutClass="index-container">
+
+      <section id="text-info">
+
+        <div dangerouslySetInnerHTML={{ __html: specialContent }}>
+        </div>
+
+      </section>
+
       <Intro>
         {title}
       </Intro>
 
-      <section id="text-info">
+      <Tiles />
 
-        <div dangerouslySetInnerHTML={{ __html: specialContent }} className="section-container" style={{ border: "2px solid orange", background: "rgb(255, 243, 220)", margin: "30px 0 0 0", padding: "30px" }}>
-        </div>
+      <div className="separation"></div>
 
-      </section>
+      <h2 id="commmunity-title">La communauté</h2>
 
       <section id="churches">
         <div className="section-container">

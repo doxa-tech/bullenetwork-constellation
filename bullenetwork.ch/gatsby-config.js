@@ -5,6 +5,10 @@
  */
 var path = require('path');
 
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   /* Your site config here */
   plugins: [
@@ -18,6 +22,21 @@ module.exports = {
       options: {
         name: `images`,
         path: path.join(__dirname, `src`, `images`),
+      },
+    },
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        // This type will contain remote schema Query type
+        typeName: "TRUITE",
+        // This is the field under which it's accessible
+        fieldName: "truite",
+        // URL to query from
+        url: process.env.PARTITIONS_ENDPOINT,
+        // 
+        headers: {
+          Authorization: `Bearer ${process.env.PARTITIONS_GRAPHQL_TOKEN}`,
+        },
       },
     },
   ],

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Layout from "../components/layout"
 import Intro from "../components/intro"
+import Menu from "../components/menu"
 
 export default () => {
   const [title, setTitle] = useState(0)
@@ -21,6 +22,7 @@ export default () => {
   }, [])
   return (
     <Layout layoutClass="index-container">
+      <Menu />
       <Intro>
         {title}
       </Intro>

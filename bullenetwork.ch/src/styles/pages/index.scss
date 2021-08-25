@@ -1,5 +1,35 @@
 // @format
 div.index-container {
+  h2#commmunity-title {
+    text-align: center;
+    font-size: 2em;
+    padding: 50px 0 10px 0;
+    font-weight: 100;
+  }
+
+  div.separation {
+    margin: 50px 0 40px 0;
+    height: 27px;
+    width: 100%;
+    background: #54f0ff; /* Old browsers */
+    background: -moz-linear-gradient(left, #54f0ff 0%, #00b485 37%, #d9ff1c 71%, #ff6721 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(
+      left,
+      #54f0ff 0%,
+      #00b485 37%,
+      #d9ff1c 71%,
+      #ff6721 100%
+    ); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(
+      to right,
+      #54f0ff 0%,
+      #00b485 37%,
+      #d9ff1c 71%,
+      #ff6721 100%
+    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#54f0ff', endColorstr='#ff6721',GradientType=1 ); /* IE6-9 */
+  }
+
   section#churches {
     display: flex;
     flex-direction: row;

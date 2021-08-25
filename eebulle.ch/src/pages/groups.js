@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import BannerCMP from "../components/banner"
 
 import "./groups/groups.scss"
@@ -41,7 +41,7 @@ const Groups = () => {
 
   return (
     <Layout layoutClass="groups">
-      <SEO title="Groupe de maison" />
+      <Seo title="Groupe de maison" />
 
       <BannerCMP fluidImg={img.desktop.childImageSharp.fluid}>
         <h2>Le dimanche matin, c'est le match.<br />L'entrainement se fait la semaine en groupe de maison.</h2>

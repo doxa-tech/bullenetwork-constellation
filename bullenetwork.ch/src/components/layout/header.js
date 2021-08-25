@@ -1,6 +1,6 @@
 import React from "react"
 import Img from "gatsby-image"
-import { StaticQuery, graphql, Link } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 import styles from "./header.module.scss"
 import HeaderBG from './header-bg'
 
@@ -18,7 +18,7 @@ export default () => (
       }
     `}
     render={data => (
-      <section className={styles.header}>
+      <section id="header-section" className={styles.header}>
         <HeaderBG>
           <div>
             <div className={styles.sectionContainer}>
@@ -29,17 +29,17 @@ export default () => (
                 <div className={styles.right}>
                   <p>
                     <span>“</span>
-                    <span>Parce que ZE force est en Christ</span>
+                    <span>Parce que nous aimons notre prochain</span>
                     <span>”</span>
                   </p>
                 </div>
               </div>
             </div>
-            <div className={styles.menuContainer}>
+            {/* <div className={styles.menuContainer}>
               <Link to="/" activeClassName={styles.activeLink}>Home</Link>
               <Link to="/academy" activeClassName={styles.activeLink}>Academy</Link>
               <Link to="/contact" activeClassName={styles.activeLink}>Contact</Link>
-            </div>
+            </div> */}
           </div>
         </HeaderBG>
       </section>

@@ -1,5 +1,9 @@
 // @format
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400");
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
@@ -8,6 +12,7 @@ body {
     & > .section-container {
       padding-left: 30px;
       padding-right: 30px;
+      padding-bottom: 50px;
     }
   }
 }
