@@ -25,7 +25,7 @@ const Contact = () => {
             <label>Message<textarea name="message"></textarea></label>
           </p>
           <p className="text-align-right">
-            <button className="button" type="submit">Send Message <span className="icon -right"><RiSendPlane2Line /></span></button>
+            <button className="button" type="submit">Envoyer <span className="icon -right"><RiSendPlane2Line /></span></button>
           </p>
         </form>
       </div>
