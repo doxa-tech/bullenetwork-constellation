@@ -1,0 +1,23 @@
+@font-face {
+ font-family: 'gentleman';
+ src: url(../fonts/gentleman-800-bold-webfont.woff),
+			url(../fonts/gentleman-800-bold-webfont.woff2),
+			url(../fonts/gentleman-800-bold-webfont.ttf);
+ font-weight: 800;
+}
+
+@font-face {
+ font-family: 'gentleman';
+ src: url(../fonts/gentleman-900-heavy-webfont.woff),
+			url(../fonts/gentleman-900-heavy-webfont.woff2),
+			url(../fonts/gentleman-900-heavy-webfont.ttf);
+ font-weight: 900;
+}
+
+@font-face {
+ font-family: 'gentleman';
+ src: url(../fonts/gentleman-600-regular-webfont.woff),
+			url(../fonts/gentleman-600-regular-webfont.woff2),
+			url(../fonts/gentleman-600-regular-webfont.ttf);
+ font-weight: 600;
+}

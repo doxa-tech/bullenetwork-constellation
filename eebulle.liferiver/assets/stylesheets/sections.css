@@ -1,0 +1,36 @@
+
+
+/*
+ * design for each fixed sections
+ */
+section.fixed.f1 {
+	background-image: url("../images/rougemont.jpg");
+}
+	section.fixed.f1 .subtitle {
+		text-transform: uppercase;
+	}
+
+
+/*
+ * design for each scrolling sectiona
+ */
+section.scrolling.s1 img {
+	max-width: 100%;
+	float: left;
+	padding: 0 20px 20px 0;
+}
+section.scrolling.s1 img.bullen {
+	width: 300px;
+}
+section.scrolling.s1 img.right {
+	float: right;
+}
+section.scrolling.s1 img.people2 {
+	width: 300px;
+}
+
+
+section.scrolling.s3 {
+	background-color: #d52121;
+	color: #fff;
+}
