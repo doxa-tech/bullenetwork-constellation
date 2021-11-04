@@ -1,6 +1,7 @@
 name: bullenetwork.ch deploy
 
 on:
+  workflow_dispatch:
   push:
     branches: [ production-bullenetwork-ch ]
 
