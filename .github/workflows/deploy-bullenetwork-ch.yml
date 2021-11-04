@@ -20,7 +20,7 @@ jobs:
       run: |
         cd bullenetwork.ch
         npm install
-        npm install -g gatsby-cli
+        npm install -g gatsby-cli@2.8.29
         
     - name: Build
       run: |
