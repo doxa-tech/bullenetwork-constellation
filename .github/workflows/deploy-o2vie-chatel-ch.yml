@@ -1,6 +1,7 @@
 name: o2vie-chatel.ch deploy
 
 on:
+  workflow_dispatch:
   push:
     branches: [ production-o2vie-chatel-ch ]
 
@@ -11,9 +12,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       
-    - uses: actions/setup-node@v1
+    - uses: actions/setup-node@v2
       with:
-        node-version: 13.8
+        node-version: 15
     
     - name: Install dependencies
       run: |
