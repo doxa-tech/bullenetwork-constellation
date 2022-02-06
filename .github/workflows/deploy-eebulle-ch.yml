@@ -1,6 +1,7 @@
 name: eebulle.ch deploy
 
 on:
+  workflow_dispatch:
   push:
     branches: [ production-eebulle-ch ]
 
