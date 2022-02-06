@@ -1,85 +1,38 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.org/docs/gatsby-config/
- */
-
-const settings = require("./src/util/site.json")
-
 module.exports = {
-  siteMetadata: settings.meta,
+  siteMetadata: {
+    title: `O2Vie`,
+    description: `O2Vie website`,
+    author: `Doxatech`,
+    siteUrl: `https://o2vie-chatel.ch`,
+  },
   plugins: [
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/static/assets/`,
-        name: `assets`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/content/`,
-        name: `content`,
+        name: `images`,
+        path: `${__dirname}/src/images`,
       },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        gfm: true,
-        plugins: [
-          `gatsby-remark-reading-time`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1024,
-              showCaptions: true,
-              linkImagesToOriginal: false,
-              tracedSVG: true,
-              loading: "lazy",
-            },
-          },
-          `gatsby-remark-responsive-iframe`,
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: "language-",
-              inlineCodeMarker: null,
-              aliases: {},
-              showLineNumbers: false,
-              noInlineHighlight: false,
-              // By default the HTML entities <>&'" are escaped.
-              // Add additional HTML escapes by providing a mapping
-              // of HTML entities and their escape value IE: { '}': '&#123;' }
-              escapeEntities: {},
-            },
-          },
-        ],
-      },
-    },
-    `gatsby-plugin-sass`,
-    `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: settings.ga,
-      },
-    },
-    `gatsby-plugin-advanced-sitemap`,
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `O2Vie`,
-        short_name: `O2Vie`,
+        name: `gatsby-starter-default`,
+        short_name: `starter`,
         start_url: `/`,
-        background_color: `#f7f0eb`,
-        theme_color: `#a2466c`,
-        display: `standalone`,
-        icon: `static/assets/turbine.png`,
+        background_color: `#663399`,
+        // This will impact how browsers show your PWA/website
+        // https://css-tricks.com/meta-theme-color-and-trickery/
+        // theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    'gatsby-plugin-offline',
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    // `gatsby-plugin-offline`,
   ],
 }

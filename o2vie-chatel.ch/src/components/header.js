@@ -1,8 +1,7 @@
-import React from "react"
+import * as React from "react"
 
-const Header = ({children}) => (
-  <header className="site-header">
-    {children}
+const Header = () => (
+  <header>
   </header>
 )
 
