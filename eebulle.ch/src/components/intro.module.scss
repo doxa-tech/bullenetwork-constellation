@@ -1,19 +1,20 @@
 .left {
   padding: 20px;
   margin: 30px 0;
-  background: #ffb16f;
   width: 100%;
   max-width: 400px;
   position: relative;
 
   &::after {
     content: "";
-    background: #ffb16f;
+    background: rgb(219, 152, 95);
+    background: linear-gradient(353deg, rgba(219, 152, 95, 1) 0%, rgba(255, 177, 111, 1) 100%);
+
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
-    left: -99999px;
+    left: -100vw;
     z-index: -1;
   }
 
@@ -30,7 +31,6 @@
 .right {
   padding: 20px;
   margin: 30px 0;
-  background: #ffb16f;
   width: 100%;
   max-width: 330px;
   position: relative;
@@ -39,12 +39,13 @@
 
   &::after {
     content: "";
-    background: #ffb16f;
+    background: rgb(219, 152, 95);
+    background: linear-gradient(353deg, rgba(219, 152, 95, 1) 0%, rgba(255, 177, 111, 1) 100%);
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
-    right: -99999px;
+    right: -100vw;
     z-index: -1;
   }
 
