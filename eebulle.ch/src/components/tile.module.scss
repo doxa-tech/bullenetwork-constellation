@@ -29,10 +29,6 @@
     width: 300px;
     flex-shrink: 0;
     background-color: #c0c2b5;
-
-    img {
-      object-fit: contain !important;
-    }
   }
 
   @media only screen and (max-width: 767px) {
