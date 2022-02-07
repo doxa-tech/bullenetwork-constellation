@@ -2,6 +2,10 @@ import * as React from "react"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import IndexActivities from "./index/activities"
+import IndexWelcome from "./index/welcome"
+
+import { StaticImage } from "gatsby-plugin-image"
 
 const IndexPage = () => (
   <Layout>
@@ -11,18 +15,20 @@ const IndexPage = () => (
       <div id="banner" class="box container">
         <div class="row">
           <div class="col-7 col-12-medium">
-            <h2>Hi. This is Verti.</h2>
-            <p>It's a free responsive site template by HTML5 UP</p>
+            <h2>O2Vie</h2>
+            <h3>Châtel-St-Denis </h3>
+            <p>Une association chrétienne au service de sa région.</p>
           </div>
           <div class="col-5 col-12-medium">
-            <ul>
-              <li><a href="#" class="button large icon solid fa-arrow-circle-right">Ok let's go</a></li>
-              <li><a href="#" class="button alt large icon solid fa-question-circle">More info</a></li>
-            </ul>
+            <StaticImage src="../images/turbine.jpg" alt="turbine" style={{ margin: 'auto' }} layout="fixed" width={280} />
           </div>
         </div>
       </div>
     </div>
+
+    <IndexWelcome />
+
+    <IndexActivities />
     
   </Layout>
 )

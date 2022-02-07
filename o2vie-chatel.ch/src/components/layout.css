@@ -89,9 +89,7 @@ input, select, textarea {
 	body {
 		background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0)), url("../images/bg01.png");
 		background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0)), url("../images/bg01.png");
-		background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0)), url("../images/bg01.png");
-		background-image: linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0)), url("../images/bg01.png");
-		background-color: #f7f7f7;
+		background-color: #edfaf6;
 		background-position: top left, top left;
 		background-repeat: repeat-x, repeat;
 		background-size: 100% 30em, auto;
@@ -122,7 +120,7 @@ input, select, textarea {
 	}
 
 	a {
-		color: #0090c5;
+		color: #108d00;
 		text-decoration: underline;
 	}
 
@@ -1516,7 +1514,7 @@ input, select, textarea {
 		form input[type="password"]:focus,
 		form select:focus,
 		form textarea:focus {
-			border-color: #0090c5;
+			border-color: #108d00;
 		}
 
 	form input[type="text"],
@@ -1639,7 +1637,7 @@ input, select, textarea {
 		-webkit-appearance: none;
 		position: relative;
 		display: inline-block;
-		background: #0090c5;
+		background: #108d00;
 		color: #fff;
 		text-decoration: none;
 		border-radius: 6px;
@@ -1666,7 +1664,7 @@ input, select, textarea {
 		input[type="reset"]:hover,
 		button:hover,
 		.button:hover {
-			background: #10a0d5;
+			background: #0b5f00;
 		}
 
 		input[type="button"]:active,
@@ -1674,7 +1672,7 @@ input, select, textarea {
 		input[type="reset"]:active,
 		button:active,
 		.button:active {
-			background: #20b0e5;
+			background: #15ad01;
 		}
 
 		input[type="button"].alt,
@@ -1927,7 +1925,7 @@ input, select, textarea {
 	}
 
 	#footer-wrapper {
-		padding: 6em 0 8em 0;
+		padding: 3em 0 1em 0;
 	}
 
 /* Header */
@@ -1941,6 +1939,10 @@ input, select, textarea {
 	#logo {
 		display: inline-block;
 	}
+
+		#logo img {
+			border-radius: 6px;
+		}	
 
 		#logo h1 {
 			background: #ff4486;
@@ -1970,7 +1972,7 @@ input, select, textarea {
 		position: absolute;
 		right: 0;
 		top: 0;
-		font-size: 0.9em;
+		font-size: 1.3em;
 	}
 
 		#nav ul {
@@ -2009,8 +2011,8 @@ input, select, textarea {
 					background: #fff;
 				}
 
-				#nav ul li.current a {
-					background: #444;
+				#nav ul li a.current {
+					background: #108d00;
 					color: #fff;
 				}
 
@@ -2118,6 +2120,9 @@ input, select, textarea {
 			#banner ul li {
 				padding-left: 0;
 			}
+		#banner img {
+			border-radius: 50%;
+		}
 
 /* Footer */
 
@@ -2131,7 +2136,7 @@ input, select, textarea {
 
 	#copyright {
 		color: #aaa;
-		padding: 4em 0 0 0;
+		padding: 2em 0 0 0;
 		text-align: center;
 	}
 

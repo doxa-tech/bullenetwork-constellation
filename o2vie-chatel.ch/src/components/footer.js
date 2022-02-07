@@ -7,13 +7,11 @@ const Footer = () => (
         <div class="col-3 col-6-medium col-12-small">
 
           <section class="widget links">
-            <h3>Random Stuff</h3>
+            <h3>Liens</h3>
             <ul class="style2">
-              <li><a href="#">Etiam feugiat condimentum</a></li>
-              <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-              <li><a href="#">Sed porttitor cras in erat nec</a></li>
-              <li><a href="#">Felis varius pellentesque potenti</a></li>
-              <li><a href="#">Nullam scelerisque blandit leo</a></li>
+              <li><a href="/about">A propos de nous</a></li>
+              <li><a href="/activities">Nos activités</a></li>
+              <li><a href="https://bullenetwork.ch" target="_blank">Bulle Network</a></li>
             </ul>
           </section>
 
@@ -22,22 +20,16 @@ const Footer = () => (
         <div class="col-3 col-6-medium col-12-small">
 
           <section class="widget contact last">
-            <h3>Contact Us</h3>
+            <h3>Nous contacter</h3>
             <ul>
-              <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-              <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-              <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-              <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-              <li><a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a></li>
+              <li><a href="https://www.instagram.com/_o2vie_/" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
             </ul>
-            <p>1234 Fictional Road<br />
-            Nashville, TN 00000<br />
-            (800) 555-0000</p>
+            <p>Email: fannie.blakaj@bullenetwork.ch<br/></p>
           </section>
 
         </div>
       </div>
-      <div class="row">
+      <div class="row gtr-0 gtr-uniform">
         <div class="col-12">
           <div id="copyright">
             <ul class="menu">
