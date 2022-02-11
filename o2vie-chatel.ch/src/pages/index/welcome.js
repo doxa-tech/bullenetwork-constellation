@@ -3,7 +3,7 @@ import * as React from "react"
 import "./welcome.css"
 
 const IndexWelcome = () => (
-  <div id="main-wrapper">
+  <div id="main-wrapper" class="index-welcome">
     <div class="container">
       <div class="row gtr-200">
         <div class="col-8 col-12-medium imp-medium">
