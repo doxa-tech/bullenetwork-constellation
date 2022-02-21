@@ -7,7 +7,7 @@
 //   curl -X POST -d "bucket=BUCKET_NAME" -d "object=OBJECT_PATH.PDF"\
 //     http://localhost:9990/auth
 //
-//   curl -X POST -d "bucket=BZCKET_NAME" -d "OBJECT_PATH_1.PDF=FILENAME_1.PDF"\
+//   curl -X POST -d "bucket=BUCKET_NAME" -d "OBJECT_PATH_1.PDF=FILENAME_1.PDF"\
 //     -d "OBJECT_PATH_2.PDF=FILENAME_2.PDF" http://localhost:9990/archive
 
 package main
@@ -15,6 +15,7 @@ package main
 import (
 	"archive/zip"
 	"context"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"io"
@@ -30,10 +31,16 @@ import (
 
 	"golang.org/x/oauth2/google"
 	"golang.org/x/oauth2/jwt"
+	"golang.org/x/xerrors"
 )
 
 const validityPeriod = time.Minute * 10
 const defaultAddr = ":9990"
+
+const GCS_KEY_PATH = "GCS_PRIVATE_PATH"
+const BUCKET_KEY_NAME = "GCS_BUCKET_NAME"
+
+const directusFileURL = "https://truite.bullenetwork.ch/files/"
 
 type key int
 
@@ -48,7 +55,17 @@ func main() {
 
 	logger := log.New(os.Stdout, "http: ", log.LstdFlags)
 
-	jsonKey, err := ioutil.ReadFile(os.Getenv("GCS_PRIVATE_PATH"))
+	gcs_key_path := os.Getenv(GCS_KEY_PATH)
+	if gcs_key_path == "" {
+		logger.Fatalf("please set %s", GCS_KEY_PATH)
+	}
+
+	gcs_bucket_name := os.Getenv(BUCKET_KEY_NAME)
+	if gcs_bucket_name == "" {
+		logger.Fatalf("please set %s", BUCKET_KEY_NAME)
+	}
+
+	jsonKey, err := ioutil.ReadFile(os.Getenv(GCS_KEY_PATH))
 	if err != nil {
 		logger.Fatalf("failed to read key: %v", err.Error())
 	}
@@ -58,10 +75,12 @@ func main() {
 		logger.Fatalf("failed to read config: %v", err.Error())
 	}
 
-	client, err := storage.NewClient(context.Background(), option.WithServiceAccountFile(os.Getenv("GCS_PRIVATE_PATH")))
+	client, err := storage.NewClient(context.Background(), option.WithCredentialsFile(os.Getenv("GCS_PRIVATE_PATH")))
 	if err != nil {
 		logger.Fatalf("failed to creat client: %v", err)
 	}
+
+	defer client.Close()
 
 	mux := http.NewServeMux()
 	server := &http.Server{
@@ -71,6 +90,7 @@ func main() {
 
 	mux.HandleFunc("/auth", auth(conf))
 	mux.HandleFunc("/archive", archive(client))
+	mux.HandleFunc("/gcspub", gcspub(client, gcs_bucket_name))
 
 	ln, err := net.Listen("tcp", listenAddr)
 	if err != nil {
@@ -188,6 +208,11 @@ func archive(client *storage.Client) func(http.ResponseWriter, *http.Request) {
 			return
 		}
 
+		type fileRequest struct {
+			Name   string
+			Object string
+		}
+
 		objects := []fileRequest{}
 
 		for k, v := range r.Form {
@@ -224,17 +249,121 @@ func archive(client *storage.Client) func(http.ResponseWriter, *http.Request) {
 			}
 
 			writer, err := zipWriter.CreateHeader(&header)
+			if err != nil {
+				http.Error(w, "failed to create header: "+err.Error(), http.StatusInternalServerError)
+			}
 
 			_, err = io.Copy(writer, rc)
+			if err != nil {
+				http.Error(w, "failed to copy: "+err.Error(), http.StatusInternalServerError)
+			}
+
 			zipWriter.Flush()
 			w.(http.Flusher).Flush()
 		}
 	}
 }
 
-type fileRequest struct {
-	Name   string
-	Object string
+// gcspub returns a HTTP handler that updates the ACL to make an object public.
+// It expects a hook message from directus. The object is updated only if the
+// updated element (i.e. directus field) is named "image".
+func gcspub(client *storage.Client, bucket string) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		type accountability struct {
+			User string `json:"user"`
+			Role string `json:"role"`
+		}
+
+		type hook struct {
+			Event          string          `json:"event"`
+			Accountability accountability  `json:"accountability"`
+			Payload        json.RawMessage `json:"payload"`
+			Keys           []string        `json:"keys"`
+			Collection     string          `json:"collection"`
+		}
+
+		var h hook
+
+		err := json.NewDecoder(r.Body).Decode(&h)
+		if err != nil {
+			http.Error(w, "failed to unmarshal hook: "+err.Error(), http.StatusBadRequest)
+			return
+		}
+
+		type image struct {
+			Image string `json:"image"`
+		}
+
+		var m image
+
+		err = json.Unmarshal(h.Payload, &m)
+		if err != nil {
+			http.Error(w, "failed to unmarshal image"+err.Error(), http.StatusBadRequest)
+			return
+		}
+
+		object := m.Image
+		if object == "" {
+			return
+		}
+
+		filenameDisk, err := getDirectusFilename(object)
+		if err != nil {
+			http.Error(w, "failed to get filename_disk: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
+		defer cancel()
+
+		acl := client.Bucket(bucket).Object(filenameDisk).ACL()
+
+		err = acl.Set(ctx, storage.AllUsers, storage.RoleReader)
+		if err != nil {
+			http.Error(w, "failed to set acl: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+	}
+}
+
+// getDirectusFilename returns the filename_disk attribute of a Directus file
+func getDirectusFilename(object string) (string, error) {
+	res, err := http.Get(directusFileURL + object)
+	if err != nil {
+		return "", xerrors.Errorf("failed to get Directus image: %v", err)
+	}
+
+	var objmap map[string]json.RawMessage
+
+	err = json.NewDecoder(res.Body).Decode(&objmap)
+	if err != nil {
+		return "", xerrors.Errorf("failed to decode response: %v", err)
+	}
+
+	data := objmap["data"]
+	if len(data) == 0 {
+		return "", xerrors.Errorf("data empty: %v", objmap)
+	}
+
+	type attributes struct {
+		FilenameDisk string `json:"filename_disk"`
+	}
+
+	var attr attributes
+
+	err = json.Unmarshal(data, &attr)
+	if err != nil {
+		return "", xerrors.Errorf("failed to unmarshal data: %v", err)
+	}
+
+	if attr.FilenameDisk == "" {
+		return "", xerrors.Errorf("filename_disk empty: %v", objmap)
+	}
+
+	fmt.Println("filename disk:", attr.FilenameDisk)
+
+	return attr.FilenameDisk, nil
 }
 
 func nextRequestID() string {
