@@ -38,3 +38,17 @@ $ sudo service gcsauth stop
 $ sudo service gcsauth status
 $ sudo systemctl enable gcsauth.service
 ```
+
+# Allow a docker container to access localhost
+
+The docker container must use the address from:
+
+```sh
+ip addr show docker0
+```
+
+Additionally, do not forget to update the firewall:
+
+```sh
+sudo ufw allow from 192.168.0.1/16 to any port 9990
+```
