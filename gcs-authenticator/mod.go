@@ -65,7 +65,7 @@ func main() {
 		logger.Fatalf("please set %s", BUCKET_KEY_NAME)
 	}
 
-	jsonKey, err := ioutil.ReadFile(os.Getenv(GCS_KEY_PATH))
+	jsonKey, err := ioutil.ReadFile(gcs_key_path)
 	if err != nil {
 		logger.Fatalf("failed to read key: %v", err.Error())
 	}
@@ -75,7 +75,7 @@ func main() {
 		logger.Fatalf("failed to read config: %v", err.Error())
 	}
 
-	client, err := storage.NewClient(context.Background(), option.WithCredentialsFile(os.Getenv("GCS_PRIVATE_PATH")))
+	client, err := storage.NewClient(context.Background(), option.WithCredentialsFile(gcs_key_path))
 	if err != nil {
 		logger.Fatalf("failed to creat client: %v", err)
 	}
