@@ -1,48 +1,63 @@
 import * as React from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-const IndexActivities = () => (
-  <div id="features-wrapper">
-    <div class="container">
-      <div class="row">
-        <div class="col-4 col-12-medium">
+const IndexActivities = () => {
+  const data = useStaticQuery(graphql`
+  query {
+    directus {
+      o2vie_activities {
+        id
+        subtitle
+        title
+        image {
+          id
+          imageFile {
+            childImageSharp {
+              gatsbyImageData(aspectRatio: 1.7, layout: FULL_WIDTH)
+            }
+          }
+        }
+      }
+    }
+  }
+`)
 
-          <section class="box feature">
-            <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-            <div class="inner">
-              <header>
-                <h2>Célébration</h2>
-              </header>
-            </div>
-          </section>
+  return (
+    <div id="features-wrapper" >
+      <div className="container">
+        <div className="row">
 
-        </div>
-        <div class="col-4 col-12-medium">
+          {data.directus.o2vie_activities.map((a) => (
+            <ActivityPreview key={a.id.toString()} activity={a} />
+          ))
+          }
 
-          <section class="box feature">
-            <a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-            <div class="inner">
-              <header>
-                <h2>Night of games</h2>
-              </header>
-            </div>
-          </section>
-
-        </div>
-        <div class="col-4 col-12-medium">
-
-          <section class="box feature">
-            <a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-            <div class="inner">
-              <header>
-                <h2>Groupe de maison</h2>
-              </header>
-            </div>
-          </section>
 
         </div>
       </div>
+    </div >
+  )
+}
+
+const ActivityPreview = ({ activity }) => {
+  const image = getImage(activity.image.imageFile)
+
+  return (
+    <div className="col-4 col-12-medium">
+
+      <section className="box feature">
+        <a href={`/activities#act-${activity.id}`} className="image featured"><GatsbyImage image={image} alt={activity.id} /></a>
+        <div className="inner">
+          <header>
+            <h2>{activity.title}</h2>
+            <p>{activity.subtitle}</p>
+          </header>
+        </div>
+      </section>
+
     </div>
-  </div>
-)
+  )
+}
 
 export default IndexActivities

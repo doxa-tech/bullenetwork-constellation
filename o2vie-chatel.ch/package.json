@@ -5,6 +5,7 @@
   "version": "1.0.0",
   "author": "Doxatch <contact@doxatech.ch>",
   "dependencies": {
+    "@directus/gatsby-source-directus": "^9.5.2",
     "gatsby": "^4.6.2",
     "gatsby-plugin-gatsby-cloud": "^4.6.0",
     "gatsby-plugin-image": "^2.6.0",
