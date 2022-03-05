@@ -1,72 +1,61 @@
 import * as React from "react"
-
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
+
 import Seo from "../components/seo"
+import Activity from "../components/activity"
 
 import "./activities.css"
 
-const ActivitiesPage = () => (
-  <Layout>
-    <Seo title="Activités" />
+const ActivitiesPage = ({ data }) => {
+  return (
+    <Layout>
+      <Seo title="Activités" />
 
-    <div id="main-wrapper" class="activities">
-      <div class="container">
-        <div id="content">
-          <h2>Nos activités</h2>
-          <h4>Découvre nos activités à Châtel et dans la région.</h4>
+      <div id="main-wrapper" className="activities">
+        <div className="container">
+          <div id="content">
+            <h2>Nos activités</h2>
+            <h4>Découvre nos activités à Châtel et dans la région.</h4>
+          </div>
         </div>
       </div>
-    </div>
-    
-    <div id="features-wrapper">
-      <div class="container">
-        <div class="row">
-          <div class="col-6 col-12-medium">
 
-            <section class="box feature">
-              <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-              <div class="inner">
-                <header>
-                  <h2>Put something here</h2>
-                  <p>Maybe here as well I think</p>
-                </header>
-                <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-              </div>
-            </section>
+      <div id="features-wrapper">
+        <div className="container">
+          <div className="row">
 
-          </div>
-          <div class="col-6 col-12-medium">
-
-            <section class="box feature">
-              <a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-              <div class="inner">
-                <header>
-                  <h2>An interesting title</h2>
-                  <p>This is also an interesting subtitle</p>
-                </header>
-                <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-              </div>
-            </section>
-
-          </div>
-          <div class="col-6 col-12-medium">
-
-            <section class="box feature">
-              <a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-              <div class="inner">
-                <header>
-                  <h2>Oh, and finally ...</h2>
-                  <p>Here's another intriguing subtitle</p>
-                </header>
-                <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-              </div>
-            </section>
+            {data.directus.o2vie_activities.map((a) => (
+              <Activity key={a.id.toString()} activity={a} />
+            ))
+            }
 
           </div>
         </div>
       </div>
-    </div>
-  </Layout>
-)
+    </Layout>
+  )
+}
 
 export default ActivitiesPage
+
+export const query = graphql`
+  query {
+    directus {
+      o2vie_activities {
+        id
+        body
+        subtitle
+        title
+        image {
+          id
+          imageFile {
+            childImageSharp {
+              gatsbyImageData(aspectRatio: 1.7, layout: FULL_WIDTH)
+            }
+          }
+        }
+      }
+    }
+  }
+`

@@ -12,14 +12,14 @@ const IndexPage = () => (
     <Seo title="Home" />
 
     <div id="banner-wrapper">
-      <div id="banner" class="box container">
-        <div class="row">
-          <div class="col-7 col-12-medium">
+      <div id="banner" className="box container">
+        <div className="row">
+          <div className="col-7 col-12-medium">
             <h2>O2Vie</h2>
             <h3>Châtel-St-Denis </h3>
             <p>Une association chrétienne au service de sa région.</p>
           </div>
-          <div class="col-5 col-12-medium">
+          <div className="col-5 col-12-medium">
             <StaticImage src="../images/turbine.jpg" alt="turbine" style={{ margin: 'auto' }} layout="fixed" width={280} />
           </div>
         </div>
@@ -29,7 +29,7 @@ const IndexPage = () => (
     <IndexWelcome />
 
     <IndexActivities />
-    
+
   </Layout>
 )
 

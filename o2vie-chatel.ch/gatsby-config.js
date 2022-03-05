@@ -34,5 +34,21 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+
+    // ... some gatsby plugins
+
+    // You can take advantage of the following plugins with gatsby-source-directus
+
+    // `gatsby-plugin-image`,
+    // `gatsby-transformer-sharp`,
+    // `gatsby-plugin-sharp`,
+
+    // Finally our plugin
+    {
+      resolve: '@directus/gatsby-source-directus',
+      options: {
+        url: `https://truite.bullenetwork.ch`, // Fill with your Directus instance address
+      },
+    },
   ],
 }
