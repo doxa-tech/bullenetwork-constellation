@@ -20,7 +20,7 @@ const IndexPage = () => (
             <p>Une association chrétienne au service de sa région.</p>
           </div>
           <div className="col-5 col-12-medium">
-            <StaticImage src="../images/turbine.jpg" alt="turbine" style={{ margin: 'auto' }} layout="fixed" width={280} />
+            <StaticImage src="../images/team.png" alt="team" style={{ margin: 'auto' }} layout="fixed" width={280} />
           </div>
         </div>
       </div>
