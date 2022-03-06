@@ -5,11 +5,13 @@ import "./layout.css"
 
 import Header from "./header"
 import Footer from "./footer"
+import MobileHeader from "./mobile-header"
 
 const Layout = ({ children }) => {
   return (
     <>
       <Header />
+      <MobileHeader />
       
       <div id="page-wrapper">{children}</div>
        

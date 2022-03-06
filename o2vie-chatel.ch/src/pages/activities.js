@@ -5,8 +5,6 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Activity from "../components/activity"
 
-import "./activities.css"
-
 const ActivitiesPage = ({ data }) => {
   return (
     <Layout>
