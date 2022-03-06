@@ -1,5 +1,4 @@
 import * as React from "react"
-import { StaticImage } from "gatsby-plugin-image"
 
 import "./welcome.css"
 import { graphql, useStaticQuery } from "gatsby"
@@ -22,7 +21,7 @@ const IndexWelcome = () => {
     fetch(`https://truite.bullenetwork.ch/items/O2vie_Next_Event`)
       .then(response => response.json())
       .then(resultData => {
-        if (resultData.data.status == "published") {
+        if (resultData.data.status === "published") {
           setEvent(<Event event={resultData.data} />)
         } else {
           setEvent(<i>Pas d'événement spécial à venir.</i>)
@@ -64,13 +63,13 @@ const Event = ({ event }) => {
       .then(resultData => {
         setImage(`https://storage.googleapis.com/bullenetwork-directus-truite/${resultData.data.filename_disk}`)
       })
-  }, [])
+  })
 
   return (
     <section className="next-event widget thumbnails">
       <h3>{event.title}</h3>
       <div dangerouslySetInnerHTML={{ __html: event.body }}></div>
-      {image != "#" && <img src={image} />}
+      {image !== "#" && <img src={image} alt="prochain événement" />}
     </section>
   )
 }

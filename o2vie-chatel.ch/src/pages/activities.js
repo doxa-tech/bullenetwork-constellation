@@ -42,7 +42,7 @@ export default ActivitiesPage
 export const query = graphql`
   query {
     directus {
-      o2vie_activities {
+      o2vie_activities(sort: ["sort"]) {
         id
         body
         subtitle
