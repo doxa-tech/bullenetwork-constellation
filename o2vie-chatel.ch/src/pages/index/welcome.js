@@ -33,7 +33,7 @@ const IndexWelcome = () => {
     <div id="main-wrapper" className="index-welcome">
       <div className="container">
         <div className="row gtr-200">
-          <div className="col-8 col-12-medium imp-medium">
+          <div className="col-7 col-12-medium imp-medium">
 
             <div id="content">
               <section className="last">
@@ -43,7 +43,7 @@ const IndexWelcome = () => {
             </div>
 
           </div>
-          <div className="col-4 col-12-medium imp-medium">
+          <div className="col-5 col-12-medium imp-medium">
             <div id="sidebar">
               {event}
             </div>
