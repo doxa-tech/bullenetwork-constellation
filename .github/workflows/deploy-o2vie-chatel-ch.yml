@@ -25,6 +25,7 @@ jobs:
     - name: Build
       run: |
         cd o2vie-chatel.ch
+        echo "DIRECTUS_O2VIE_TOKEN=${{secrets.O2VIE_CH_DIRECTUS_O2VIE_TOKEN}}" >> .env.production
         gatsby build
         
     - name: Sync

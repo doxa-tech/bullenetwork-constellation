@@ -1,3 +1,9 @@
+var path = require('path');
+
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `O2Vie`,
@@ -49,6 +55,9 @@ module.exports = {
       resolve: '@directus/gatsby-source-directus',
       options: {
         url: `https://truite.bullenetwork.ch`, // Fill with your Directus instance address
+        auth: {
+          token: `${process.env.DIRECTUS_O2VIE_TOKEN}`,
+        }
       },
     },
   ],
