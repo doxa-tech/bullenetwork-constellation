@@ -279,7 +279,6 @@ func gcspub(client *storage.Client, bucket string) func(http.ResponseWriter, *ht
 			Event          string          `json:"event"`
 			Accountability accountability  `json:"accountability"`
 			Payload        json.RawMessage `json:"payload"`
-			Keys           []string        `json:"keys"`
 			Collection     string          `json:"collection"`
 		}
 
@@ -287,7 +286,9 @@ func gcspub(client *storage.Client, bucket string) func(http.ResponseWriter, *ht
 
 		err := json.NewDecoder(r.Body).Decode(&h)
 		if err != nil {
-			http.Error(w, "failed to unmarshal hook: "+err.Error(), http.StatusBadRequest)
+			err = xerrors.Errorf("failed to unmarshal hook: %v", err)
+			fmt.Println("error:", err)
+			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
 		}
 
@@ -299,7 +300,9 @@ func gcspub(client *storage.Client, bucket string) func(http.ResponseWriter, *ht
 
 		err = json.Unmarshal(h.Payload, &m)
 		if err != nil {
-			http.Error(w, "failed to unmarshal image"+err.Error(), http.StatusBadRequest)
+			err = xerrors.Errorf("failed to unmarshal image: %v", err)
+			fmt.Println("error:", err)
+			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
 		}
 
@@ -310,7 +313,9 @@ func gcspub(client *storage.Client, bucket string) func(http.ResponseWriter, *ht
 
 		filenameDisk, err := getDirectusFilename(object)
 		if err != nil {
-			http.Error(w, "failed to get filename_disk: "+err.Error(), http.StatusInternalServerError)
+			err = xerrors.Errorf("failed to get filename_disk: %v", err.Error())
+			fmt.Println("error:", err)
+			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
 
@@ -321,7 +326,9 @@ func gcspub(client *storage.Client, bucket string) func(http.ResponseWriter, *ht
 
 		err = acl.Set(ctx, storage.AllUsers, storage.RoleReader)
 		if err != nil {
-			http.Error(w, "failed to set acl: "+err.Error(), http.StatusInternalServerError)
+			err = xerrors.Errorf("failed to set acl: %v", err)
+			fmt.Println("error:", err)
+			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
 	}
