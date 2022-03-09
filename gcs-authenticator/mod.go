@@ -39,8 +39,10 @@ const defaultAddr = ":9990"
 
 const GCS_KEY_PATH = "GCS_PRIVATE_PATH"
 const BUCKET_KEY_NAME = "GCS_BUCKET_NAME"
+const DIRECTUS_TOKEN_KEY = "DIRECTUS_TOKEN"
 
 const directusFileURL = "https://truite.bullenetwork.ch/files/"
+const directusPartitionsFilesURL = "https://truite.bullenetwork.ch/items/partitions_directus_files_2/"
 
 type key int
 
@@ -63,6 +65,11 @@ func main() {
 	gcs_bucket_name := os.Getenv(BUCKET_KEY_NAME)
 	if gcs_bucket_name == "" {
 		logger.Fatalf("please set %s", BUCKET_KEY_NAME)
+	}
+
+	directus_token := os.Getenv(DIRECTUS_TOKEN_KEY)
+	if directus_token == "" {
+		logger.Fatalf("please set %s", DIRECTUS_TOKEN_KEY)
 	}
 
 	jsonKey, err := ioutil.ReadFile(gcs_key_path)
@@ -88,7 +95,7 @@ func main() {
 		ErrorLog: logger,
 	}
 
-	mux.HandleFunc("/auth", auth(conf))
+	mux.HandleFunc("/auth/partition", authPartition(conf, gcs_bucket_name, directus_token))
 	mux.HandleFunc("/archive", archive(client))
 	mux.HandleFunc("/gcspub", gcspub(client, gcs_bucket_name))
 
@@ -117,8 +124,10 @@ func getOpts(conf *jwt.Config) *storage.SignedURLOptions {
 	}
 }
 
-// auth implements POST /auth
-func auth(conf *jwt.Config) func(http.ResponseWriter, *http.Request) {
+// authPartition implements POST /auth/partition
+// expects:
+//   id=
+func authPartition(conf *jwt.Config, bucket, token string) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
@@ -140,16 +149,15 @@ func auth(conf *jwt.Config) func(http.ResponseWriter, *http.Request) {
 			return
 		}
 
-		bucket := r.Form.Get("bucket")
-		if bucket == "" {
-			http.Error(w, "bucket value not found", http.StatusBadRequest)
+		id := r.Form.Get("id")
+		if id == "" {
+			http.Error(w, "id value not found", http.StatusBadRequest)
 			return
 		}
 
-		object := r.Form.Get("object")
-		if bucket == "" {
-			http.Error(w, "object value not found", http.StatusBadRequest)
-			return
+		object, err := getFile(id, token)
+		if err != nil {
+			http.Error(w, "failed to get file: "+err.Error(), http.StatusInternalServerError)
 		}
 
 		u, err := storage.SignedURL(bucket, object, getOpts(conf))
@@ -160,6 +168,57 @@ func auth(conf *jwt.Config) func(http.ResponseWriter, *http.Request) {
 
 		fmt.Fprintf(w, "%s", u)
 	}
+}
+
+// Returns the filename_disk from the partition relation table
+func getFile(id, token string) (string, error) {
+	url := directusPartitionsFilesURL + id + "access_token=" + token
+
+	resp, err := http.Get(url)
+	if err != nil {
+		return "", xerrors.Errorf("failed to get partition: %v", err)
+	}
+
+	type PartitionResp struct {
+		Data struct {
+			ID              int    `json:"id"`
+			PartitionsID    string `json:"partitions_id"`
+			DirectusFilesID string `json:"directus_files_id"`
+		} `json:"data"`
+	}
+
+	decoder := json.NewDecoder(resp.Body)
+
+	var partition PartitionResp
+
+	err = decoder.Decode(&partition)
+	if err != nil {
+		return "", xerrors.Errorf("failed to get response: %v", err)
+	}
+
+	url = directusFileURL + partition.Data.DirectusFilesID
+
+	resp, err = http.Get(url)
+	if err != nil {
+		return "", xerrors.Errorf("failed to get file: %v", err)
+	}
+
+	type FileResp struct {
+		Data struct {
+			FilenameDisk string `json:"filename_disk"`
+		} `json:"data"`
+	}
+
+	decoder = json.NewDecoder(resp.Body)
+
+	var file FileResp
+
+	err = decoder.Decode(&file)
+	if err != nil {
+		return "", xerrors.Errorf("failed to decode file: %v", err)
+	}
+
+	return file.Data.FilenameDisk, nil
 }
 
 // archive implements POST /archive. This endpoint creates an uncompressed ZIP
