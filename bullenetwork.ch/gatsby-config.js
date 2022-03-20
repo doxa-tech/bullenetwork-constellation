@@ -30,7 +30,7 @@ module.exports = {
       options: {
         url: `https://truite.bullenetwork.ch`, // Fill with your Directus instance address
         auth: {
-          token: `${process.env.DIRECTUS_O2VIE_TOKEN}`,
+          token: `${process.env.DIRECTUS_ADMIN_TOKEN}`,
         }
       },
     },
