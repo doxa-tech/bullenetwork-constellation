@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./checkbox.module.scss"
+import * as styles from "./checkbox.module.scss"
 
 export default ({ label, setRef, onclick, name, value }) => {
   return (

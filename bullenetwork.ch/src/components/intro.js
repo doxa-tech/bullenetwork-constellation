@@ -1,6 +1,6 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-import styles from "./intro.module.scss"
+import * as styles from "./intro.module.scss"
 
 export default ({ children }) => (
   <StaticQuery

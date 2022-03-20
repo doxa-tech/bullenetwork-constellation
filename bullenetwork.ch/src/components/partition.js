@@ -1,24 +1,18 @@
-import React, { Component } from "react"
+import React, { Component, useRef, useState } from "react"
 import Checkbox from "./checkbox";
 
-export class Partition extends Component {
+const Partition = ({ partition, fileSelected }) => {
+  const [isActive, setIsActive] = useState(false)
+  const extraRef = useRef()
+  const maincheckboxRef = useRef()
 
-  state = {
-    isActive: false,
-    checkboxState: ""
-  };
-
-  handleClick = () => {
-    this.setState(state => ({ isActive: !state.isActive }));
-  };
-
-  checkboxClick = (event) => {
+  const checkboxClick = (event) => {
     event.stopPropagation();
 
     let delta = 0
 
     const checked = event.target.checked
-    const checkboxes = this.extraRef.querySelectorAll('input[type="checkbox"]')
+    const checkboxes = extraRef.current.querySelectorAll('input[type="checkbox"]')
     checkboxes.forEach(checkbox => {
       if (checkbox.checked !== checked) {
         delta += 1
@@ -30,62 +24,57 @@ export class Partition extends Component {
       delta = delta * -1
     }
 
-    this.props.fileSelected(delta)
+    fileSelected(delta)
   };
 
-  checkboxChildNotify = (event) => {
+  const checkboxChildNotify = (event) => {
     let delta = 1
     if (!event.target.checked) {
       delta = delta * -1
     }
-    this.props.fileSelected(delta)
+    fileSelected(delta)
 
-    const totlaChecked = this.extraRef.querySelectorAll('input[type="checkbox"]:checked').length
-    const totalCheckboxes = this.extraRef.querySelectorAll('input[type="checkbox"]').length
+    const totlaChecked = extraRef.current.querySelectorAll('input[type="checkbox"]:checked').length
+    const totalCheckboxes = extraRef.current.querySelectorAll('input[type="checkbox"]').length
 
     if (totlaChecked === totalCheckboxes) {
-      this.maincheckbox.checked = true
-      this.maincheckbox.indeterminate = false;
+      maincheckboxRef.current.checked = true
+      maincheckboxRef.current.indeterminate = false;
     } else if (totlaChecked === 0) {
-      this.maincheckbox.checked = false
-      this.maincheckbox.indeterminate = false;
+      maincheckboxRef.current.checked = false
+      maincheckboxRef.current.indeterminate = false;
     } else {
-      this.maincheckbox.indeterminate = true;
+      maincheckboxRef.current.indeterminate = true;
     }
   }
 
-  extraClick = (event) => {
+  const extraClick = (event) => {
     event.stopPropagation();
   };
 
-  setExtraRef = (extra) => {
-    this.extraRef = extra;
+  const sectionClick = (e) => {
+    setIsActive(!isActive)
   }
 
-  setMainCheckboxRef = (checkbox) => {
-    this.maincheckbox = checkbox
-  }
-
-  render() {
-
-    return (
-      <div className={this.state.isActive ? 'active partition' : "partition"}>
-        <div className="main-checkbox">
-          <Checkbox setRef={this.setMainCheckboxRef} onclick={this.checkboxClick} />
+  return (
+    <div className={isActive ? 'active partition' : "partition"}>
+      <div className="main-checkbox">
+        <Checkbox setRef={maincheckboxRef} onclick={checkboxClick} />
+      </div>
+      <div className="main" role="button" tabIndex={partition.bni} onKeyDown={sectionClick} onClick={sectionClick}>
+        <div className="row">
+          <div className="bni">{partition.bni}</div>
+          <div className="title">{partition.title}</div>
+          <div className="files">Partition ({partition.files ? partition.files.length : "0"})</div>
+          <Arrow />
         </div>
-        <div className="main" role="button" tabIndex={this.props.partition.bni} onKeyDown={this.handleClick} onClick={this.handleClick}>
-          <div className="row">
-            <div className="bni">{this.props.partition.bni}</div>
-            <div className="title">{this.props.partition.title}</div>
-            <div className="files">Partition ({this.props.partition.files ? this.props.partition.files.length : "0"})</div>
-            <Arrow />
-          </div>
-          <Extra setRef={this.setExtraRef} onclick={this.extraClick} partition={this.props.partition} checkboxNotify={this.checkboxChildNotify} />
-        </div>
-      </div >
-    )
-  }
+        <Extra setRef={extraRef} onclick={extraClick} partition={partition} checkboxNotify={checkboxChildNotify} />
+      </div>
+    </div >
+  )
 }
+
+export default Partition
 
 const Arrow = () => {
   return (
@@ -122,54 +111,42 @@ const Files = ({ files, notify }) => {
   )
 }
 
-class File extends Component {
+const File = ({ file, notify }) => {
 
-  filename = this.props.file.directus_files_id.filename_download
+  const filename = file.directus_files_id.filename_download
 
-  handleClick = () => {
-    this.setState(state => ({
-      button: <button>chargement...</button>
-    }))
+  const handleClick = () => {
+    setButton(<button>chargement...</button>)
 
-    fetch(process.env.GCS_PROXY, {
+    fetch(process.env.GCS_PROXY_PARTITION, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: `bucket=bullenetwork-directus-truite&object=${this.props.file.directus_files_id.filename_disk}`
+      body: `id=${file.id}`
     }).then(res => res.text())
       .then(ww => {
-        this.setState(state => ({
-          button: <a href={ww} rel="noopener noreferrer" target="_blank">{this.filename}</a>
-        }))
+        window.open(ww, "_blank");
+        setButton(<a href={ww} rel="noopener noreferrer" target="_blank">{filename}</a>)
 
-        const self = this;
         setTimeout(function () {
-          self.setState(state => ({
-            button: <BasicButton handle={self.handleClick} filename={self.filename} />
-          }))
+          setButton(<BasicButton handle={handleClick} filename={filename} />)
           // the url expires after 10 minutes, we wait 10 minutes - 10 seconds
         }, (10 * 60 - 10) * 1000);
       })
       .catch(e => {
-        this.setState(state => ({
-          button: `failed to load url: ${e}`
-        }))
+        setButton(`failed to load url: ${e}`)
       })
   }
 
-  state = {
-    button: <BasicButton handle={this.handleClick} filename={this.filename} />
-  };
+  const [button, setButton] = useState(<BasicButton handle={handleClick} filename={filename} />)
 
-  render() {
-    return (
-      <div className="file">
-        <Checkbox onclick={this.props.notify} name={this.props.file.directus_files_id.filename_disk} value={this.filename} />
-        {this.state.button}
-      </div>
-    )
-  }
+  return (
+    <div className="file">
+      <Checkbox onclick={notify} name={file.id} value={filename} />
+      {button}
+    </div>
+  )
 }
 
 const BasicButton = ({ handle, filename }) => {
