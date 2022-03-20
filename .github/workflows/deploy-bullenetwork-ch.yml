@@ -25,10 +25,9 @@ jobs:
     - name: Build
       run: |
         cd bullenetwork.ch
-        echo "GCS_PROXY=${{secrets.BULLENETWORK_CH_GCS_PROXY}}" >> .env.production
-        echo "GCS_PROXY_ARCHIVE=${{secrets.BULLENETWORK_CH_GCS_PROXY_ARCHIVE}}" >> .env.production
+        echo "GCS_PROXY_PARTITION=${{secrets.BULLENETWORK_CH_GCS_PROXY_PARTITION}}" >> .env.production
+        echo "GCS_PROXY_PARTITION_ARCHIVE=${{secrets.BULLENETWORK_CH_GCS_PROXY_PARTITION_ARCHIVE}}" >> .env.production
         echo "PARTITIONS_GRAPHQL_TOKEN=${{secrets.BULLENETWORK_CH_PARTITIONS_GRAPHQL_TOKEN}}" >> .env.production
-        echo "PARTITIONS_ENDPOINT=${{secrets.BULLENETWORK_CH_PARTITIONS_ENDPOINT}}" >> .env.production
         gatsby build
         
     - name: Sync
