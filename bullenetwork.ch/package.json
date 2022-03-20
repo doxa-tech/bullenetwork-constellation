@@ -1,9 +1,8 @@
 {
-  "name": "gatsby-starter-hello-world",
-  "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
-  "version": "0.1.0",
-  "license": "MIT",
+  "name": "bullenetwork.ch",
+  "description": "Website of the Bulle Network",
+  "version": "1.0.0",
+  "author": "Doxatech <contact@doxatech.ch>",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -14,26 +13,27 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "@directus/gatsby-source-directus": "^9.6.0",
     "babel-plugin-styled-components": "^1.10.7",
-    "gatsby": "^2.19.7",
-    "gatsby-background-image": "^0.9.17",
-    "gatsby-image": "^2.2.41",
-    "gatsby-plugin-react-helmet": "^3.1.23",
-    "gatsby-plugin-sass": "^2.1.28",
-    "gatsby-plugin-sharp": "^2.4.5",
-    "gatsby-plugin-styled-components": "^3.1.19",
-    "gatsby-source-filesystem": "^2.1.48",
-    "gatsby-source-graphql": "^2.14.0",
-    "gatsby-transformer-sharp": "^2.3.14",
-    "node-sass": "^4.13.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1",
+    "gatsby": "^4.0.0",
+    "gatsby-background-image": "^1.6.0",
+    "gatsby-plugin-image": "^2.6.0",
+    "gatsby-plugin-react-helmet": "^5.9.0",
+    "gatsby-plugin-sass": "^5.9.0",
+    "gatsby-plugin-sharp": "^4.9.1",
+    "gatsby-plugin-styled-components": "^5.9.0",
+    "gatsby-source-filesystem": "^4.9.1",
+    "gatsby-transformer-sharp": "^4.6.0",
+    "node-sass": "^7.0.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.0.0",
+    "sass": "^1.49.9",
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
     "@babel/helper-compilation-targets": "^7.16.0",
-    "prettier": "^1.19.1"
+    "prettier": "^2.0.5"
   },
   "repository": {
     "type": "git",

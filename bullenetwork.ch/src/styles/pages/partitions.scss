@@ -3,6 +3,10 @@
     background: url("../../images/partitions/background.png") repeat,
       linear-gradient(143deg, rgba(26, 30, 31, 1) 57%, rgba(181, 134, 87, 1) 100%);
 
+    &.medias {
+      background: url("../../images/partitions/background.png") repeat, linear-gradient(143deg, #2d2846 57%, #000 100%);
+    }
+
     min-height: 100vh;
     color: white;
 
@@ -136,9 +140,32 @@
                 width: 20px;
               }
 
+              .date {
+                width: 220px;
+                text-transform: capitalize;
+              }
+
               .title {
                 padding: 0 0 0 20px;
                 flex: 1;
+
+                span {
+                  text-transform: uppercase;
+                  font-size: 9px;
+                  padding: 3px 5px;
+                  color: white;
+                  border-radius: 2px;
+                  font-weight: bold;
+
+                  &.location {
+                    background-color: #008cba;
+                    margin-left: 7px;
+                  }
+
+                  &.author {
+                    background-color: cadetblue;
+                  }
+                }
               }
 
               svg.arrow {

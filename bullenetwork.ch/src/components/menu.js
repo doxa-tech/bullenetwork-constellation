@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./menu.module.scss"
+import * as styles from "./menu.module.scss"
 import { Link } from "gatsby"
 
 const Menu = () => {

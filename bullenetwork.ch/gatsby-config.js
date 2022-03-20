@@ -24,19 +24,14 @@ module.exports = {
         path: path.join(__dirname, `src`, `images`),
       },
     },
+    `gatsby-plugin-image`,
     {
-      resolve: "gatsby-source-graphql",
+      resolve: '@directus/gatsby-source-directus',
       options: {
-        // This type will contain remote schema Query type
-        typeName: "TRUITE",
-        // This is the field under which it's accessible
-        fieldName: "truite",
-        // URL to query from
-        url: process.env.PARTITIONS_ENDPOINT,
-        // 
-        headers: {
-          Authorization: `Bearer ${process.env.PARTITIONS_GRAPHQL_TOKEN}`,
-        },
+        url: `https://truite.bullenetwork.ch`, // Fill with your Directus instance address
+        auth: {
+          token: `${process.env.DIRECTUS_O2VIE_TOKEN}`,
+        }
       },
     },
   ],

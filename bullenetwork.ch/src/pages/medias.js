@@ -1,17 +1,17 @@
 import React, { useEffect, useRef, useState } from "react"
 import Layout from "../components/layout-small"
-import Partition from "../components/partition"
+import Media from "../components/media"
 import { graphql } from "gatsby"
 import Checkbox from "../components/checkbox"
 import Sorter from "../components/medias/sorter"
 import SearchIcon from "../components/medias/searchIcon"
 
 const DefaultSorter = {
-  attribute: "bni",
+  attribute: "date",
   order: "desc",
 }
 
-const Partitions = ({ data }) => {
+const Medias = ({ data }) => {
 
   const [totalFiles, setTotalFiles] = useState(0);
   const [totalSelectedFiles, setTotalSelectedFiles] = useState(0);
@@ -28,9 +28,9 @@ const Partitions = ({ data }) => {
     const comp = new Intl.Collator('fr')
     const reverse = sorter.order === "desc";
 
-    const filtered = data.directus.partitions.filter(partition =>
-      partition.title.toLowerCase().includes(query.toLowerCase()) ||
-      partition.bni.toString().includes(query)
+    const filtered = data.directus.Medias.filter(media =>
+      media.title.toLowerCase().includes(query.toLowerCase()) ||
+      media.data.toString().includes(query)
     )
 
     const sorted = filtered.sort(
@@ -105,11 +105,11 @@ const Partitions = ({ data }) => {
 
   return (
     <Layout layoutClass="secondary-layout partitions-page" title="Partition" >
-      <section className="main-section">
+      <section className="main-section medias">
         <div className="section-container">
-          <h1>Partitions du Bulle Network</h1>
+          <h1>Médias du Bulle Network</h1>
 
-          <form method="post" action={process.env.GCS_PROXY_PARTITION_ARCHIVE}>
+          <form method="post" action={process.env.GCS_PROXY_MEDIAS_ARCHIVE}>
             <input type="hidden" name="bucket" value="bullenetwork-directus-truite" />
 
             <div className="top-els">
@@ -127,16 +127,20 @@ const Partitions = ({ data }) => {
               <div className="sort-container">
                 <p>
                   <span>Trier par:</span>
-                  <Sorter title="BNI" attribute="bni" sortHandler={sortHandler} currentSorter={sorter.attribute} />
+                  <Sorter title="Date" attribute="date" sortHandler={sortHandler} currentSorter={sorter.attribute} />
                   <span className="separator">|</span>
                   <Sorter title="Titre" attribute="title" sortHandler={sortHandler} currentSorter={sorter.attribute} />
+                  <span className="separator">|</span>
+                  <Sorter title="Auteur" attribute="author" sortHandler={sortHandler} currentSorter={sorter.attribute} />
+                  <span className="separator">|</span>
+                  <Sorter title="Lieu" attribute="location" sortHandler={sortHandler} currentSorter={sorter.attribute} />
                 </p>
               </div>
             </div>
 
 
             <div id="partitions">
-              {entries.map((partition) => <Partition key={`${partition.bni}`} partition={partition} fileSelected={fileSelected} />)}
+              {entries.map((media) => <Media key={`${media.id}`} media={media} fileSelected={fileSelected} />)}
             </div>
           </form>
         </div>
@@ -145,15 +149,19 @@ const Partitions = ({ data }) => {
   )
 }
 
-export default Partitions
+export default Medias
 
 export const query = graphql`
   query {
     directus {
-      partitions(sort:["-bni"],limit:-1){
-        bni
-        title
+      Medias(sort:["-date"],limit:-1){
+        author
+        location
+        status
         comments
+        id
+        title
+        date
         files {
           id
           directus_files_id {
