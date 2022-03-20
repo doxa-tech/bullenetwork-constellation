@@ -1,7 +1,7 @@
 import React, { Component, useRef, useState } from "react"
 import Checkbox from "./checkbox";
 
-const Partition = ({ partition, fileSelected }) => {
+const Media = ({ media, fileSelected }) => {
   const [isActive, setIsActive] = useState(false)
   const extraRef = useRef()
   const maincheckboxRef = useRef()
@@ -61,20 +61,20 @@ const Partition = ({ partition, fileSelected }) => {
       <div className="main-checkbox">
         <Checkbox setRef={maincheckboxRef} onclick={checkboxClick} />
       </div>
-      <div className="main" role="button" tabIndex={partition.bni} onKeyDown={sectionClick} onClick={sectionClick}>
+      <div className="main" role="button" tabIndex={media.id} onKeyDown={sectionClick} onClick={sectionClick}>
         <div className="row">
-          <div className="bni">{partition.bni}</div>
-          <div className="title">{partition.title}</div>
-          <div className="files">Partition ({partition.files ? partition.files.length : "0"})</div>
+          <div className="date">{new Intl.DateTimeFormat('fr-CH', { dateStyle: 'full' }).format(new Date(media.date))}</div>
+          <div className="title">{media.title} <span className="location">{media.location}</span> <span className="author">{media.author}</span></div>
+          <div className="files">Partition ({media.files ? media.files.length : "0"})</div>
           <Arrow />
         </div>
-        <Extra setRef={extraRef} onclick={extraClick} partition={partition} checkboxNotify={checkboxChildNotify} />
+        <Extra setRef={extraRef} onclick={extraClick} media={media} checkboxNotify={checkboxChildNotify} />
       </div>
     </div >
   )
 }
 
-export default Partition
+export default Media
 
 const Arrow = () => {
   return (
@@ -86,19 +86,19 @@ const Arrow = () => {
   )
 }
 
-const Extra = ({ setRef, onclick, partition, checkboxNotify }) => {
+const Extra = ({ setRef, onclick, media, checkboxNotify }) => {
   return (
     <div className="extra" role="none" ref={setRef} onKeyDown={onclick} onClick={onclick}>
-      <Files files={partition.files} notify={checkboxNotify} />
-      {partition.comments ? <Notes partition={partition} /> : ""}
+      <Files files={media.files} notify={checkboxNotify} />
+      {media.comments ? <Notes media={media} /> : ""}
     </div>
   )
 }
 
-const Notes = ({ partition }) => {
+const Notes = ({ media }) => {
   return (
     <div className="notes">
-      <div dangerouslySetInnerHTML={{ __html: partition.comments }} />
+      <div dangerouslySetInnerHTML={{ __html: media.comments }} />
     </div>
   )
 }
@@ -118,7 +118,7 @@ const File = ({ file, notify }) => {
   const handleClick = () => {
     setButton(<button>chargement...</button>)
 
-    fetch(process.env.GCS_PROXY_PARTITION, {
+    fetch(process.env.GCS_PROXY_MEDIAS, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"

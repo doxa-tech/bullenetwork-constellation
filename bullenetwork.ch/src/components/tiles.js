@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./tiles.module.scss"
+import * as styles from "./tiles.module.scss"
 import { Link } from "gatsby"
 
 const Tiles = () => {

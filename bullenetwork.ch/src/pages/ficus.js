@@ -1,51 +1,50 @@
 import React from "react"
 import Layout from "../components/layout-small"
-import Img from "gatsby-image"
-import { StaticQuery, graphql } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 
 export default () => {
 
   return (
     <Layout layoutClass="index-container ficus-page" title={"Application Ficus"}>
 
-      <section dataTitle="Ficus" class="fixed f1" id="go">
-        <div class="intro">
+      <section dataTitle="Ficus" className="fixed f1" id="go">
+        <div className="intro">
           <h1>Application Ficus</h1>
           <p><span>Parce que nous sommes tous ramifiés à la même source</span></p>
           <p><span>Parce que la croissance passe par des racines solidement ancrées</span></p>
           <p><span>Parce que la vie est une perpétuelle circulation d'éléments vitaux</span></p>
-          <p><span class="ficus">Ficus</span> <span>nous connecte les uns aux autres</span></p>
-          <p class="web-link"><a href="http://eebulle.minsh.com/">version web</a></p>
+          <p><span className="ficus">Ficus</span> <span>nous connecte les uns aux autres</span></p>
+          <p className="web-link"><a href="http://eebulle.minsh.com/">version web</a></p>
         </div>
 
-        <FicusLogo />
+        <StaticImage src="../images/ficus/ficus-logo.png" alt="team" style={{ margin: 'auto' }} layout="fixed" />
 
-        <a class="badge google"
+        <a className="badge google"
           href="https://play.google.com/store/apps/details?id=com.minsh.eebulle&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-AC-global-none-all-co-pr-py-PartBadges-Oct1515-1"><img
             alt="Get it on Google Play"
             src="https://play.google.com/intl/en_us/badges/images/apps/fr-play-badge-border.png" /></a>
-        <a class="badge apple" href="https://itunes.apple.com/us/app/my-eebulle/id1087685429?mt=8">
+        <a className="badge apple" href="https://itunes.apple.com/us/app/my-eebulle/id1087685429?mt=8">
           <Appstore />
         </a>
-        <a class="web" href="http://eebulle.minsh.com/">Version Web</a>
+        <a className="web" href="http://eebulle.minsh.com/">Version Web</a>
       </section>
 
-      <section data-title="Présentation" class="scrolling s1" id="presentation">
-        <div class="container">
+      <section data-title="Présentation" className="scrolling s1" id="presentation">
+        <div className="container">
           <h2>C'est quoi "Ficus"?</h2>
 
           <p>
             Ficus, anciennement appellée My EEBulles, est une application communautaire pour mobile (et également disponible
             via un navigateur web)
-				destinée aux membres du <a href="https://bullenetwork.ch">Bulle Network</a>. L'application
-				permet de suivre toute l'actualité des l'églises du Bulle Network et d'avoir accès à la liste exhaustive de tous
-				les événements
-				organisés. Elle permet également d'evoyer des messages groupés ou personnels aux membres.
-			</p>
+            destinée aux membres du <a href="https://bullenetwork.ch">Bulle Network</a>. L'application
+            permet de suivre toute l'actualité des l'églises du Bulle Network et d'avoir accès à la liste exhaustive de tous
+            les événements
+            organisés. Elle permet également d'evoyer des messages groupés ou personnels aux membres.
+          </p>
 
           <h2>Pourquoi utiliser Ficus?</h2>
 
-          <p class="icon">
+          <p className="icon">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 400 400">
               <g>
                 <g>
@@ -59,12 +58,12 @@ export default () => {
           </p>
           <p>
             <b>C'est chez nous</b> Ficus est plus qu'une application communautaire. C'est NOTRE application.
-				Ainsi, tout ce qui ce passe sur Ficus reste privé et dans le cadre de notre communauté. Chaque membre de
-				Ficus doit être validé pas un administrateur qui s'assure que tous les participants soit membre de
-				l'église.
-			</p>
+            Ainsi, tout ce qui ce passe sur Ficus reste privé et dans le cadre de notre communauté. Chaque membre de
+            Ficus doit être validé pas un administrateur qui s'assure que tous les participants soit membre de
+            l'église.
+          </p>
 
-          <p class="icon">
+          <p className="icon">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 576 576">
               <g>
                 <path d="M240,32L240,32c132.549,0,240,86.957,240,194.224S372.549,420.448,240,420.448c-12.729,0-25.223-0.81-37.417-2.355   C151.03,469.44,91.497,478.647,32,480v-12.567c32.126-15.677,58-44.231,58-76.866c0-4.553-0.356-9.023-1.015-13.396   C34.706,341.562,0,287.175,0,226.224C0,118.957,107.452,32,240,32z M498,467.343c0,27.973,18.156,52.449,46,65.886V544   c-51.562-1.159-98.893-9.051-143.57-53.062c-10.57,1.324-21.396,2.021-32.43,2.021c-47.734,0-91.704-12.879-126.807-34.521   c72.336-0.254,140.629-23.428,192.417-65.336c26.105-21.127,46.697-45.914,61.207-73.675C510.199,289.994,518,258.636,518,226.224   c0-5.224-0.225-10.418-0.629-15.584C553.656,240.607,576,281.451,576,326.479c0,52.244-30.078,98.86-77.119,129.383   C498.309,459.608,498,463.44,498,467.343z" fill="#C90025" />
@@ -73,11 +72,11 @@ export default () => {
           </p>
           <p>
             <b>Participer</b> Avec Ficus, tu peux participer au discussions de la communauté, laisser des messages et
-				contacter
-				personnelement des membres. Idéal pour faire connaissance et partager ses idées.
-			</p>
+            contacter
+            personnelement des membres. Idéal pour faire connaissance et partager ses idées.
+          </p>
 
-          <p class="icon">
+          <p className="icon">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 60.449 60.449" width="512px" height="512px">
               <g>
                 <g>
@@ -92,10 +91,10 @@ export default () => {
           </p>
           <p>
             <b>S'informer</b> Nous utilisons l'application pour communiquer des informations importantes et nouvelles. Un
-				moyen de plus pour être sûr de ne rien manquer!
-			</p>
+            moyen de plus pour être sûr de ne rien manquer!
+          </p>
 
-          <p class="icon">
+          <p className="icon">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 510 510">
               <g>
                 <g id="favorite">
@@ -106,10 +105,10 @@ export default () => {
           </p>
           <p>
             <b>Relationner</b> Le Bulle Network est une grande famille qui ne se voit pas que le dimanche matin. Utiliser
-				l'application
-				c'est aussi développer nos liens et faire grandir l'amour fraternel qui nous unis. Il est facile d'envoyer un
-				message d'encouragement, laisser un commentaire amical ou simplement parcourir le fil d'actualité.
-			</p>
+            l'application
+            c'est aussi développer nos liens et faire grandir l'amour fraternel qui nous unis. Il est facile d'envoyer un
+            message d'encouragement, laisser un commentaire amical ou simplement parcourir le fil d'actualité.
+          </p>
 
           <h2>Liens de téléchargement</h2>
           <p>Pour les Iphones: <a
@@ -267,22 +266,3 @@ const Appstore = () => {
     </svg>
   )
 }
-
-const FicusLogo = () => (
-  <StaticQuery
-    query={graphql`
-      query ficuslogoquery {
-        file(relativePath: { eq: "ficus/ficus-logo.png" }) {
-          childImageSharp {
-            fluid(maxWidth: 350) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    `}
-    render={data => (
-      <Img className="logo" style={{ maxWidth: "350px" }} fluid={data.file.childImageSharp.fluid} />
-    )}
-  />
-)
