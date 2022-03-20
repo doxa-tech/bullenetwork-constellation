@@ -30,7 +30,7 @@ const Medias = ({ data }) => {
 
     const filtered = data.directus.Medias.filter(media =>
       media.title.toLowerCase().includes(query.toLowerCase()) ||
-      media.data.toString().includes(query)
+      media.date.toString().includes(query)
     )
 
     const sorted = filtered.sort(
