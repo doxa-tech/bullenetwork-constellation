@@ -104,7 +104,7 @@ const Medias = ({ data }) => {
   }
 
   return (
-    <Layout layoutClass="secondary-layout partitions-page" title="Partition" >
+    <Layout layoutClass="secondary-layout partitions-page" title="Médias" >
       <section className="main-section medias">
         <div className="section-container">
           <h1>Médias du Bulle Network</h1>
