@@ -65,7 +65,7 @@ const Media = ({ media, fileSelected }) => {
         <div className="row">
           <div className="date">{new Intl.DateTimeFormat('fr-CH', { dateStyle: 'full' }).format(new Date(media.date))}</div>
           <div className="title">{media.title} <span className="location">{media.location}</span> <span className="author">{media.author}</span></div>
-          <div className="files">Partition ({media.files ? media.files.length : "0"})</div>
+          <div className="files">Média ({media.files ? media.files.length : "0"})</div>
           <Arrow />
         </div>
         <Extra setRef={extraRef} onclick={extraClick} media={media} checkboxNotify={checkboxChildNotify} />
