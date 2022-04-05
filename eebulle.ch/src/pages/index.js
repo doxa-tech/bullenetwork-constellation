@@ -30,11 +30,11 @@ const Index = () => {
     <Layout layoutClass="index">
       <Seo title="Accueil" />
 
-      <a className="top-link" href="https://www.youtube.com/channel/UCL_B5hW5uxe-0P8kPLma9gg" target="_blank" rel="noreferrer">
+      {/* <a className="top-link" href="https://www.youtube.com/channel/UCL_B5hW5uxe-0P8kPLma9gg" target="_blank" rel="noreferrer">
         <div className="top-info">
           <Img fixed={img.desktop.childImageSharp.fixed} /> <span className="txt">Clique ici et retrouve tous les dimanches dès 10h00 la célébration en live</span>
         </div>
-      </a>
+      </a> */}
 
       <Welcome />
       <Activities />

@@ -42,12 +42,10 @@ const Leadership = () => {
           Découvre l'équipe sur <a href="https://bullenetwork.ch" target="_blank" rel="noreferrer">le site du Bullenetwork</a>
         </Tile>
         <Tile fluidImg={data.pastoral.childImageSharp.fluid} title="Conseil pastoral">
-          Le conseil pastoral est composé des responsables locaux. Ce sont les anciens de l'église.<br />
-          Ce conseil est constitué de: André & Isabelle Künzler, Sévin & Hélène Kocher, Roland & Maude Friedli, Stéphane et Anita Blanchard
+          Le conseil pastoral est constitué des responsables spirituels de l’église locale, idéalement au moins quatre couples. Ses membres sont appelés «anciens». Il est présidé par le pasteur principal. Le rôle de ce Conseil est la direction spirituelle et globale de l’église locale.
         </Tile>
-        <Tile fluidImg={data.sectors.childImageSharp.fluid} title="Conseil d'église">
-          Le conseil d'église est composé des responsables de secteurs opérationnels. Ce sont les diacres de l'église.<br />
-          Ce conseil est constitué de: Keran Kocher (président), Noémien Kocher (communication), Mathieu Meyer (logistique), Elie Hausmann (Waykup), Jocelyne Mercier (intercession)
+        <Tile fluidImg={data.sectors.childImageSharp.fluid} title="Conseil opérationnel">
+          C’est une équipe constituée des responsables des différents secteurs d’activité (Hospitalité, finances, technique, etc.). Ses membres sont appelés diacres. Le rôle de ce Conseil est de gérer l’aspect organisationnel de l’église locale.
         </Tile>
       </div>
     </div>
