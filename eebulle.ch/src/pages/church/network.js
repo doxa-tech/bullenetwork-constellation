@@ -20,7 +20,7 @@ const Network = () => {
       bullenetwork: file(relativePath: { eq: "logo/bullenetwork_bw.png" }) {
         ...logoImage
       }
-      eear: file(relativePath: { eq: "logo/eear_bw.png" }) {
+      mp: file(relativePath: { eq: "logo/logoMP.png" }) {
         ...logoImage
       }
       res: file(relativePath: { eq: "logo/res_bw.png" }) {
@@ -36,8 +36,8 @@ const Network = () => {
         <div className="networks">
           <p>L'église évangélique de Bulle est membre fondatrice du <a href="https://bullenetwork.ch" target="_blank" rel="noreferrer">Bulle Network</a></p>
           <Img fixed={images.bullenetwork.childImageSharp.fixed} />
-          <p>Le Bulle Network est un hub des <a href="http://www.eear.ch" target="_blank" rel="noreferrer">églises évangélique apostolique</a></p>
-          <Img fixed={images.eear.childImageSharp.fixed} />
+          <p>Le Bulle Network est un hub du <a href="http://www.mouvementplus.ch/" target="_blank" rel="noreferrer">Mouvement Plus</a></p>
+          <Img fixed={images.mp.childImageSharp.fixed} />
           <p>L'EEBulle appartient également au <a href="https://evangelique.ch" target="_blank" rel="noreferrer">Réseau évangélique</a></p>
           <Img fixed={images.res.childImageSharp.fixed} />
         </div>
