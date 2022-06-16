@@ -6,6 +6,7 @@ import IndexActivities from "./index/activities"
 import IndexWelcome from "./index/welcome"
 
 import { StaticImage } from "gatsby-plugin-image"
+import Instagram from "../components/instagram"
 
 const IndexPage = () => (
   <Layout>
@@ -29,6 +30,8 @@ const IndexPage = () => (
     <IndexWelcome />
 
     <IndexActivities />
+
+    <Instagram />
 
   </Layout>
 )
