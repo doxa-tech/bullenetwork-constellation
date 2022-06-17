@@ -25,7 +25,7 @@ const Instagram = () => {
         <h3>Notre fil Instagram</h3>
       </div>
       <div className="container">
-        <div className="row aln-center">
+        <div className={`row aln-center ${styles.posts}`}>
           {posts.map((post) => (
             <Post key={post.id}>{post}</Post>
           ))}
@@ -43,15 +43,13 @@ const Post = ({ children }) => {
   }
 
   return (
-    <div className="col-3 col-3-large col-4-medium col-6-small">
+    <div className={`col-3 col-3-large col-4-medium col-6-small ${styles.post}`}>
 
-      <section className="widget thumbnails">
+      <section className="box feature">
         <a href={children.permalink} target="_blank" className="image featured"><img src={`${OSIA_ENDPOINT}/images/${children.id}.jpg`} /></a>
-        <div className="inner">
-          <header>
-            <p dangerouslySetInnerHTML={{ __html: parseContent(children.caption) }} className={styles.content}></p>
-            <p className={styles.date}>{format(date, "c MMM", { locale: fr })}</p>
-          </header>
+        <div className={styles.contentWrap}>
+          <p dangerouslySetInnerHTML={{ __html: parseContent(children.caption) }} className={styles.content}></p>
+          <p className={styles.date}>{format(date, "c MMM", { locale: fr })}</p>
         </div>
       </section>
 
