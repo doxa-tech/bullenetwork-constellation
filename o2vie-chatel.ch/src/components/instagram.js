@@ -18,10 +18,9 @@ const Instagram = () => {
 
   return (
     <div id="features-wrapper" >
-      <div className="row aln-center">
-        <a style={{ fontSize: "4em", marginBottom: "50px" }} href="https://www.instagram.com/_o2vie_/" target="_blank" rel="noreferrer" className="icon brands fa-instagram"><span className="label">Instagram</span></a>
-      </div>
-      <div className="row aln-center">
+      <div className={styles.title}>
+        <a href="https://www.instagram.com/_o2vie_/" target="_blank" rel="noreferrer" className={`icon brands fa-instagram ${styles.icon}`}><span className="label">Instagram</span></a>
+        <a href="https://www.instagram.com/_o2vie_/" target="_blank">_o2vie_</a>
         <h3>Notre fil Instagram</h3>
       </div>
       <div className="container">
@@ -49,11 +48,27 @@ const Post = ({ children }) => {
         <a href={children.permalink} target="_blank" className="image featured"><img src={`${OSIA_ENDPOINT}/images/${children.id}.jpg`} /></a>
         <div className={styles.contentWrap}>
           <p dangerouslySetInnerHTML={{ __html: parseContent(children.caption) }} className={styles.content}></p>
-          <p className={styles.date}>{format(date, "c MMM", { locale: fr })}</p>
+          <div className={styles.time}>
+            <TimeIcon />
+            <p className={styles.date}>{formatDistanceToNow(date, { locale: fr, addSuffix: true })}</p>
+          </div>
         </div>
       </section>
 
     </div>
+  )
+}
+
+const TimeIcon = () => {
+  return (
+    <svg width="100%" height="100%" viewBox="0 0 163 163" version="1.1" style={{ fillRule: "evenodd", clipRule: "evenodd", strokeLinecap: "round", strokeLinejoin: "round", strokeMiterlimit: "1.5" }}>
+      <g transform="matrix(1,0,0,1,-451.618,-415.21)">
+        <circle cx="532.973" cy="496.566" r="71.98" style={{ fill: "none", strokeWidth: "15px" }} />
+      </g>
+      <g transform="matrix(1,0,0,1,-615.082,-360.705)">
+        <path d="M718.058,461.594L696.437,442.061L696.437,403.776" style={{ fill: "none", strokeWidth: "15px" }} />
+      </g>
+    </svg >
   )
 }
 
