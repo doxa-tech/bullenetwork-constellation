@@ -1,0 +1,70 @@
+.content {
+  white-space: pre-wrap;
+  line-height: 1.4em;
+  padding-top: 8px;
+  font-size: .87em;
+}
+
+.content span {
+  color: #108d005e;
+}
+
+.date {
+  font-size: .8em;
+  text-align: left;
+}
+
+.content-wrap {
+  padding: 5px 10px;
+}
+
+.posts {
+  padding-top: 40px;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width: 980px) {
+  .title {
+    padding-top: 50px;
+  }
+}
+
+.icon {
+  margin-bottom: 5px;
+  font-size: 4em;
+}
+
+.title p {
+  margin-bottom: 5px;
+}
+
+.title a {
+  text-decoration: none;
+}
+
+.post {
+  padding: 30px 0 0 30px;
+}
+
+.time {
+  padding: 10px 0 0 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: .8em;
+  color: #a4a4a4;
+}
+
+.time svg {
+  width: 20px;
+  padding: 0 5px 0 0;
+}
+
+.time svg path, .time svg circle {
+  stroke: #a4a4a4;
+}
