@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react"
-import { format, formatDistance, formatDistanceToNow, formatRelative, subDays } from 'date-fns'
-import { cs, fr } from "date-fns/locale"
+import { formatDistanceToNow } from 'date-fns'
+import { fr } from "date-fns/locale"
 import * as styles from "./instagram.module.css"
 
 const OSIA_ENDPOINT = "https://osia.bullenetwork.ch"
+const INSTAGRAM_URL = "https://www.instagram.com/_o2vie_/"
 
 const Instagram = () => {
   const [posts, setPosts] = useState([])
@@ -19,8 +20,8 @@ const Instagram = () => {
   return (
     <div id="features-wrapper" >
       <div className={styles.title}>
-        <a href="https://www.instagram.com/_o2vie_/" target="_blank" rel="noreferrer" className={`icon brands fa-instagram ${styles.icon}`}><span className="label">Instagram</span></a>
-        <a href="https://www.instagram.com/_o2vie_/" target="_blank">_o2vie_</a>
+        <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className={`icon brands fa-instagram ${styles.icon}`}><span className="label">Instagram</span></a>
+        <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">_o2vie_</a>
         <h3>Notre fil Instagram</h3>
       </div>
       <div className="container">
@@ -45,7 +46,7 @@ const Post = ({ children }) => {
     <div className={`col-3 col-3-large col-4-medium col-6-small ${styles.post}`}>
 
       <section className="box feature">
-        <a href={children.permalink} target="_blank" className="image featured"><img src={`${OSIA_ENDPOINT}/images/${children.id}.jpg`} /></a>
+        <a href={children.permalink} target="_blank" rel="noreferrer" className="image featured"><img src={`${OSIA_ENDPOINT}/images/${children.id}.jpg`} alt="instagram post" /></a>
         <div className={styles.contentWrap}>
           <p dangerouslySetInnerHTML={{ __html: parseContent(children.caption) }} className={styles.content}></p>
           <div className={styles.time}>
