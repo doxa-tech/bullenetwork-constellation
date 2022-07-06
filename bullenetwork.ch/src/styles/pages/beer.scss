@@ -1,0 +1,39 @@
+.beer-page {
+  .main-section {
+    background: url("../../images/beer/noise.png") repeat,
+      linear-gradient(143deg, #4B7197 57%, #A6C8E5 100%);
+
+    &.beer {
+      background: url("../../images/beer/noise.png") repeat, linear-gradient(143deg, #4B7197 57%, #A6C8E5 100%);
+    }
+
+    min-height: 100vh;
+    color: white;
+
+    .section-container {
+      max-width: 1200px;
+      margin: auto;
+
+      h1 {
+        padding: 40px 0 30px 0;
+      }
+
+      .banner-holder {
+        text-align: center;
+
+        .banner {
+          max-width: 700px;
+        }
+      }
+
+      .footer-holder {
+        text-align: center;
+        margin: 100px 0 0 0;
+
+        .footer {
+          max-width: 1400px;
+        }
+      }
+    }
+  }
+}
