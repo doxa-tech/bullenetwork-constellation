@@ -11,6 +11,6 @@ Collection of websites for the BulleNetwork
 
 ## Deploy
 
-```bash
-# Deploy bullenetwork.ch
-git push origin master:production-bullenetwork-ch
+Uses the [Github
+actions](https://github.com/doxa-tech/bullenetwork-constellation/actions) to
+manually trigger a deploy.
