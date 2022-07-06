@@ -6,6 +6,7 @@ import "./src/styles/layout/footer.scss"
 import "./src/styles/pages/index.scss"
 import "./src/styles/pages/ficus.scss"
 import "./src/styles/pages/partitions.scss"
+import "./src/styles/pages/beer.scss"
 
 // All this mess is to try to move the page to the corresponding anchor.
 
