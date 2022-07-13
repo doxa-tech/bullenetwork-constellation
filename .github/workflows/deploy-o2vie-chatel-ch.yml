@@ -1,13 +1,16 @@
 name: o2vie-chatel.ch deploy
 
 on:
-  workflow_dispatch:
-  push:
-    branches: [ production-o2vie-chatel-ch ]
+  release:
+    types: [published]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./o2vie-chatel.ch
 
     steps:
     - uses: actions/checkout@v2
@@ -18,22 +21,32 @@ jobs:
     
     - name: Install dependencies
       run: |
-        cd o2vie-chatel.ch
         npm install
         npm install -g gatsby-cli
         
     - name: Build
       run: |
-        cd o2vie-chatel.ch
         echo "DIRECTUS_O2VIE_TOKEN=${{secrets.O2VIE_CH_DIRECTUS_O2VIE_TOKEN}}" >> .env.production
         gatsby build
-        
-    - name: Sync
-      env:
-        dest: 'eebulle@${{secrets.DEPLOY_ADDR}}:/var/www/o2vie-chatel.ch/public_html/'
+
+    - name: Get the version
+      id: get_version
+      # output "v1_2_3"
+      run: echo ::set-output name=VERSION::$(echo ${GITHUB_REF/refs\/tags\//} | tr . _)
+
+    - name: Create tar.gz
       run: |
-        echo "${{secrets.DEPLOY_O2VIE_CHATEL_CH_KEY}}" > deploy_key
-        chmod 600 ./deploy_key
-        rsync -chav --delete \
-          -e 'ssh -p ${{secrets.DEPLOY_PORT}} -i ./deploy_key -o StrictHostKeyChecking=no' \
-          ./o2vie-chatel.ch/public/ ${{env.dest}}
+        tar -czvf o2vie_${{ steps.get_version.outputs.VERSION }}.tar.gz public
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: o2vie_*.tar.gz
+      id: release
+
+    - name: Trigger deploy
+      run: |
+        echo "Release to be published: ${{ fromJSON(steps.release.outputs.assets)[0].browser_download_url }}"
+        curl -X POST -d "{\"browser_download_url\": \"${{ fromJSON(steps.release.outputs.assets)[0].browser_download_url }}\"} https://hodor.doxatech.ch/api/hook/o2vie
+
