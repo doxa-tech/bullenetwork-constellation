@@ -22,8 +22,9 @@ const Footer = () => (
           <section className="widget links">
             <h3>CCP</h3>
             <ul className="style2">
-              <li>IBAN CH96 0900 0000 1581 1462 6</li>
               <li>Bulle Network, O2Vie, Bulle</li>
+              <li>IBAN CH96 0900 0000 1581 1462 6</li>
+              
             </ul>
           </section>
 
