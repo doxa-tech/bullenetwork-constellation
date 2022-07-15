@@ -1,13 +1,17 @@
 name: o2vie-chatel.ch deploy
 
 on:
-  workflow_dispatch:
-  push:
-    branches: [ production-o2vie-chatel-ch ]
+  release:
+    types: [published]
 
 jobs:
   deploy:
+    if:  ${{ startsWith(github.event.release.tag_name, 'o2vie-') }}
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./o2vie-chatel.ch
 
     steps:
     - uses: actions/checkout@v2
@@ -18,22 +22,42 @@ jobs:
     
     - name: Install dependencies
       run: |
-        cd o2vie-chatel.ch
         npm install
         npm install -g gatsby-cli
         
     - name: Build
       run: |
-        cd o2vie-chatel.ch
         echo "DIRECTUS_O2VIE_TOKEN=${{secrets.O2VIE_CH_DIRECTUS_O2VIE_TOKEN}}" >> .env.production
         gatsby build
-        
-    - name: Sync
-      env:
-        dest: 'eebulle@${{secrets.DEPLOY_ADDR}}:/var/www/o2vie-chatel.ch/public_html/'
+
+    - name: Get the version
+      id: version_file
+      # output "o2vie-v1_2_3"
+      run: echo ::set-output name=VERSION::$(echo ${GITHUB_REF/refs\/tags\//} | tr . _)
+
+    - name: Create tar.gz
       run: |
-        echo "${{secrets.DEPLOY_O2VIE_CHATEL_CH_KEY}}" > deploy_key
-        chmod 600 ./deploy_key
-        rsync -chav --delete \
-          -e 'ssh -p ${{secrets.DEPLOY_PORT}} -i ./deploy_key -o StrictHostKeyChecking=no' \
-          ./o2vie-chatel.ch/public/ ${{env.dest}}
+        tar -czvf ${{ steps.version_file.outputs.VERSION }}.tar.gz public
+
+    - name: Release
+      id: release_pub
+      # at this time of writing, the latest version does not contain the assets
+      # output
+      uses: softprops/action-gh-release@cd28b0f5ee8571b76cfdaa62a30d51d752317477
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: o2vie-chatel.ch/o2vie-*.tar.gz
+
+    - name: Display output
+      run: |
+        echo "${{ steps.release_pub.outputs.assets }}"
+        echo "${{ steps.release_pub.outputs.url }}"
+        echo "${{ steps.release_pub.outputs.id }}"
+        echo "${{ steps.release_pub.outputs.upload_url }}"
+        echo "${{ steps.release_pub.outputs }}"
+
+    - name: Trigger deploy
+      run: |
+        echo "${{ steps.release_pub.outputs.assets }}"
+        curl -X POST -d "{\"browser_download_url\": \"${{ fromJSON(steps.release_pub.outputs.assets)[0].browser_download_url }}\"}" https://hodor.doxatech.ch/api/hook/o2vie
+
