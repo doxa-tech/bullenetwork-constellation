@@ -6,6 +6,7 @@ on:
 
 jobs:
   deploy:
+    if:  ${{ startsWith(github.event.release.tag_name, 'o2vie-') }}
     runs-on: ubuntu-latest
 
     defaults:
@@ -30,13 +31,13 @@ jobs:
         gatsby build
 
     - name: Get the version
-      id: get_version
-      # output "v1_2_3"
-      run: echo ::set-output name=VERSION::$(echo ${GITHUB_REF/refs\/tags\//} | tr . _)
+      id: version_file
+      # output "o2vie-v1_2_3"
+      run: echo ::set-output name=VERSION::$(echo ${github.event.release.tag_name} | tr . _)
 
     - name: Create tar.gz
       run: |
-        tar -czvf o2vie_${{ steps.get_version.outputs.VERSION }}.tar.gz public
+        tar -czvf ${{ steps.version_file.outputs.VERSION }}.tar.gz public
 
     - name: Release
       uses: softprops/action-gh-release@v1
