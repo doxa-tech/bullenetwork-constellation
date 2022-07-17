@@ -48,14 +48,6 @@ jobs:
       with:
         files: o2vie-chatel.ch/o2vie-*.tar.gz
 
-    - name: Display output
-      run: |
-        echo "${{ steps.release_pub.outputs.assets }}"
-        echo "${{ steps.release_pub.outputs.url }}"
-        echo "${{ steps.release_pub.outputs.id }}"
-        echo "${{ steps.release_pub.outputs.upload_url }}"
-        echo "${{ steps.release_pub.outputs }}"
-
     - name: Trigger deploy
       run: |
         echo "${{ steps.release_pub.outputs.assets }}"

@@ -1,13 +1,22 @@
 name: bullenetwork.ch deploy
 
 on:
-  workflow_dispatch:
-  push:
-    branches: [ production-bullenetwork-ch ]
+  release:
+    types: [published]
 
 jobs:
   deploy:
+    if:  ${{ startsWith(github.event.release.tag_name, 'bullenetwork-') }}
     runs-on: ubuntu-latest
+
+    env:
+      base_folder: bullenetwork.ch
+      hodor_url: https://hodor.doxatech.ch
+      hodor_key: bullenetwork
+
+    defaults:
+      run:
+        working-directory: ./${{ env.base_folder }}
 
     steps:
     - uses: actions/checkout@v2
@@ -18,26 +27,37 @@ jobs:
     
     - name: Install dependencies
       run: |
-        cd bullenetwork.ch
         npm install
         npm install -g gatsby-cli@2.8.29
         
     - name: Build
-      run: |
-        cd bullenetwork.ch
-        echo "GCS_PROXY_PARTITION=${{secrets.BULLENETWORK_CH_GCS_PROXY_PARTITION}}" >> .env.production
-        echo "GCS_PROXY_PARTITION_ARCHIVE=${{secrets.BULLENETWORK_CH_GCS_PROXY_PARTITION_ARCHIVE}}" >> .env.production
-        echo "GCS_PROXY_MEDIAS=${{secrets.BULLENETWORK_CH_GCS_PROXY_MEDIAS}}" >> .env.production
-        echo "GCS_PROXY_MEDIAS_ARCHIVE=${{secrets.BULLENETWORK_CH_GCS_PROXY_MEDIAS_ARCHIVE}}" >> .env.production
-        echo "DIRECTUS_ADMIN_TOKEN=${{secrets.BULLENETWORK_CH_DIRECTUS_ADMIN_TOKEN}}" >> .env.production
-        gatsby build
-        
-    - name: Sync
       env:
-        dest: 'eebulle@${{secrets.DEPLOY_ADDR}}:/var/www/bullenetwork.ch/public_html/'
+        GCS_PROXY_PARTITION: ${{secrets.BULLENETWORK_CH_GCS_PROXY_PARTITION}}
+        GCS_PROXY_PARTITION_ARCHIVE: ${{secrets.BULLENETWORK_CH_GCS_PROXY_PARTITION_ARCHIVE}}
+        GCS_PROXY_MEDIAS: ${{secrets.BULLENETWORK_CH_GCS_PROXY_MEDIAS}}
+        GCS_PROXY_MEDIAS_ARCHIVE: ${{secrets.BULLENETWORK_CH_GCS_PROXY_MEDIAS_ARCHIVE}}
+        DIRECTUS_ADMIN_TOKEN: ${{secrets.BULLENETWORK_CH_DIRECTUS_ADMIN_TOKEN}}
+      run: gatsby build
+
+    - name: Get the version
+      id: version_file
+      # output "bullenetwork-v1_2_3"
+      run: echo ::set-output name=VERSION::$(echo ${GITHUB_REF/refs\/tags\//} | tr . _)
+
+    - name: Create tar.gz
       run: |
-        echo "${{secrets.DEPLOY_BULLENETWORK_CH_KEY}}" > deploy_key
-        chmod 600 ./deploy_key
-        rsync -chav --delete \
-          -e 'ssh -p ${{secrets.DEPLOY_PORT}} -i ./deploy_key -o StrictHostKeyChecking=no' \
-          ./bullenetwork.ch/public/ ${{env.dest}}
+        tar -czvf ${{ steps.version_file.outputs.VERSION }}.tar.gz public
+
+    - name: Release
+      id: release_pub
+      # at this time of writing, the latest version does not contain the assets
+      # output
+      uses: softprops/action-gh-release@cd28b0f5ee8571b76cfdaa62a30d51d752317477
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: ${{ env.base_folder }}/${{ steps.version_file.outputs.VERSION }}.tar.gz
+
+    - name: Trigger deploy
+      run: |
+        curl -X POST -d "{\"browser_download_url\": \"${{ fromJSON(steps.release_pub.outputs.assets)[0].browser_download_url }}\"}" ${{ env.hodor_url }}/api/hook/${{ env.hodor_key }}
+
