@@ -3,7 +3,7 @@ import { formatDistanceToNow } from 'date-fns'
 import { fr } from "date-fns/locale"
 import * as styles from "./instagram.module.css"
 
-const OSIA_ENDPOINT = "https://osia.bullenetwork.ch"
+const OSIA_ENDPOINT = "https://osia.o2vie-chatel.ch"
 const INSTAGRAM_URL = "https://www.instagram.com/_o2vie_/"
 
 const Instagram = () => {
