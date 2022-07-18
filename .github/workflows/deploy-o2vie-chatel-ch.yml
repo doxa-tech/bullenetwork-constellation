@@ -9,9 +9,14 @@ jobs:
     if:  ${{ startsWith(github.event.release.tag_name, 'o2vie-') }}
     runs-on: ubuntu-latest
 
+    env:
+      base_folder: o2vie-chatel.ch
+      hodor_url: https://hodor.doxatech.ch
+      hodor_key: o2vie
+
     defaults:
       run:
-        working-directory: ./o2vie-chatel.ch
+        working-directory: ./${{ env.base_folder }}
 
     steps:
     - uses: actions/checkout@v2
@@ -31,13 +36,15 @@ jobs:
         gatsby build
 
     - name: Get the version
-      id: version_file
-      # output "o2vie-v1_2_3"
-      run: echo ::set-output name=VERSION::$(echo ${GITHUB_REF/refs\/tags\//} | tr . _)
+      id: get_version
+      # output "o2vie-v1.2.3" and "o2vie-v1_2_3"
+      run: |
+        echo ::set-output name=VERSION::$(echo ${GITHUB_REF/refs\/tags\//})
+        echo ::set-output name=VERSION_FILE::$(echo ${GITHUB_REF/refs\/tags\//} | tr . _)
 
     - name: Create tar.gz
       run: |
-        tar -czvf ${{ steps.version_file.outputs.VERSION }}.tar.gz public
+        tar -czvf ${{ steps.get_version.outputs.VERSION_FILE }}.tar.gz public
 
     - name: Release
       id: release_pub
@@ -46,10 +53,9 @@ jobs:
       uses: softprops/action-gh-release@cd28b0f5ee8571b76cfdaa62a30d51d752317477
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: o2vie-chatel.ch/o2vie-*.tar.gz
+        files: ${{ env.base_folder }}/o2vie-*.tar.gz
 
     - name: Trigger deploy
       run: |
-        echo "${{ steps.release_pub.outputs.assets }}"
-        curl -X POST -d "{\"browser_download_url\": \"${{ fromJSON(steps.release_pub.outputs.assets)[0].browser_download_url }}\"}" https://hodor.doxatech.ch/api/hook/o2vie
+        curl -X POST -d "{\"browser_download_url\":\"${{ fromJSON(steps.release_pub.outputs.assets)[0].browser_download_url }}\",\"tag\":\"${{ steps.get_version.outputs.VERSION }}\"}" ${{ env.hodor_url }}/api/hook/${{ env.hodor_key }}
 
