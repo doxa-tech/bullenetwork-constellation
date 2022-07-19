@@ -3,14 +3,40 @@
 </div>
 
 # bullenetwork-constellation
+
 Collection of websites for the BulleNetwork
 
-[![bullenetwork.ch deploy](https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-bullenetwork-ch.yml/badge.svg)](https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-bullenetwork-ch.yml)
-[![eebulle.ch deploy](https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-eebulle-ch.yml/badge.svg)](https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-eebulle-ch.yml)
-[![o2vie-chatel.ch deploy](https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-o2vie-chatel-ch.yml/badge.svg)](https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-o2vie-chatel-ch.yml)
+<table>
+<tr>
+    <td>bullenetwork.ch</td>
+    <td>
+      <a href="https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-bullenetwork-ch.yml">
+        <img src="https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-bullenetwork-ch.yml/badge.svg">
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/doxa-tech/bullenetwork-constellation/releases">
+        <img src="https://hodor.doxatech.ch/api/tags/bullenetwork?format=svg">
+      </a>
+    </td>
+</tr>
+<tr>
+    <td>o2vie-chatel.ch</td>
+    <td>
+      <a href="https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-o2vie-chatel-ch.yml">
+        <img src="https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-o2vie-chatel-ch.yml/badge.svg">
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/doxa-tech/bullenetwork-constellation/releases">
+        <img src="https://hodor.doxatech.ch/api/tags/o2vie?format=svg">
+      </a>
+    </td>
+<tr>
+</table>
 
 ## Deploy
 
-Uses the [Github
-actions](https://github.com/doxa-tech/bullenetwork-constellation/actions) to
-manually trigger a deploy.
+Constellation uses [Hodor](https://github.com/nkcr/Hodor) to automate deployment
+of static websites. To trigger a deployment create a new release following the
+current versioning in place.

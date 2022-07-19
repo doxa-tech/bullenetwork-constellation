@@ -40,13 +40,15 @@ jobs:
       run: gatsby build
 
     - name: Get the version
-      id: version_file
-      # output "bullenetwork-v1_2_3"
-      run: echo ::set-output name=VERSION::$(echo ${GITHUB_REF/refs\/tags\//} | tr . _)
+      id: get_version
+      # output "bullenetwork-v1.2.3" and "bullenetwork-v1_2_3"
+      run: |
+        echo ::set-output name=VERSION::$(echo ${GITHUB_REF/refs\/tags\//})
+        echo ::set-output name=VERSION_FILE::$(echo ${GITHUB_REF/refs\/tags\//} | tr . _)
 
     - name: Create tar.gz
       run: |
-        tar -czvf ${{ steps.version_file.outputs.VERSION }}.tar.gz public
+        tar -czvf ${{ steps.get_version.outputs.VERSION_FILE }}.tar.gz public
 
     - name: Release
       id: release_pub
@@ -59,5 +61,5 @@ jobs:
 
     - name: Trigger deploy
       run: |
-        curl -X POST -d "{\"browser_download_url\": \"${{ fromJSON(steps.release_pub.outputs.assets)[0].browser_download_url }}\"}" ${{ env.hodor_url }}/api/hook/${{ env.hodor_key }}
+        curl -X POST -d "{\"browser_download_url\":\"${{ fromJSON(steps.release_pub.outputs.assets)[0].browser_download_url }}\",\"tag\":\"${{ steps.get_version.outputs.VERSION }}\"}" ${{ env.hodor_url }}/api/hook/${{ env.hodor_key }}
 
