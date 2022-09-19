@@ -5,11 +5,8 @@ import "./events.scss"
 
 const Events = () => {
 
-  const [content, setContent] = useState(0)
+  const [content, setContent] = useState("")
   useEffect(() => {
-    setContent(
-      <div className="loadrr"><div><div></div><div></div><div></div><div></div></div></div>
-    )
     fetch(`https://panda.bullenetwork.ch/directus/items/eebulle_events?filter[status][eq]=published`)
       .then(response => response.json())
       .then(resultData => {
@@ -22,10 +19,10 @@ const Events = () => {
 
   return (
     <div className="event-container">
-
-      <h2 id="events">Prochainement</h2>
-      {content}
-
+      {content != "" && <>
+        <h2 id="events">Prochainement</h2>
+        {content}
+      </>}
     </div>
   )
 }
