@@ -16,18 +16,19 @@ const Events = () => {
         const result = resultData.data.map((event) =>
           <Event imageID={event.image} content={event.content} key={event.id} />
         );
+        console.log("content:", content)
         setContent(result)
       })
   }, [])
 
-  return (
-    <div className="event-container">
+  return content.length !== 0 ?
+    (<div className="event-container">
 
       <h2 id="events">Prochainement</h2>
       {content}
 
-    </div>
-  )
+    </div>)
+    : (<></>)
 }
 
 export default Events

@@ -6,17 +6,26 @@ const Vision = () => (
   <div className="vision">
     <div className="container">
       <h2>Notre vision</h2>
-      <p>Nous marchons avec détermination travaillant avec foi à la
-      manifestation du Royaume de Dieu. Nous propageons la connaissance de
-      Jésus-Christ dans le canton de Fribourg dans la puissance du Saint-Esprit.
-      De manière imagée, nous sommes une maternité spirituelle régionale,
-      là où foisonnent la vie et la vie nouvelle en Jésus ! Nous sommes
-      une église de dimension familiale et nous implantons des
-      églises-filles dans la région tout en bénéficiant d'une équipe de
-      ministère commune. Nous sommes accessibles aux croyants et à tous
-      ceux qui recherchent Dieu. Nous vivons notre foi d'une manière adaptée
-      à notre environnement socioculturel afin de demeurer sel et lumière de
-        notre pays.</p>
+      <p>
+        <b>Bouger</b><br />
+        Nous avons un nouveau lieu de célébration, plus adapté, avec une visibilité accrue, afin d’attirer les gens ne connaissant pas Jésus à nous rejoindre. Nous vivons notre foi de façon dynamique et attentive au besoin de notre entourage.
+      </p>
+      <p>
+        <b>Unir</b><br />
+        Nous rassemblons les membres de l’église autour de la communion fraternelle. Nous encourageons régulièrement nos membres à s’approprier « l’église de Bulle ».
+      </p>
+      <p>
+        <b>Louer</b><br />
+        Nous faisons de notre église une église d’adorateurs, avec des groupes de louanges qui « claquent », une assemblée qui exalte le Seigneur Jésus-Christ.
+      </p>
+      <p>
+        <b>Libérer</b><br />
+        Nous formons des membres à maturité pour les envoyer, libérer les appels.
+      </p>
+      <p>
+        <b>Evangéliser</b><br />
+        Nous communiquons la Parole de Dieu dans la région de la Gruyères et au-delà.
+      </p>
     </div>
   </div>
 )
