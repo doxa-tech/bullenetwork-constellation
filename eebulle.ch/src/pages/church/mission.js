@@ -27,7 +27,7 @@ const Mission = () => {
             <IntroLeft>
               <div className="intro-wrapper">
                 <h2>Notre mission</h2>
-                <p>Manifester la puissance libératrice de Jésus-Christ et faire croître Son Royaume au-delà du canton de Fribourg!</p>
+                <p>Nous accueillons notre prochain et nous encourageons chacun à connaître et servir Jésus-Christ !</p>
               </div>
             </IntroLeft>
           </div>
@@ -36,9 +36,9 @@ const Mission = () => {
               <div className="intro-wrapper">
                 <h2>Nos valeurs clés</h2>
                 <ul>
-                  <li>La connexion à Dieu</li>
-                  <li>La connexion aux autres</li>
-                  <li>L'encouragement mutuel et collectif</li>
+                  <li>L'Amour: Nous aimons Dieu et notre prochain</li>
+                  <li>La solidarité: Nous prenons soin les uns des autres</li>
+                  <li>La progression: Nous sommes une église formatrice</li>
                 </ul>
               </div>
             </IntroRight>

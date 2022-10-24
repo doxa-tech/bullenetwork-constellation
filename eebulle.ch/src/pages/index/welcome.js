@@ -72,7 +72,7 @@ const Welcome = () => {
           </IntroRight>
           <div className="subinfo">
             <p>
-              Parking disponible devant l'église, Route du Verdel 8 à Bulle.
+              Places de parc disponibles devant l'église, Route du Verdel 8 à Bulle.
               Célébrations adaptées pour les enfants avec Kids Bulle College.
             </p>
           </div>

@@ -33,7 +33,7 @@ const Leadership = () => {
     <div className="leadership">
       <div className="container">
         <h2>Leadership</h2>
-        <p className="intro">Dans l'ADN des églises évangéliques apostoliques (www.eear.ch) se trouve une forte notion de travail d'équipe, d'interdépendance ministérielle, un leadership collégial, la pluralité des dons et charismes au service du Corps de Christ. C'est pourquoi, nous avons une base de 3 équipes dirigeantes qui forment ensemble le leadership de l'église évangélique de Bulle.</p>
+        <p className="intro">Dans l'ADN des églises évangéliques apostoliques (<a href="https://www.mouvementplus.ch/" target="_blank">mouvementplus.ch</a>) se trouve une forte notion de travail d'équipe, d'interdépendance ministérielle, un leadership collégial, la pluralité des dons et charismes au service du Corps de Christ. C'est pourquoi, nous avons une base de 3 équipes dirigeantes qui forment ensemble le leadership de l'église évangélique de Bulle. Les leaders de l’EEBulle sont subordonnés à l’équipe de ministères du <a href="https://bullenetwork.ch" target="_blank">Bullenetwork</a>.</p>
         <p className="highlight">
           "Pas une question de valeur, mais de sphère d'influence selon l'appel de Dieu"
         </p>
