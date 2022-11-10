@@ -18,7 +18,7 @@ const IndexWelcome = () => {
   `)
 
   React.useEffect(() => {
-    fetch(`https://truite.bullenetwork.ch/items/O2vie_Next_Event`)
+    fetch(`https://vanil.bullenetwork.ch/items/O2vie_Next_Event`)
       .then(response => response.json())
       .then(resultData => {
         if (resultData.data.status === "published") {
@@ -58,7 +58,7 @@ const Event = ({ event }) => {
   const [image, setImage] = React.useState("#")
 
   React.useEffect(() => {
-    fetch(`https://truite.bullenetwork.ch/files/${event.image}`)
+    fetch(`https://vanil.bullenetwork.ch/files/${event.image}`)
       .then(response => response.json())
       .then(resultData => {
         setImage(`https://storage.googleapis.com/bullenetwork-directus-truite/${resultData.data.filename_disk}`)

@@ -28,7 +28,7 @@ module.exports = {
     {
       resolve: '@directus/gatsby-source-directus',
       options: {
-        url: `https://truite.bullenetwork.ch`, // Fill with your Directus instance address
+        url: `https://vanil.bullenetwork.ch`, // Fill with your Directus instance address
         auth: {
           token: `${process.env.DIRECTUS_ADMIN_TOKEN}`,
         }

@@ -35,15 +35,11 @@ const defaultAddr = ":9990"
 
 // defines the OS env keys that must be provided
 const (
-	KEY_GCS_PATH       = "GCS_PRIVATE_PATH"
-	KEY_BUCKET_NAME    = "GCS_BUCKET_NAME"
-	KEY_DIRECTUS_TOKEN = "DIRECTUS_TOKEN"
+	KEY_GCS_PATH    = "GCS_PRIVATE_PATH"
+	KEY_BUCKET_NAME = "GCS_BUCKET_NAME"
 )
 
-const directusFileURL = "https://truite.bullenetwork.ch/files/"
-
-const partitionRelationTable = "https://truite.bullenetwork.ch/items/partitions_directus_files_2/"
-const mediasRelationTable = "https://truite.bullenetwork.ch/items/Medias_files/"
+const directusFileURL = "https://vanil.bullenetwork.ch/files/"
 
 type key int
 
@@ -55,7 +51,6 @@ const (
 type configuration struct {
 	gcsKeyPath    string
 	gcsBucketName string
-	directusToken string
 }
 
 func main() {
@@ -81,13 +76,8 @@ func main() {
 		ErrorLog: ctrl.log,
 	}
 
-	mux.HandleFunc("/partitions/auth", ctrl.auth(partitionRelationTable))
-	mux.HandleFunc("/partitions/archive", ctrl.archive(partitionRelationTable))
-
-	mux.HandleFunc("/medias/auth", ctrl.auth(mediasRelationTable))
-	mux.HandleFunc("/medias/archive", ctrl.archive(mediasRelationTable))
-
-	mux.HandleFunc("/gcspub", ctrl.gcspub())
+	mux.HandleFunc("/api/auth", ctrl.auth())
+	mux.HandleFunc("/api/archive", ctrl.archive())
 
 	ln, err := net.Listen("tcp", listenAddr)
 	if err != nil {
@@ -147,15 +137,9 @@ func getConfiguration() (configuration, error) {
 		return configuration{}, xerrors.Errorf("please set %s", KEY_BUCKET_NAME)
 	}
 
-	directusToken := os.Getenv(KEY_DIRECTUS_TOKEN)
-	if directusToken == "" {
-		return configuration{}, xerrors.Errorf("please set %s", KEY_DIRECTUS_TOKEN)
-	}
-
 	return configuration{
 		gcsKeyPath:    gcsKeyPath,
 		gcsBucketName: gcsBucketName,
-		directusToken: directusToken,
 	}, nil
 }
 

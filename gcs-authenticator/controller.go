@@ -4,16 +4,20 @@ import (
 	"archive/zip"
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 
 	"cloud.google.com/go/storage"
 	"golang.org/x/oauth2/jwt"
 	"golang.org/x/xerrors"
 )
+
+const directusErrorCode = 10
 
 // controller defines the controller functions and holds common elements
 type controller struct {
@@ -23,21 +27,56 @@ type controller struct {
 	conf    configuration
 }
 
+type appError struct {
+	Message string          `json:"message"`
+	Code    int             `json:"code"`
+	Data    json.RawMessage `json:"data"`
+}
+
+type mainError struct {
+	Error appError `json:"error"`
+}
+
 // errorf prints the error and replies an HTTP error
-func (c controller) errorf(w http.ResponseWriter, code int, format string, v ...interface{}) {
+func (c controller) errorf(w http.ResponseWriter, httpCode int, appCode int,
+	data any, format string, v ...interface{}) {
+
+	dataBuf, err := json.Marshal(data)
+	if err != nil {
+		c.log.Printf("ERROR: failed to marshal data: %v", err)
+	}
+
 	msg := fmt.Sprintf(format, v...)
-	c.log.Printf("ERROR [%d]: %s", code, msg)
-	http.Error(w, msg, code)
+
+	errMsg := mainError{
+		Error: appError{
+			Message: msg,
+			Code:    appCode,
+			Data:    dataBuf,
+		},
+	}
+
+	errBuf, err := json.Marshal(errMsg)
+	if err != nil {
+		c.log.Printf("ERROR: failed to marshal errMsg: %v", err)
+	}
+
+	c.log.Printf("ERROR [%d]: %s", httpCode, errBuf)
+
+	w.Header().Add("content-type", "application/json")
+	w.Header().Set("X-Content-Type-Options", "nosniff")
+	w.WriteHeader(httpCode)
+	w.Write(errBuf)
 }
 
 // authPartition implements a POST endpoint that authenticates a file URL. It
-// takes as input an ID on a relation table, which allows to authenticate only a
-// subset of files.
+// takes as input a fileID and a Directus access_token.
 //
 // Expects:
 //   id=
+//	 access_token=
 //
-func (c controller) auth(relationTable string) func(http.ResponseWriter, *http.Request) {
+func (c controller) auth() func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
@@ -49,29 +88,38 @@ func (c controller) auth(relationTable string) func(http.ResponseWriter, *http.R
 		}
 
 		if r.Method != http.MethodPost {
-			c.errorf(w, http.StatusMethodNotAllowed, "only POST allowed")
+			c.errorf(w, http.StatusMethodNotAllowed, 1, nil, "only POST allowed")
 			return
 		}
 
 		err := r.ParseForm()
 		if err != nil {
-			c.errorf(w, http.StatusInternalServerError, "failed to parse form: %v", err.Error())
+			c.errorf(w, http.StatusInternalServerError, 1, nil, "failed to parse form: %v", err.Error())
 			return
 		}
 
 		id := r.Form.Get("id")
 		if id == "" {
-			c.errorf(w, http.StatusBadRequest, "id value not found")
+			c.errorf(w, http.StatusBadRequest, 1, nil, "id value not found")
 			return
+		}
+
+		accessToken := r.Form.Get("access_token")
+		if accessToken == "" {
+			c.errorf(w, http.StatusBadRequest, 1, nil, "access_token not found")
 		}
 
 		c.log.Printf("got id: %s", id)
 
-		url := relationTable + id + "?access_token=" + c.conf.directusToken
-
-		object, err := getFile(url)
+		object, err := getFile(id, accessToken)
 		if err != nil {
-			c.errorf(w, http.StatusInternalServerError, "failed to get file: %v", err)
+			var data any
+			dataCode := 1
+			if errors.As(err, &directusErrors{}) {
+				data = err
+				dataCode = directusErrorCode
+			}
+			c.errorf(w, http.StatusInternalServerError, dataCode, data, "failed to get file: %v", err)
 			return
 		}
 
@@ -79,7 +127,7 @@ func (c controller) auth(relationTable string) func(http.ResponseWriter, *http.R
 
 		u, err := storage.SignedURL(c.conf.gcsBucketName, object, getOpts(c.jwtConf))
 		if err != nil {
-			c.errorf(w, http.StatusInternalServerError, "failed to create signed url: %v", err)
+			c.errorf(w, http.StatusInternalServerError, 1, nil, "failed to create signed url: %v", err)
 			return
 		}
 
@@ -100,53 +148,58 @@ func getOpts(conf *jwt.Config) *storage.SignedURLOptions {
 	}
 }
 
-// Returns the filename_disk from the relation table entry. The relation table
-// must be from any collection to the `items` collection, which then must
-// contain the `directus_files_id` attribute.
-func getFile(url string) (string, error) {
-	resp, err := http.Get(url)
+// Returns the filename_disk from a file.
+func getFile(fileID, accessToken string) (string, error) {
+	resp, err := http.Get("https://vanil.bullenetwork.ch/files/" + fileID +
+		"?access_token=" + accessToken)
+
 	if err != nil {
 		return "", xerrors.Errorf("failed to get partition: %v", err)
 	}
 
-	type RelationResp struct {
-		Data struct {
-			DirectusFilesID string `json:"directus_files_id"`
-		} `json:"data"`
-	}
+	defer resp.Body.Close()
 
-	decoder := json.NewDecoder(resp.Body)
-
-	var partition RelationResp
-
-	err = decoder.Decode(&partition)
+	result, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return "", xerrors.Errorf("failed to get response: %v", err)
-	}
-
-	url = directusFileURL + partition.Data.DirectusFilesID
-
-	resp, err = http.Get(url)
-	if err != nil {
-		return "", xerrors.Errorf("failed to get file: %v", err)
+		return "", xerrors.Errorf("failed to read body: %v", err)
 	}
 
 	type FileResp struct {
 		Data struct {
 			FilenameDisk string `json:"filename_disk"`
 		} `json:"data"`
+		Errors []json.RawMessage `json:"errors"`
 	}
 
-	decoder = json.NewDecoder(resp.Body)
+	var fileResp FileResp
 
-	var file FileResp
-
-	err = decoder.Decode(&file)
+	err = json.Unmarshal(result, &fileResp)
 	if err != nil {
-		return "", xerrors.Errorf("failed to decode file: %v", err)
+		return "", xerrors.Errorf("failed to unmarshal response: %q: %v", result, err)
 	}
 
-	return file.Data.FilenameDisk, nil
+	if fileResp.Errors != nil {
+		return "", directusErrors{Errors: fileResp.Errors}
+	}
+
+	return fileResp.Data.FilenameDisk, nil
+}
+
+type directusErrors struct {
+	Errors []json.RawMessage `json:"errors"`
+}
+
+func (e directusErrors) String() string {
+	res := make([]string, len(e.Errors))
+	for i := range res {
+		res[i] = string(e.Errors[i])
+	}
+
+	return "directusErrors{" + strings.Join(res, " - ") + "}"
+}
+
+func (e directusErrors) Error() string {
+	return "directus error " + e.String()
 }
 
 // archive implements POST /archive. This endpoint creates an uncompressed ZIP
@@ -154,17 +207,18 @@ func getFile(url string) (string, error) {
 // parameter:
 //
 // "bucket" => BUCKET_NAME,
+// "access_token" => ACCESS_TOKEN,
 // ID_1 => FILENAME_1
 // ID_2 => FILENAME_2
 // ...
 //
 // The ID must be an ID from the relation table.
 //
-func (c controller) archive(relationTable string) func(http.ResponseWriter, *http.Request) {
+func (c controller) archive() func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		_, ok := w.(http.Flusher)
 		if !ok {
-			c.errorf(w, http.StatusInternalServerError, "flusher not supported")
+			c.errorf(w, http.StatusInternalServerError, 1, nil, "flusher not supported")
 			return
 		}
 
@@ -178,7 +232,7 @@ func (c controller) archive(relationTable string) func(http.ResponseWriter, *htt
 		}
 
 		if r.Method != http.MethodPost {
-			c.errorf(w, http.StatusMethodNotAllowed, "only POST allowed")
+			c.errorf(w, http.StatusMethodNotAllowed, 1, nil, "only POST allowed")
 			return
 		}
 
@@ -187,13 +241,19 @@ func (c controller) archive(relationTable string) func(http.ResponseWriter, *htt
 
 		err := r.ParseForm()
 		if err != nil {
-			c.errorf(w, http.StatusInternalServerError, "failed to parse form: %v", err)
+			c.errorf(w, http.StatusInternalServerError, 1, nil, "failed to parse form: %v", err)
 			return
 		}
 
 		bucket := r.Form.Get("bucket")
 		if bucket == "" {
-			c.errorf(w, http.StatusBadRequest, "bucket value not found")
+			c.errorf(w, http.StatusBadRequest, 1, nil, "bucket value not found")
+			return
+		}
+
+		accessToken := r.Form.Get("access_token")
+		if accessToken == "" {
+			c.errorf(w, http.StatusBadRequest, 1, nil, "access_token value not found")
 			return
 		}
 
@@ -208,7 +268,7 @@ func (c controller) archive(relationTable string) func(http.ResponseWriter, *htt
 		//    `directus_files_id` attribute.
 		// v[0]: filename
 		for k, v := range r.Form {
-			if k == "bucket" {
+			if k == "bucket" || k == "access_token" {
 				continue
 			}
 
@@ -216,13 +276,17 @@ func (c controller) archive(relationTable string) func(http.ResponseWriter, *htt
 				continue
 			}
 
-			url := relationTable + k + "?access_token=" + c.conf.directusToken
+			c.log.Printf("archive: getting file: %s", k)
 
-			c.log.Printf("archive: getting file: %s", url)
-
-			object, err := getFile(url)
+			object, err := getFile(k, accessToken)
 			if err != nil {
-				c.errorf(w, http.StatusInternalServerError, "failed to get file: %v", err)
+				var data any
+				dataCode := 1
+				if errors.As(err, &directusErrors{}) {
+					data = err
+					dataCode = directusErrorCode
+				}
+				c.errorf(w, http.StatusInternalServerError, dataCode, data, "failed to get file: %v", err)
 				return
 			}
 
@@ -242,7 +306,7 @@ func (c controller) archive(relationTable string) func(http.ResponseWriter, *htt
 
 			rc, err := c.client.Bucket(bucket).Object(fileRequest.Object).NewReader(ctx)
 			if err != nil {
-				c.errorf(w, http.StatusInternalServerError, "failed to get object: %v", err)
+				c.errorf(w, http.StatusInternalServerError, 1, nil, "failed to get object: %v", err)
 				return
 			}
 
@@ -256,13 +320,13 @@ func (c controller) archive(relationTable string) func(http.ResponseWriter, *htt
 
 			writer, err := zipWriter.CreateHeader(&header)
 			if err != nil {
-				c.errorf(w, http.StatusInternalServerError, "failed to create header: %v", err)
+				c.errorf(w, http.StatusInternalServerError, 1, nil, "failed to create header: %v", err)
 				return
 			}
 
 			_, err = io.Copy(writer, rc)
 			if err != nil {
-				c.errorf(w, http.StatusInternalServerError, "failed to copy: %v", err)
+				c.errorf(w, http.StatusInternalServerError, 1, nil, "failed to copy: %v", err)
 				return
 			}
 
@@ -294,7 +358,7 @@ func (c controller) gcspub() func(http.ResponseWriter, *http.Request) {
 
 		err := json.NewDecoder(r.Body).Decode(&h)
 		if err != nil {
-			c.errorf(w, http.StatusBadRequest, "failed to unmarshal hook: %v", err)
+			c.errorf(w, http.StatusBadRequest, 1, nil, "failed to unmarshal hook: %v", err)
 			return
 		}
 
@@ -306,7 +370,7 @@ func (c controller) gcspub() func(http.ResponseWriter, *http.Request) {
 
 		err = json.Unmarshal(h.Payload, &m)
 		if err != nil {
-			c.errorf(w, http.StatusBadRequest, "failed to unmarshal image: %v", err)
+			c.errorf(w, http.StatusBadRequest, 1, nil, "failed to unmarshal image: %v", err)
 			return
 		}
 
@@ -317,7 +381,7 @@ func (c controller) gcspub() func(http.ResponseWriter, *http.Request) {
 
 		filenameDisk, err := getDirectusFilename(object)
 		if err != nil {
-			c.errorf(w, http.StatusInternalServerError, "failed to get filename_disk: %v", err)
+			c.errorf(w, http.StatusInternalServerError, 1, nil, "failed to get filename_disk: %v", err)
 			return
 		}
 
@@ -328,7 +392,7 @@ func (c controller) gcspub() func(http.ResponseWriter, *http.Request) {
 
 		err = acl.Set(ctx, storage.AllUsers, storage.RoleReader)
 		if err != nil {
-			c.errorf(w, http.StatusInternalServerError, "failed to set ACL: %v", err)
+			c.errorf(w, http.StatusInternalServerError, 1, nil, "failed to set ACL: %v", err)
 			return
 		}
 	}
