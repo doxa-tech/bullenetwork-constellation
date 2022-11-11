@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useRef, useState } from "r
 import Layout from "./layout-small"
 import { Login } from "./login"
 import { navigate } from "gatsby"
+import { Buffer } from "buffer";
 
 export const SecureContext = createContext(null);
 
@@ -10,8 +11,11 @@ export const SecureDirectus = ({ children, email, className }) => {
   const [showLogin, setShowLogin] = useState(true);
   const [error, setError] = useState("");
 
+  const key = Buffer.from(email).toString("base64")
+
   useEffect(() => {
-    const auth_info = JSON.parse(window.localStorage.getItem(`bn_auth_partitions`));
+    const auth_info = JSON.parse(window.localStorage.getItem(key));
+    console.log("auth info:", auth_info);
     if (auth_info) {
       setAccessToken(auth_info[0].access_token);
       setShowLogin(false);
@@ -37,7 +41,7 @@ export const SecureDirectus = ({ children, email, className }) => {
     }
 
     if (response.errors[0].extensions.code === "TOKEN_EXPIRED") {
-      const auth_info = JSON.parse(window.localStorage.getItem(`bn_auth_partitions`));
+      const auth_info = JSON.parse(window.localStorage.getItem(key));
 
       if (!auth_info) {
         setError("Please login.")
@@ -55,9 +59,9 @@ export const SecureDirectus = ({ children, email, className }) => {
       }).then((req) => req.json())
         .then((resp) => {
           if (resp.errors) {
-            throw "Failed to refresh:" + resp.errors[0].message;
+            throw "Failed to refresh: " + resp.errors[0].message;
           } else if (resp.data) {
-            localStorage.setItem(`bn_auth_partitions`, JSON.stringify([resp.data]));
+            localStorage.setItem(key, JSON.stringify([resp.data]));
             setAccessToken(resp.data.access_token);
           } else {
             throw "bad response:" + JSON.stringify(resp);
@@ -74,7 +78,7 @@ export const SecureDirectus = ({ children, email, className }) => {
   }
 
   const logout = () => {
-    localStorage.removeItem(`bn_auth_partitions`);
+    localStorage.removeItem(key);
     setAccessToken("");
     navigate("/");
   }

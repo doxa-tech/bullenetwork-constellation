@@ -1,5 +1,7 @@
-import React, { Component, useRef, useState } from "react"
+import React, { useRef, useState, useContext } from "react"
 import Checkbox from "./checkbox";
+import { SecureContext } from "./securedirectus";
+import Spinner from "./spinner";
 
 const Media = ({ media, fileSelected }) => {
   const [isActive, setIsActive] = useState(false)
@@ -112,45 +114,69 @@ const Files = ({ files, notify }) => {
 }
 
 const File = ({ file, notify }) => {
+  const { accessToken, handleError } = useContext(SecureContext);
 
   const filename = file.directus_files_id.filename_download
 
   const handleClick = () => {
-    setButton(<button>chargement...</button>)
+    setLink(<>Chargement <div style={{ scale: "0.3", translate: "10px -10px" }}><Spinner /></div></>);
 
-    fetch(process.env.GCS_PROXY_MEDIAS, {
+    // this makes the trick to not being blocked as a popup in safari
+    // https://stackoverflow.com/a/39387533
+    var windowReference = window.open();
+    windowReference.document.body.innerHTML = `<div style="text-align:center;padding-top:10%;font-size:14px;">chargement...</div>`;
+
+    const fileID = file.directus_files_id.id;
+    const body = `id=${fileID}&access_token=${accessToken}`;
+
+    fetch(process.env.GCS_AUTH_ENDPOINT, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: `id=${file.id}`
-    }).then(res => res.text())
-      .then(ww => {
-        window.open(ww, "_blank");
-        setButton(<a href={ww} rel="noopener noreferrer" target="_blank">{filename}</a>)
+      body: body
+    }).then(res => {
+      if (!res.ok) {
+        windowReference.close();
 
-        setTimeout(function () {
-          setButton(<BasicButton handle={handleClick} filename={filename} />)
-          // the url expires after 10 minutes, we wait 10 minutes - 10 seconds
-        }, (10 * 60 - 10) * 1000);
+        res.json().then((resp) => {
+          // 10 means the auth service got a Directus error
+          if (resp.error.code === 10) {
+            handleError(resp.error.data)
+            setLink("");
+          } else {
+            setLink(resp.error.message);
+          }
+        }).catch((e) => {
+          setLink(`error: ${res.statusText} - ${e}`)
+        })
+        return
+      }
+      res.text().then((t) => {
+        if (!res.ok) {
+          windowReference.close();
+          setLink(`error: ${t}`);
+        } else {
+          windowReference.location = t;
+          setLink(<a href={t} rel="noopener noreferrer" target="_blank">{filename}</a>)
+
+          setTimeout(function () {
+            setLink("");
+            // the url expires after 10 minutes, we wait 10 minutes - 10 seconds
+          }, (10 * 60 - 10) * 1000);
+        }
       })
-      .catch(e => {
-        setButton(`failed to load url: ${e}`)
-      })
+    }).catch((e) => {
+      setLink(`error: ${e}`)
+      windowReference.close();
+    })
   }
 
-  const [button, setButton] = useState(<BasicButton handle={handleClick} filename={filename} />)
-
+  const [link, setLink] = useState("");
   return (
     <div className="file">
-      <Checkbox onclick={notify} name={file.id} value={filename} />
-      {button}
+      <Checkbox onclick={notify} name={file.directus_files_id.id} value={filename} />
+      {link === "" ? <button onClick={handleClick}>{filename}</button> : link}
     </div>
-  )
-}
-
-const BasicButton = ({ handle, filename }) => {
-  return (
-    <button onClick={handle}>{filename}</button>
   )
 }

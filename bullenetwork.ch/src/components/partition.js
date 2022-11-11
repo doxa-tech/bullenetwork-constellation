@@ -1,6 +1,6 @@
-import React, { useRef, useState, useContext, useEffect } from "react"
-import { PartitionsContext } from "../pages/partitions";
+import React, { useRef, useState, useContext } from "react"
 import Checkbox from "./checkbox";
+import { SecureContext } from "./securedirectus";
 import Spinner from "./spinner";
 
 const Partition = ({ partition, fileSelected }) => {
@@ -114,27 +114,22 @@ const Files = ({ files, notify }) => {
 }
 
 const File = ({ file, notify }) => {
-  const { accessToken, handleError } = useContext(PartitionsContext);
+  const { accessToken, handleError } = useContext(SecureContext);
 
   const filename = file.directus_files_id.filename_download
 
-  useEffect(() => {
-    console.log("accessToken updated!", accessToken, filename)
-  }, [accessToken])
-
   const handleClick = () => {
-    console.log("token:", accessToken)
     setLink(<>Chargement <div style={{ scale: "0.3", translate: "10px -10px" }}><Spinner /></div></>);
 
     // this makes the trick to not being blocked as a popup in safari
     // https://stackoverflow.com/a/39387533
     var windowReference = window.open();
-    windowReference.document.body.innerHTML = `<div style="text-align:center;padding-top:10%;font-size:10px;">chargement...</div>`;
+    windowReference.document.body.innerHTML = `<div style="text-align:center;padding-top:10%;font-size:14px;">chargement...</div>`;
 
     const fileID = file.directus_files_id.id;
     const body = `id=${fileID}&access_token=${accessToken}`;
 
-    fetch(process.env.GCS_PROXY_PARTITION, {
+    fetch(process.env.GCS_AUTH_ENDPOINT, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -152,13 +147,14 @@ const File = ({ file, notify }) => {
           } else {
             setLink(resp.error.message);
           }
+        }).catch((e) => {
+          setLink(`error: ${res.statusText} - ${e}`)
         })
         return
       }
       res.text().then((t) => {
         if (!res.ok) {
           windowReference.close();
-          console.log("error:", t)
           setLink(`error: ${t}`);
         } else {
           windowReference.location = t;

@@ -2,12 +2,15 @@ import React, { useState } from "react"
 import Spinner from "./spinner";
 import * as styles from "./login.module.scss"
 import { navigate } from "gatsby";
+import { Buffer } from "buffer";
 
-export const Login = ({ setAccessToken, setShowLogin, error }) => {
+export const Login = ({ email, setAccessToken, setShowLogin, error }) => {
 
   const [password, setPassword] = useState("");
   const [localError, setLocalError] = useState(error);
   const [loading, setLoading] = useState(false);
+
+  const key = Buffer.from(email).toString("base64")
 
   const login = () => {
     if (password == "") {
@@ -18,7 +21,7 @@ export const Login = ({ setAccessToken, setShowLogin, error }) => {
     setLocalError("");
     setLoading(true);
 
-    const data = { "email": "louange-viewer@bullenetwork.ch", "password": password }
+    const data = { "email": email, "password": password }
 
     fetch("https://vanil.bullenetwork.ch/auth/login", {
       method: 'POST', headers: {
@@ -28,11 +31,11 @@ export const Login = ({ setAccessToken, setShowLogin, error }) => {
     }).then((req) => req.json()).
       then((resp) => {
         if (resp.data != undefined) {
-          localStorage.setItem("bn_auth_partitions", JSON.stringify([resp.data]));
+          localStorage.setItem(key, JSON.stringify([resp.data]));
           setAccessToken(resp.data.access_token);
           setShowLogin(false);
         } else if (resp.errors) {
-          setLocalError(JSON.stringify(resp.errors));
+          setLocalError(resp.errors[0].message);
         }
       }).finally(() => {
         setLoading(false);
