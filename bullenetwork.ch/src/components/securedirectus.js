@@ -51,7 +51,7 @@ export const SecureDirectus = ({ children, email, className }) => {
 
       const data = { refresh_token: auth_info[0].refresh_token, mode: "json" }
 
-      fetch("https://vanil.bullenetwork.ch/auth/refresh", {
+      fetch(`${process.env.DIRECTUS_ENDPOINT}/auth/refresh`, {
         method: 'POST', headers: {
           'Content-Type': 'application/json'
         },
