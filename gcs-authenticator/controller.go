@@ -206,7 +206,6 @@ func (e directusErrors) Error() string {
 // file containing all the requested files. It expects argument as post form
 // parameter:
 //
-// "bucket" => BUCKET_NAME,
 // "access_token" => ACCESS_TOKEN,
 // ID_1 => FILENAME_1
 // ID_2 => FILENAME_2
@@ -245,12 +244,6 @@ func (c controller) archive() func(http.ResponseWriter, *http.Request) {
 			return
 		}
 
-		bucket := r.Form.Get("bucket")
-		if bucket == "" {
-			c.errorf(w, http.StatusBadRequest, 1, nil, "bucket value not found")
-			return
-		}
-
 		accessToken := r.Form.Get("access_token")
 		if accessToken == "" {
 			c.errorf(w, http.StatusBadRequest, 1, nil, "access_token value not found")
@@ -268,7 +261,7 @@ func (c controller) archive() func(http.ResponseWriter, *http.Request) {
 		//    `directus_files_id` attribute.
 		// v[0]: filename
 		for k, v := range r.Form {
-			if k == "bucket" || k == "access_token" {
+			if k == "access_token" {
 				continue
 			}
 
@@ -304,7 +297,7 @@ func (c controller) archive() func(http.ResponseWriter, *http.Request) {
 			ctx, cancel := context.WithTimeout(context.Background(), time.Second*50)
 			defer cancel()
 
-			rc, err := c.client.Bucket(bucket).Object(fileRequest.Object).NewReader(ctx)
+			rc, err := c.client.Bucket(c.conf.gcsBucketName).Object(fileRequest.Object).NewReader(ctx)
 			if err != nil {
 				c.errorf(w, http.StatusInternalServerError, 1, nil, "failed to get object: %v", err)
 				return

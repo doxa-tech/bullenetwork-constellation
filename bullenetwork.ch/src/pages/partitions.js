@@ -200,7 +200,6 @@ export const Partitions = () => {
         </div>
 
         <form method="post" id="archive-form" onSubmit={formSubmit} action={process.env.GCS_ARCHIVE_ENDPOINT}>
-          <input type="hidden" name="bucket" value="bullenetwork-directus-vanil" />
           <input type="hidden" name="access_token" value={accessToken} />
 
           <div className="top-els">

@@ -4,11 +4,11 @@
 //
 // You can check with
 //
-//   curl -X POST -d "bucket=BUCKET_NAME" -d "object=OBJECT_PATH.PDF"\
+//   curl -X POST -d "id=DIRECTUS_FILE_ID" -d "access_token=DIRECTUS_ACCESS_TOKEN"\
 //     http://localhost:9990/auth
 //
-//   curl -X POST -d "bucket=BUCKET_NAME" -d "OBJECT_PATH_1.PDF=FILENAME_1.PDF"\
-//     -d "OBJECT_PATH_2.PDF=FILENAME_2.PDF" http://localhost:9990/archive
+//   curl -X POST -d "FILE_ID_1=FILENAME_1.PDF" -d "access_token=DIRECTUS_ACCESS_TOKEN"\
+//     -d "FILE_ID_2=FILENAME_2.PDF" http://localhost:9990/archive
 
 package main
 
@@ -29,6 +29,18 @@ import (
 	"golang.org/x/oauth2/google"
 	"golang.org/x/xerrors"
 )
+
+// Version contains the current or build version. This variable can be changed
+// at build time with:
+//
+//   go build -ldflags="-X 'main.Version=v1.0.0'"
+//
+// Version should be fetched from git: `git describe --tags`
+var Version = "unknown"
+
+// BuildTime indicates the time at which the binary has been built. Must be set
+// as with Version.
+var BuildTime = "unknown"
 
 const validityPeriod = time.Minute * 10
 const defaultAddr = ":9990"
@@ -85,7 +97,11 @@ func main() {
 		return
 	}
 
+	ctrl.log.Println("---------------")
+	ctrl.log.Printf("gcsauth version %q (%s)", Version, BuildTime)
+	ctrl.log.Println("---------------")
 	ctrl.log.Printf("Server is ready to handle request at %s", ln.Addr())
+	ctrl.log.Println("---------------")
 
 	err = server.Serve(ln)
 	if err != nil && err != http.ErrServerClosed {
