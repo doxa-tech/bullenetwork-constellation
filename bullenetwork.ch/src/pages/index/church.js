@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 
 export default ({
   website,
@@ -6,16 +6,7 @@ export default ({
   churchAddress,
   churchColor,
   imageID,
-  children,
 }) => {
-  const [logoPath, setLogoPath] = useState(0)
-  useEffect(() => {
-    fetch(`https://panda.bullenetwork.ch/directus/files/${imageID}`)
-      .then(response => response.json())
-      .then(resultData => {
-        setLogoPath(resultData.data.data.full_url)
-      })
-  })
 
   return (
     <li>
@@ -23,7 +14,7 @@ export default ({
         className="ch-item"
         style={{
           backgroundColor: churchColor,
-          backgroundImage: `url(${logoPath}`,
+          backgroundImage: `url(${process.env.DIRECTUS_ENDPOINT}/assets/${imageID})`,
         }}
       >
         <div className="ch-info" style={{ backgroundColor: churchColor }}>
