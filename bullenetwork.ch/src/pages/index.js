@@ -17,29 +17,30 @@ export default () => {
       '<div class="loadrr"><div><div></div><div></div><div></div><div></div></div></div>'
     )
     setSpecialContent('')
-    fetch(`https://panda.bullenetwork.ch/directus/items/bullenetwork_pages/2`)
+    fetch(`${process.env.DIRECTUS_ENDPOINT}/items/bullenetwork_pages/2`)
       .then(response => response.json())
       .then(resultData => {
         setTitle(resultData.data.title)
         setContent(resultData.data.content)
       })
-    fetch(`https://panda.bullenetwork.ch/directus/items/bullenetwork_pages/7`)
+    fetch(`${process.env.DIRECTUS_ENDPOINT}/items/bullenetwork_pages/6`)
       .then(response => response.json())
       .then(resultData => {
         if (resultData.data.status === "published") {
           setSpecialContent(resultData.data.content)
         }
       })
-    fetch(`https://panda.bullenetwork.ch/directus/items/bullenetwork_churches`)
+    fetch(`${process.env.DIRECTUS_ENDPOINT}/items/bullenetwork_churches`)
       .then(response => response.json())
       .then(resultData => {
         setChurches(resultData.data.map((church) =>
           <Church
             website={church.website}
-            churchName={church.church_name}
-            churchAddress={church.church_address}
-            churchColor={church.church_color}
-            imageID={church.church_logo}
+            churchName={church.name}
+            churchAddress={church.address}
+            churchColor={church.color}
+            imageID={church.logo}
+            key={church.id}
           />
         ))
       })

@@ -1,0 +1,134 @@
+.login-page {
+  background: rgba(0, 217, 255, .9);
+  background: linear-gradient(144deg, rgba(0, 217, 255, .9) 0%, rgba(45, 98, 199, .9) 100%);
+
+  min-height: 100vh;
+  color: white;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+
+  .section-container {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    &:before {
+      content: "";
+      flex: 1;
+    }
+
+    &:after {
+      content: "";
+      flex: 3;
+    }
+
+    .sub-container {
+      flex: 1;
+      position: relative;
+
+      button.close {
+        color: white;
+        font-weight: bold;
+        border: 2px solid white;
+        background: transparent;
+        border-radius: 50%; 
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        left: -60px;
+        top: 20px;
+        cursor: pointer;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
+      }
+    }
+
+    h1 {
+      padding: 40px 0 30px 0;
+    }
+
+    div.form {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+
+      div.error {
+        position: absolute;
+        top: 60px;
+        max-width: 600px;
+      }
+
+      .spinner {
+        position: absolute;
+        top: 30px;
+        transform: scale(.5);
+      }
+    }
+
+    input[type=password] {
+      padding: 10px 30px;
+      border-radius: 20px 0 0 20px;
+      border: 0;
+      color: #2479d2;
+      text-align: left;
+      max-width: 150px;
+    }
+
+    input:focus {
+      background-color: rgb(231, 231, 231);
+      outline: none;
+    }
+
+    input[type=submit] {
+      cursor: pointer;
+      border: 0;
+      border-radius: 0 20px 20px 0;
+      font-weight: 600;
+      width: 100px;
+      padding: 10px 0;
+      box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+      transition: 0.4s;
+      color: rgb(104, 85, 224);
+      background-color: rgba(255, 255, 255, 1);
+      border: 0;
+    }
+
+    input[type=submit]:hover {
+      color: white;
+      width: 100px;
+      box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+      background-color: rgba(104, 85, 224, 1);
+    }
+
+    .back {
+      button {
+        background: none;
+        border: none;
+        margin: 60px 0 0 0;
+        color: rgba(255, 255, 255, 0.597);
+        cursor: pointer;
+
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}

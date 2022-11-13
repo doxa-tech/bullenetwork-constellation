@@ -4,11 +4,11 @@
 //
 // You can check with
 //
-//   curl -X POST -d "bucket=BUCKET_NAME" -d "object=OBJECT_PATH.PDF"\
+//   curl -X POST -d "id=DIRECTUS_FILE_ID" -d "access_token=DIRECTUS_ACCESS_TOKEN"\
 //     http://localhost:9990/auth
 //
-//   curl -X POST -d "bucket=BUCKET_NAME" -d "OBJECT_PATH_1.PDF=FILENAME_1.PDF"\
-//     -d "OBJECT_PATH_2.PDF=FILENAME_2.PDF" http://localhost:9990/archive
+//   curl -X POST -d "FILE_ID_1=FILENAME_1.PDF" -d "access_token=DIRECTUS_ACCESS_TOKEN"\
+//     -d "FILE_ID_2=FILENAME_2.PDF" http://localhost:9990/archive
 
 package main
 
@@ -30,20 +30,28 @@ import (
 	"golang.org/x/xerrors"
 )
 
+// Version contains the current or build version. This variable can be changed
+// at build time with:
+//
+//   go build -ldflags="-X 'main.Version=v1.0.0'"
+//
+// Version should be fetched from git: `git describe --tags`
+var Version = "unknown"
+
+// BuildTime indicates the time at which the binary has been built. Must be set
+// as with Version.
+var BuildTime = "unknown"
+
 const validityPeriod = time.Minute * 10
 const defaultAddr = ":9990"
 
 // defines the OS env keys that must be provided
 const (
-	KEY_GCS_PATH       = "GCS_PRIVATE_PATH"
-	KEY_BUCKET_NAME    = "GCS_BUCKET_NAME"
-	KEY_DIRECTUS_TOKEN = "DIRECTUS_TOKEN"
+	KEY_GCS_PATH    = "GCS_PRIVATE_PATH"
+	KEY_BUCKET_NAME = "GCS_BUCKET_NAME"
 )
 
-const directusFileURL = "https://truite.bullenetwork.ch/files/"
-
-const partitionRelationTable = "https://truite.bullenetwork.ch/items/partitions_directus_files_2/"
-const mediasRelationTable = "https://truite.bullenetwork.ch/items/Medias_files/"
+const directusFileURL = "https://vanil.bullenetwork.ch/files/"
 
 type key int
 
@@ -55,7 +63,6 @@ const (
 type configuration struct {
 	gcsKeyPath    string
 	gcsBucketName string
-	directusToken string
 }
 
 func main() {
@@ -81,13 +88,8 @@ func main() {
 		ErrorLog: ctrl.log,
 	}
 
-	mux.HandleFunc("/partitions/auth", ctrl.auth(partitionRelationTable))
-	mux.HandleFunc("/partitions/archive", ctrl.archive(partitionRelationTable))
-
-	mux.HandleFunc("/medias/auth", ctrl.auth(mediasRelationTable))
-	mux.HandleFunc("/medias/archive", ctrl.archive(mediasRelationTable))
-
-	mux.HandleFunc("/gcspub", ctrl.gcspub())
+	mux.HandleFunc("/api/auth", ctrl.auth())
+	mux.HandleFunc("/api/archive", ctrl.archive())
 
 	ln, err := net.Listen("tcp", listenAddr)
 	if err != nil {
@@ -95,7 +97,11 @@ func main() {
 		return
 	}
 
+	ctrl.log.Println("---------------")
+	ctrl.log.Printf("gcsauth version %q (%s)", Version, BuildTime)
+	ctrl.log.Println("---------------")
 	ctrl.log.Printf("Server is ready to handle request at %s", ln.Addr())
+	ctrl.log.Println("---------------")
 
 	err = server.Serve(ln)
 	if err != nil && err != http.ErrServerClosed {
@@ -147,15 +153,9 @@ func getConfiguration() (configuration, error) {
 		return configuration{}, xerrors.Errorf("please set %s", KEY_BUCKET_NAME)
 	}
 
-	directusToken := os.Getenv(KEY_DIRECTUS_TOKEN)
-	if directusToken == "" {
-		return configuration{}, xerrors.Errorf("please set %s", KEY_DIRECTUS_TOKEN)
-	}
-
 	return configuration{
 		gcsKeyPath:    gcsKeyPath,
 		gcsBucketName: gcsBucketName,
-		directusToken: directusToken,
 	}, nil
 }
 

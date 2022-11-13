@@ -1,5 +1,6 @@
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
+import { Link } from "gatsby"
 
 export default () => {
   return (
@@ -45,7 +46,7 @@ const app = (
 )
 
 const partitions = (
-  <a href="/partitions">
+  <Link to="/partitions">
     <svg style={{ fillRule: "evenodd", clipRule: "evenodd", strokeLinejoin: "round", strokeMiterlimit: 2 }} width="35px" height="35px" viewBox="0 0 778 1034" version="1.1" xmlns="http://www.w3.org/2000/svg">
       <g transform="matrix(0.562686,0,0,0.562686,-1069.91,-868.599)">
         <path d="M2365.75,2499.93C2367.31,2495.55 2370.94,2491.99 2375.77,2490.72L2665.37,2414.38C2673.15,2412.33 2681.14,2416.98 2683.19,2424.76C2683.7,2426.72 2683.8,2428.7 2683.52,2430.58L2683.52,2928.53C2683.52,2970.37 2571.12,3023.2 2544.39,2982.34C2522.9,2949.48 2577.78,2850.95 2648.42,2829.49L2648.42,2470.66L2402.07,2539.39L2402.07,2992.53C2402.07,3034.37 2281.52,3087.2 2254.79,3046.34C2233.3,3013.48 2294.41,2914.95 2365.05,2893.49L2365.05,2506.91C2364.85,2505.49 2364.85,2504.08 2365.05,2502.72L2365.05,2499.93L2365.75,2499.93Z" />
@@ -73,7 +74,7 @@ const partitions = (
       </g>
     </svg>
     Partitions
-  </a >
+  </Link >
 )
 
 const medias = (

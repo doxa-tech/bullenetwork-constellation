@@ -12,7 +12,7 @@ const Beatus = () => {
     setContent(
       '<div class="loadrr"><div><div></div><div></div><div></div><div></div></div></div>'
     )
-    fetch(`https://panda.bullenetwork.ch/directus/items/bullenetwork_pages/9`)
+    fetch(`${process.env.DIRECTUS_ENDPOINT}/items/bullenetwork_pages/8`)
       .then(response => response.json())
       .then(resultData => {
         setTitle(resultData.data.title)

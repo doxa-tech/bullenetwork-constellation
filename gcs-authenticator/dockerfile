@@ -1,0 +1,9 @@
+# Ensure "gcsauth-linux-amd64" is present. Then: 
+#   docker build -t gcsauth .
+#   docker run -e GCS_BUCKET_NAME=XXX -e GCS_PRIVATE_PATH=YYY -p 3426:3426 \
+#     -v $(pwd)/gcs-key.json:/config/gcs-key.json gcsauth
+FROM alpine:3.14
+COPY --chmod=0755 ./gcsauth-linux-amd64 /gcsauth
+EXPOSE 3426
+RUN mkdir /config
+ENTRYPOINT ["/gcsauth",  "--listen-addr", "0.0.0.0:3426"]

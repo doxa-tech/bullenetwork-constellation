@@ -49,7 +49,7 @@ $darkness-factor: 20%;
     }
   }
 
-  &:hover {
+  &.activeLink, &:hover {
     color: white;
     font-weight: 300;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.096);

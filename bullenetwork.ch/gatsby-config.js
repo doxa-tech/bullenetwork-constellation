@@ -25,14 +25,5 @@ module.exports = {
       },
     },
     `gatsby-plugin-image`,
-    {
-      resolve: '@directus/gatsby-source-directus',
-      options: {
-        url: `https://truite.bullenetwork.ch`, // Fill with your Directus instance address
-        auth: {
-          token: `${process.env.DIRECTUS_ADMIN_TOKEN}`,
-        }
-      },
-    },
   ],
 }
