@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: gcsauth
+  IMAGE_NAME: ${{ github.repository }}-gcsauth
 
 jobs:
   release:
