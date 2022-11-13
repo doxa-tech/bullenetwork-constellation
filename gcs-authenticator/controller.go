@@ -150,8 +150,7 @@ func getOpts(conf *jwt.Config) *storage.SignedURLOptions {
 
 // Returns the filename_disk from a file.
 func getFile(fileID, accessToken string) (string, error) {
-	resp, err := http.Get("https://vanil.bullenetwork.ch/files/" + fileID +
-		"?access_token=" + accessToken)
+	resp, err := http.Get(directusFileURL + fileID + "?access_token=" + accessToken)
 
 	if err != nil {
 		return "", xerrors.Errorf("failed to get partition: %v", err)

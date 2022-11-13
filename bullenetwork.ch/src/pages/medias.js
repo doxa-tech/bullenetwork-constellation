@@ -56,7 +56,7 @@ const Medias = () => {
       return
     }
 
-    fetch("https://vanil.bullenetwork.ch/graphql", {
+    fetch(`${process.env.DIRECTUS_ENDPOINT}/graphql`, {
       method: 'POST', headers: {
         'Content-Type': 'application/json',
         'Authorization': "Bearer " + accessToken
