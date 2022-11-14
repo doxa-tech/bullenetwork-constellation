@@ -57,7 +57,7 @@ jobs:
       uses: softprops/action-gh-release@cd28b0f5ee8571b76cfdaa62a30d51d752317477
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: ${{ env.base_folder }}/${{ steps.version_file.outputs.VERSION }}.tar.gz
+        files: ${{ env.base_folder }}/${{ steps.get_version.outputs.VERSION_FILE }}.tar.gz
 
     - name: Trigger deploy
       run: |
