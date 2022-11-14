@@ -45,31 +45,44 @@ section#footer {
       }
 
       div.right {
-        a {
-          transition: 0.3s;
-          opacity: 0.5;
-          position: relative;
+        div.logo {
+          a {
+            transition: 0.3s;
+            opacity: 0.5;
+            position: relative;
 
-          div.constellation {
-            width: 120px;
-          }
+            div.constellation {
+              width: 120px;
+            }
 
-          &:hover,
-          &:hover:after {
-            opacity: 1;
-          }
+            &:hover,
+            &:hover:after {
+              opacity: 1;
+            }
 
-          &:after {
-            content: "feel nerdy ?";
-            font-family: monospace;
-            position: absolute;
-            width: 120px;
-            text-align: center;
-            opacity: 0;
-            font-size: 8px;
-            transition-delay: 200ms;
-            transition-duration: 200ms;
+            &:after {
+              content: "feel nerdy ?";
+              font-family: monospace;
+              position: absolute;
+              width: 120px;
+              text-align: center;
+              opacity: 0;
+              font-size: 8px;
+              transition-delay: 200ms;
+              transition-duration: 200ms;
+            }
           }
+        }
+      }
+      div.infos {
+        color: #00b485;
+        text-align: right;
+        font-size: 8px;
+        padding: 40px 6px 0 0;
+        font-family: 'Courier New', Courier, monospace;
+
+        p {
+          padding: 1px 0;
         }
       }
     }
@@ -105,6 +118,19 @@ section#footer {
         div.right {
           margin-top: 30px;
           margin-bottom: 15px;
+
+          div.infos {
+            text-align: center;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            p {
+              padding: 0 7px;
+            }
+          }
         }
       }
     }

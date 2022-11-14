@@ -3,6 +3,10 @@ import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 
 export default () => {
+  const version = process.env.GATSBY_APP_VERSION || "v0.0.0"
+  const buildURL = process.env.GATSBY_BUILD_URL || "#"
+  const shortSHA = process.env.GATSBY_SHORT_SHA || "xxx"
+  const buildDate = process.env.GATSBY_BUILD_DATE || "1.1.1970"
   return (
     <section id="footer">
       <div className="ribbon"></div>
@@ -14,9 +18,16 @@ export default () => {
             <p>Contact: david.hausmann@bullenetwork.ch</p>
           </div>
           <div className="right">
-            <a href="https://github.com/doxa-tech/bullenetwork-constellation" target="_blank">
-              <StaticImage src="../../images/footer/constellation.png" alt="team" style={{ margin: 'auto' }} layout="fixed" width={120} />
-            </a>
+            <div className="logo">
+              <a href="https://github.com/doxa-tech/bullenetwork-constellation" target="_blank">
+                <StaticImage src="../../images/footer/constellation.png" alt="team" style={{ margin: 'auto' }} layout="fixed" width={120} />
+              </a>
+            </div>
+            <div className="infos">
+              <p>{version}</p>
+              <p><a href={buildURL} target="_blank">{shortSHA}</a></p>
+              <p>{buildDate}</p>
+            </div>
           </div>
         </div>
         <div className="sub-apps">
