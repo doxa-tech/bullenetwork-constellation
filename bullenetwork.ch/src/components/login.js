@@ -23,7 +23,7 @@ export const Login = ({ email, setAccessToken, setShowLogin, error }) => {
 
     const data = { "email": email, "password": password }
 
-    fetch(`${process.env.DIRECTUS_ENDPOINT}/auth/login`, {
+    fetch(`${process.env.GATSBY_DIRECTUS_ENDPOINT}/auth/login`, {
       method: 'POST', headers: {
         'Content-Type': 'application/json'
       },

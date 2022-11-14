@@ -13,7 +13,7 @@ export default () => {
     setContent(
       '<div class="loadrr"><div><div></div><div></div><div></div><div></div></div></div>'
     )
-    fetch(`${process.env.DIRECTUS_ENDPOINT}/items/bullenetwork_pages/4`)
+    fetch(`${process.env.GATSBY_DIRECTUS_ENDPOINT}/items/bullenetwork_pages/4`)
       .then(response => response.json())
       .then(resultData => {
         setTitle(resultData.data.title)

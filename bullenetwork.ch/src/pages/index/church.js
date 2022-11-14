@@ -14,7 +14,7 @@ export default ({
         className="ch-item"
         style={{
           backgroundColor: churchColor,
-          backgroundImage: `url(${process.env.DIRECTUS_ENDPOINT}/assets/${imageID})`,
+          backgroundImage: `url(${process.env.GATSBY_DIRECTUS_ENDPOINT}/assets/${imageID})`,
         }}
       >
         <div className="ch-info" style={{ backgroundColor: churchColor }}>
