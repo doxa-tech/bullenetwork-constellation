@@ -159,7 +159,7 @@ export const Partitions = () => {
       data.append(pair[0], pair[1]);
     }
 
-    fetch(process.env.GCS_ARCHIVE_ENDPOINT, {
+    fetch(process.env.GATSBY_GCS_ARCHIVE_ENDPOINT, {
       method: 'post',
       body: data,
     })
@@ -199,7 +199,7 @@ export const Partitions = () => {
           }
         </div>
 
-        <form method="post" id="archive-form" onSubmit={formSubmit} action={process.env.GCS_ARCHIVE_ENDPOINT}>
+        <form method="post" id="archive-form" onSubmit={formSubmit} action={process.env.GATSBY_GCS_ARCHIVE_ENDPOINT}>
           <input type="hidden" name="access_token" value={accessToken} />
 
           <div className="top-els">
