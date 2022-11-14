@@ -43,6 +43,7 @@ jobs:
     - name: Build
       env:
         GATSBY_GCS_AUTH_ENDPOINT: https://gcsauth.bullenetwork.ch/api/auth
+        GATSBY_GCS_ARCHIVE_ENDPOINT: https://gcsauth.bullenetwork.ch/api/archive
         GATSBY_DIRECTUS_ENDPOINT: https://vanil.bullenetwork.ch
         GATSBY_APP_VERSION: ${{ steps.get_version.outputs.VERSION }}
         GATSBY_BUILD_URL: ${{ steps.get_version.outputs.buildurl }}
