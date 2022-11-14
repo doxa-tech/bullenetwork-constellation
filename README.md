@@ -11,7 +11,7 @@ Collection of websites for the BulleNetwork
     <td>bullenetwork.ch</td>
     <td>
       <a href="https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-bullenetwork-ch.yml">
-        <img src="https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-bullenetwork-ch.yml/badge.svg">
+        <img src="https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-bullenetwork-ch.yml/badge.svg?branch=master">
       </a>
     </td>
     <td>
