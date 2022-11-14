@@ -51,7 +51,7 @@ export const SecureDirectus = ({ children, email, className }) => {
 
       const data = { refresh_token: auth_info[0].refresh_token, mode: "json" }
 
-      fetch(`${process.env.DIRECTUS_ENDPOINT}/auth/refresh`, {
+      fetch(`${process.env.GATSBY_DIRECTUS_ENDPOINT}/auth/refresh`, {
         method: 'POST', headers: {
           'Content-Type': 'application/json'
         },

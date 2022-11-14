@@ -17,20 +17,20 @@ export default () => {
       '<div class="loadrr"><div><div></div><div></div><div></div><div></div></div></div>'
     )
     setSpecialContent('')
-    fetch(`${process.env.DIRECTUS_ENDPOINT}/items/bullenetwork_pages/2`)
+    fetch(`${process.env.GATSBY_DIRECTUS_ENDPOINT}/items/bullenetwork_pages/2`)
       .then(response => response.json())
       .then(resultData => {
         setTitle(resultData.data.title)
         setContent(resultData.data.content)
       })
-    fetch(`${process.env.DIRECTUS_ENDPOINT}/items/bullenetwork_pages/6`)
+    fetch(`${process.env.GATSBY_DIRECTUS_ENDPOINT}/items/bullenetwork_pages/6`)
       .then(response => response.json())
       .then(resultData => {
         if (resultData.data.status === "published") {
           setSpecialContent(resultData.data.content)
         }
       })
-    fetch(`${process.env.DIRECTUS_ENDPOINT}/items/bullenetwork_churches`)
+    fetch(`${process.env.GATSBY_DIRECTUS_ENDPOINT}/items/bullenetwork_churches`)
       .then(response => response.json())
       .then(resultData => {
         setChurches(resultData.data.map((church) =>

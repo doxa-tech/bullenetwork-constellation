@@ -49,7 +49,7 @@ export const Partitions = () => {
       return
     }
 
-    fetch(`${process.env.DIRECTUS_ENDPOINT}/graphql`, {
+    fetch(`${process.env.GATSBY_DIRECTUS_ENDPOINT}/graphql`, {
       method: 'POST', headers: {
         'Content-Type': 'application/json',
         'Authorization': "Bearer " + accessToken

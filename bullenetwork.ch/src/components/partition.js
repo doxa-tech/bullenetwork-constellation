@@ -129,7 +129,7 @@ const File = ({ file, notify }) => {
     const fileID = file.directus_files_id.id;
     const body = `id=${fileID}&access_token=${accessToken}`;
 
-    fetch(process.env.GCS_AUTH_ENDPOINT, {
+    fetch(process.env.GATSBY_GCS_AUTH_ENDPOINT, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
