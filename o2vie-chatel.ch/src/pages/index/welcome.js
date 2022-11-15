@@ -9,7 +9,7 @@ const IndexWelcome = () => {
   const data = useStaticQuery(graphql`
   query {
     directus {
-      O2vie_Intro {
+      o2vie_intro {
         id
         body
       }
@@ -18,7 +18,7 @@ const IndexWelcome = () => {
   `)
 
   React.useEffect(() => {
-    fetch(`https://vanil.bullenetwork.ch/items/O2vie_Next_Event`)
+    fetch(`${process.env.GATSBY_DIRECTUS_ENDPOINT}/items/o2vie_next_event`)
       .then(response => response.json())
       .then(resultData => {
         if (resultData.data.status === "published") {
@@ -37,7 +37,7 @@ const IndexWelcome = () => {
 
             <div id="content">
               <section className="last">
-                <div dangerouslySetInnerHTML={{ __html: data.directus.O2vie_Intro.body }} />
+                <div dangerouslySetInnerHTML={{ __html: data.directus.o2vie_intro.body }} />
                 <a href="/about" className="button icon solid fa-arrow-circle-right">En savoir plus</a>
               </section>
             </div>
@@ -55,21 +55,11 @@ const IndexWelcome = () => {
 }
 
 const Event = ({ event }) => {
-  const [image, setImage] = React.useState("#")
-
-  React.useEffect(() => {
-    fetch(`https://vanil.bullenetwork.ch/files/${event.image}`)
-      .then(response => response.json())
-      .then(resultData => {
-        setImage(`https://storage.googleapis.com/bullenetwork-directus-truite/${resultData.data.filename_disk}`)
-      })
-  })
-
   return (
     <section className="next-event widget thumbnails">
       <h3>{event.title}</h3>
       <div dangerouslySetInnerHTML={{ __html: event.body }}></div>
-      {image !== "#" && <img src={image} alt="prochain événement" />}
+      <img src={`${process.env.GATSBY_DIRECTUS_ENDPOINT}/assets/${event.image}`} alt="prochain événement" />
     </section>
   )
 }

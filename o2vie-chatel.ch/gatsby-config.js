@@ -54,9 +54,9 @@ module.exports = {
     {
       resolve: '@directus/gatsby-source-directus',
       options: {
-        url: `https://truite.bullenetwork.ch`, // Fill with your Directus instance address
+        url: `${process.env.GATSBY_DIRECTUS_ENDPOINT}`,
         auth: {
-          token: `${process.env.DIRECTUS_O2VIE_TOKEN}`,
+          token: `${process.env.GATSBY_DIRECTUS_O2VIE_TOKEN}`,
         }
       },
     },

@@ -10,7 +10,7 @@ const AboutPage = () => {
   const data = useStaticQuery(graphql`
   query {
     directus {
-      O2vie_About {
+      o2vie_about {
         id
         body
         image {
@@ -26,7 +26,7 @@ const AboutPage = () => {
   }
   `)
 
-  const image = getImage(data.directus.O2vie_About.image.imageFile)
+  const image = getImage(data.directus.o2vie_about.image.imageFile)
 
   return (
     <Layout>
@@ -37,7 +37,7 @@ const AboutPage = () => {
           <div id="content">
 
             <GatsbyImage className={styles.image} image={image} alt="about" />
-            <article dangerouslySetInnerHTML={{ __html: data.directus.O2vie_About.body }} />
+            <article dangerouslySetInnerHTML={{ __html: data.directus.o2vie_about.body }} />
 
           </div>
         </div>

@@ -21,6 +21,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       
+    - name: Get the version
+      id: get_version
+      # output "o2vie-v1.2.3" and "o2vie-v1_2_3"
+      run: |
+        echo ::set-output name=VERSION::$(echo ${GITHUB_REF/refs\/tags\//})
+        echo ::set-output name=VERSION_FILE::$(echo ${GITHUB_REF/refs\/tags\//} | tr . _)
+        echo "::set-output name=shortsha::$(git rev-parse --short ${GITHUB_SHA})"
+        echo "::set-output name=buildurl::${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}"
+        echo "::set-output name=date::$(date +'%d/%m/%y %H:%M')"
+
     - uses: actions/setup-node@v2
       with:
         node-version: 15
@@ -31,16 +41,15 @@ jobs:
         npm install -g gatsby-cli
         
     - name: Build
+      env:
+        GATSBY_DIRECTUS_O2VIE_TOKEN: ${{secrets.O2VIE_CH_DIRECTUS_O2VIE_TOKEN}}
+        GATSBY_DIRECTUS_ENDPOINT: https://vanil.bullenetwork.ch
+        GATSBY_APP_VERSION: ${{ steps.get_version.outputs.VERSION }}
+        GATSBY_BUILD_URL: ${{ steps.get_version.outputs.buildurl }}
+        GATSBY_SHORT_SHA: ${{ steps.get_version.outputs.shortsha }}
+        GATSBY_BUILD_DATE: ${{ steps.get_version.outputs.date }}
       run: |
-        echo "DIRECTUS_O2VIE_TOKEN=${{secrets.O2VIE_CH_DIRECTUS_O2VIE_TOKEN}}" >> .env.production
         gatsby build
-
-    - name: Get the version
-      id: get_version
-      # output "o2vie-v1.2.3" and "o2vie-v1_2_3"
-      run: |
-        echo ::set-output name=VERSION::$(echo ${GITHUB_REF/refs\/tags\//})
-        echo ::set-output name=VERSION_FILE::$(echo ${GITHUB_REF/refs\/tags\//} | tr . _)
 
     - name: Create tar.gz
       run: |
