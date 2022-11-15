@@ -12,9 +12,9 @@ const Layout = ({ children }) => {
     <>
       <Header />
       <MobileHeader />
-      
+
       <div id="page-wrapper">{children}</div>
-       
+
       <Footer />
     </>
   )
