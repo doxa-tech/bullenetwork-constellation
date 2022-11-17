@@ -27,12 +27,12 @@ const Groups = () => {
     setContent(
       <div className="loadrr"><div><div></div><div></div><div></div><div></div></div></div>
     )
-    fetch(`https://panda.bullenetwork.ch/directus/items/eebulle_gdms`)
+    fetch(`${process.env.GATSBY_DIRECTUS_ENDPOINT}/items/eebulle_gdm`)
       .then(response => response.json())
       .then(resultData => {
         const result = resultData.data.map((gdm) =>
           <div className="gdm" key={gdm.id}>
-            <span className="loc">À {gdm.location}</span><br />avec {gdm.leader}<br /><span className="contact-wrap">Contact: <div className="contact" dangerouslySetInnerHTML={{ __html: gdm.contact }} /></span>
+            <span className="loc">À {gdm.town}</span><br />avec {gdm.leader}<br /><span className="contact-wrap">Contact: <div className="contact" dangerouslySetInnerHTML={{ __html: gdm.contact }} /></span>
           </div>
         );
         setContent(result)

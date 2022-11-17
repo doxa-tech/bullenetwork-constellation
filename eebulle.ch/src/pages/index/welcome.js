@@ -29,12 +29,12 @@ const Welcome = () => {
 
     setNotice("")
 
-    fetch(`https://panda.bullenetwork.ch/directus/items/eebulle_home_welcome/2`)
+    fetch(`${process.env.GATSBY_DIRECTUS_ENDPOINT}/items/eebulle_home_welcome/1`)
       .then(response => response.json())
       .then(resultData => {
         setYoutube(resultData.data.content)
       })
-    fetch(`https://panda.bullenetwork.ch/directus/items/eebulle_home_welcome/4`)
+    fetch(`${process.env.GATSBY_DIRECTUS_ENDPOINT}/items/eebulle_home_welcome/2`)
       .then(response => response.json())
       .then(resultData => {
         if (resultData.data.status === "published") {

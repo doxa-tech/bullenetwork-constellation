@@ -10,10 +10,10 @@ const Events = () => {
     setContent(
       <div className="loadrr"><div><div></div><div></div><div></div><div></div></div></div>
     )
-    fetch(`https://panda.bullenetwork.ch/directus/items/eebulle_events?filter[status][eq]=published`)
+    fetch(`${process.env.GATSBY_DIRECTUS_ENDPOINT}/items/eebulle_events`)
       .then(response => response.json())
       .then(resultData => {
-        const result = resultData.data.map((event) =>
+        const result = resultData.data.filter((event) => event.status === "published").map((event) =>
           <Event imageID={event.image} content={event.content} key={event.id} />
         );
         console.log("content:", content)
