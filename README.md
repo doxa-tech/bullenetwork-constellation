@@ -33,6 +33,19 @@ Collection of websites for the BulleNetwork
       </a>
     </td>
 <tr>
+<tr>
+    <td>eebulle.ch</td>
+    <td>
+      <a href="https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-eebulle-ch.yml">
+        <img src="https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-eebulle-ch.yml/badge.svg">
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/doxa-tech/bullenetwork-constellation/releases">
+        <img src="https://hodor.doxatech.ch/api/tags/eebulle?format=svg">
+      </a>
+    </td>
+<tr>
 </table>
 
 ## Deploy

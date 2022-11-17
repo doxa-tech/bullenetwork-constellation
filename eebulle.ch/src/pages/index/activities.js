@@ -11,7 +11,7 @@ const Activities = () => {
     setContent(
       <div className="loadrr"><div><div></div><div></div><div></div><div></div></div></div>
     )
-    fetch(`https://panda.bullenetwork.ch/directus/items/eebulle_home_activities`)
+    fetch(`${process.env.GATSBY_DIRECTUS_ENDPOINT}/items/eebulle_home_activities`)
       .then(response => response.json())
       .then(resultData => {
         var activities = resultData.data

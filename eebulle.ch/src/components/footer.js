@@ -29,6 +29,11 @@ const Footer = () => {
     }
   `)
 
+  const version = process.env.GATSBY_APP_VERSION || "v0.0.0"
+  const buildURL = process.env.GATSBY_BUILD_URL || "#"
+  const shortSHA = process.env.GATSBY_SHORT_SHA || "xxx"
+  const buildDate = process.env.GATSBY_BUILD_DATE || "1.1.1970"
+
   return (
     <footer>
       <div className="container">
@@ -72,7 +77,7 @@ const Footer = () => {
 
         <p className="copyright">
           © EEBulle {new Date().getFullYear()}<br />
-          <a href="https://github.com/doxa-tech/bullenetwork-constellation">Github</a>
+          <span className="version"><a href={`https://github.com/doxa-tech/bullenetwork-constellation/releases/tag/${version}`} target="_blank">{version}</a> - <a href={buildURL} target="_blank">{shortSHA}</a> - ({buildDate})</span>
         </p>
       </div>
     </footer>

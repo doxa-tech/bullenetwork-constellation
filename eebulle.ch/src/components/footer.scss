@@ -51,6 +51,11 @@ footer {
     }
   }
 
+  span.version {
+    font-size: 10px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
   @media only screen and (max-width: 767px) {
     .container {
       .columns {
