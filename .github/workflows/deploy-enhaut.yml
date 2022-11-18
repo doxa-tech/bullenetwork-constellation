@@ -39,7 +39,10 @@ jobs:
 
     - name: Create tar.gz
       run: |
-        tar -czvf ${{ steps.get_version.outputs.version_file }}.tar.gz index.html assets
+        mkdir ${GITHUB_SHA}
+        cp index.html ${GITHUB_SHA}
+        cp -r assets ${GITHUB_SHA}
+        tar -czvf ${{ steps.get_version.outputs.version_file }}.tar.gz ${GITHUB_SHA}
 
     - name: Release
       id: release_pub
