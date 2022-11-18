@@ -46,6 +46,19 @@ Collection of websites for the BulleNetwork
       </a>
     </td>
 <tr>
+<tr>
+    <td>enhaut.eebulle.ch</td>
+    <td>
+      <a href="https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-enhaut.yml">
+        <img src="https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-enhaut.yml/badge.svg">
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/doxa-tech/bullenetwork-constellation/releases">
+        <img src="https://hodor.doxatech.ch/api/tags/enhaut?format=svg">
+      </a>
+    </td>
+<tr>
 </table>
 
 ## Deploy
