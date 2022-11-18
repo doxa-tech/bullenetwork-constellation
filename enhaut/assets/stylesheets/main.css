@@ -1,0 +1,17 @@
+@font-face {
+	font-family: "Open Sans";
+	font-weight: 400;
+	src: url("../fonts/OpenSans-Light.ttf");
+}
+
+@font-face {
+	font-family: "Open Sans";
+	font-weight: 500;
+	src: url("../fonts/OpenSans-Regular.ttf");
+}
+
+@font-face {
+	font-family: "Bebas Neue";
+	font-weight: 500;
+	src: url("../fonts/BebasNeue-Regular.ttf");
+}

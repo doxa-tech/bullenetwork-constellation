@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Eglise le Refuge d'Enhaut</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="assets/stylesheets/application.css">
+	<link rel="stylesheet" type="text/css" href="assets/stylesheets/op-stylesheet.css">
+	<link rel="stylesheet" type="text/css" href="assets/stylesheets/loadrr.css">
+
+	<!-- Mobile compatibility -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+
+	<!-- section n°1 -->
+	<section data-title="Bienvenue!" class="fixed f1" id="bienvenue">
+		<div data-fetch="https://vanil.bullenetwork.ch/items/enhaut_sections/1">
+			<div class="loadrr">
+				<div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+	</section>
+
+	<section data-title="Présentation" class="scrolling s1" id="presentation">
+		<div class="container" data-fetch="https://vanil.bullenetwork.ch/items/enhaut_sections/2">
+			<div class="loadrr">
+				<div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+	</section>
+
+	<section class="footer">
+		<p><a href="https://bullenetwork.ch">bullenetwork.ch</a></p>
+		<p className="version">
+			<a href="https://github.com/doxa-tech/bullenetwork-constellation/releases/tag/__version__"
+				target="_blank">__version__</a> -
+			<a href="__buildURL__" target="_blank">__shortSHA__</a> -
+			(__buildDate__)
+		</p>
+	</section>
+
+</body>
+
+<script>
+
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	var lang = urlParams.get("lang")
+	if (lang === null && (lang != "en" || lang != "de")) {
+		lang = "fr"
+	}
+
+	var contentField = "content"
+	if (lang !== "fr") {
+		contentField = contentField + "_" + lang
+	}
+
+	const boxPadding = 300;
+	const maxRetry = 3;
+	const waitFetch = 10;
+	document.querySelectorAll('[data-fetch]').forEach((el, id) => {
+		const url = el.dataset.fetch
+		const checkLoad = function () {
+			var position = el.getBoundingClientRect();
+			// checking for partial visibility
+			if (position.top < window.innerHeight + boxPadding && position.bottom >= -boxPadding) {
+				window.removeEventListener('scroll', checkLoad);
+				fetch(url).then((resp) => {
+					return resp.json();
+				}).then((data) => {
+					el.innerHTML = data.data[contentField]
+				});
+			}
+		}
+		checkLoad();
+		window.addEventListener('scroll', checkLoad);
+	});
+
+</script>
+
+</html>

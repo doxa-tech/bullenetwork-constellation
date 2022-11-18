@@ -1,0 +1,55 @@
+name: enhaut.eebulle.ch deploy
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    if:  ${{ startsWith(github.event.release.tag_name, 'enhaut-') }}
+    runs-on: ubuntu-latest
+
+    env:
+      base_folder: enhaut
+      hodor_url: https://hodor.doxatech.ch
+      hodor_key: enhaut
+
+    defaults:
+      run:
+        working-directory: ./${{ env.base_folder }}
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Get the version
+      id: get_version
+      run: |
+        echo ::set-output name=version::$(echo ${GITHUB_REF/refs\/tags\//})
+        echo ::set-output name=version_file::$(echo ${GITHUB_REF/refs\/tags\//} | tr . _)
+        echo "::set-output name=shortsha::$(git rev-parse --short ${GITHUB_SHA})"
+        echo "::set-output name=buildurl::${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}"
+        echo "::set-output name=date::$(date +'%d/%m/%y %H:%M')"
+        
+    - name: Substitute build variables
+      run: |
+        sed -i 's/__version__/${{ steps.get_version.outputs.version }}/g' index.html
+        sed -i 's/__buildURL__/${{ steps.get_version.outputs.buildurl }}/g' index.html
+        sed -i 's/__shortSHA__/${{ steps.get_version.outputs.shortsha }}/g' index.html
+        sed -i 's/__buildDate__/${{ steps.get_version.outputs.date }}/g' index.html
+
+    - name: Create tar.gz
+      run: |
+        tar -czvf ${{ steps.get_version.outputs.version_file }}.tar.gz index.html assets
+
+    - name: Release
+      id: release_pub
+      # at this time of writing, the latest version does not contain the assets
+      # output
+      uses: softprops/action-gh-release@cd28b0f5ee8571b76cfdaa62a30d51d752317477
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: ${{ env.base_folder }}/enhaut-*.tar.gz
+
+    - name: Trigger deploy
+      run: |
+        curl -X POST -d "{\"browser_download_url\":\"${{ fromJSON(steps.release_pub.outputs.assets)[0].browser_download_url }}\",\"tag\":\"${{ steps.get_version.outputs.version }}\"}" ${{ env.hodor_url }}/api/hook/${{ env.hodor_key }}
