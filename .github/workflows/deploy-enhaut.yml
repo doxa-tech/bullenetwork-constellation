@@ -32,10 +32,10 @@ jobs:
         
     - name: Substitute build variables
       run: |
-        sed -i 's/__version__/${{ steps.get_version.outputs.version }}/g' index.html
-        sed -i 's/__buildURL__/${{ steps.get_version.outputs.buildurl }}/g' index.html
-        sed -i 's/__shortSHA__/${{ steps.get_version.outputs.shortsha }}/g' index.html
-        sed -i 's/__buildDate__/${{ steps.get_version.outputs.date }}/g' index.html
+        sed -i 's|__version__|${{ steps.get_version.outputs.version }}|g' index.html
+        sed -i 's|__buildURL__|${{ steps.get_version.outputs.buildurl }}|g' index.html
+        sed -i 's|__shortSHA__|${{ steps.get_version.outputs.shortsha }}|g' index.html
+        sed -i 's|__buildDate__|${{ steps.get_version.outputs.date }}|g' index.html
 
     - name: Create tar.gz
       run: |
