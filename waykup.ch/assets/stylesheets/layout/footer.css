@@ -1,0 +1,39 @@
+.title {
+    margin: 0 auto;
+    max-width: 768px;
+    width: 90%;
+    padding-top: 64px;
+}
+.title h2 {
+    color: white;
+}
+.footer {
+    display: flex;
+    margin: 0 auto;
+    max-width: 768px;
+    width: 90%;
+    justify-content: space-between;
+}
+.contactInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footLink img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 5px;
+}
+.footLink2 {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 5px;
+}
+section.contact p.version {
+    text-align: center;
+    font-size: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 80px 10px 10px 10px;
+}

@@ -1,0 +1,9 @@
+section.fixed.f1{background-image:url("../../images/backgrounds/cd-background-1.jpg")}
+section.fixed.f2{background-image:url("../../images/backgrounds/cd-background-2b.jpg")}
+section.fixed.f3{background-image:url("../../images/backgrounds/cd-background-3.jpg")}
+section.contact{background-image:url("../../images/backgrounds/contact-image.jpg")}
+section.fixed.f4{background-image:url("../../images/backgrounds/event.jpg")}
+section.fixed.f5{background-image:url("../../images/backgrounds/boutique-image.jpg");}
+section.contact p{color:#fff;}
+section.contact .map{position:absolute;bottom:0}
+section.scrolling.s3{background-color:#d52121;color:#fff}

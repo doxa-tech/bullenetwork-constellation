@@ -1,0 +1,44 @@
+@media (max-width: 768px) {
+    * {
+      line-height: inherit !important;
+    }
+    .activities {
+      flex-direction: column;
+      align-items: center;
+    }
+    .values, .activity {
+      margin: 15px;
+	}
+	.footer {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.contact iframe {
+		display: none;
+	}
+	.contactInfo {
+		margin-top: 6em;
+	}
+	#navbar {
+		display: flex;
+		justify-content: start;
+		align-items: center;
+	}
+	.eventForm {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	#inscriptions {
+		margin-top: 50px;
+	}
+	#inscription_button {
+		padding: 5px;
+	}
+}
+@media (max-width: 1536px) {
+	.contact iframe {
+		display: none;
+	}
+}
