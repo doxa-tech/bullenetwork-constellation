@@ -59,6 +59,19 @@ Collection of websites for the BulleNetwork
       </a>
     </td>
 <tr>
+<tr>
+    <td>waykup.ch</td>
+    <td>
+      <a href="https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-waykup-ch.yml">
+        <img src="https://github.com/doxa-tech/bullenetwork-constellation/actions/workflows/deploy-waykup-ch.yml/badge.svg">
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/doxa-tech/bullenetwork-constellation/releases">
+        <img src="https://hodor.doxatech.ch/api/tags/waykup?format=svg">
+      </a>
+    </td>
+<tr>
 </table>
 
 ## Deploy

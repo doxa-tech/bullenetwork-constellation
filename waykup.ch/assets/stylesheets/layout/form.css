@@ -1,0 +1,50 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+input{
+    color: black;
+    border: 1px solid #47467c;
+    height: 30px;
+    width: 250px;
+    margin-bottom: 8px;
+    -webkit-border-radius: 2px;
+    -moz-borderradius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    padding: 5px;
+    outline: none;
+}
+textarea{
+    color: black;
+    border: 1px solid #47467c;
+    width: 300px;
+    margin-bottom: 8px;
+    -webkit-border-radius: 2px;
+    -moz-borderradius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    padding: 5px;
+    outline: none;
+    resize: none;
+}
+#submit{
+    color : white;
+    background-color: #47467c;
+    height: 40px;
+    width: 90px;
+    -webkit-border-radius: 2px;
+    -moz-borderradius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    transition: all 0.12s ease;
+}
+#submit:hover {
+    background-color: #5e5da3;
+    border-color: #5e5da3;
+}
+.formComment {
+    color : grey;
+    font-size: small;
+}

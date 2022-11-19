@@ -1,0 +1,54 @@
+.activities{
+    display:flex;
+    justify-content:space-around;
+    padding:30px 0
+}
+.activities .activity{
+    display: flex;
+    width: 150px;
+    height: 150px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+}
+.activities .activity p{
+    padding: 0;
+}
+.values{
+    display: flex;
+    width:170px;
+    height:170px;
+    border:2px solid black;
+    border-radius:50%;
+    justify-content: center;
+    align-items: center;
+}
+.values p{
+    padding: 0;
+}
+button{
+    font-size: 1.4em;
+    background-color: #47467c;
+    height: 40px;
+    width: 120px;
+    -webkit-border-radius: 2px;
+    -moz-borderradius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    transition: all 0.12s ease;
+    border: none;
+    margin-left: 1%;
+}
+button:hover {
+    background-color: #5e5da3;
+}
+button a{
+    color: white;
+}
+#inscription{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
