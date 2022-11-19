@@ -24,7 +24,7 @@ export default () => {
               </a>
             </div>
             <div className="infos">
-              <p>{version}</p>
+              <p><a href={`https://github.com/doxa-tech/bullenetwork-constellation/releases/tag/${version}`} target="_blank">{version}</a></p>
               <p><a href={buildURL} target="_blank">{shortSHA}</a></p>
               <p>{buildDate}</p>
             </div>

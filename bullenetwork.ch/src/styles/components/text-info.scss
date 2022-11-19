@@ -10,8 +10,15 @@ section#text-info {
     p,
     ul,
     li {
-      font-size: 1.1em;
+      font-size: 18px;
       font-weight: 100;
+      color: #1b1b1b;
+      margin-bottom: 1rem;
+      line-height: 25px;
+
+      a {
+        text-decoration: underline;
+      }
     }
 
     blockquote p {
@@ -74,7 +81,7 @@ section#text-info {
     }
 
     img {
-      padding: 10px;
+      padding: 50px 10px;
       max-width: 100%;
       height: auto;
     }

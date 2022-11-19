@@ -1,12 +1,13 @@
 // @format
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400");
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400&family=Open+Sans:wght@300;500&display=swap');
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: "open sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
 
   section {
     & > .section-container {
@@ -15,4 +16,8 @@ body {
       padding-bottom: 50px;
     }
   }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'EB Garamond', serif;
 }
