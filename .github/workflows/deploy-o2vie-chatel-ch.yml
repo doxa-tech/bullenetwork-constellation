@@ -66,5 +66,5 @@ jobs:
 
     - name: Trigger deploy
       run: |
-        curl -X POST -d "{\"browser_download_url\":\"${{ fromJSON(steps.release_pub.outputs.assets)[0].browser_download_url }}\",\"tag\":\"${{ steps.get_version.outputs.VERSION }}\"}" ${{ env.hodor_url }}/api/hook/${{ env.hodor_key }}
+        curl -X POST -u hodor:${{ secrets.HODOR_PASSWORD }} -d "{\"browser_download_url\":\"${{ fromJSON(steps.release_pub.outputs.assets)[0].browser_download_url }}\",\"tag\":\"${{ steps.get_version.outputs.VERSION }}\"}" ${{ env.hodor_url }}/api/hook/${{ env.hodor_key }}
 
