@@ -26,8 +26,8 @@ const Menu = () => {
           <a href="https://waykup.ch" rel="noreferrer" target="_blank" className={styles.tile}>
             <p className={styles.outArrow}>Groupe de jeunes (13-18)</p>
           </a>
-          <Link to="/be-live" className={styles.tile}>
-            <p className={styles.rightArrow}>Groupe jeunes adultes (18+)</p>
+          <Link to="/quartier-libre" className={styles.tile}>
+            <p className={styles.rightArrow}>Quartier Libre</p>
           </Link>
         </div>
       </div>
