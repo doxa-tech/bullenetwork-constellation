@@ -27,6 +27,8 @@ const IndexPage = () => (
       </div>
     </div>
 
+    <SpecialEvent />
+
     <IndexWelcome />
 
     <IndexActivities />
@@ -37,3 +39,39 @@ const IndexPage = () => (
 )
 
 export default IndexPage
+
+const SpecialEvent = () => {
+  return (
+    <div id="main-wrapper" className="index-welcome" style={{ backgroundColor: "rgb(255, 170, 163)" }}>
+      <div className="container">
+        <div className="row gtr-200">
+          <div className="col-7 col-12-medium imp-medium">
+
+            <div id="content">
+              <section className="last">
+                <h2>Evénement spécial de noël</h2>
+                <div>
+                  <p>
+                    Le <b>mercredi 21 décembre de 18h à 21h</b>, venez partager un moment convivial avec nous.
+                  </p>
+                  <p>
+                    Au programme: activités pour les enfants, concert, concours, soupe, vin chaud et thé.
+                  </p>
+                  <p>
+                    L'événement aura lieu à la place de jeux "Route du lac Lussy 44" et est ouvert à tous.
+                  </p>
+                </div>
+              </section>
+            </div>
+
+          </div>
+          <div className="col-5 col-12-medium imp-medium">
+            <div id="sidebar">
+              <StaticImage src="../images/soupe avec nous 2022.png" alt="team" style={{ margin: 'auto' }} layout="fixed" width={380} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
