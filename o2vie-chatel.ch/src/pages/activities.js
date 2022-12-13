@@ -1,11 +1,30 @@
 import * as React from "react"
-import { graphql } from "gatsby"
 import Layout from "../components/layout"
 
 import Seo from "../components/seo"
 import Activity from "../components/activity"
+import { useState, useEffect } from "react"
 
-const ActivitiesPage = ({ data }) => {
+const ActivitiesPage = () => {
+  const [activities, setActivities] = useState([]);
+
+  useEffect(() => {
+    fetch(`${process.env.GATSBY_DIRECTUS_ENDPOINT}/graphql`, {
+      method: 'POST', headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(activitiesQuery)
+    }).then((req) => {
+      return req.json();
+    }).then((response) => {
+      if (response.errors) {
+        alert("Error:" + JSON.stringify(response.errors))
+      } else {
+        setActivities(response.data.o2vie_activities)
+      }
+    })
+  }, [])
+
   return (
     <Layout>
       <Seo title="Activités" />
@@ -23,7 +42,7 @@ const ActivitiesPage = ({ data }) => {
         <div className="container">
           <div className="row">
 
-            {data.directus.o2vie_activities.map((a) => (
+            {activities.map((a) => (
               <Activity key={a.id.toString()} activity={a} />
             ))
             }
@@ -37,9 +56,8 @@ const ActivitiesPage = ({ data }) => {
 
 export default ActivitiesPage
 
-export const query = graphql`
-  query {
-    directus {
+const activitiesQuery = {
+  "query": `query {
       o2vie_activities(sort: ["sort"]) {
         id
         body
@@ -47,13 +65,7 @@ export const query = graphql`
         title
         image {
           id
-          imageFile {
-            childImageSharp {
-              gatsbyImageData(aspectRatio: 1.7, layout: FULL_WIDTH)
-            }
-          }
         }
       }
-    }
-  }
-`
+    }`
+}

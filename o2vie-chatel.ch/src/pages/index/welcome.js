@@ -1,21 +1,20 @@
 import * as React from "react"
 
 import "./welcome.css"
-import { graphql, useStaticQuery } from "gatsby"
+import { useState } from "react"
+import { useEffect } from "react"
 
 const IndexWelcome = () => {
   const [event, setEvent] = React.useState("")
+  const [intro, setIntro] = useState("")
 
-  const data = useStaticQuery(graphql`
-  query {
-    directus {
-      o2vie_intro {
-        id
-        body
-      }
-    }
-  }
-  `)
+  useEffect(() => {
+    fetch(`${process.env.GATSBY_DIRECTUS_ENDPOINT}/items/o2vie_intro`)
+      .then(response => response.json())
+      .then(resultData => {
+        setIntro(resultData.data.body)
+      })
+  }, [])
 
   React.useEffect(() => {
     fetch(`${process.env.GATSBY_DIRECTUS_ENDPOINT}/items/o2vie_next_event`)
@@ -37,7 +36,7 @@ const IndexWelcome = () => {
 
             <div id="content">
               <section className="last">
-                <div dangerouslySetInnerHTML={{ __html: data.directus.o2vie_intro.body }} />
+                <div dangerouslySetInnerHTML={{ __html: intro }} />
                 <a href="/about" className="button icon solid fa-arrow-circle-right">En savoir plus</a>
               </section>
             </div>

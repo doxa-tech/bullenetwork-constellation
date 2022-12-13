@@ -51,14 +51,5 @@ module.exports = {
     // `gatsby-plugin-sharp`,
 
     // Finally our plugin
-    {
-      resolve: '@directus/gatsby-source-directus',
-      options: {
-        url: `${process.env.GATSBY_DIRECTUS_ENDPOINT}`,
-        auth: {
-          token: `${process.env.GATSBY_DIRECTUS_O2VIE_TOKEN}`,
-        }
-      },
-    },
   ],
 }
