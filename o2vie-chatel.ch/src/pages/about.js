@@ -1,32 +1,42 @@
-import { graphql, useStaticQuery } from "gatsby"
 import * as React from "react"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import * as styles from "./about.module.css"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import { useState } from "react"
+import { useEffect } from "react"
 
 const AboutPage = () => {
-  const data = useStaticQuery(graphql`
-  query {
-    directus {
+  const [content, setContent] = useState();
+
+  useEffect(() => {
+    fetch(`${process.env.GATSBY_DIRECTUS_ENDPOINT}/graphql`, {
+      method: 'POST', headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(contentQuery)
+    }).then((req) => {
+      return req.json();
+    }).then((response) => {
+      if (response.errors) {
+        alert("Error:" + JSON.stringify(response.errors))
+      } else {
+        setContent(response.data.o2vie_about)
+      }
+    })
+  }, [])
+
+  const contentQuery = {
+    "query": `query {
       o2vie_about {
         id
         body
         image {
           id
-          imageFile {
-            childImageSharp {
-              gatsbyImageData
-            }
-          }
         }
       }
-    }
+    }`
   }
-  `)
-
-  const image = getImage(data.directus.o2vie_about.image.imageFile)
 
   return (
     <Layout>
@@ -35,10 +45,11 @@ const AboutPage = () => {
       <div id="main-wrapper">
         <div className="container">
           <div id="content">
+            {content && (<>
+              <img className={styles.image} src={`${process.env.GATSBY_DIRECTUS_ENDPOINT}/assets/${content.image.id}`} />
 
-            <GatsbyImage className={styles.image} image={image} alt="about" />
-            <article dangerouslySetInnerHTML={{ __html: data.directus.o2vie_about.body }} />
-
+              <article dangerouslySetInnerHTML={{ __html: content.body }} />
+            </>)}
           </div>
         </div>
       </div>
