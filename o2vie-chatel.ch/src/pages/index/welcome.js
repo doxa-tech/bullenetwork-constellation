@@ -3,6 +3,7 @@ import * as React from "react"
 import "./welcome.css"
 import { useState } from "react"
 import { useEffect } from "react"
+import ProgressiveImg from "../../components/progressiveImg"
 
 const IndexWelcome = () => {
   const [event, setEvent] = React.useState("")
@@ -58,7 +59,10 @@ const Event = ({ event }) => {
     <section className="next-event widget thumbnails">
       <h3>{event.title}</h3>
       <div dangerouslySetInnerHTML={{ __html: event.body }}></div>
-      <img src={`${process.env.GATSBY_DIRECTUS_ENDPOINT}/assets/${event.image}`} alt="prochain événement" />
+      <ProgressiveImg
+        src={`${process.env.GATSBY_DIRECTUS_ENDPOINT}/assets/${event.image}`}
+        placeholderSrc={`${process.env.GATSBY_DIRECTUS_ENDPOINT}/assets/${event.image}?key=lowqual`}
+      />
     </section>
   )
 }

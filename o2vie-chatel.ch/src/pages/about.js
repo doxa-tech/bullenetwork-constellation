@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { useState } from "react"
 import { useEffect } from "react"
+import ProgressiveImg from "../components/progressiveImg"
 
 const AboutPage = () => {
   const [content, setContent] = useState();
@@ -45,11 +46,14 @@ const AboutPage = () => {
       <div id="main-wrapper">
         <div className="container">
           <div id="content">
-            {content && (<>
-              <img className={styles.image} src={`${process.env.GATSBY_DIRECTUS_ENDPOINT}/assets/${content.image.id}`} />
+            {content && (<div className={styles.image}>
+              <ProgressiveImg
+                src={`${process.env.GATSBY_DIRECTUS_ENDPOINT}/assets/${content.image.id}`}
+                placeholderSrc={`${process.env.GATSBY_DIRECTUS_ENDPOINT}/assets/${content.image.id}?key=lowqual`}
+              />
 
               <article dangerouslySetInnerHTML={{ __html: content.body }} />
-            </>)}
+            </div>)}
           </div>
         </div>
       </div>

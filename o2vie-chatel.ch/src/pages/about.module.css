@@ -1,6 +1,6 @@
-.image {
+.image img {
   padding: 10px;
   margin: 0 0 40px 0;
   border-radius: 10px;
-  max-width: 100%;
+  width: 100%;
 }
