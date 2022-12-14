@@ -1,4 +1,5 @@
 import React from "react"
+import ProgressiveImg from "./progressiveImg"
 
 const Activity = ({ activity }) => {
 
@@ -7,7 +8,10 @@ const Activity = ({ activity }) => {
 
       <section className="box feature" id={`act-${activity.id}`}>
         <a href={`/activities#act-${activity.id}`} className="image featured">
-          <img src={`${process.env.GATSBY_DIRECTUS_ENDPOINT}/assets/${activity.image.id}`} />
+          <ProgressiveImg
+            src={`${process.env.GATSBY_DIRECTUS_ENDPOINT}/assets/${activity.image.id}`}
+            placeholderSrc={`${process.env.GATSBY_DIRECTUS_ENDPOINT}/assets/${activity.image.id}?key=lowqual`}
+          />
         </a>
         <div className="inner">
           <header>

@@ -67,7 +67,7 @@ const SpecialEvent = () => {
           </div>
           <div className="col-5 col-12-medium imp-medium">
             <div id="sidebar">
-              <StaticImage src="../images/soupe avec nous 2022.png" alt="team" style={{ margin: 'auto' }} layout="fixed" width={380} />
+              <StaticImage src="../images/soupe avec nous 2022.png" alt="team" style={{ margin: 'auto', maxWidth: "100%" }} layout="constrained" width={380} />
             </div>
           </div>
         </div>

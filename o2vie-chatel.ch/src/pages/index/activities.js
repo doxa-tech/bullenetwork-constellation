@@ -1,6 +1,7 @@
 import * as React from "react"
 import { useState } from "react"
 import { useEffect } from "react"
+import ProgressiveImg from "../../components/progressiveImg";
 
 const IndexActivities = () => {
   const [activities, setActivities] = useState([]);
@@ -36,7 +37,10 @@ const ActivityPreview = ({ activity }) => {
 
       <section className="box feature">
         <a href={`/activities#act-${activity.id}`} className="image featured">
-          <img src={`${process.env.GATSBY_DIRECTUS_ENDPOINT}/assets/${activity.image}`} />
+          <ProgressiveImg
+            src={`${process.env.GATSBY_DIRECTUS_ENDPOINT}/assets/${activity.image}`}
+            placeholderSrc={`${process.env.GATSBY_DIRECTUS_ENDPOINT}/assets/${activity.image}?key=lowqual`}
+          />
         </a>
         <div className="inner">
           <header>
