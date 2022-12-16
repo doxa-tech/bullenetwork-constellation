@@ -55,10 +55,19 @@ const SpecialEvent = () => {
                     Le <b>mercredi 21 décembre de 18h à 21h</b>, venez partager un moment convivial avec nous.
                   </p>
                   <p>
-                    Au programme: activités pour les enfants, concert, concours, soupe, vin chaud et thé.
+                    Au programme: activités pour les enfants, concert, concours, soupe, vin chaud et thé:
                   </p>
+                  <ul>
+                    <li>18h00 - Début: activités pour les enfants, thé / vind chaud / soupe, concours</li>
+                    <li>19h00-20h00 - Château gonflable</li>
+                    <li>20h-20h30 - Concert de Noël</li>
+                    <li>21h00 - Fin</li>
+                  </ul>
                   <p>
                     L'événement aura lieu à la place de jeux "Route du lac Lussy 44" et est ouvert à tous.
+                  </p>
+                  <p>
+                    <StaticImage src="../images/san 2022.jpg" alt="team" style={{ margin: 'auto', maxWidth: "100%" }} layout="constrained" width={500} />
                   </p>
                 </div>
               </section>
