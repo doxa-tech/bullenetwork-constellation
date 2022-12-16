@@ -74,17 +74,6 @@ section#footer {
           }
         }
       }
-      div.infos {
-        color: #00b485;
-        text-align: right;
-        font-size: 8px;
-        padding: 40px 6px 0 0;
-        font-family: 'Courier New', Courier, monospace;
-
-        p {
-          padding: 1px 0;
-        }
-      }
     }
 
     .sub-apps {
@@ -102,6 +91,41 @@ section#footer {
 
         &:hover {
           background-color: rgb(211, 211, 211);
+        }
+      }
+    }
+  }
+
+  div.second-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f7f7;
+    flex-wrap: wrap;
+
+    div.infos {
+      color: #00b485;
+      text-align: right;
+      font-size: 8px;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 0 20px 0 0;
+
+      p {
+        padding: 1px 0;
+      }
+    }
+
+    div.infomaniak {
+      svg {
+        path.rectangle {
+          fill: none;
+          stroke: none;
+        }
+
+        g.logo {
+          fill: #00b485;
         }
       }
     }
