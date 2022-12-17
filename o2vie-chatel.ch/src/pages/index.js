@@ -8,6 +8,8 @@ import IndexWelcome from "./index/welcome"
 import { StaticImage } from "gatsby-plugin-image"
 import Instagram from "../components/instagram"
 
+import "../components/snow.scss"
+
 const IndexPage = () => (
   <Layout>
     <Seo title="Home" />
@@ -42,7 +44,14 @@ export default IndexPage
 
 const SpecialEvent = () => {
   return (
-    <div id="main-wrapper" className="index-welcome" style={{ backgroundColor: "rgb(255, 170, 163)" }}>
+    <div id="main-wrapper" className="index-welcome" style={{ background: "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(0,180,61,0.09425777146796221) 100%)", position: "relative" }}>
+
+      <snowfall>
+        {[...Array(50)].map(() =>
+          <snowflake><img src="/assets/snowflake.png" /></snowflake>
+        )}
+      </snowfall>
+
       <div className="container">
         <div className="row gtr-200">
           <div className="col-7 col-12-medium imp-medium">
