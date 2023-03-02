@@ -24,7 +24,7 @@ const Events = () => {
   return content.length !== 0 ?
     (<div className="event-container">
 
-      <h2 id="events">Prochainement</h2>
+      <h2 id="events">Événement spécial</h2>
       {content}
 
     </div>)
