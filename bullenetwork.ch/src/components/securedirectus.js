@@ -15,7 +15,6 @@ export const SecureDirectus = ({ children, email, className }) => {
 
   useEffect(() => {
     const auth_info = JSON.parse(window.localStorage.getItem(key));
-    console.log("auth info:", auth_info);
     if (auth_info) {
       setAccessToken(auth_info[0].access_token);
       setShowLogin(false);
