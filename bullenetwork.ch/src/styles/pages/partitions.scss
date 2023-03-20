@@ -217,6 +217,20 @@
                 }
               }
 
+              .tags {
+                padding: 0 10px 0 0;
+                display: flex;
+                justify-content: center;
+
+                svg.dynamic {
+                  width: 25px;
+
+                  circle {
+                    fill: #ffffffc7;
+                  }
+                }
+              }
+
               svg.arrow {
                 width: 15px;
                 margin: 0 5px;
@@ -423,17 +437,23 @@
             }
 
             .main {
+              padding: 0 10px;
+
               .row {
                 display: block;
                 text-align: center;
 
                 .title {
-                  padding: 15px 0 0 20px;
+                  padding: 15px 0 0 0px;
                 }
 
                 .date {
                   width: initial;
                   font-size: 13px;
+                }
+
+                .tags {
+                  padding: 10px 5px 0 5px;
                 }
 
                 .files {

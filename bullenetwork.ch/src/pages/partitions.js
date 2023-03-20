@@ -32,6 +32,7 @@ export const Partitions = () => {
         bni
         title
         comments
+        tags
         files {
           id
           directus_files_id {

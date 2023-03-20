@@ -62,8 +62,8 @@ export const Login = ({ email, setAccessToken, setShowLogin, error }) => {
             <input type="password" placeholder="Mot de passe" id="login" onKeyPress={onKeyPress} onInput={(e) => { setPassword(e.target.value) }} />
             <input type="submit" value="login" onClick={login} />
             {loading && <div className={styles.spinner}><div style={{ width: "80px", height: "80px" }}><Spinner scale="1" /></div></div>}
-            {localError != "" && <div className={styles.error}>{localError}</div>}
           </div>
+          {localError != "" && <div className={styles.error}>{localError}</div>}
           <div className={styles.back}>
             <button onClick={() => navigate("/")}>← Retours sur l'accueil</button>
           </div>

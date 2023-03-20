@@ -68,18 +68,18 @@
       justify-content: center;
       align-items: center;
       position: relative;
-
-      div.error {
-        position: absolute;
-        top: 60px;
-        max-width: 600px;
-      }
+      padding: 10px 0;
 
       .spinner {
         position: absolute;
         top: 30px;
         transform: scale(.5);
       }
+    }
+
+    div.error {
+      max-width: 600px;
+      padding: 20px 0 0 0;
     }
 
     input[type=password] {
@@ -121,7 +121,7 @@
       button {
         background: none;
         border: none;
-        margin: 60px 0 0 0;
+        margin: 30px 0 0 0;
         color: rgba(255, 255, 255, 0.597);
         cursor: pointer;
 
