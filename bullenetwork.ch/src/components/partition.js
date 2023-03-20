@@ -183,7 +183,6 @@ const File = ({ file, notify }) => {
 }
 
 const Tags = ({ tags }) => {
-  console.log("tags:", tags)
   const tagNameToSVG = {
     "dynamic": <DynamicSong />,
   }
