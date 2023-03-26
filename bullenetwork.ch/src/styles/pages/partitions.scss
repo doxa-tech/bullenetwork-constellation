@@ -98,12 +98,19 @@
         .search-container {
           display: flex;
           flex-direction: row;
+          width: 230px;
 
           input[type="text"] {
             padding: 6px;
             border: none;
             height: 30px;
             border-radius: 5px 0 0 5px;
+            flex: 1;
+
+            &:focus {
+              outline: none;
+              box-shadow: inset 0px 0px 3px 1px #008cba;
+            }
           }
 
           .icon {
@@ -398,7 +405,14 @@
           }
         }
       }
-      @media only screen and (max-width: 764px) {
+    }
+  }
+
+  @media only screen and (max-width: 764px) {
+    .main-section {
+      .section-container {
+        padding: 0 10px;
+
         .select-all {
           display: none;
         }
@@ -430,21 +444,31 @@
 
         #partitions {
           .partition {
-            margin: 12px;
+            margin: 0px;
 
             .main-checkbox {
               display: none;
             }
 
             .main {
-              padding: 0 10px;
+              padding: 5px;
 
               .row {
                 display: block;
                 text-align: center;
 
+                .bni {
+                  float: left;
+                  width: initial;
+                  padding: 0 4px 0 0;
+                }
+
                 .title {
-                  padding: 15px 0 0 0px;
+                  padding: 0;
+                }
+
+                .tags {
+                  float: left;
                 }
 
                 .date {
@@ -470,8 +494,20 @@
               }
 
               .extra {
+                padding: 0;
+
                 .files {
                   align-items: center;
+
+                  .file {
+                    label {
+                      display: none;
+                    }
+
+                    button {
+                      margin: 0;
+                    }
+                  }
                 }
               }
             }

@@ -5,6 +5,7 @@ import Sorter from "../components/medias/sorter"
 import SearchIcon from "../components/medias/searchIcon"
 import Spinner from "../components/spinner"
 import { LoginIcon, LogoutIcon, SecureContext, SecureDirectus } from "../components/securedirectus"
+import Multiselect from "../components/multiselect"
 
 const DefaultSorter = {
   attribute: "bni",
@@ -25,6 +26,12 @@ export const Partitions = () => {
   const [archiveInfo, setArchiveInfo] = useState("");
 
   const checkboxRef = useRef();
+
+  const givenTags = [
+    { title: "Chant dynamique", id: "dynamic" },
+  ]
+
+  const [tags, setTags] = useState(givenTags.map((tag) => { return { title: tag.title, id: tag.id, clicked: false } }))
 
   const partitionsQuery = {
     "query": `query {
@@ -67,16 +74,42 @@ export const Partitions = () => {
     })
   }, [accessToken])
 
-  // Update the entries each time the sorter or the query change. When that
-  // happens we filter and sort accordingly.
+  // Update the entries each time the sorter, the query, or the tags change.
+  // When that happens we filter and sort accordingly.
   useEffect(() => {
     const comp = new Intl.Collator('fr')
     const reverse = sorter.order === "desc";
 
-    const filtered = rawdata.filter(partition =>
-      partition.title.toLowerCase().includes(query.toLowerCase()) ||
-      partition.bni.toString().includes(query)
-    )
+    const clicked = tags.filter(tag => tag.clicked).map(tag => tag.id)
+
+    const filtered = rawdata.filter(partition => {
+      const isQuery = partition.title.toLowerCase().includes(query.toLowerCase()) ||
+        partition.bni.toString().includes(query)
+
+      // check if some tags are selected and perform the match
+      let isTag = true
+      if (clicked.length !== 0 && partition.tags === null) {
+        isTag = false
+      }
+      else if (clicked.length !== 0) {
+        for (let i = 0; i < clicked.length; i++) {
+          let match = false
+          console.log("partition:", partition)
+          for (let j = 0; j < partition.tags.length; j++) {
+            if (clicked[i] === partition.tags[j]) {
+              match = true
+              break
+            }
+          }
+          if (!match) {
+            isTag = false
+            break
+          }
+        }
+      }
+
+      return isQuery && isTag
+    })
 
     const sorted = filtered.sort(
       (el1, el2) => {
@@ -93,7 +126,7 @@ export const Partitions = () => {
 
     setEntries(sorted)
 
-  }, [query, sorter, rawdata])
+  }, [query, sorter, rawdata, tags])
 
   // update the total files when the list of entries change
   useEffect(() => {
@@ -212,6 +245,7 @@ export const Partitions = () => {
               <input type="text" onChange={event => setQuery(event.target.value)} placeholder="Recherche.." />
               <div className="icon"><SearchIcon /></div>
             </div>
+            <Multiselect tags={tags} setTags={setTags} />
           </div>
 
           <div className="top-els-2">
