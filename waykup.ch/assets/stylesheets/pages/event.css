@@ -4,8 +4,6 @@
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
     margin-bottom: 10px;
-    width: 40%;
-    height: 40%;
 }
 .logoEvent:hover{
     -webkit-transform: scale(1.1);
@@ -13,22 +11,72 @@
     -o-transform: scale(1.1);
     transform: scale(1.1);
 }
-.eventForm {
+
+.container {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
 }
-/* subscribing event contact form */
-#subscribing textarea{
-    height: 90px;
-    width: 250px;
+.event-container {
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
-#subscribing #nbr {
-    width: 40px;
+
+.image-right-30 {
+    margin-top: 5%;
+    max-width: 30%;
+    max-height: 30%;
+    float: right;
 }
-.aligneLabel {
-    display: flex;
+
+.image-left-30 {
+    margin-top: 5%;
+    max-width: 30%;
+    max-height: 30%;
+    float: left;
 }
-.aligneLabel label {
-    margin-right: 5px;
+
+.image-right-half {
+    margin-top: 2%;
+    max-width: 47.5%;
+    max-height: 47.5%;
+    float: right;
+}
+
+.image-left-half {
+    margin-top: 2%;
+    max-width: 47.5%;
+    max-height: 47.5%;
+    float: left;
+}
+
+.event-paragraph-65 {
+    max-width: 65%;
+    max-height: 15%;
+    float: left;
+    text-align: justify;
+}
+
+/* Media queries */
+@media screen and (max-width: 802px) {
+     .event-paragraph-65 {
+        max-width: 100%;
+        max-height: 15%;
+        float: none;
+        margin-bottom: 5%;
+    }
+    .image-right-30 {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 50%;
+        max-height: 40%;
+        float: none;
+    }
+    .logoEvent:hover{
+        -webkit-transform: none;
+        -moz-transform: none;
+        -o-transform: none;
+        transform: none;
+    }
+
 }
