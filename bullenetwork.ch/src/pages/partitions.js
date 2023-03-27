@@ -94,7 +94,6 @@ export const Partitions = () => {
       else if (clicked.length !== 0) {
         for (let i = 0; i < clicked.length; i++) {
           let match = false
-          console.log("partition:", partition)
           for (let j = 0; j < partition.tags.length; j++) {
             if (clicked[i] === partition.tags[j]) {
               match = true
