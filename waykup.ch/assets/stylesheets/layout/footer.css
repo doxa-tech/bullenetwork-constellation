@@ -16,8 +16,10 @@
 }
 .contactInfo {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 5%;
+    max-width: 80%;
 }
 .footLink img {
     width: 60px;
@@ -36,4 +38,21 @@ section.contact p.version {
     font-size: 10px;
     font-family: 'Courier New', Courier, monospace;
     padding: 80px 10px 10px 10px;
+}
+
+.contactInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 5%;
+    max-width: 80%;
+}
+
+.contactIcons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 40%;
+    margin-top: 5%;
 }
