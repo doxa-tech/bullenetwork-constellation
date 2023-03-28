@@ -3,9 +3,10 @@ import Checkbox from "./checkbox"
 import * as styles from "./multiselect.module.scss"
 
 const Multiselect = ({ tags, setTags }) => {
-  const [open, setOpen] = useState(false)
+  const noFilterSelected = <span className={styles.noTagsText}>Filtres...</span>
 
-  const [displayedTag, setDisplayedTags] = useState(<span className={styles.noTagsText}>Filtres...</span>)
+  const [open, setOpen] = useState(false)
+  const [displayedTag, setDisplayedTags] = useState(noFilterSelected)
 
   const onClick = () => {
     setOpen(!open)
@@ -21,7 +22,7 @@ const Multiselect = ({ tags, setTags }) => {
   useEffect(() => {
     const clicked = tags.filter((tag) => tag.clicked === true)
     if (clicked.length === 0) {
-      setDisplayedTags(<span className={styles.noTagsText}>Filtres...</span>)
+      setDisplayedTags(noFilterSelected)
     } else {
       setDisplayedTags(clicked.map((tag, index) => (<span key={index.toString()} className={styles.tagName}>{tag.title}</span>)))
     }
