@@ -33,14 +33,24 @@
 
   .tag-name {
     color: #7e7e7e;
-    border: 1px solid #7e7e7e;
     padding: 1px 2px;
     margin-top: 1px;
     margin-bottom: 1px;
     border-radius: 5px;
+    position: relative;
 
     &:not(:last-child) {
       margin-right: 4px;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      background-color: #7e7e7e4d;
+      left: 2px;
+      right: 2px;
+      bottom: 1px;
     }
   }
 
@@ -89,6 +99,7 @@
 
   &.open {
     height: auto;
+    border-radius: 5px 5px 0 0;
   }
 }
 
@@ -97,13 +108,13 @@
   z-index: 1;
   margin-top: 1px;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 0 0 5px 5px;
   background-color: #fff;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   max-height: 220px;
   overflow-y: scroll;
   overflow-x: hidden;
-  padding: 4px 2px;
+  padding: 15px 2px 5px 2px;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -163,7 +174,7 @@
     font-size: 10px;
     color: #989898;
     font-style: italic;
-    padding: 0 7px 0 0;
+    padding: 8px 7px 0 0;
     cursor: pointer;
 
     &:hover {
