@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      base_folder: o2vie-chatel.ch
+      base_folder: o2vie-chatel.ch_v2
       hodor_url: https://hodor.doxatech.ch
       hodor_key: o2vie
 
@@ -37,23 +37,19 @@ jobs:
     
     - name: Install dependencies
       run: |
-        npm install
-        npm install -g gatsby-cli
+        npm ci
         
     - name: Build
       env:
-        GATSBY_DIRECTUS_O2VIE_TOKEN: ${{secrets.O2VIE_CH_DIRECTUS_O2VIE_TOKEN}}
-        GATSBY_DIRECTUS_ENDPOINT: https://vanil.bullenetwork.ch
-        GATSBY_APP_VERSION: ${{ steps.get_version.outputs.VERSION }}
-        GATSBY_BUILD_URL: ${{ steps.get_version.outputs.buildurl }}
-        GATSBY_SHORT_SHA: ${{ steps.get_version.outputs.shortsha }}
-        GATSBY_BUILD_DATE: ${{ steps.get_version.outputs.date }}
-      run: |
-        gatsby build
+        APP_VERSION: ${{ steps.get_version.outputs.VERSION }}
+        BUILD_URL: ${{ steps.get_version.outputs.buildurl }}
+        SHORT_SHA: ${{ steps.get_version.outputs.shortsha }}
+        BUILD_DATE: ${{ steps.get_version.outputs.date }}
+      run: npm run build --if-present
 
     - name: Create tar.gz
       run: |
-        tar -czvf ${{ steps.get_version.outputs.VERSION_FILE }}.tar.gz public
+        tar -czvf ${{ steps.get_version.outputs.VERSION_FILE }}.tar.gz dist
 
     - name: Release
       id: release_pub
@@ -62,9 +58,8 @@ jobs:
       uses: softprops/action-gh-release@cd28b0f5ee8571b76cfdaa62a30d51d752317477
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: ${{ env.base_folder }}/o2vie-*.tar.gz
+        files: ${{ steps.get_version.outputs.VERSION_FILE }}.tar.gz
 
     - name: Trigger deploy
       run: |
         curl -X POST -u hodor:${{ secrets.HODOR_PASSWORD }} -d "{\"browser_download_url\":\"${{ fromJSON(steps.release_pub.outputs.assets)[0].browser_download_url }}\",\"tag\":\"${{ steps.get_version.outputs.VERSION }}\"}" ${{ env.hodor_url }}/api/hook/${{ env.hodor_key }}
-

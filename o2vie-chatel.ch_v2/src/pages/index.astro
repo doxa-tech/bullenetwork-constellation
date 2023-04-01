@@ -1,0 +1,36 @@
+---
+import "@astrojs/react";
+
+import Layout from "../layouts/Layout.astro";
+import Welcome from "./index/Welcome";
+import IndexActivities from "./index/Activities";
+import Instagram from "./index/Instagram";
+import ImageWrap from "../components/ImageWrap.astro";
+---
+
+<Layout title="Home">
+	<!-- <Seo title="Home" /> -->
+
+	<div id="banner-wrapper">
+		<div id="banner" class="box container">
+			<div class="row">
+				<div class="col-7 col-12-medium">
+					<h2>O2Vie</h2>
+					<h3>Châtel-St-Denis</h3>
+					<p>Une association chrétienne au service de sa région.</p>
+				</div>
+				<div class="col-5 col-12-medium">
+					<ImageWrap src="/team.png" alt="team" width="280px" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- <SpecialEvent /> -->
+
+	<Welcome client:load />
+
+	<IndexActivities client:load />
+
+	<Instagram client:load />
+</Layout>

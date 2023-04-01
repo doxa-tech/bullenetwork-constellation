@@ -1,0 +1,31 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+---
+
+<div id="header-wrapper">
+  <header id="header" class="container">
+    <div id="logo">
+      <a href="/"><img src="/o2vie-logo.png" alt="logo" width={300} /></a>
+    </div>
+
+    <nav id="nav">
+      <ul>
+        <li>
+          <a href="/" class={currentPath === "" ? "current" : ""}>Accueil</a>
+        </li>
+        <li>
+          <a
+            href="/activities"
+            class={currentPath === "activities" ? "current" : ""}>Activités</a
+          >
+        </li>
+        <li>
+          <a href="/about" class={currentPath === "about" ? "current" : ""}
+            >À propos</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </header>
+</div>

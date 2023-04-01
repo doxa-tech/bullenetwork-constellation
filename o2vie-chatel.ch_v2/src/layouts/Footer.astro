@@ -1,0 +1,86 @@
+---
+import InstaIcon from "./InstaIcon.astro";
+
+const version = import.meta.env.APP_VERSION || "v0.0.0";
+const buildURL = import.meta.env.BUILD_URL || "#";
+const shortSHA = import.meta.env.SHORT_SHA || "xxx";
+const buildDate = import.meta.env.BUILD_DATE || "1.1.1970";
+---
+
+<div id="footer-wrapper">
+  <footer id="footer" class="container">
+    <div class="row space-evenly">
+      <div class="col-3 col-6-medium col-12-small">
+        <section class="widget links">
+          <h3>Liens</h3>
+          <ul class="style2">
+            <li><a href="/about">A propos de nous</a></li>
+            <li><a href="/activities">Nos activités</a></li>
+            <li>
+              <a href="https://bullenetwork.ch" target="_blank" rel="noreferrer"
+                >Bulle Network</a
+              >
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="col-3 col-6-medium col-12-small">
+        <section class="widget links">
+          <h3>CCP</h3>
+          <ul class="style2">
+            <li>Bulle Network, O2Vie, Bulle</li>
+            <li>IBAN CH96 0900 0000 1581 1462 6</li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="col-3 col-6-medium col-12-small">
+        <section class="widget contact last">
+          <h3>Nous contacter</h3>
+          <ul>
+            <li>
+              <a
+                href="https://www.instagram.com/_o2vie_/"
+                target="_blank"
+                rel="noreferrer"
+                class="icon brands insta"><InstaIcon /></a
+              >
+            </li>
+          </ul>
+          <p>Email: fannie.blakaj@bullenetwork.ch<br /></p>
+        </section>
+      </div>
+    </div>
+    <div class="row gtr-0 gtr-uniform">
+      <div class="col-12">
+        <div id="copyright">
+          <ul class="menu">
+            <li>&copy; O2Vie {new Date().getFullYear()}</li>
+            <li class="version">
+              <a
+                href={`https://github.com/doxa-tech/bullenetwork-constellation/releases/tag/${version}`}
+                target="_blank">{version}</a
+              > - <a href={buildURL} target="_blank">{shortSHA}</a> - ({
+                buildDate
+              })
+            </li>
+            <li>
+              Design: <a
+                href="http://html5up.net"
+                target="_blank"
+                rel="noreferrer">HTML5 UP</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<style lang="scss">
+  .insta {
+    padding: 5px 9px 0px 9px;
+  }
+</style>

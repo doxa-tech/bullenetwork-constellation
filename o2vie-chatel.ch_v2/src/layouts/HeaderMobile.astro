@@ -1,0 +1,82 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+---
+
+<div id="mobile-header">
+  <div id="navToggle">
+    <button id="menu-toggle" aria-label="menu">
+      <svg width="100%" height="100%" viewBox="0 0 166 130">
+        <g transform="matrix(1,0,0,1,-46.1746,-49.8345)">
+          <path
+            d="M211.912,56.614C211.912,52.872 208.874,49.835 205.132,49.835L52.954,49.835C49.212,49.835 46.175,52.872 46.175,56.614L46.175,70.173C46.175,73.915 49.212,76.952 52.954,76.952L205.132,76.952C208.874,76.952 211.912,73.915 211.912,70.173L211.912,56.614Z"
+          ></path>
+        </g>
+        <g transform="matrix(1,0,0,1,-46.1746,1.37245)">
+          <path
+            d="M211.912,56.614C211.912,52.872 208.874,49.835 205.132,49.835L52.954,49.835C49.212,49.835 46.175,52.872 46.175,56.614L46.175,70.173C46.175,73.915 49.212,76.952 52.954,76.952L205.132,76.952C208.874,76.952 211.912,73.915 211.912,70.173L211.912,56.614Z"
+          ></path>
+        </g>
+        <g transform="matrix(1,0,0,1,-46.1746,52.842)">
+          <path
+            d="M211.912,56.614C211.912,52.872 208.874,49.835 205.132,49.835L52.954,49.835C49.212,49.835 46.175,52.872 46.175,56.614L46.175,70.173C46.175,73.915 49.212,76.952 52.954,76.952L205.132,76.952C208.874,76.952 211.912,73.915 211.912,70.173L211.912,56.614Z"
+          ></path>
+        </g>
+      </svg>
+    </button>
+  </div>
+
+  <div id="navPanel">
+    <nav>
+      <a href="/" class={currentPath === "" ? "link current" : "link"}
+        >Accueil</a
+      >
+      <a
+        href="/activities"
+        class={currentPath === "activities" ? "link current" : "link"}
+        >Activités</a
+      >
+      <a href="/about" class={currentPath === "about" ? "link current" : "link"}
+        >À propos</a
+      >
+    </nav>
+  </div>
+</div>
+
+<style lang="scss">
+  #menu-toggle {
+    background: rgba(0, 0, 0, 0.5);
+    border: 0;
+    opacity: 0.35;
+    border-radius: 6px;
+    padding: 6px 9px 3px 9px;
+    margin: 6px 0 0 2px;
+    cursor: pointer;
+
+    svg {
+      width: 25px;
+      path {
+        fill: white;
+      }
+    }
+  }
+
+  a.current {
+    font-weight: bold;
+  }
+</style>
+
+<script>
+  const panel = document.getElementById("mobile-header");
+  const toggleBtn = document.getElementById("menu-toggle");
+  let open = false;
+
+  toggleBtn.addEventListener("click", () => {
+    if (open) {
+      panel.classList.remove("navPanel-visible");
+    } else {
+      panel.classList.add("navPanel-visible");
+    }
+    open = !open;
+  });
+</script>
