@@ -1,5 +1,5 @@
 import * as React from "react"
-import CSS from "./About.module.css"
+import CSS from "./AboutPage.module.css"
 
 import { useState } from "react"
 import { useEffect } from "react"
