@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 import ProgressiveImg from "../../components/ProgressiveImg"
 
 const Activity = ({ activity }) => {

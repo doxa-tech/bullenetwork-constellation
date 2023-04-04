@@ -3,7 +3,7 @@ import * as React from "react"
 import Activity from "./Activity"
 import { useState, useEffect } from "react"
 
-const Activities = () => {
+const ActivitiesGrid = () => {
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const Activities = () => {
   )
 }
 
-export default Activities
+export default ActivitiesGrid
 
 const activitiesQuery = {
   "query": `query {

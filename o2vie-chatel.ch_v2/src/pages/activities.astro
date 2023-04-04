@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Activities from "./activities/activities";
+import ActivitiesGrid from "./activities/ActivitiesGrid";
 ---
 
 <Layout title="Nos activités">
@@ -15,7 +15,7 @@ import Activities from "./activities/activities";
 
   <div id="features-wrapper">
     <div class="container">
-      <Activities client:load />
+      <ActivitiesGrid client:load />
     </div>
   </div>
 </Layout>

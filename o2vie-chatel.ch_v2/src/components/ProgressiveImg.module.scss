@@ -1,9 +1,9 @@
-.pi-loading {
+.piLoading {
   filter: blur(10px);
   clip-path: inset(0);
 }
 
-.pi-loaded {
+.piLoaded {
   filter: blur(0px);
   transition: filter 0.5s linear;
 }
