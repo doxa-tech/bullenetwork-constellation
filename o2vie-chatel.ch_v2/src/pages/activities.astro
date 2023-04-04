@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Activities from "./activities/activities";
+---
+
+<Layout title="Nos activités">
+  <div id="main-wrapper" class="activities">
+    <div class="container">
+      <div id="content">
+        <h2>Nos activités</h2>
+        <h4>Découvre nos activités à Châtel et dans la région.</h4>
+      </div>
+    </div>
+  </div>
+
+  <div id="features-wrapper">
+    <div class="container">
+      <Activities client:load />
+    </div>
+  </div>
+</Layout>

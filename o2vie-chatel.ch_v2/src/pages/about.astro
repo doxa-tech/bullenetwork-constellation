@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AboutPage from "./about/about";
+---
+
+<Layout title="À propos">
+  <div id="main-wrapper">
+    <div class="container">
+      <div id="content">
+        <AboutPage client:load />
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,23 @@
+---
+export interface Props {
+  alt: string;
+  src: string;
+  width: string;
+}
+
+const { alt, src, width } = Astro.props;
+---
+
+<div>
+  <img src={src} alt={alt} />
+</div>
+<style lang="scss" define:vars={{ width }}>
+  div {
+    width: var(--width);
+    margin: auto;
+
+    img {
+      max-width: 100%;
+    }
+  }
+</style>
