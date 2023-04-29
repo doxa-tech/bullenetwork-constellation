@@ -1,4 +1,9 @@
+# Misc
 .DS_Store
+
+# Javascript
+node_modules
+
 docs/directus/directus.env
 docs/directus/mysql.env
 gcs-authenticator/gcsauth-*
