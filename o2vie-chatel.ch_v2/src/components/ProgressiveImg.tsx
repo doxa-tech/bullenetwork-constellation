@@ -1,10 +1,13 @@
 import React from "react"
 import { useState, useEffect } from "react";
-import * as styles from "./ProgressiveImg.module.scss"
+import CSS from "./ProgressiveImg.module.scss"
 
 const ProgressiveImg = ({ placeholderSrc, src, ...props }) => {
   const [imgSrc, setImgSrc] = useState(placeholderSrc || src);
-  const loadingClass = placeholderSrc && imgSrc === placeholderSrc ? styles.piLoading : styles.piLoaded;
+  const loadingClass = placeholderSrc && imgSrc === placeholderSrc ? CSS.piLoading : CSS.piLoaded;
+
+  // extends the className, if any provided
+  props.className = `${loadingClass} ${props.className} `
 
   useEffect(() => {
     const img = new Image();
@@ -19,7 +22,6 @@ const ProgressiveImg = ({ placeholderSrc, src, ...props }) => {
       <img
         {...{ src: imgSrc, ...props }}
         alt={props.alt || ""}
-        className={`image ${loadingClass}`}
         loading="lazy"
       />
     </>
