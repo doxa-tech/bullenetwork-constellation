@@ -5,6 +5,7 @@ import Layout from "../layouts/Layout.astro";
 import Welcome from "./index/Welcome";
 import IndexActivities from "./index/Activities";
 import Instagram from "./index/Instagram";
+import WhereWeAre from "./index/WhereWeAre.astro";
 import ImageWrap from "../components/ImageWrap.astro";
 ---
 
@@ -33,4 +34,6 @@ import ImageWrap from "../components/ImageWrap.astro";
 	<IndexActivities client:load />
 
 	<Instagram client:load />
+
+	<WhereWeAre client:load />
 </Layout>
