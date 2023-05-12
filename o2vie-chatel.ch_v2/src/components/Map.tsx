@@ -27,7 +27,7 @@ const Markers = () => {
 
 const Map = () => {
 
-  const position = [46.52994292259923, 6.89888331985121]
+  const position = [46.530978, 6.89888331985121]
 
   if (typeof window !== 'undefined') {
     return (
