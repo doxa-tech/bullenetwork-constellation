@@ -1,14 +1,24 @@
 ---
 export interface Props {
 	title: string;
+	description: string;
+	url: string;
+	image: string;
+	author: string;
 }
-
-const { title } = Astro.props;
 
 import "../styles/main.scss";
 import Footer from "./Footer.astro";
 import Header from "./Header.astro";
 import HeaderMobile from "./HeaderMobile.astro";
+import SiteMeta from "../components/SiteMeta.astro";
+
+const {
+	title = "Église O2Vie",
+	description = "Église O2Vie à Châtel-St-Denis. Une association chrétienne au service de sa région qui s'investit pour la ville en proposant des activités pour ses habitants. Nous voulons être une église qui vit en dehors de ces murs. Nous nous réunissons chaque dimanche matin pour une célébration. O2Vie organise également une après-midi d'animation Quartier Libre pour les enfants et une soirée jeux de société La nuit des Jeux !",
+	image = "/social-preview.png",
+	author = "Doxatech",
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -18,7 +28,16 @@ import HeaderMobile from "./HeaderMobile.astro";
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+
+		<SiteMeta
+			title={title}
+			description={description.substring(0, 100)}
+			url={Astro.site
+				? `${Astro.site}/${title.toLowerCase().replaceAll(" ", "-")}`
+				: `https://o2vie-chatel.ch/${title.toLowerCase().replaceAll(" ", "-")}`}
+			image={image}
+			author={author}
+		/>
 	</head>
 	<body>
 		<Header />
