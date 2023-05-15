@@ -22,56 +22,62 @@
     margin-bottom: 30px;
 }
 
-.image-right-30 {
-    margin-top: 5%;
-    max-width: 30%;
-    max-height: 30%;
-    float: right;
-}
-
-.image-left-30 {
-    margin-top: 5%;
-    max-width: 30%;
-    max-height: 30%;
+.left{
     float: left;
 }
 
-.image-right-half {
-    margin-top: 2%;
-    max-width: 47.5%;
-    max-height: 47.5%;
+.right{
     float: right;
 }
 
-.image-left-half {
+.image-30 {
+    margin-top: 5%;
+    max-width: 30%;
+    max-height: 30%;
+}
+
+.image-half {
     margin-top: 2%;
     max-width: 47.5%;
     max-height: 47.5%;
-    float: left;
 }
 
-.event-paragraph-65 {
-    max-width: 65%;
-    max-height: 15%;
+.event-paragraph {
     float: left;
     text-align: justify;
 }
 
 /* Media queries */
 @media screen and (max-width: 802px) {
-     .event-paragraph-65 {
+     .event-paragraph {
         max-width: 100%;
         max-height: 15%;
         float: none;
         margin-bottom: 5%;
     }
-    .image-right-30 {
+
+    .left{
+        float: none;
+    }
+
+    .right{
+        float: none;
+    }
+
+    .image-half {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 75%;
+        max-height: 40%;
+    }
+
+    .image-30 {
         margin-left: auto;
         margin-right: auto;
         max-width: 50%;
         max-height: 40%;
-        float: none;
     }
+    
     .logoEvent:hover{
         -webkit-transform: none;
         -moz-transform: none;
