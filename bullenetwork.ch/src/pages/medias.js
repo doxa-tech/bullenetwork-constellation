@@ -66,7 +66,7 @@ const Medias = () => {
       return req.json();
     }).then((response) => {
       if (response.errors) {
-        handleError(response)
+        handleError(response, () => { }, () => { })
       } else {
         setRawdata(response.data.medias)
       }
@@ -175,7 +175,7 @@ const Medias = () => {
           res.json().then((resp) => {
             // 10 means the auth service got a Directus error
             if (resp.error.code === 10) {
-              handleError(resp.error.data)
+              handleError(resp.error.data, () => { }, () => { })
               setArchiveInfo("");
             } else {
               setArchiveInfo(resp.error.message);
