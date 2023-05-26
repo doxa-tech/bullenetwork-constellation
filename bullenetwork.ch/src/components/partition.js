@@ -125,52 +125,67 @@ const File = ({ file, notify }) => {
     // this makes the trick to not being blocked as a popup in safari
     // https://stackoverflow.com/a/39387533
     var windowReference = window.open();
-    windowReference.document.body.innerHTML = `<div style="text-align:center;padding-top:10%;font-size:14px;">chargement...</div>`;
+
+    const loadingMsg = `<div style="text-align:center;padding-top:10%;font-size:14px;">chargement...</div>`
+    const refreshingMsg = `<div style="text-align:center;padding-top:10%;font-size:14px;">rafraîchissement du jeton d'authentification...</div>`
+
+    windowReference.document.body.innerHTML = loadingMsg;
 
     const fileID = file.directus_files_id.id;
-    const body = `id=${fileID}&access_token=${accessToken}`;
 
-    fetch(process.env.GATSBY_GCS_AUTH_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      body: body
-    }).then(res => {
-      if (!res.ok) {
-        windowReference.close();
-
-        res.json().then((resp) => {
-          // 10 means the auth service got a Directus error
-          if (resp.error.code === 10) {
-            handleError(resp.error.data)
-            setLink("");
-          } else {
-            setLink(resp.error.message);
-          }
-        }).catch((e) => {
-          setLink(`error: ${res.statusText} - ${e}`)
-        })
-        return
-      }
-      res.text().then((t) => {
-        if (!res.ok) {
-          windowReference.close();
-          setLink(`error: ${t}`);
-        } else {
-          windowReference.location = t;
-          setLink(<a href={t} rel="noopener noreferrer" target="_blank">{filename}</a>)
-
-          setTimeout(function () {
-            setLink("");
-            // the url expires after 10 minutes, we wait 10 minutes - 10 seconds
-          }, (10 * 60 - 10) * 1000);
-        }
-      })
-    }).catch((e) => {
-      setLink(`error: ${e}`)
+    const onDone = () => {
       windowReference.close();
-    })
+    }
+
+    const fetchPartition = (token, retryFn) => {
+      const body = `id=${fileID}&access_token=${token}`;
+
+      fetch(process.env.GATSBY_GCS_AUTH_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: body
+      }).then(res => {
+        if (!res.ok) {
+          res.json().then((resp) => {
+            // 10 means the auth service got a Directus error
+            if (resp.error.code === 10) {
+              windowReference.document.body.innerHTML = refreshingMsg;
+              handleError(resp.error.data, retryFn, onDone)
+              setLink("");
+            } else {
+              setLink(resp.error.message);
+            }
+          }).catch((e) => {
+            onDone();
+            setLink(`error: ${res.statusText} - ${e}`)
+          })
+          return
+        }
+        res.text().then((t) => {
+          if (!res.ok) {
+            windowReference.close();
+            setLink(`error: ${t}`);
+          } else {
+            windowReference.location = t;
+            setLink(<a href={t} rel="noopener noreferrer" target="_blank">{filename}</a>)
+
+            setTimeout(function () {
+              setLink("");
+              // the url expires after 10 minutes, we wait 10 minutes - 10 seconds
+            }, (10 * 60 - 10) * 1000);
+          }
+        })
+      }).catch((e) => {
+        setLink(`error: ${e}`)
+        windowReference.close();
+      })
+    }
+
+    const failover = (newToken) => { onDone() } // called when the retry fails
+    const retryFn = (newToken) => { fetchPartition(newToken, failover) } // called when retry
+    fetchPartition(accessToken, retryFn)
   }
 
   const [link, setLink] = useState("");
