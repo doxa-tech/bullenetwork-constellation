@@ -47,6 +47,45 @@
     text-align: justify;
 }
 
+video.video {
+    max-width: 75%;
+    max-height: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.f4 .button-language {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.f4 .button-language .button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+h4 {
+    text-decoration: underline;
+}
+
+.info ul{
+    list-style-type: square;
+    margin-left: 10%;
+    margin-bottom: 30px;
+}
+
+.center{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.info p{
+    font-size: 0.9em;
+}
+
 /* Media queries */
 @media screen and (max-width: 802px) {
      .event-paragraph {
