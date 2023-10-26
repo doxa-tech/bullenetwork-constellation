@@ -63,7 +63,6 @@ export const SecureDirectus = ({ children, email, className }) => {
           } else if (resp.data) {
             localStorage.setItem(key, JSON.stringify([resp.data]));
             setAccessToken(resp.data.access_token);
-            console.log("set access token:", resp.data.access_token)
             onRetry(resp.data.access_token);
           } else {
             throw "bad response:" + JSON.stringify(resp);

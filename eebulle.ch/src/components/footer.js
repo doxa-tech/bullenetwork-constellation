@@ -70,7 +70,6 @@ const Footer = () => {
               <p><a href="https://eglisesurleroc.ch" target="_blank" rel="noreferrer">Fribourg</a></p>
               <p><a href="https://eeromont.ch" target="_blank" rel="noreferrer">Romont</a></p>
               <p><a href="https://enhaut.eebulle.ch" target="_blank" rel="noreferrer">Pays d'Enhaut</a></p>
-              <p><a href="http://www.impact-stecroix.ch" target="_blank" rel="noreferrer">Impact Ste-Croix</a></p>
             </div>
           </div>
         </div>
