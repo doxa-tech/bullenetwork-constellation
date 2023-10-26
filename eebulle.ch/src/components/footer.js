@@ -69,6 +69,7 @@ const Footer = () => {
               <p><a href="https://eebulle.ch" target="_blank" rel="noreferrer">Bulle</a></p>
               <p><a href="https://eglisesurleroc.ch" target="_blank" rel="noreferrer">Fribourg</a></p>
               <p><a href="https://eeromont.ch" target="_blank" rel="noreferrer">Romont</a></p>
+              <p><a href="https://o2vie-chatel.ch" target="_blank" rel="noreferrer">Châtel-Saint-Denis</a></p>
               <p><a href="https://enhaut.eebulle.ch" target="_blank" rel="noreferrer">Pays d'Enhaut</a></p>
             </div>
           </div>
