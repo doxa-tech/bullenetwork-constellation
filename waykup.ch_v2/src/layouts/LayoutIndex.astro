@@ -1,0 +1,59 @@
+---
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+import "../styles/main.scss";
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import HeaderMobile from "./HeaderMobile.astro";
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+---
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{title}</title>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, user-scalable=no"
+		/>
+	</head>
+	<body>
+		<!-- Wrapper -->
+		<div id="wrapper" class="fade-in">
+			<!-- Intro -->
+			<div id="intro">
+				<h1>
+					<img src="layout/waykup.png" style="width: 600px; max-width:100%" />
+				</h1>
+				<h2>Groupe de jeunes</h2>
+				<p>T'es pas toi sans Jésus !</p>
+				<ul class="actions">
+					<li>
+						<a href="#nav" class="button icon solid solo fa-arrow-down scrolly"
+							>Continue</a
+						>
+					</li>
+				</ul>
+			</div>
+
+			<Header />
+
+			<!-- Main -->
+
+			<slot />
+
+			<Footer />
+
+			<div class="bg fixed" style="transform: none;"></div>
+		</div>
+
+		<HeaderMobile />
+	</body>
+</html>
