@@ -15,7 +15,7 @@ export default () => {
           <div className="left">
             <p>© Association Eglise évangélique de Bulle</p>
             <p>Route du Verdel 8, 1630 Bulle</p>
-            <p>Contact: david.hausmann@bullenetwork.ch</p>
+            <p>Contact: secretariat@bullenetwork.ch</p>
           </div>
           <div className="right">
             <div className="logo">
