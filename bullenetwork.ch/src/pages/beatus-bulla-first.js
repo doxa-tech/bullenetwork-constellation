@@ -20,7 +20,7 @@ const Beatus = () => {
       })
   }, [])
   return (
-    <Layout layoutClass="secondary-layout beer-page" title="Beatus Bulla - First" >
+    <Layout layoutClass="secondary-layout beer-page-1" title="Beatus Bulla - First" >
       <section className="main-section beer">
         <div className="section-container">
           <p className="banner-holder">

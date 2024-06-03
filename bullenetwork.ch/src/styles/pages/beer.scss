@@ -1,4 +1,4 @@
-.beer-page {
+.beer-page-1 {
   .main-section {
     background: url("../../images/beer/noise.png") repeat,
       linear-gradient(143deg, #4B7197 57%, #A6C8E5 100%);
@@ -29,6 +29,64 @@
       .footer-holder {
         text-align: center;
         margin: 100px 0 0 0;
+
+        .footer {
+          max-width: 1400px;
+        }
+      }
+    }
+  }
+}
+
+.beer-page-2 {
+  .main-section {
+
+    &.beer {
+      background: url("../../images/beer/noise.png") repeat, linear-gradient(143deg, #339D84 57%, #a9d4ca 100%);
+    }
+
+    min-height: 100vh;
+    color: white;
+
+    .section-container {
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+
+      p {
+        font-weight: 300;
+      }
+
+      .big-anchor {
+        position: absolute;
+        height: 100vh;
+        left: 50%;
+        transform: translateX(-50%) rotate(20deg);
+        padding-top: 100px;
+        overflow: hidden;
+
+        svg {
+          fill: #ffffff1c;
+        }
+      }
+
+      h1 {
+        padding: 40px 0 30px 0;
+      }
+
+      .banner-holder {
+        text-align: center;
+        padding: 30px 0 0 0;
+
+        .banner {
+          max-width: 700px;
+        }
+      }
+
+      .footer-holder {
+        text-align: center;
+        margin: 100px 0 0 0;
+        font-size: 10px;
 
         .footer {
           max-width: 1400px;
