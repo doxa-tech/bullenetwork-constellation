@@ -32,12 +32,12 @@ const Beatus = () => {
           </p>
           <h1>{title}</h1>
           <div dangerouslySetInnerHTML={{ __html: content }} />
-          <p className="footer-holder">
+          <div className="footer-holder">
             Brassée par la brasserie le Pélerin à Baulmes <br />
             <StaticImage src="../images/beer/esperance/mont-pelerin.png" alt="esperance" className="footer" placeholder="blurred"
               width={120}
               height={60} />
-          </p>
+          </div>
         </div>
       </section>
     </Layout>
