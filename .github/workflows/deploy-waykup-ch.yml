@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      base_folder: waykup.ch
+      base_folder: waykup.ch_v2
       hodor_url: https://hodor.doxatech.ch
       hodor_key: waykup
 
