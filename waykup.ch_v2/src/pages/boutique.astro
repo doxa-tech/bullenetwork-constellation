@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Groupe de jeunes Waykup | boutique">
+  <div id="main">
+    <!-- Featured Post -->
+    <article class="post featured">
+      <header class="major">
+        <h1>Boutique</h1>
+        <div class="box">
+          Profite de notre boutique en ligne. Il y en a pour tous les gouts. En
+          achtant nos produits vous nous aidez à financer nos activités.
+        </div>
+      </header>
+    </article>
+
+    <section class="">
+      <div id="myShop">
+        <a href="https://shop.spreadshirt.ch/waykup-gdj">waykup-gdj</a>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<script is:inline>
+  var spread_shop_config = {
+    shopName: "waykup-gdj",
+    locale: "fr_CH",
+    prefix: "https://shop.spreadshirt.ch",
+    baseId: "myShop",
+  };
+</script>
+
+<script
+  is:inline
+  type="text/javascript"
+  src="https://shop.spreadshirt.ch/shopfiles/shopclient/shopclient.nocache.js"
+></script>
