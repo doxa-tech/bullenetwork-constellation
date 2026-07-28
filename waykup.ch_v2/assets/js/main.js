@@ -4,23 +4,6 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-$('.next-prog, .prev-prog').on('click', function() {
-    var $slides = $('.programme-slide');
-    var $activeSlide = $slides.filter('.active');
-    var $nextSlide;
-
-    if ($(this).hasClass('next-prog')) {
-        $nextSlide = $activeSlide.next('.programme-slide');
-        if ($nextSlide.length === 0) $nextSlide = $slides.first();
-    } else {
-        $nextSlide = $activeSlide.prev('.programme-slide');
-        if ($nextSlide.length === 0) $nextSlide = $slides.last();
-    }
-
-    $activeSlide.removeClass('active');
-    $nextSlide.addClass('active');
-});
-
 (function ($) {
 
 	var $window = $(window),
