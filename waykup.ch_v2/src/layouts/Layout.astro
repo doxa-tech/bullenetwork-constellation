@@ -1,0 +1,45 @@
+---
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+import "../styles/main.scss";
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import HeaderMobile from "./HeaderMobile.astro";
+---
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{title}</title>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, user-scalable=no"
+		/>
+	</head>
+	<body>
+		<!-- Wrapper -->
+		<div id="wrapper" class="fade-in">
+			<!-- Header -->
+			<header id="header">
+				<a href="/#nav" class="logo">Waykup</a>
+			</header>
+
+			<Header />
+
+			<!-- Main -->
+
+			<slot />
+
+			<Footer />
+
+			<div class="bg fixed" style="transform: none;"></div>
+		</div>
+
+		<HeaderMobile />
+	</body>
+</html>

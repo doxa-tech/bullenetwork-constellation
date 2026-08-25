@@ -1,0 +1,34 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+---
+
+<a href="#navPanel" id="navPanelToggle" class="">Menu</a>
+
+<div id="navPanel">
+  <nav>
+    <ul class="links">
+      <li class={currentPath === "" ? "active" : ""}>
+        <a href="/#nav">Waykup</a>
+      </li>
+      <li class={currentPath === "events" ? "active" : ""}>
+        <a href="/events">Événements</a>
+      </li>
+      <li><a href="/boutique">Boutique</a></li>
+    </ul>
+  </nav>
+  <a href="#navPanel" class="close" id="mobile-close"></a>
+</div>
+
+<script>
+  const body = document.body;
+  const openBtn = document.getElementById("navPanelToggle");
+  const closeBtn = document.getElementById("mobile-close");
+
+  openBtn.addEventListener("click", () => {
+    body.classList.add("is-navPanel-visible");
+  });
+  closeBtn.addEventListener("click", () => {
+    body.classList.remove("is-navPanel-visible");
+  });
+</script>

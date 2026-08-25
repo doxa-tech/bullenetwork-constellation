@@ -1,0 +1,26 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+---
+
+<!-- Nav -->
+<nav id="nav">
+  <ul class="links">
+    <li class={currentPath === "" ? "active" : ""}>
+      <a href="/#nav">Waykup</a>
+    </li>
+    <li class={currentPath === "events" ? "active" : ""}>
+      <a href="/events">Événements</a>
+    </li>
+    <li><a href="/boutique">Boutique</a></li>
+  </ul>
+  <ul class="icons">
+    <li>
+      <a
+        href="https://www.instagram.com/waykup.gdj/"
+        target="_blank"
+        class="icon brands fa-instagram"><span class="label">Instagram</span></a
+      >
+    </li>
+  </ul>
+</nav>
