@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      base_folder: o2vie-chatel.ch_v2
+      base_folder: o2vie-chatel.ch_v3
       hodor_url: https://hodor.doxatech.ch
       hodor_key: o2vie
       o2vie_directus: https://vanil.bullenetwork.ch
