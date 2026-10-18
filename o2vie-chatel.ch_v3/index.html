@@ -18,11 +18,31 @@
     max-width: 200px;
   }
 
+  body>div {
+    box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 20px;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  body,
+  html {
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
   body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 67vh;
 
     background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0)), url("/bg01.png");
     background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0)), url("/bg01.png");
@@ -35,6 +55,7 @@
     color: #696969;
     font-weight: 300;
     line-height: 2.25em;
+    padding: 50px;
   }
 </style>
 
